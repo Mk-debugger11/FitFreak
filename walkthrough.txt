@@ -1,0 +1,43 @@
+# FitFreak v1 Walkthrough
+
+The foundational version of FitFreak is now complete! It is built with React Native and Expo using TypeScript, adhering strictly to **Clean Architecture** and a feature-based folder structure. 
+
+## Features Implemented
+
+### 1. App Navigation & Core 
+- Developed a highly polished **Dark Mode Theme** out-of-the-box (`src/core/theme`).
+- Implemented **Bottom Tabs Navigation** (Workouts & History) with a Modal Stack for the Active Workout screen.
+- Shared premium UI components (Buttons, Cards, Inputs) ensuring a consistent rich aesthetic throughout the app.
+
+### 2. Workout Templates
+- Defined `Template` and `Exercise` domain entities.
+- Created `MockTemplateRepository` configured for abstracting data fetching, which will seamlessly swap out for a Cloud PostgreSQL client (e.g. Supabase) in the future.
+- Built a **Templates Screen** displaying a list of your templates and a button to start a workout.
+
+### 3. Active Workout Engine
+- Implemented global state via **Zustand** to track the ongoing workout, even if you navigate away from the screen.
+- Added the ability to dynamically log sets with weight and reps, and check them off as completed.
+- Integrated an intuitive **Active Workout Screen** that tracks duration and active sets.
+
+### 4. Workout History
+- Created `CompletedWorkout` domain entities and a `HistoryStore`.
+- Connected the "Finish Workout" button to automatically compile stats (total volume, sets, time) and log it into your history.
+- Built a **History Screen** that lists all completed workouts with key progressive overload stats neatly displayed.
+
+## Verification
+
+To verify the app locally, you can run the following in your terminal:
+```bash
+cd "/Users/mukul/Documents/Web Dev Projects/FitFreak"
+npm start
+```
+You can then open it using the Expo Go app on your phone, or an Android Emulator/iOS Simulator.
+
+### Test Flow
+1. Open the app to the **Workouts** tab.
+2. Tap **New Workout**.
+3. Tap **Start Empty Workout** (since we don't have full template creation yet).
+4. Add a set with weight and reps, tap the `+` button.
+5. Tap the circular checkmark to mark it as completed.
+6. Tap **Finish**.
+7. Navigate to the **History** tab to see your logged workout with its calculated total volume and duration!

@@ -1,0 +1,73 @@
+# FitFreak v1 Implementation Plan
+
+This document outlines the plan for building version 1 of FitFreak, a mobile fitness app designed to track workouts and progressive overload.
+
+## User Review Required
+> [!IMPORTANT]
+> Please review the proposed architecture, tech stack, and state management choices. Let me know if you approve or if you'd like to adjust any of these decisions before we start building.
+
+## Open Questions
+> [!WARNING]
+> 1. **Data Source**: As requested, we will architect the app to connect to a **Cloud PostgreSQL** database instead of a local database. For v1 development, we will build abstract repository interfaces and can use mock data or an immediate API client (like Supabase/REST API) to connect to it.
+> 2. **State Management**: I will proceed with a lightweight global state library like **Zustand**.
+> 3. **UI Library**: I will build custom premium components from scratch using `StyleSheet` to ensure top-notch aesthetics.
+
+## Proposed Architecture
+
+We will follow **Clean Architecture** combined with a **Feature-Based Architecture**. This ensures separation of concerns, testability, and adherence to SOLID principles.
+
+### Tech Stack
+- **Framework**: React Native + Expo
+- **Language**: TypeScript
+- **Navigation**: React Navigation
+- **Data Source**: Cloud PostgreSQL (via API or BaaS client)
+- **State Management**: Zustand
+
+### Directory Structure (Feature-Based Clean Architecture)
+
+The codebase will be organized by features, and inside each feature, we'll have layers defined by Clean Architecture:
+
+```text
+src/
+├── core/                   # App-wide configurations, theme, navigation
+├── shared/                 # Shared UI components, utilities, and generic types
+└── features/               # Feature modules
+    ├── templates/          # Workout Templates Feature
+    │   ├── domain/         # Entities, Use Cases, Repository Interfaces
+    │   ├── data/           # Repos, Data Sources, DTOs
+    │   └── presentation/   # Screens, Components, ViewModels (State)
+    ├── workouts/           # Active Workouts (Start, Log Sets, Complete)
+    │   ├── domain/
+    │   ├── data/
+    │   └── presentation/
+    └── history/            # Workout History Feature
+        ├── domain/
+        ├── data/
+        └── presentation/
+```
+
+### Core Features Breakdown
+
+#### 1. Workout Templates (`features/templates`)
+- **Domain**: `Template` entity, `Exercise` entity. Use cases: `CreateTemplate`, `GetTemplates`.
+- **Data**: SQLite repository for storing and fetching templates.
+- **Presentation**: `TemplatesListScreen`, `CreateTemplateScreen`.
+
+#### 2. Active Workout (`features/workouts`)
+- **Domain**: `ActiveWorkout`, `WorkoutSet` entities. Use cases: `StartWorkout`, `LogSet`, `CompleteWorkout`.
+- **Data**: Temporary in-memory or persisted state for an ongoing workout.
+- **Presentation**: `ActiveWorkoutScreen` (tracking current sets, reps, and weights).
+
+#### 3. Workout History (`features/history`)
+- **Domain**: `CompletedWorkout` entity. Use cases: `GetWorkoutHistory`.
+- **Data**: Fetching historical data to calculate progressive overload and view past performance.
+- **Presentation**: `HistoryScreen`, `WorkoutDetailsScreen`.
+
+## Verification Plan
+
+### Automated Tests
+- Unit tests for domain Use Cases and Entities using **Jest** to ensure business logic is pure and framework-agnostic.
+
+### Manual Verification
+- Run the app via Expo Go on an Android emulator/device.
+- Verify creating a template, starting a workout from it, logging sets, completing the workout, and viewing it in the history tab.
