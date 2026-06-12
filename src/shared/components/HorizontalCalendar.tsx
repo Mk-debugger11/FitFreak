@@ -12,8 +12,8 @@ const generateDates = () => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // Past 30 days + today + next 1 day
-  for (let i = -30; i <= 1; i++) {
+  // Past 365 days + today + next 1 day
+  for (let i = -365; i <= 1; i++) {
     const d = new Date(today);
     d.setDate(today.getDate() + i);
     dates.push(d);

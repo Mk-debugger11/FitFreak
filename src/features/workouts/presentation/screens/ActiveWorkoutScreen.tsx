@@ -90,34 +90,42 @@ export const ActiveWorkoutScreen = () => {
         }
         renderItem={({ item, index }) => (
           <View style={[styles.setRow, item.completed && styles.setRowCompleted]}>
-            <Text style={styles.setText}>Set {index + 1}</Text>
+            <Text style={styles.setText} numberOfLines={1}>Set {index + 1}</Text>
             
-            <TextInput
-              style={styles.setInlineInput}
-              value={item.weight.toString()}
-              onChangeText={(text) => updateSet(item.id, parseFloat(text) || 0, item.reps)}
-              keyboardType="numeric"
-            />
-            <Text style={styles.setTextInlineLabel}>kg</Text>
+            <View style={styles.inputGroup}>
+              <TextInput
+                style={styles.setInlineInput}
+                value={item.weight.toString()}
+                onChangeText={(text) => updateSet(item.id, parseFloat(text) || 0, item.reps)}
+                keyboardType="numeric"
+              />
+              <Text style={styles.setTextInlineLabel} numberOfLines={1}>
+                {currentWorkout.equipmentType === 'dumbbell' ? 'kg/hand' : 'kg'}
+              </Text>
+            </View>
             
-            <TextInput
-              style={styles.setInlineInput}
-              value={item.reps.toString()}
-              onChangeText={(text) => updateSet(item.id, item.weight, parseInt(text, 10) || 0)}
-              keyboardType="numeric"
-            />
-            <Text style={styles.setTextInlineLabel}>reps</Text>
+            <View style={styles.inputGroup}>
+              <TextInput
+                style={styles.setInlineInput}
+                value={item.reps.toString()}
+                onChangeText={(text) => updateSet(item.id, item.weight, parseInt(text, 10) || 0)}
+                keyboardType="numeric"
+              />
+              <Text style={styles.setTextInlineLabel}>reps</Text>
+            </View>
             
-            <TouchableOpacity 
-              style={[styles.checkButton, item.completed && styles.checkButtonActive]}
-              onPress={() => toggleSetComplete(item.id)}
-            >
-              <Check color={item.completed ? '#000' : '#FFF'} size={16} />
-            </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.deleteButton} onPress={() => deleteSet(item.id)}>
-              <Trash2 color="#FF4444" size={20} />
-            </TouchableOpacity>
+            <View style={styles.actionGroup}>
+              <TouchableOpacity 
+                style={[styles.checkButton, item.completed && styles.checkButtonActive]}
+                onPress={() => toggleSetComplete(item.id)}
+              >
+                <Check color={item.completed ? '#000' : '#FFF'} size={16} />
+              </TouchableOpacity>
+              
+              <TouchableOpacity style={styles.deleteButton} onPress={() => deleteSet(item.id)}>
+                <Trash2 color="#FF4444" size={20} />
+              </TouchableOpacity>
+            </View>
           </View>
         )}
       />
@@ -211,7 +219,21 @@ const styles = StyleSheet.create({
   setText: {
     color: theme.colors.text,
     fontSize: theme.typography.sizes.md,
+    width: 48,
+    flexShrink: 0,
+  },
+  inputGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
     flex: 1,
+    justifyContent: 'center',
+  },
+  actionGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    width: 68,
+    flexShrink: 0,
   },
   setInlineInput: {
     color: theme.colors.text,
@@ -220,7 +242,7 @@ const styles = StyleSheet.create({
     borderRadius: theme.borderRadius.sm,
     paddingHorizontal: 8,
     paddingVertical: 4,
-    minWidth: 48,
+    minWidth: 44,
     textAlign: 'center',
     borderWidth: 1,
     borderColor: theme.colors.border,
@@ -229,10 +251,10 @@ const styles = StyleSheet.create({
     color: theme.colors.textSecondary,
     fontSize: theme.typography.sizes.sm,
     marginLeft: 4,
-    marginRight: 12,
+    marginRight: 4,
   },
   deleteButton: {
-    marginLeft: 12,
+    marginLeft: 8,
     padding: 4,
   },
   checkButton: {

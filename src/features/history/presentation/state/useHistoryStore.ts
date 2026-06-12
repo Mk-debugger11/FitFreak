@@ -1,31 +1,30 @@
 import { create } from 'zustand';
 import { CompletedWorkout } from '../../domain/entities/CompletedWorkout';
 import { ActiveWorkout } from '../../../workouts/domain/entities/ActiveWorkout';
-import Constants from 'expo-constants';
-
-const hostUri = Constants?.expoConfig?.hostUri;
-const ip = hostUri ? hostUri.split(':')[0] : 'localhost';
-const API_URL = `https://fitfreak-yu0h.onrender.com/api`;
+const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
 interface HistoryState {
+  isLoading: boolean;
   completedWorkouts: CompletedWorkout[];
   targetMuscleGroups: Record<string, string[]>;
-  customExercises: Record<string, string[]>;
+  customExercises: Record<string, { name: string; equipmentType: string }[]>;
   fetchData: () => Promise<void>;
   addCompletedWorkout: (workout: ActiveWorkout) => void;
   updateCompletedWorkoutName: (id: string, name: string) => void;
   deleteCompletedWorkout: (id: string) => void;
   addTargetMuscleGroup: (dateString: string, muscleGroup: string) => void;
   removeTargetMuscleGroup: (dateString: string, muscleGroup: string) => void;
-  addCustomExercise: (category: string, exerciseName: string) => void;
+  addCustomExercise: (category: string, exerciseName: string, equipmentType: string) => void;
 }
 
 export const useHistoryStore = create<HistoryState>((set) => ({
+  isLoading: true,
   completedWorkouts: [],
   targetMuscleGroups: {},
   customExercises: {},
   fetchData: async () => {
     try {
+      set({ isLoading: true });
       const [workoutsRes, musclesRes, customRes] = await Promise.all([
         fetch(`${API_URL}/workouts`),
         fetch(`${API_URL}/target-muscles`),
@@ -40,9 +39,12 @@ export const useHistoryStore = create<HistoryState>((set) => ({
         targetMuscleGroups[m.dateString] = m.muscles;
       });
 
-      const customExercises: Record<string, string[]> = {};
+      const customExercises: Record<string, { name: string; equipmentType: string }[]> = {};
       customData.forEach((c: any) => {
-        customExercises[c.category] = c.exercises;
+        customExercises[c.category] = c.exercises.map((ex: any) => {
+          if (typeof ex === 'string') return { name: ex, equipmentType: 'barbell' };
+          return ex;
+        });
       });
 
       set({
@@ -55,9 +57,11 @@ export const useHistoryStore = create<HistoryState>((set) => ({
         })),
         targetMuscleGroups,
         customExercises,
+        isLoading: false,
       });
     } catch (err) {
       console.error('Failed to fetch data from MongoDB', err);
+      set({ isLoading: false });
     }
   },
   addTargetMuscleGroup: (dateString, muscleGroup) => {
@@ -93,23 +97,23 @@ export const useHistoryStore = create<HistoryState>((set) => ({
       body: JSON.stringify({ dateString, muscleGroup })
     }).catch(console.error);
   },
-  addCustomExercise: (category, exerciseName) => {
+  addCustomExercise: (category, exerciseName, equipmentType) => {
     set((state) => {
       const currentList = state.customExercises[category] || [];
-      if (!exerciseName.trim() || currentList.some(ex => ex.toLowerCase() === exerciseName.toLowerCase())) {
+      if (!exerciseName.trim() || currentList.some(ex => ex.name.toLowerCase() === exerciseName.toLowerCase())) {
         return state;
       }
       return {
         customExercises: {
           ...state.customExercises,
-          [category]: [...currentList, exerciseName.trim()],
+          [category]: [...currentList, { name: exerciseName.trim(), equipmentType }],
         },
       };
     });
     fetch(`${API_URL}/custom-exercises`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ category, exerciseName })
+      body: JSON.stringify({ category, exerciseName, equipmentType })
     }).catch(console.error);
   },
   addCompletedWorkout: (workout) => {
