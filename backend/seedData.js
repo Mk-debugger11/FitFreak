@@ -4,408 +4,60 @@ const CompletedWorkout = require('./models/CompletedWorkout');
 const TargetMuscle = require('./models/TargetMuscle');
 
 const data = {
-  "2026-05-06": {
-    "Biceps": {
-      "Dumbbell Bicep Curl": [
-        "15kg/hand × 10",
-        "15kg/hand × 11",
-        "15kg/hand × 11"
-      ],
-      "Hammer Curl": [
-        "15kg/hand × 10",
-        "15kg/hand × 10",
-        "15kg/hand × 10"
-      ],
-      "Barbell Curl": [
-        "32.5kg × 10",
-        "32.5kg × 10",
-        "32.5kg × 8"
-      ]
-    }
-  },
-
-  "2026-05-07": {
-    "Chest": {
-      "Incline Dumbbell Press": [
-        "15kg/hand × 10",
-        "20kg/hand × 12",
-        "22.5kg/hand × 12",
-        "20kg/hand × 12"
-      ],
-      "Flat Dumbbell Press": [
-        "20kg/hand × 12",
-        "22.5kg/hand × 10",
-        "22.5kg/hand × 9"
-      ],
-      "Incline Dumbbell Fly": [
-        "12.5kg/hand × 12",
-        "12.5kg/hand × 12"
-      ],
-      "Pec Dec Fly": [
-        "45kg × 12"
-      ]
-    }
-  },
-
-  "2026-05-12": {
+  "2026-06-10": {
     "Chest": {
       "Incline Dumbbell Press": [
         "17.5kg/hand × 10",
-        "20kg/hand × 10",
-        "25kg/hand × 10",
+        "20kg/hand × 5",
+        "25kg/hand × 9",
+        "30kg/hand × 10",
+        "30kg/hand × 10"
+      ],
+      "Flat Dumbbell Press": [
+        "30kg/hand × 10",
+        "30kg/hand × 7",
         "25kg/hand × 10"
       ],
-      "Flat Dumbbell Press": [
-        "20kg/hand × 10",
-        "25kg/hand × 9",
-        "25kg/hand × 8"
-      ],
       "Incline Dumbbell Fly": [
-        "15kg/hand × 12",
-        "15kg/hand × 10",
-        "12.5kg/hand × 13"
+        "12.5kg/hand × 15",
+        "12.5kg/hand × 15",
+        "12.5kg/hand × 15"
       ],
       "Pec Dec Fly": [
-        "45kg × 11",
-        "40kg × 12"
+        "45kg × 15",
+        "50kg × 12"
       ]
-    }
-  },
-
-  "2026-05-13": {
+    },
     "Biceps": {
-      "Dumbbell Bicep Curl": [
-        "15kg/hand × 10",
-        "15kg/hand × 10",
-        "15kg/hand × 10"
-      ],
       "Hammer Curl": [
-        "15kg/hand × 10",
-        "15kg/hand × 10",
-        "15kg/hand × 10"
+        "17.5kg/hand × 10",
+        "20kg/hand × 8",
+        "20kg/hand × 8"
       ],
-      "Barbell Curl": [
-        "32.5kg × 10",
-        "32.5kg × 10",
-        "32.5kg × 9"
-      ]
-    },
-    "Forearms": {
-      "Reverse Cable Curl": [
-        "50kg × 15",
-        "60kg × 15",
-        "75kg × 12"
-      ],
-      "Wrist Curl": [
-        "22.5kg × 15",
-        "30kg × 15",
-        "30kg × 14"
+      "Dumbbell Curl": [
+        "15kg/hand × 9",
+        "15kg/hand × 8",
+        "15kg/hand × 8"
       ]
     }
   },
-
-  "2026-05-14": {
-    "Chest": {
-      "Incline Dumbbell Press": [
-        "15kg/hand × 10",
-        "20kg/hand × 12",
-        "25kg/hand × 10",
-        "20kg/hand × 12"
-      ],
-      "Flat Dumbbell Press": [
-        "20kg/hand × 12",
-        "20kg/hand × 12",
-        "20kg/hand × 15"
-      ],
-      "Incline Dumbbell Fly": [
-        "12.5kg/hand × 13",
-        "12.5kg/hand × 13"
-      ],
-      "Pec Dec Fly": [
-        "45kg × 14",
-        "55kg × 8",
-        "45kg × 6",
-        "40kg × 14"
-      ]
-    },
+  "2026-06-11": {
     "Triceps": {
       "Tricep Pushdown": [
-        "45kg × 12",
-        "45kg × 13",
-        "45kg × 13"
-      ],
-      "Overhead Cable Extension": [
-        "35kg × 12",
-        "40kg × 8"
-      ],
-      "Overhead Dumbbell Extension": [
-        "15kg × 12",
-        "17.5kg × 10"
-      ]
-    }
-  },
-
-  "2026-05-15": {
-    "Back": {
-      "Lat Pulldown": [
-        "45kg × 12",
-        "50kg × 12",
-        "60kg × 8",
-        "45kg × 5",
+        "45kg × 15",
+        "50kg × 14",
+        "50kg × 14",
         "50kg × 10"
       ],
-      "T-Bar Row": [
-        "35kg × 12",
-        "45kg × 10",
-        "45kg × 11"
-      ],
-      "Straight Arm Pulldown": [
-        "30kg × 12",
-        "37.5kg × 14",
-        "45kg × 15",
-        "45kg × 15"
-      ],
-      "Single Arm Dumbbell Row": [
-        "25kg × 10",
-        "30kg × 10"
-      ]
-    }
-  },
-
-  "2026-05-16": {
-    "Biceps": {
-      "Incline Dumbbell Curl": [
-        "12.5kg/hand × 10",
-        "15kg/hand × 8",
-        "12.5kg/hand × 2",
-        "12.5kg/hand × 10",
-        "10kg/hand × 11"
-      ],
-      "Preacher Curl": [
-        "27.5kg × 10",
-        "32.5kg × 10",
-        "32.5kg × 10"
-      ],
-      "Hammer Curl": [
-        "12.5kg/hand × 10",
-        "12.5kg/hand × 11",
-        "12.5kg/hand × 10"
-      ]
-    },
-    "Forearms": {
-      "Reverse Cable Curl": [
-        "50kg × 16",
-        "60kg × 16",
-        "75kg × 15"
-      ],
-      "Wrist Curl": [
-        "22.5kg × 15",
-        "30kg × 15",
-        "30kg × 15"
-      ]
-    }
-  },
-
-  "2026-05-19": {
-    "Chest": {
-      "Incline Dumbbell Press": [
-        "17.5kg/hand × 6",
-        "20kg/hand × 4",
-        "25kg/hand × 10",
-        "30kg/hand × 6",
-        "25kg/hand × 10"
-      ],
-      "Flat Dumbbell Press": [
-        "25kg/hand × 10",
-        "25kg/hand × 10",
-        "25kg/hand × 8"
-      ],
-      "Incline Dumbbell Fly": [
-        "15kg/hand × 10",
-        "15kg/hand × 12",
-        "12.5kg/hand × 14"
-      ],
-      "Pec Dec Fly": [
-        "45kg × 14",
-        "45kg × 14"
-      ]
-    }
-  },
-
-  "2026-05-20": {
-    "Biceps": {
-      "Dumbbell Bicep Curl": [
-        "15kg/hand × 10",
-        "15kg/hand × 10",
-        "15kg/hand × 10"
-      ],
-      "Hammer Curl": [
-        "15kg/hand × 10",
-        "15kg/hand × 10",
-        "15kg/hand × 9"
-      ],
-      "Barbell Curl": [
-        "32.5kg × 9",
-        "32.5kg × 8",
-        "32.5kg × 8"
-      ]
-    }
-  },
-
-  "2026-05-21": {
-    "Chest": {
-      "Incline Dumbbell Press": [
-        "17.5kg/hand × 7",
-        "20kg/hand × 5",
-        "22.5kg/hand × 10",
-        "25kg/hand × 10",
-        "22.5kg/hand × 10"
-      ],
-      "Flat Dumbbell Press": [
-        "22.5kg/hand × 10",
-        "25kg/hand × 11",
-        "22.5kg/hand × 12"
-      ],
-      "Incline Dumbbell Fly": [
-        "12.5kg/hand × 14",
-        "12.5kg/hand × 14"
-      ],
-      "Pec Dec Fly": [
-        "45kg × 14",
-        "52.5kg × 12",
-        "45kg × 12"
-      ]
-    }
-  },
-
-  "2026-05-23": {
-    "Chest": {
-      "Flat Dumbbell Press": [
-        "17.5kg/hand × 13",
-        "17.5kg/hand × 13",
-        "17.5kg/hand × 14"
-      ],
-      "Incline Dumbbell Press": [
-        "17.5kg/hand × 14",
-        "17.5kg/hand × 20"
-      ]
-    },
-    "Biceps": {
-      "Incline Dumbbell Curl": [
-        "15kg/hand × 9",
-        "15kg/hand × 9"
-      ]
-    }
-  },
-
-  "2026-05-26": {
-    "Chest": {
-      "Incline Dumbbell Press": [
-        "17.5kg/hand × 7",
-        "20kg/hand × 5",
-        "25kg/hand × 10",
-        "30kg/hand × 8",
-        "30kg/hand × 6"
-      ],
-      "Flat Dumbbell Press": [
-        "30kg/hand × 7",
-        "25kg/hand × 10",
-        "25kg/hand × 8"
-      ],
-      "Incline Dumbbell Fly": [
-        "12.5kg/hand × 14",
-        "12.5kg/hand × 14",
-        "12.5kg/hand × 14"
-      ],
-      "Cable Fly High To Low": [
-        "30kg × 13",
-        "37.5kg × 13"
-      ]
-    }
-  },
-
-  "2026-05-29": {
-    "Chest": {
-      "Incline Dumbbell Press": [
-        "15kg/hand × 7",
-        "20kg/hand × 5",
-        "25kg/hand × 11",
-        "25kg/hand × 11",
-        "25kg/hand × 10"
-      ],
-      "Flat Dumbbell Press": [
-        "25kg/hand × 10",
-        "25kg/hand × 10",
-        "25kg/hand × 8"
-      ],
-      "Incline Dumbbell Fly": [
-        "12.5kg/hand × 14",
-        "12.5kg/hand × 13"
-      ],
-      "Pec Dec Fly": [
-        "45kg × 13",
-        "45kg × 13",
-        "40kg × 13"
-      ]
-    },
-    "Triceps": {
-      "Tricep Pushdown": [
-        "45kg × 13",
-        "45kg × 13",
-        "45kg × 11",
-        "35kg × 13"
-      ],
-      "Overhead Extension": [
-        "25kg × 13",
-        "35kg × 10",
-        "35kg × 10"
+      "Overhead Cable Extension": [
+        "35kg × 15",
+        "40kg × 11",
+        "40kg × 12"
       ],
       "Overhead Dumbbell Extension": [
-        "15kg × 12",
-        "15kg × 12",
-        "15kg × 12"
-      ]
-    }
-  },
-
-  "2026-05-30": {
-    "Biceps": {
-      "Incline Dumbbell Curl": [
-        "15kg/hand × 10",
-        "15kg/hand × 8",
-        "12.5kg/hand × 3",
-        "12.5kg/hand × 10"
-      ],
-      "Preacher Curl": [
-        "32.5kg × 10",
-        "32.5kg × 10",
-        "32.5kg × 8"
-      ],
-      "Hammer Curl": [
-        "15kg/hand × 8",
-        "12.5kg/hand × 10",
-        "12.5kg/hand × 10",
-        "15kg/hand × 10"
-      ]
-    }
-  },
-
-  "2026-06-01": {
-    "Triceps": {
-      "Tricep Pushdown": [
-        "45kg × 15",
-        "45kg × 15",
-        "45kg × 12"
-      ],
-      "Overhead Extension": [
-        "30kg × 12",
-        "35kg × 12",
-        "35kg × 12"
-      ],
-      "Overhead Dumbbell Extension": [
-        "15kg × 13",
         "17.5kg × 12",
-        "17.5kg × 12"
+        "17.5kg × 13",
+        "17.5kg × 13"
       ]
     }
   }
@@ -413,6 +65,7 @@ const data = {
 
 const equipmentMap = {
   "Dumbbell Bicep Curl": "dumbbell",
+  "Dumbbell Curl": "dumbbell",
   "Barbell Curl": "barbell",
   "Pec Dec Fly": "machine",
   "Single Arm Rear Delt Pec Dec": "machine",

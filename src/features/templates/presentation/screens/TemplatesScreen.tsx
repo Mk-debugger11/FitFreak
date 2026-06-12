@@ -37,7 +37,7 @@ export const TemplatesScreen = () => {
     setFilterCategory(null);
   }, [selectedDate]);
 
-  const workoutsForDate = completedWorkouts.filter((w) => {
+  let workoutsForDate = completedWorkouts.filter((w) => {
     const isSameDate = 
       w.startTime.getDate() === selectedDate.getDate() &&
       w.startTime.getMonth() === selectedDate.getMonth() &&
@@ -52,6 +52,16 @@ export const TemplatesScreen = () => {
     selectedDate.getDate() === new Date().getDate() &&
     selectedDate.getMonth() === new Date().getMonth() &&
     selectedDate.getFullYear() === new Date().getFullYear();
+
+  workoutsForDate = workoutsForDate.sort((a, b) => {
+    if (isToday) {
+      // Newest on top for the active day
+      return b.startTime.getTime() - a.startTime.getTime();
+    } else {
+      // Oldest on top (chronological) for completed days
+      return a.startTime.getTime() - b.startTime.getTime();
+    }
+  });
 
   const dateKey = getLocalISODate(selectedDate);
   const selectedMuscles = targetMuscleGroups[dateKey] || [];
