@@ -5,7 +5,7 @@ import Constants from 'expo-constants';
 
 const hostUri = Constants?.expoConfig?.hostUri;
 const ip = hostUri ? hostUri.split(':')[0] : 'localhost';
-const API_URL = `http://${ip}:3000/api`;
+const API_URL = `https://fitfreak-yu0h.onrender.com/api`;
 
 interface HistoryState {
   completedWorkouts: CompletedWorkout[];
