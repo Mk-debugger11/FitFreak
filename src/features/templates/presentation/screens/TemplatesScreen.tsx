@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TextInput, TouchableOpacity, ScrollView, Modal } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TextInput, TouchableOpacity, ScrollView, Modal, Share, Alert } from 'react-native';
 import { theme } from '../../../../core/theme/theme';
 import { useActiveWorkoutStore } from '../../../workouts/presentation/state/useActiveWorkoutStore';
 import { useHistoryStore } from '../../../history/presentation/state/useHistoryStore';
 import { Card } from '../../../../shared/components/Card';
 import { Button } from '../../../../shared/components/Button';
-import { Calendar as CalendarIcon, CheckSquare, Dumbbell, Trash2, X, Filter } from 'lucide-react-native';
+import { Calendar as CalendarIcon, CheckSquare, Dumbbell, Trash2, X, Filter, Download } from 'lucide-react-native';
 import { HorizontalCalendar } from '../../../../shared/components/HorizontalCalendar';
+
+import { DEFAULT_MUSCLE_EXERCISES } from '../../data/metadata/exercises';
+import { formatSetDisplay, getLocalISODate } from '../../../../shared/utils/formatters';
+import { EquipmentType } from '../../../../shared/types/common';
 
 const MUSCLE_GROUPS = [
   'Chest', 'Back', 'Legs', 'Shoulders', 'Biceps', 'Triceps', 'Forearm', 'Abs', 'Core', 'Neck', 'Cardio', 'Full Body'
 ];
-
-const MUSCLE_EXERCISES: Record<string, string[]> = {
-  'Chest': ['Incline Dumbbell Press', 'Flat Dumbbell Press', 'Barbell Bench Press', 'Pec Deck Fly', 'Cable Fly'],
-  'Back': ['Lat Pulldown', 'Pull-ups', 'Seated Cable Row', 'One-arm Dumbbell Row', 'T-Bar Row', 'Deadlift'],
-  'Shoulders': ['Dumbbell Shoulder Press', 'Lateral Raise', 'Rear Delt Fly', 'Upright Row', 'Shrugs', "Farmer's Walk"],
-  'Biceps': ['Dumbbell Curl', 'Incline Dumbbell Curl', 'Preacher Curl', 'Barbell Curl', 'Hammer Curl'],
-  'Triceps': ['Tricep Pushdown', 'Overhead Cable Extension', 'Overhead Dumbbell Extension', 'Dips', 'Close-Grip Bench Press'],
-  'Forearm': ['Wrist Curl', 'Reverse Wrist Curl', 'Reverse Cable Curl', "Farmer's Walk"],
-  'Legs': ['Squat', 'Leg Press', 'Romanian Deadlift', 'Leg Curl', 'Leg Extension', 'Bulgarian Split Squat', 'Lunges', 'Calf Raise'],
-  'Abs': ['Cable Crunch', 'Hanging Leg Raise', 'Reverse Crunch', 'Plank', 'Russian Twist'],
-  'Core': ['Cable Crunch', 'Hanging Leg Raise', 'Reverse Crunch', 'Plank', 'Russian Twist'],
-  'Neck': ['Neck Flexion', 'Neck Extension', 'Neck Harness Work']
-};
 
 export const TemplatesScreen = () => {
   const { startWorkout } = useActiveWorkoutStore();
@@ -35,8 +26,11 @@ export const TemplatesScreen = () => {
   const [isCategoryModalVisible, setIsCategoryModalVisible] = useState(false);
   const [isExerciseModalVisible, setIsExerciseModalVisible] = useState(false);
   const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
+  const [isCustomModalVisible, setIsCustomModalVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [filterCategory, setFilterCategory] = useState<string | null>(null);
+  const [customExName, setCustomExName] = useState('');
+  const [customExEquipment, setCustomExEquipment] = useState<EquipmentType>('barbell');
 
   // Clear filter when date changes
   React.useEffect(() => {
@@ -59,7 +53,7 @@ export const TemplatesScreen = () => {
     selectedDate.getMonth() === new Date().getMonth() &&
     selectedDate.getFullYear() === new Date().getFullYear();
 
-  const dateKey = selectedDate.toISOString().split('T')[0];
+  const dateKey = getLocalISODate(selectedDate);
   const selectedMuscles = targetMuscleGroups[dateKey] || [];
 
   const filteredMuscleGroups = MUSCLE_GROUPS.filter(mg =>
@@ -69,8 +63,65 @@ export const TemplatesScreen = () => {
   const shouldShowSearch = selectedMuscles.length === 0 || isAddingMuscle;
 
   const currentCategoryExercises = selectedCategory 
-    ? Array.from(new Set([...(MUSCLE_EXERCISES[selectedCategory] || []), ...(customExercises[selectedCategory] || [])]))
+    ? [...(DEFAULT_MUSCLE_EXERCISES[selectedCategory] || []), ...(customExercises[selectedCategory] || [])]
     : [];
+
+  const handleExtract = async () => {
+    const dateKey = getLocalISODate(selectedDate);
+    const data: any = { [dateKey]: {} };
+
+    // Get all workouts for the selected date (ignoring category filter)
+    const allWorkoutsForDate = completedWorkouts.filter((w) => {
+      return w.startTime.getDate() === selectedDate.getDate() &&
+             w.startTime.getMonth() === selectedDate.getMonth() &&
+             w.startTime.getFullYear() === selectedDate.getFullYear();
+    });
+
+    if (allWorkoutsForDate.length === 0) {
+      Alert.alert('No Workouts', 'There are no workouts to extract for this date.');
+      return;
+    }
+
+    allWorkoutsForDate.forEach(w => {
+      const cat = w.category || 'Uncategorized';
+      if (!data[dateKey][cat]) {
+        data[dateKey][cat] = {};
+      }
+      
+      const exName = w.name || 'Unnamed Exercise';
+      
+      if (!data[dateKey][cat][exName]) {
+        data[dateKey][cat][exName] = [];
+      }
+
+      let eqType = w.equipmentType;
+      if (!eqType) {
+        const allExercises = Object.values(DEFAULT_MUSCLE_EXERCISES).flat();
+        const found = allExercises.find(e => e.name.toLowerCase() === w.name?.toLowerCase());
+        eqType = found ? found.equipmentType : 'barbell';
+      }
+
+      if (w.workoutData && w.workoutData.sets) {
+        const completedSets = w.workoutData.sets.filter(s => s.completed);
+        completedSets.forEach(s => {
+          data[dateKey][cat][exName].push(formatSetDisplay(s.weight, s.reps, eqType as EquipmentType));
+        });
+      } else {
+        data[dateKey][cat][exName].push(`Total Sets: ${w.totalSets}`);
+      }
+    });
+
+    const jsonString = JSON.stringify(data, null, 2);
+
+    try {
+      await Share.share({
+        message: jsonString,
+        title: `Workout Extract - ${dateKey}`
+      });
+    } catch (error: any) {
+      Alert.alert('Error', error.message);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -140,6 +191,12 @@ export const TemplatesScreen = () => {
             </View>
           )}
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <TouchableOpacity 
+              onPress={handleExtract}
+              style={{ marginRight: 12 }}
+            >
+              <Download color={theme.colors.text} size={20} />
+            </TouchableOpacity>
             <TouchableOpacity 
               disabled={selectedMuscles.length <= 1} 
               onPress={() => setIsFilterModalVisible(true)}
@@ -227,17 +284,27 @@ export const TemplatesScreen = () => {
 
               {item.workoutData?.sets && item.workoutData.sets.length > 0 && (
                 <View style={styles.setsContainer}>
-                  {item.workoutData.sets.map((set, index) => (
-                    <View key={set.id} style={styles.setRow}>
-                      <Text style={styles.setIndexText}>Set {index + 1}</Text>
-                      <Text style={styles.setDetailText}>{set.weight} kg × {set.reps} reps</Text>
-                      {set.completed ? (
-                        <CheckSquare size={14} color={theme.colors.success || '#4CAF50'} />
-                      ) : (
-                        <View style={styles.uncompletedDot} />
-                      )}
-                    </View>
-                  ))}
+                  {item.workoutData.sets.map((set, index) => {
+                    // Infer equipmentType if missing (backward compatibility for old records)
+                    let eqType = item.equipmentType;
+                    if (!eqType) {
+                      const allExercises = Object.values(DEFAULT_MUSCLE_EXERCISES).flat();
+                      const found = allExercises.find(e => e.name.toLowerCase() === item.name.toLowerCase());
+                      eqType = found ? found.equipmentType : 'barbell'; // default fallback
+                    }
+
+                    return (
+                      <View key={set.id} style={styles.setRow}>
+                        <Text style={styles.setIndexText}>Set {index + 1}</Text>
+                        <Text style={styles.setDetailText}>{formatSetDisplay(set.weight, set.reps, eqType as EquipmentType)}</Text>
+                        {set.completed ? (
+                          <CheckSquare size={14} color={theme.colors.success || '#4CAF50'} />
+                        ) : (
+                          <View style={styles.uncompletedDot} />
+                        )}
+                      </View>
+                    );
+                  })}
                 </View>
               )}
             </Card>
@@ -257,12 +324,8 @@ export const TemplatesScreen = () => {
                     style={styles.modalItem}
                     onPress={() => {
                       setIsCategoryModalVisible(false);
-                      if (MUSCLE_EXERCISES[mg] && MUSCLE_EXERCISES[mg].length > 0) {
-                        setSelectedCategory(mg);
-                        setIsExerciseModalVisible(true);
-                      } else {
-                        startWorkout('', undefined, selectedDate, mg);
-                      }
+                      setSelectedCategory(mg);
+                      setIsExerciseModalVisible(true);
                     }}
                   >
                     <Text style={styles.modalItemText}>{mg}</Text>
@@ -293,32 +356,82 @@ export const TemplatesScreen = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Select Exercise for {selectedCategory}</Text>
             <ScrollView style={{ maxHeight: 300 }}>
-              {currentCategoryExercises.map(ex => (
+              {currentCategoryExercises.map((ex, idx) => (
                 <TouchableOpacity 
-                  key={ex} 
+                  key={`${ex.name}-${idx}`} 
                   style={styles.modalItem}
                   onPress={() => {
-                    startWorkout(ex, undefined, selectedDate, selectedCategory);
+                    startWorkout(ex.name, undefined, selectedDate, selectedCategory || undefined, ex.equipmentType);
                     setIsExerciseModalVisible(false);
                   }}
                 >
-                  <Text style={styles.modalItemText}>{ex}</Text>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <Text style={styles.modalItemText}>{ex.name}</Text>
+                    {ex.equipmentType && (
+                      <Text style={{ color: theme.colors.textSecondary, fontSize: theme.typography.sizes.sm, textTransform: 'capitalize' }}>
+                        {ex.equipmentType}
+                      </Text>
+                    )}
+                  </View>
                 </TouchableOpacity>
               ))}
               <TouchableOpacity 
                 style={styles.modalItem}
                 onPress={() => {
-                  startWorkout('', undefined, selectedDate, selectedCategory || undefined);
                   setIsExerciseModalVisible(false);
+                  setCustomExName('');
+                  setCustomExEquipment('barbell');
+                  setIsCustomModalVisible(true);
                 }}
               >
-                <Text style={[styles.modalItemText, { color: theme.colors.primary, fontWeight: 'bold' }]}>Custom Exercise</Text>
+                <Text style={[styles.modalItemText, { color: theme.colors.primary, fontWeight: 'bold' }]}>+ Create Custom Exercise</Text>
               </TouchableOpacity>
             </ScrollView>
             <Button title="Back" variant="outline" onPress={() => {
               setIsExerciseModalVisible(false);
               setIsCategoryModalVisible(true);
             }} style={{ marginTop: 16 }} />
+          </View>
+        </View>
+      </Modal>
+
+      <Modal visible={isCustomModalVisible} transparent animationType="fade">
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>New Custom Exercise</Text>
+            <TextInput 
+              style={[styles.searchInput, { marginBottom: 16 }]}
+              placeholder="Exercise Name"
+              value={customExName}
+              onChangeText={setCustomExName}
+              autoFocus
+            />
+            <Text style={{ marginBottom: 8, color: theme.colors.text }}>Equipment Type:</Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
+              {(['dumbbell', 'barbell', 'machine', 'cable', 'bodyweight'] as EquipmentType[]).map(type => (
+                <TouchableOpacity 
+                  key={type}
+                  onPress={() => setCustomExEquipment(type)}
+                  style={[
+                    styles.chip,
+                    customExEquipment === type && { backgroundColor: theme.colors.primary, borderColor: theme.colors.primary }
+                  ]}
+                >
+                  <Text style={[
+                    { color: theme.colors.textSecondary, textTransform: 'capitalize' },
+                    customExEquipment === type && { color: theme.colors.background }
+                  ]}>{type}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            <Button title="Start Workout" onPress={() => {
+              if (customExName.trim() && selectedCategory) {
+                addCustomExercise(selectedCategory, customExName.trim(), customExEquipment);
+                startWorkout(customExName.trim(), undefined, selectedDate, selectedCategory, customExEquipment);
+                setIsCustomModalVisible(false);
+              }
+            }} />
+            <Button title="Cancel" variant="outline" onPress={() => setIsCustomModalVisible(false)} style={{ marginTop: 8 }} />
           </View>
         </View>
       </Modal>

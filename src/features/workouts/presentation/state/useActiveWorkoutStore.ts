@@ -4,7 +4,7 @@ import { WorkoutSet } from '../../domain/entities/WorkoutSet';
 
 interface ActiveWorkoutState {
   currentWorkout: ActiveWorkout | null;
-  startWorkout: (name: string, templateId?: string, startTime?: Date, category?: string) => void;
+  startWorkout: (name: string, templateId?: string, startTime?: Date, category?: string, equipmentType?: string) => void;
   updateWorkoutName: (name: string) => void;
   addSet: (exerciseId: string, weight: number, reps: number) => void;
   updateSet: (setId: string, weight: number, reps: number) => void;
@@ -17,12 +17,13 @@ interface ActiveWorkoutState {
 export const useActiveWorkoutStore = create<ActiveWorkoutState>((set, get) => ({
   currentWorkout: null,
 
-  startWorkout: (name, templateId, startTime, category) => {
+  startWorkout: (name, templateId, startTime, category, equipmentType) => {
     const newWorkout: ActiveWorkout = {
       id: Math.random().toString(36).substr(2, 9),
       name,
       templateId,
       category,
+      equipmentType,
       startTime: startTime || new Date(),
       sets: [],
       createdAt: new Date(),

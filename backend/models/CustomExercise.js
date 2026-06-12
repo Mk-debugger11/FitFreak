@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const customExerciseSchema = new mongoose.Schema({
   userId: { type: String, default: 'default_user' },
   category: { type: String, required: true },
-  exercises: [{ type: String }]
+  exercises: [{
+    name: { type: String, required: true },
+    equipmentType: { type: String, enum: ['dumbbell', 'barbell', 'machine', 'cable', 'bodyweight'], default: 'barbell' }
+  }]
 });
 
 // Ensure only one list of exercises per category per user

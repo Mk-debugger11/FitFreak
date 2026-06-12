@@ -75,14 +75,24 @@ app.get('/api/custom-exercises', async (req, res) => {
 
 app.post('/api/custom-exercises', async (req, res) => {
   try {
-    const { category, exerciseName } = req.body;
+    const { category, exerciseName, equipmentType } = req.body;
     let record = await CustomExercise.findOne({ userId: USER_ID, category });
+    
+    const newExercise = { 
+      name: exerciseName.trim(), 
+      equipmentType: equipmentType || 'barbell' 
+    };
+
     if (!record) {
-      record = new CustomExercise({ userId: USER_ID, category, exercises: [exerciseName.trim()] });
+      record = new CustomExercise({ userId: USER_ID, category, exercises: [newExercise] });
     } else {
-      const exists = record.exercises.some(ex => ex.toLowerCase() === exerciseName.trim().toLowerCase());
+      // Check if it exists (handling both old string format and new object format)
+      const exists = record.exercises.some(ex => {
+        const name = typeof ex === 'string' ? ex : ex.name;
+        return name.toLowerCase() === exerciseName.trim().toLowerCase();
+      });
       if (!exists) {
-        record.exercises.push(exerciseName.trim());
+        record.exercises.push(newExercise);
       }
     }
     await record.save();
