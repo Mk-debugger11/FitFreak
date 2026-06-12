@@ -1,22 +1,65 @@
 import { create } from 'zustand';
 import { CompletedWorkout } from '../../domain/entities/CompletedWorkout';
 import { ActiveWorkout } from '../../../workouts/domain/entities/ActiveWorkout';
+import Constants from 'expo-constants';
+
+const hostUri = Constants?.expoConfig?.hostUri;
+const ip = hostUri ? hostUri.split(':')[0] : 'localhost';
+const API_URL = `http://${ip}:3000/api`;
 
 interface HistoryState {
   completedWorkouts: CompletedWorkout[];
+  targetMuscleGroups: Record<string, string[]>;
+  customExercises: Record<string, string[]>;
+  fetchData: () => Promise<void>;
   addCompletedWorkout: (workout: ActiveWorkout) => void;
   updateCompletedWorkoutName: (id: string, name: string) => void;
   deleteCompletedWorkout: (id: string) => void;
-  targetMuscleGroups: Record<string, string[]>;
   addTargetMuscleGroup: (dateString: string, muscleGroup: string) => void;
   removeTargetMuscleGroup: (dateString: string, muscleGroup: string) => void;
-  customExercises: Record<string, string[]>;
   addCustomExercise: (category: string, exerciseName: string) => void;
 }
 
 export const useHistoryStore = create<HistoryState>((set) => ({
   completedWorkouts: [],
   targetMuscleGroups: {},
+  customExercises: {},
+  fetchData: async () => {
+    try {
+      const [workoutsRes, musclesRes, customRes] = await Promise.all([
+        fetch(`${API_URL}/workouts`),
+        fetch(`${API_URL}/target-muscles`),
+        fetch(`${API_URL}/custom-exercises`)
+      ]);
+      const workouts = await workoutsRes.json();
+      const musclesData = await musclesRes.json();
+      const customData = await customRes.json();
+
+      const targetMuscleGroups: Record<string, string[]> = {};
+      musclesData.forEach((m: any) => {
+        targetMuscleGroups[m.dateString] = m.muscles;
+      });
+
+      const customExercises: Record<string, string[]> = {};
+      customData.forEach((c: any) => {
+        customExercises[c.category] = c.exercises;
+      });
+
+      set({
+        completedWorkouts: workouts.map((w: any) => ({
+          ...w,
+          startTime: new Date(w.startTime),
+          endTime: new Date(w.endTime),
+          createdAt: new Date(w.createdAt),
+          updatedAt: new Date(w.updatedAt),
+        })),
+        targetMuscleGroups,
+        customExercises,
+      });
+    } catch (err) {
+      console.error('Failed to fetch data from MongoDB', err);
+    }
+  },
   addTargetMuscleGroup: (dateString, muscleGroup) => {
     set((state) => {
       const currentGroups = state.targetMuscleGroups[dateString] || [];
@@ -28,6 +71,11 @@ export const useHistoryStore = create<HistoryState>((set) => ({
         },
       };
     });
+    fetch(`${API_URL}/target-muscles`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dateString, muscleGroup })
+    }).catch(console.error);
   },
   removeTargetMuscleGroup: (dateString, muscleGroup) => {
     set((state) => {
@@ -39,12 +87,15 @@ export const useHistoryStore = create<HistoryState>((set) => ({
         },
       };
     });
+    fetch(`${API_URL}/target-muscles`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dateString, muscleGroup })
+    }).catch(console.error);
   },
-  customExercises: {},
   addCustomExercise: (category, exerciseName) => {
     set((state) => {
       const currentList = state.customExercises[category] || [];
-      // Don't add if empty or already exists (case insensitive check)
       if (!exerciseName.trim() || currentList.some(ex => ex.toLowerCase() === exerciseName.toLowerCase())) {
         return state;
       }
@@ -55,6 +106,11 @@ export const useHistoryStore = create<HistoryState>((set) => ({
         },
       };
     });
+    fetch(`${API_URL}/custom-exercises`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ category, exerciseName })
+    }).catch(console.error);
   },
   addCompletedWorkout: (workout) => {
     const totalVolume = workout.sets
@@ -79,6 +135,12 @@ export const useHistoryStore = create<HistoryState>((set) => ({
     set((state) => ({
       completedWorkouts: [completedWorkout, ...state.completedWorkouts],
     }));
+
+    fetch(`${API_URL}/workouts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(completedWorkout)
+    }).catch(console.error);
   },
   updateCompletedWorkoutName: (id, name) => {
     set((state) => ({
@@ -86,10 +148,18 @@ export const useHistoryStore = create<HistoryState>((set) => ({
         w.id === id ? { ...w, name, updatedAt: new Date() } : w
       ),
     }));
+    fetch(`${API_URL}/workouts/${id}/name`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name })
+    }).catch(console.error);
   },
   deleteCompletedWorkout: (id) => {
     set((state) => ({
       completedWorkouts: state.completedWorkouts.filter(w => w.id !== id),
     }));
+    fetch(`${API_URL}/workouts/${id}`, {
+      method: 'DELETE'
+    }).catch(console.error);
   },
 }));
