@@ -105,7 +105,16 @@ app.post('/api/custom-exercises', async (req, res) => {
 // Completed Workouts
 app.get('/api/workouts', async (req, res) => {
   try {
-    const workouts = await CompletedWorkout.find({ userId: USER_ID }).sort({ startTime: -1 });
+    const { startDate, endDate } = req.query;
+    const query = { userId: USER_ID };
+    
+    if (startDate || endDate) {
+      query.startTime = {};
+      if (startDate) query.startTime.$gte = new Date(startDate);
+      if (endDate) query.startTime.$lte = new Date(endDate);
+    }
+    
+    const workouts = await CompletedWorkout.find(query).sort({ startTime: -1 });
     res.json(workouts);
   } catch (err) {
     res.status(500).json({ error: err.message });

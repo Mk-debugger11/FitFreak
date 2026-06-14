@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TextInput, TouchableOpacity, ScrollView, Modal, Share, Alert } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TextInput, TouchableOpacity, ScrollView, Modal, Share, Alert, ActivityIndicator } from 'react-native';
 import { theme } from '../../../../core/theme/theme';
 import { useActiveWorkoutStore } from '../../../workouts/presentation/state/useActiveWorkoutStore';
 import { useHistoryStore } from '../../../history/presentation/state/useHistoryStore';
@@ -18,7 +18,7 @@ const MUSCLE_GROUPS = [
 
 export const TemplatesScreen = () => {
   const { startWorkout } = useActiveWorkoutStore();
-  const { completedWorkouts, updateCompletedWorkoutName, deleteCompletedWorkout, targetMuscleGroups, addTargetMuscleGroup, removeTargetMuscleGroup, customExercises, addCustomExercise } = useHistoryStore();
+  const { completedWorkouts, updateCompletedWorkoutName, deleteCompletedWorkout, targetMuscleGroups, addTargetMuscleGroup, removeTargetMuscleGroup, customExercises, addCustomExercise, fetchWorkoutsForDate, fetchedDates } = useHistoryStore();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -32,10 +32,21 @@ export const TemplatesScreen = () => {
   const [customExName, setCustomExName] = useState('');
   const [customExEquipment, setCustomExEquipment] = useState<EquipmentType>('barbell');
 
+  const [isLoadingDate, setIsLoadingDate] = useState(false);
+
   // Clear filter when date changes
   React.useEffect(() => {
     setFilterCategory(null);
-  }, [selectedDate]);
+    const fetchDate = async () => {
+      const dateKey = selectedDate.toISOString().split('T')[0];
+      if (!fetchedDates[dateKey]) {
+        setIsLoadingDate(true);
+        await fetchWorkoutsForDate(selectedDate);
+        setIsLoadingDate(false);
+      }
+    };
+    fetchDate();
+  }, [selectedDate, fetchedDates, fetchWorkoutsForDate]);
 
   let workoutsForDate = completedWorkouts.filter((w) => {
     const isSameDate = 
@@ -246,7 +257,11 @@ export const TemplatesScreen = () => {
         )}
       </View>
 
-      {workoutsForDate.length === 0 ? (
+      {isLoadingDate ? (
+        <View style={styles.emptyContainer}>
+          <ActivityIndicator size="large" color={theme.colors.primary} />
+        </View>
+      ) : workoutsForDate.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>No workouts on this date.</Text>
         </View>
