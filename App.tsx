@@ -5,6 +5,7 @@ import { theme } from './src/core/theme/theme';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { useEffect } from 'react';
 import { useHistoryStore } from './src/features/history/presentation/state/useHistoryStore';
+import { NetworkManager } from './src/core/sync/NetworkManager';
 
 export default function App() {
   const isLoading = useHistoryStore((state) => state.isLoading);
@@ -23,6 +24,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
+      <NetworkManager />
       <View style={styles.container}>
         <RootNavigator />
         <StatusBar style="light"/>
