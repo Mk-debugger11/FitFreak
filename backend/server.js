@@ -14,14 +14,11 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 const USER_ID = 'default_user';
 
-// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-// --- API Endpoints ---
 
-// Target Muscles
 app.get('/api/target-muscles', async (req, res) => {
   try {
     const muscles = await TargetMuscle.find({ userId: USER_ID });

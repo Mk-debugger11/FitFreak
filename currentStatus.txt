@@ -1,0 +1,311 @@
+FITFREAK - CURRENT STATUS
+Last updated: 2026-09-20
+
+A React Native (Expo) workout tracker with an Express + MongoDB backend.
+One workout = one exercise, logged against a day and a target muscle group.
+
+Stack: Expo SDK 56 / React Native 0.85 / React 19 / TypeScript 6 / Zustand 5 /
+React Navigation 7 / AsyncStorage / NetInfo / lucide-react-native.
+Backend: Node + Express 5 + Mongoose 9 on MongoDB Atlas.
+
+State of the code:
+  - Frontend (src/): TypeScript, strict, 0 type errors, verified to bundle.
+    Restructured into simple modules (see below).
+  - Backend (backend/): still plain JavaScript (CommonJS). Not yet migrated.
+
+
+================================================================================
+1. FILES - ROOT
+================================================================================
+
+index.ts              App entry point. registerRootComponent(App) from
+                      src/core/App. Referenced by package.json "main".
+app.json              Expo config: name, icons, splash, Android package, EAS id.
+eas.json              EAS Build profiles (preview APK / development / production).
+package.json          Deps and scripts: start, android, ios, web, typecheck.
+tsconfig.json         Extends expo/tsconfig.base. strict + noUnusedLocals +
+                      noUnusedParameters + noFallthroughCasesInSwitch +
+                      forceConsistentCasingInFileNames.
+.env                  EXPO_PUBLIC_API_URL - base URL of the backend API.
+                      Read at build time by src/services/api.ts.
+assets/               App icon, splash, Android adaptive icons, web favicon.
+test.js               Scratch script (calendar date logic). Not part of the app.
+implementation_plan.txt   Original v1 plan. Historical; parts are out of date
+                          (it describes PostgreSQL; the app uses MongoDB).
+walkthrough.txt           Original v1 feature walkthrough. Historical; it
+                          describes the old Clean Architecture layout.
+currentStatus.txt     This file.
+
+
+================================================================================
+2. FILES - FRONTEND (src/)
+================================================================================
+
+--- src/core/ : app shell and wiring -------------------------------------------
+
+App.tsx               Root component. Kicks off the first data fetch, shows a
+                      full-screen spinner while history is loading, then mounts
+                      SafeAreaProvider > NetworkListener + RootNavigator.
+Navigation.tsx        NavigationContainer > native stack ("Root") > bottom tabs
+                      ("Home"). Holds all navigator styling and the param-list
+                      types. Only one tab exists today.
+AppHeader.tsx         The custom header on the Home tab (brand, greeting,
+                      subtitle). Handles the safe-area top inset.
+HomeTab.tsx           The one branch point in the app: renders
+                      ActiveWorkoutScreen if a workout is in progress,
+                      otherwise WorkoutLogScreen.
+NetworkListener.tsx   Renders nothing. Subscribes to NetInfo and drains the
+                      offline write queue whenever the device reconnects.
+
+--- src/components/ : shared, app-agnostic UI ----------------------------------
+
+Button.tsx            Button with primary/secondary/outline variants,
+                      small/medium/large sizes, loading and disabled states.
+Card.tsx              Rounded surface with border and shadow.
+Chip.tsx              Pill. "default" = a target-muscle chip with an optional
+                      remove (X); "option" = a selectable equipment chip.
+Input.tsx             Labelled TextInput with optional error text.
+ModalSheet.tsx        The centred dialog every modal is built from. Also exports
+                      ModalOption (a tappable row) and ModalEmptyText.
+HorizontalCalendar.tsx  The date strip: 365 days back to 1 day forward,
+                      auto-scrolls to the selected date, future dates disabled.
+index.ts              Barrel export for the above.
+
+--- src/features/workout-log/ : the home screen (a day and its workouts) -------
+
+WorkoutLogScreen.tsx  Owns the screen state: selected date, category filter,
+                      which modal is open, per-date loading. Derives the day's
+                      workout list (newest-first today, chronological for past
+                      days) and wires every child to the stores.
+TargetMuscleBar.tsx   The header under the calendar: muscle search + dropdown,
+                      selected-muscle chips, and the export / filter / New
+                      actions. Owns its own search state.
+WorkoutCard.tsx       One completed workout: category, name, time, duration,
+                      set count, and the set-by-set breakdown. Delete button
+                      only on today.
+CategoryPickerModal.tsx   Step 1 of "New": pick a muscle group (or Mixed/Other).
+ExercisePickerModal.tsx   Step 2: pick an exercise (catalogue + the user's own),
+                          or jump to creating a custom one.
+CustomExerciseModal.tsx   Name + equipment type for a new custom exercise,
+                          then starts it. Clears itself on the way out.
+MuscleFilterModal.tsx     Filters the day's list to one target muscle group.
+exportWorkouts.ts     Builds the JSON extract for a day and hands it to the
+                      native Share sheet. Ignores the active category filter.
+
+--- src/features/active-workout/ : logging the workout in progress -------------
+
+ActiveWorkoutScreen.tsx  Editable workout name (committing it also saves the
+                         name as a custom exercise), elapsed minutes, the set
+                         list, and Cancel / Finish.
+AddSetForm.tsx        Weight + reps + "+" card at the top of the set list.
+SetRow.tsx            One set: inline weight/reps editing, the kg vs kg/hand
+                      unit label, complete toggle and delete.
+
+--- src/store/ : Zustand stores (all global state lives here) -------------------
+
+historyStore.ts       Completed workouts, target muscle groups, custom
+                      exercises, and which dates have been fetched. Persisted to
+                      AsyncStorage ("history-storage") and revived on rehydrate.
+                      Every write updates local state first, then queues a sync.
+activeWorkoutStore.ts The workout being logged (or null). start / rename /
+                      add / update / delete / toggle sets / finish / cancel.
+                      Not persisted - a workout in progress is lost on restart.
+syncStore.ts          The offline write queue. Persisted ("sync-storage"),
+                      drained sequentially. Server errors are logged and the
+                      request dropped; network errors keep it for the next
+                      reconnect. Exports enqueueSync() for non-React callers.
+
+--- src/services/ ---------------------------------------------------------------
+
+api.ts                The only file that knows the API's URLs and wire format.
+                      Exports `endpoints` (used by the sync queue) and `api`
+                      (typed reads). Parses ISO strings into Dates and narrows
+                      unvalidated payloads, so nothing downstream sees raw JSON.
+
+--- src/constants/ --------------------------------------------------------------
+
+exercises.ts          MUSCLE_GROUPS (the 12 selectable targets) and
+                      DEFAULT_MUSCLE_EXERCISES (the built-in catalogue, keyed by
+                      muscle group, each entry carrying its equipment type).
+
+--- src/utils/ ------------------------------------------------------------------
+
+date.ts               toLocalDateKey (YYYY-MM-DD, local - keys target muscles),
+                      toFetchKey (YYYY-MM-DD, UTC - keys fetched dates),
+                      isSameDay / isToday / startOfDay / endOfDay / addDays /
+                      minutesBetween / formatTime.
+exercise.ts           parseEquipmentType (narrows unknown input),
+                      resolveEquipmentType (explicit type, else look the name up
+                      in the catalogue, else barbell - for older records),
+                      listExercisesForCategory (catalogue + custom).
+format.ts             formatSetDisplay ("60kg x 8", "30kg/hand x 10",
+                      "Bodyweight x 12") and toErrorMessage.
+id.ts                 createId() for locally created records.
+
+--- src/ root -------------------------------------------------------------------
+
+types.ts              Every domain model: EquipmentType, Entity, WorkoutSet,
+                      ActiveWorkout, CompletedWorkout, ExerciseMetadata,
+                      CustomExercise, and the two keyed-record aliases.
+theme.ts              Design tokens: colours, spacing, radii, font sizes and
+                      weights. Nothing hard-codes a colour or a gap.
+
+
+================================================================================
+3. FILES - BACKEND (backend/)
+================================================================================
+
+server.js             The whole API. Express app, CORS, JSON body parsing,
+                      Mongoose connection, and the nine endpoints below.
+                      Single-user: every record is stamped 'default_user'.
+seedData.js           One-off script that parses a hard-coded export of past
+                      workouts (the same JSON shape the app's export produces)
+                      into CompletedWorkout and TargetMuscle documents.
+                      Run manually with `node seedData.js`.
+models/CompletedWorkout.js  Workout schema, with the nested activeWorkout and
+                            workoutSet sub-schemas. `id` is unique.
+models/TargetMuscle.js      Muscles per user per dateString. Unique compound
+                            index on (userId, dateString).
+models/CustomExercise.js    Exercises per user per category. Unique compound
+                            index on (userId, category).
+package.json          Backend deps (express, mongoose, cors, dotenv).
+.env                  MONGO_URI and PORT.
+
+API surface (all under /api):
+  GET    /workouts?startDate&endDate   workouts in a range, newest first
+  POST   /workouts                     save a completed workout
+  PUT    /workouts/:id/name            rename one
+  DELETE /workouts/:id                 delete one
+  GET    /target-muscles               all target-muscle records
+  POST   /target-muscles               add a muscle to a date (idempotent)
+  DELETE /target-muscles               remove a muscle from a date
+  GET    /custom-exercises             all custom exercises
+  POST   /custom-exercises             add one to a category (idempotent)
+
+
+================================================================================
+4. CODE FLOW
+================================================================================
+
+--- 4.1 Cold start ---------------------------------------------------------------
+
+  index.ts
+    -> src/core/App.tsx mounts
+    -> AsyncStorage rehydrates historyStore and syncStore in the background.
+       On rehydrate, dates are parsed back from ISO strings and isLoading is
+       cleared, so cached data paints immediately.
+    -> App's useEffect calls historyStore.fetchData():
+         api.getWorkouts(last 7 days) + api.getTargetMuscles() +
+         api.getCustomExercises(), in parallel.
+       Results are merged by id (never duplicated) and the last 8 date keys are
+       marked as fetched.
+    -> App shows the spinner until isLoading clears - which rehydration does
+       as soon as storage has been read, and fetchData does when it settles.
+       fetchData only re-raises it when there was nothing cached to show.
+    -> Then: SafeAreaProvider > NetworkListener + RootNavigator > Home tab
+       > HomeTab > WorkoutLogScreen (no workout in progress).
+
+--- 4.2 Moving between days ------------------------------------------------------
+
+  HorizontalCalendar.onSelectDate
+    -> WorkoutLogScreen setSelectedDate
+    -> effect 1 clears the category filter (it belonged to the old day)
+    -> effect 2: if that date has not been fetched, show the inline spinner and
+       call historyStore.fetchWorkoutsForDate(date) -> api.getWorkouts(day range)
+       -> merge + mark the date fetched
+    -> the day's workouts are recomputed (filter by day, then by category,
+       then sorted) and rendered as WorkoutCards.
+
+  Past days are read-only: no New button, no delete, no chip editing.
+
+--- 4.3 Setting target muscles ---------------------------------------------------
+
+  TargetMuscleBar search -> pick a suggestion
+    -> WorkoutLogScreen -> historyStore.addTargetMuscleGroup(localDateKey, group)
+    -> local state updates at once, then enqueueSync(POST /target-muscles)
+    -> the chip appears; removing one mirrors this with DELETE.
+
+--- 4.4 Starting and logging a workout -------------------------------------------
+
+  "New" -> CategoryPickerModal (the day's target muscles, or Mixed/Other)
+        -> ExercisePickerModal (catalogue + custom for that category)
+           -> pick one, OR "+ Create Custom Exercise" -> CustomExerciseModal
+              (name + equipment; also saves it via historyStore.addCustomExercise)
+        -> activeWorkoutStore.startWorkout(name, { startTime: selectedDate,
+           category, equipmentType })
+
+  currentWorkout is now set, so HomeTab swaps WorkoutLogScreen for
+  ActiveWorkoutScreen:
+    AddSetForm      -> addSet(weight, reps)
+    SetRow          -> updateSet / toggleSetComplete / deleteSet
+    name field      -> updateWorkoutName; on blur, addCustomExercise
+    Cancel          -> cancelWorkout (discarded, nothing is saved)
+    Finish          -> finishWorkout() stamps endTime and clears the store,
+                       then historyStore.addCompletedWorkout(workout):
+                         - totals computed from completed sets only
+                         - prepended to completedWorkouts
+                         - enqueueSync(POST /workouts)
+                       HomeTab falls back to WorkoutLogScreen and the new card
+                       is already there.
+
+--- 4.5 Offline sync -------------------------------------------------------------
+
+  Every mutation follows the same path: update local state, then
+  enqueueSync(url, method, body).
+
+  enqueueRequest appends to the persisted queue and immediately asks NetInfo
+  whether it is online; if so it calls processQueue().
+
+  processQueue drains the queue one request at a time:
+    - HTTP response (even 4xx/5xx): log if not ok, drop the request, continue.
+      Retrying a rejected request would never succeed.
+    - Network failure: stop, keep the request and everything behind it.
+
+  NetworkListener re-runs processQueue on every reconnect, so the app is fully
+  usable offline and catches up on its own.
+
+--- 4.6 Exporting a day ----------------------------------------------------------
+
+  Download icon -> exportWorkouts.shareWorkoutsForDate(all workouts, date)
+    -> filters to that day (the category filter is deliberately ignored)
+    -> groups into { date: { category: { exercise: ["60kg x 8", ...] } } },
+       resolving equipment per workout so the wording is right
+    -> hands the JSON to the native Share sheet.
+       (This is the same shape backend/seedData.js reads.)
+
+
+================================================================================
+5. CONVENTIONS
+================================================================================
+
+  - Global state lives in src/store/. Screens hold only UI state.
+  - Only src/services/api.ts knows URLs, HTTP or the wire format.
+  - Only that file converts strings to Dates; the rest of the app sees Dates.
+  - Reads go through api.*; writes go through enqueueSync, never fetch directly.
+  - No colours, spacings or font weights outside src/theme.ts.
+  - Shared UI in src/components/ (no store imports). Feature components may
+    take props only - the screen owns the store subscription.
+  - Two date keys, deliberately: local for target muscles (what the user sees),
+    UTC for fetch bookkeeping (what the server was asked for). Don't mix them.
+
+  Where to add things:
+    a new screen        -> src/features/<feature>/, route it in core/Navigation
+    a new shared widget -> src/components/ + export it from index.ts
+    a new endpoint      -> src/services/api.ts, then the store that needs it
+    a new exercise      -> src/constants/exercises.ts
+
+
+================================================================================
+6. KNOWN GAPS
+================================================================================
+
+  - Backend is still JavaScript; its model definitions duplicate src/types.ts.
+  - Single user, hard-coded ('default_user'). No auth.
+  - The tab bar has one tab; the navigator exists for a second one.
+  - An in-progress workout is not persisted - killing the app loses it.
+  - Elapsed time on the active workout is computed on render, so it only
+    advances when something else re-renders the screen.
+  - No automated tests. `npm run typecheck` and `npx expo export` are the
+    current safety net.
+  - Failed syncs are dropped after logging; there is no retry or error surface
+    in the UI.
