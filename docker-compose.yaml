@@ -1,6 +1,7 @@
+networks:
+  fitfreak_network:
+    external: true
 services:
-  network:
-    fitfreak-network
   nginx:
     image: nginx:latest
     container_name: ftfrk_nginx
