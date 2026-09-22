@@ -1,0 +1,19 @@
+services:
+  network:
+    fitfreak-network
+  nginx:
+    image: nginx:latest
+    container_name: ftfrk_nginx
+    restart: unless-stopped
+    port:
+      - 80:80
+    volumes:
+      - /home/ubuntu/fitfreak/nginx/express.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - fitfreak_network
+  express:
+    build: ./backend
+    container_name: ftfrk_express
+    env_file: ./backend/.env
+    networks:
+      - fitfreak_network
