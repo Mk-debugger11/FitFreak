@@ -1,0 +1,7 @@
+from node:25.9.0-alpine
+workdir /backend
+copy package*.json ./
+run npm i
+copy . .
+expose 3000
+cmd ["npm","start"]
