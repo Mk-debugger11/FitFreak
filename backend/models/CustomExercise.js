@@ -9,7 +9,6 @@ const customExerciseSchema = new mongoose.Schema({
   }]
 });
 
-// Ensure only one list of exercises per category per user
 customExerciseSchema.index({ userId: 1, category: 1 }, { unique: true });
 
 module.exports = mongoose.model('CustomExercise', customExerciseSchema);
