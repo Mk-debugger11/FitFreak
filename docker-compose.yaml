@@ -8,10 +8,14 @@ services:
     restart: unless-stopped
     ports:
      - 80:80
+     - 443:443
     volumes:
-     - /home/ubuntu/fitfreak/nginx/express.conf:/etc/nginx/conf.d/default.conf
+     - /home/ubuntu/FitFreak/nginx/express.conf:/etc/nginx/conf.d/default.conf
+     - /etc/letsencrypt:/etc/letsencrypt
     networks:
      - fitfreak_network
+    depends_on:
+     - express
   express:
     build: ./backend
     container_name: ftfrk_express
