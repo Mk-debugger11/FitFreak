@@ -16,9 +16,21 @@ services:
      - fitfreak_network
     depends_on:
      - express
+  database:
+    image: mongo:latest
+    contianer_name: ftfrk_mongo
+    restart: always
+    networks: 
+      fitfreak_network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    
   express:
     build: ./backend
     container_name: ftfrk_express
     env_file: ./backend/.env
     networks:
      - fitfreak_network
+    depends_on: 
+     - database
