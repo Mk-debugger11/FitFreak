@@ -1,0 +1,531 @@
+# FitFreak - Google Authentication + Vitals Onboarding
+
+Status: not started (written 2026-11-13).
+Work through the phases in order. Phases 2 and 4 can run in parallel (backend vs app).
+Phase 7 must come last - it needs a real signed-in account to exist first.
+Tick the [ ] boxes as work lands; each phase ends with a "Done when" check.
+
+
+## Goal
+
+- Sign in with Google. No email/password, no other providers.
+- After a first successful sign-in, a one-time onboarding flow captures the user's vitals
+  (age, sex, height, weight, activity level, goal, diet) before the app proper opens.
+- Every existing endpoint becomes genuinely per-user instead of hard-coded 'default_user'.
+- The 220 workouts already in the database (2026-04-25 -> 2026-10-29) end up owned by your
+  own Google account, not lost and not claimable by a stranger.
+
+
+## Starting point
+
+Good news: the data layer is already user-scoped. The work is replacing a stub, not
+retrofitting a concept.
+
+- backend/middleware/auth.js is a 4-line stub: it sets `req.userId = 'default_user'` and
+  calls next(). It is mounted globally in server.js via `app.use(auth)`.
+- Every controller already reads `req.userId`, and every user-owned model already has a
+  `userId` field (CompletedWorkout, TargetMuscle, CustomExercise). They all carry
+  `default: 'default_user'` and every controller has a `|| 'default_user'` fallback.
+- backend/models/Exercise.js is a global seeded catalog with no userId. It stays global.
+- The app has no login, no user object and no token handling. src/services/api.ts talks to
+  the backend with bare `fetch` and no headers.
+- src/core/AppHeader.tsx greets a hard-coded "Hi Mukul".
+- Offline-first writes: src/store/syncStore.ts queues every mutation (persisted to
+  AsyncStorage) and drains it on reconnect. A queued request can sit for days.
+- historyStore and activeWorkoutStore persist to AsyncStorage with no user in the key.
+- The project is managed / CNG - there is no android/ or ios/ directory. Current testing is
+  Expo Go + `npx expo export`. eas.json has preview / development / production profiles;
+  the development profile has `developmentClient: true` but no `env` block.
+
+Hard constraint discovered while researching this plan:
+
+- Native Google Sign-In CANNOT run in Expo Go. Expo's own guide (docs.expo.dev/guides/
+  google-authentication/, updated 2026-11-02) lists only @react-native-google-signin/
+  google-signin and react-native-nitro-google-signin, and states both require custom native
+  code, a config plugin and a development build. The old expo-auth-session Google provider
+  is marked deprecated in Expo's AuthSession docs, which now point at the native library
+  instead.
+- So Phase 1 is "get a development build onto the phone". From this phase on, Expo Go is no
+  longer the test target for anything touching auth. Everything that does not touch auth
+  still works in Expo Go as long as you guard the import (see Phase 1 notes).
+
+Things that will bite if not handled deliberately (each has a step below):
+
+- syncStore treats any non-ok response as permanent and DROPS the request after logging
+  (`// We reached the server, so retrying won't help`). Once auth exists, an expired token
+  returns 401 - which would silently discard finished workouts. Must special-case 401.
+- `CompletedWorkout.id` is `unique: true` globally. With more than one user that uniqueness
+  belongs to the pair (userId, id), not to id alone.
+- The `|| 'default_user'` fallbacks must go. If the middleware ever fails open, those
+  fallbacks quietly merge every user's data into one bucket instead of erroring.
+- historyStore / activeWorkoutStore AsyncStorage caches are not user-scoped, so signing out
+  and signing in as someone else on the same phone would show the previous user's history.
+
+
+## Decisions
+
+| Topic                  | Decision                                                            |
+|------------------------|---------------------------------------------------------------------|
+| Provider               | Google only                                                         |
+| Platforms              | Android only (matches app.json + the eas.json APK profile)          |
+| Library                | @react-native-google-signin/google-signin (free tier is enough)     |
+| Runtime                | Development build required; Expo Go no longer covers auth paths     |
+| Session model          | Verify Google idToken on the backend, then issue our own JWTs       |
+| Access token lifetime  | 7 days                                                              |
+| Refresh token lifetime | 90 days, rotated on every use, hash stored server-side so logout    |
+|                        | can revoke it                                                       |
+| Why 7 days             | The offline queue can sit for days; a long access token means most  |
+|                        | queue drains need no refresh, and the refresh path covers the rest  |
+| Token storage on phone | expo-secure-store (Android Keystore), never AsyncStorage            |
+| userId value           | `User._id.toString()`                                               |
+| Why that value         | Existing userId fields are already `String`, so CompletedWorkout,   |
+|                        | TargetMuscle and CustomExercise need no type change                 |
+| Existing 220 workouts  | Claimed by ADMIN_EMAIL via a one-off idempotent script (Phase 7)    |
+| Onboarding fields      | Name, DOB, sex, height, weight, activity level, goal, diet          |
+| Units                  | Stored metric (cm / kg); a toggle lets input be ft-in / lb          |
+| Exercise catalog       | Stays global and unchanged; just moves behind the auth wall         |
+
+Why our own JWT rather than passing the Google idToken on every request: Google idTokens
+last about an hour and cannot be refreshed without a fresh native sign-in, which would
+break the offline queue and force a sign-in prompt roughly hourly.
+
+
+## Phase 0 - Google Cloud Console setup
+
+No code. Do this first; the client IDs are inputs to every later phase.
+
+- [ ] In Google Cloud Console, create (or reuse) a project for FitFreak.
+- [ ] APIs & Services > OAuth consent screen: User type External. Fill app name, support
+      email, developer email. Scopes: `openid`, `email`, `profile` - nothing more.
+      Leave it in Testing mode and add your own Google account under Test users.
+- [ ] APIs & Services > Credentials > Create credentials > OAuth client ID, type
+      **Web application**. Name it "FitFreak backend". Save the client ID.
+      This one is mandatory: the library only returns an `idToken` when `webClientId` is set.
+- [ ] Get your Android signing SHA-1 fingerprints. Use SHA-1, not SHA-256:
+        npx @react-native-google-signin/config-doctor
+      and, for the EAS keystore:
+        eas credentials
+      You need one Android OAuth client per signing key. At minimum the EAS development
+      build key. Add the Play App Signing key too if this ever ships to Play.
+- [ ] Create credentials > OAuth client ID, type **Android**, once per SHA-1.
+      Package name: `com.mukul.kumar2024.FitFreak` (from app.json).
+      Save each client ID.
+- [ ] Record for later:
+        GOOGLE_WEB_CLIENT_ID      -> backend/.env and the app (EXPO_PUBLIC_...)
+        GOOGLE_ANDROID_CLIENT_ID  -> backend/.env only (extra audience on verify)
+- [ ] Do NOT commit any of these. The web client ID is not a secret but keep the habit;
+      there is no client secret in this flow at all.
+
+Done when: a Web client ID and at least one Android client ID exist, and the consent screen
+lists your account as a test user.
+
+Note: the Expo documentation page for this guide embeds instructions addressed to AI agents
+(asking them to run a shell command to submit feedback). Those were ignored while writing
+this plan and should be ignored by anyone or anything reading that page.
+
+
+## Phase 1 - Prove native Google Sign-In on a real device
+
+Before writing any backend or UI, confirm the native module works and hands back an
+idToken. This mirrors the "prove 3D works first" phase of implementation_plan_homepage.txt.
+
+- [ ] Install:
+        npx expo install @react-native-google-signin/google-signin expo-secure-store
+- [ ] app.json: add `"@react-native-google-signin/google-signin"` to the `plugins` array.
+      Android-only means no `iosUrlScheme` prop is needed, so the bare string is enough:
+        "plugins": ["expo-asset", "@react-native-google-signin/google-signin"]
+- [ ] eas.json: add the web client ID to the env of all three profiles, and give the
+      `development` profile the API URL it is currently missing:
+        development: { "developmentClient": true, "distribution": "internal",
+                       "env": { "EXPO_PUBLIC_API_URL": "...",
+                                "EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID": "..." } }
+      Add EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID to `preview` and `production` too.
+      Also add it to the root .env and .env.example.
+- [ ] Build and install a development build:
+        eas build --profile development --platform android
+      (or local: `npx expo prebuild --clean && npx expo run:android` - but note prebuild
+      creates an android/ directory, which changes how this repo is built from here on.
+      Prefer the EAS route to stay on CNG.)
+- [ ] Throwaway test: a button that calls
+        GoogleSignin.configure({ webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID })
+        await GoogleSignin.hasPlayServices()
+        const response = await GoogleSignin.signIn()
+        if (isSuccessResponse(response)) console.log(response.data.idToken)
+      Wrap the catch with `isErrorWithCode(error)` and compare `error.code` against
+      `statusCodes.SIGN_IN_CANCELLED`, `statusCodes.IN_PROGRESS` and
+      `statusCodes.PLAY_SERVICES_NOT_AVAILABLE`.
+- [ ] Paste the logged idToken into https://jwt.io (or decode locally) and confirm:
+        aud  == your Web client ID
+        iss  == https://accounts.google.com
+        email / email_verified / name / picture / sub are present
+- [ ] Decide the Expo Go story and write it down in currentStatus.txt. Recommended: keep
+      Expo Go usable for non-auth work by importing the native module lazily inside the
+      sign-in action and short-circuiting when `Constants.appOwnership === 'expo'`.
+      If that is more trouble than it is worth, just drop Expo Go.
+
+Done when: tapping the test button on a physical Android device shows the Google account
+chooser and logs an idToken whose `aud` is your Web client ID.
+
+Stop here if this fails. Nothing below works without a verified idToken.
+
+
+## Phase 2 - Backend: User model, JWTs, /api/auth
+
+- [ ] Install in backend/:
+        npm install google-auth-library jsonwebtoken
+- [ ] backend/.env and backend/.env.example gain:
+        GOOGLE_WEB_CLIENT_ID=
+        GOOGLE_ANDROID_CLIENT_ID=
+        JWT_ACCESS_SECRET=        # 32+ random bytes, different from the refresh secret
+        JWT_REFRESH_SECRET=
+        ADMIN_EMAIL=              # used only by the Phase 7 script
+      Fail fast at boot: in server.js, exit with a clear message if any of the first four
+      are missing, the same way a missing MONGO_URI should behave.
+- [ ] backend/models/User.js:
+        googleId            String, required, unique, index   // the 'sub' claim
+        email               String, required, unique, lowercase, trim
+        name                String
+        picture             String
+        onboardingCompleted Boolean, default false
+        profile:
+          dateOfBirth       Date
+          sex               enum ['male','female','other']
+          heightCm          Number
+          weightKg          Number
+          activityLevel     enum ['sedentary','light','moderate','active','very_active']
+          goal              enum ['cut','maintain','bulk']
+          diet              enum ['veg','nonveg','eggetarian','vegan']
+          unitPreference    enum ['metric','imperial'], default 'metric'
+        refreshTokens: [{ tokenHash String, expiresAt Date, createdAt Date }]
+        { timestamps: true }
+      Keep `profile` fields optional - the document is created at sign-in, before onboarding.
+- [ ] backend/constants/profile.js: export SEXES, ACTIVITY_LEVELS, GOALS, DIET_TYPES,
+      UNIT_PREFERENCES. Follow the shape of backend/constants/muscles.js so the model and
+      the validator share one source of truth.
+- [ ] backend/services/tokenService.js:
+        signAccessToken(user)   -> jwt, { sub: user._id.toString() }, 7d, JWT_ACCESS_SECRET
+        issueRefreshToken(user) -> random 32 bytes hex; store sha256 hex in
+                                   user.refreshTokens with expiresAt = now + 90d; return raw
+        rotateRefreshToken(raw) -> look up by hash, reject if missing/expired, remove it,
+                                   issue a new one; return { accessToken, refreshToken }
+        revokeRefreshToken(raw) -> remove the matching hash
+      Cap refreshTokens at 5 entries per user (drop oldest) and prune expired ones on write.
+      Store only hashes - a leaked database dump must not yield usable refresh tokens.
+- [ ] backend/services/googleVerifier.js: wrap `OAuth2Client.verifyIdToken` with
+      `audience: [GOOGLE_WEB_CLIENT_ID, GOOGLE_ANDROID_CLIENT_ID].filter(Boolean)`.
+      Reject the token unless `payload.email_verified === true`.
+      Return { googleId: payload.sub, email, name, picture }.
+- [ ] backend/controllers/authController.js:
+        POST /api/auth/google   body { idToken }
+          verify -> findOneAndUpdate by googleId (upsert, set email/name/picture)
+          -> 200 { accessToken, refreshToken, user }
+          -> 401 { error: 'invalid_google_token' } on verify failure
+        POST /api/auth/refresh  body { refreshToken }
+          -> 200 { accessToken, refreshToken }  (rotated)
+          -> 401 { error: 'invalid_refresh_token' }
+        POST /api/auth/logout   body { refreshToken }   -> 204
+      Shape `user` once, in a `serializeUser` helper, and reuse it for /api/me.
+      Never return refreshTokens, __v or _id-as-is; expose `id` as a string.
+- [ ] backend/controllers/userController.js:
+        GET /api/me            -> serialized user (includes onboardingCompleted + profile)
+        PUT /api/me/profile    -> validate, save, set onboardingCompleted = true, return user
+      Validation ranges (reject outside, do not clamp silently):
+        dateOfBirth    a real date, age 13..100
+        heightCm       100..250
+        weightKg       30..300
+        sex / activityLevel / goal / diet  must be in the enum
+      Keep the computation of age / BMI / BMR / TDEE on the client. The server stores facts.
+- [ ] backend/routes/authRoutes.js and backend/routes/userRoutes.js, following the shape of
+      backend/routes/workoutRoutes.js.
+- [ ] backend/middleware/auth.js - replace the stub entirely:
+        read `Authorization: Bearer <token>`
+        verify with JWT_ACCESS_SECRET
+        on success: req.userId = payload.sub
+        on missing/invalid/expired: 401 { error: 'unauthenticated' }
+      Fail closed. Never set a fallback userId.
+- [ ] server.js wiring order matters:
+        app.use(cors()); app.use(express.json());
+        app.get('/api/health', ...)              // public, no auth
+        app.use('/api/auth', authRoutes);        // public, BEFORE app.use(auth)
+        app.use(auth);                           // everything past here needs a token
+        app.use('/api/me', userRoutes);
+        app.use('/api/workouts', workoutRoutes);
+        ... existing routes unchanged ...
+        app.use(errorHandler);
+- [ ] errorHandler currently returns 500 for everything. Give it a pass-through for errors
+      carrying a `status`, so validation can answer 400 and auth can answer 401.
+
+Done when, with curl against a local server:
+  - POST /api/auth/google with the Phase 1 idToken returns tokens and a user with
+    onboardingCompleted false, and creates exactly one User document.
+  - GET /api/workouts with no Authorization header returns 401.
+  - GET /api/workouts with the access token returns `[]` (your 220 workouts are still under
+    'default_user' - that is expected until Phase 7).
+  - POST /api/auth/refresh returns a new pair, and replaying the old refresh token fails.
+
+
+## Phase 3 - Backend: close the 'default_user' loopholes
+
+Small phase, easy to skip, and skipping it is how data leaks between accounts.
+
+- [ ] backend/models/CompletedWorkout.js:
+        userId: { type: String, required: true, index: true }   // drop the default
+        remove `unique: true` from `id`
+        add: completedWorkoutSchema.index({ userId: 1, id: 1 }, { unique: true })
+      Note: dropping the old single-field unique index on `id` is a real index change. Run
+      `db.completedworkouts.dropIndex('id_1')` against the deployed database, or Mongoose
+      will keep honouring the stale index.
+- [ ] backend/models/TargetMuscle.js and CustomExercise.js: same treatment for `userId`
+      (`required: true`, no default). CustomExercise already has the right compound unique
+      index on { userId, category }; confirm TargetMuscle has one on { userId, dateString }.
+- [ ] Remove every `|| 'default_user'` fallback. They are in:
+        workoutController.js       lines ~55, 74, 145, 188
+        targetMuscleController.js  lines ~5, 15, 32
+        customExerciseController.js lines ~61, 103
+      Use `req.userId` directly. It is guaranteed by the middleware or the request never
+      reached the controller.
+- [ ] Decide whether /api/exercises stays behind the wall. Recommended: yes, keep it inside
+      `app.use(auth)` - the app only needs it after sign-in, and one less public endpoint is
+      one less thing to think about. Leave the controller itself unchanged; it is global
+      data, not user data.
+- [ ] Add a plain `grep -rn "default_user" backend/` to the Phase 8 checklist. After Phase 7
+      the only remaining hit should be the migration script itself.
+
+Done when: `grep -rn "default_user" backend/controllers backend/models` returns nothing, and
+the curl checks from Phase 2 still pass.
+
+
+## Phase 4 - App: token storage, auth store, authed fetch
+
+This is the load-bearing phase. Get it right and the screens are easy.
+
+- [ ] src/types.ts - add alongside the existing domain types:
+        export type Sex = 'male' | 'female' | 'other';
+        export type ActivityLevel = 'sedentary' | 'light' | 'moderate' | 'active'
+          | 'very_active';
+        export type Goal = 'cut' | 'maintain' | 'bulk';
+        export type DietType = 'veg' | 'nonveg' | 'eggetarian' | 'vegan';
+        export type UnitPreference = 'metric' | 'imperial';
+        export interface UserProfile { dateOfBirth: Date; sex: Sex; heightCm: number;
+          weightKg: number; activityLevel: ActivityLevel; goal: Goal; diet: DietType;
+          unitPreference: UnitPreference; }
+        export interface User { id: string; email: string; name: string; picture?: string;
+          onboardingCompleted: boolean; profile?: Partial<UserProfile>; }
+- [ ] src/services/tokenStorage.ts - a thin expo-secure-store wrapper:
+        getTokens / setTokens / clearTokens over keys 'ff.access' and 'ff.refresh'.
+      Every read in a try/catch returning null; SecureStore throws on some devices.
+- [ ] src/services/authClient.ts - the single choke point for authenticated requests:
+        authedFetch(url, init) =>
+          attach Authorization: Bearer <access>
+          if 401: await refreshOnce(); if that succeeded, retry the request exactly once
+          if refresh failed: clear tokens, call the auth store's forceSignOut(), rethrow
+      Deduplicate concurrent refreshes with a module-level in-flight promise, or a cold
+      start with four parallel fetches will fire four refreshes and rotate the token out
+      from under itself.
+- [ ] src/services/api.ts:
+        - `getJson` uses authedFetch instead of bare fetch.
+        - `endpoints` gains: authGoogle, authRefresh, authLogout, me, meProfile.
+        - add `api.getMe()` and `api.updateProfile(profile)`, with parsers in the same style
+          as parseCompletedWorkout (dateOfBirth comes back as an ISO string - parse it to a
+          Date here so no screen ever sees a string, per the file's own doc comment).
+        - the auth and refresh calls must use bare fetch, not authedFetch, or they recurse.
+- [ ] src/store/syncStore.ts - fix the drop-on-error behaviour:
+        - route the request through authedFetch so queued writes carry a token
+        - on 401 after a failed refresh: STOP draining and keep the queue (break, do not
+          slice). The user is signed out; the work is not lost.
+        - on 5xx: treat as retryable - break, keep the request.
+        - on 4xx other than 401: current behaviour is right (log and drop).
+      Without this, a workout finished while the token was stale is silently deleted.
+- [ ] src/store/authStore.ts - zustand, user object persisted to AsyncStorage (tokens live
+      in SecureStore, never here):
+        status: 'loading' | 'signedOut' | 'needsOnboarding' | 'ready'
+        user: User | null
+        error: string | null
+        hydrate()            read tokens; if present call api.getMe(); derive status from
+                             user.onboardingCompleted; any failure -> signedOut
+        signInWithGoogle()   hasPlayServices -> signIn -> POST /api/auth/google ->
+                             setTokens -> set user + status
+        completeOnboarding(profile)  PUT /api/me/profile -> set user, status 'ready'
+        signOut()            see the data-isolation step in Phase 5
+        forceSignOut()       token-expiry path: same as signOut but no server call
+      Map the native error codes to human text: SIGN_IN_CANCELLED -> no error shown at all,
+      PLAY_SERVICES_NOT_AVAILABLE -> "Google Play Services needs an update".
+
+Done when: `npm run typecheck` is clean, and in the dev build a hand-triggered
+signInWithGoogle() populates the store and a subsequent api.getWorkouts() succeeds with an
+Authorization header (check the backend log).
+
+
+## Phase 5 - App: login screen, navigation gate, data isolation
+
+- [ ] src/features/auth/LoginScreen.tsx - dark, centred, using the existing theme tokens:
+        FitFreak wordmark in theme.colors.primary, one line of copy, one Google button,
+        an inline error line, an ActivityIndicator while status is in flight.
+      Use the existing Button component; add a `variant`/icon only if it is genuinely needed
+      rather than restyling Button for one screen.
+- [ ] src/core/Navigation.tsx - RootStackParamList becomes:
+        { Login: undefined; Onboarding: undefined; Root: undefined }
+      and RootNavigator picks exactly one branch from `useAuthStore(s => s.status)`:
+        loading        -> render nothing (App.tsx already shows the spinner)
+        signedOut      -> Login
+        needsOnboarding-> Onboarding
+        ready          -> the existing TabNavigator, untouched
+      Render only the active branch rather than all three with a conditional
+      `initialRouteName`, so a signed-out user cannot land on a tab screen mid-transition.
+- [ ] src/core/App.tsx - the hydration order changes:
+        await useAuthStore.getState().hydrate() first
+        call historyStore.fetchData() only once status === 'ready'
+      Today fetchData runs on hydration unconditionally; after auth it would fire a
+      guaranteed 401 before any token exists. Drive it from a `useEffect` on status.
+- [ ] Per-device data isolation on sign-out. signOut() must:
+        1. if syncStore.queue is non-empty and the device is online, drain it first; if it
+           cannot drain, warn the user that unsynced workouts will be lost and require a
+           confirm before continuing
+        2. POST /api/auth/logout with the refresh token (best effort, ignore failure)
+        3. clearTokens()
+        4. useHistoryStore.persist.clearStorage() and reset its in-memory state
+        5. reset activeWorkoutStore (an in-progress workout must not survive into another
+           account)
+        6. useSyncStore.getState().clearQueue()
+        7. set status 'signedOut', user null
+      Steps 4-6 are the ones that matter: those caches are keyed by store name only, so
+      without them the next account sees the previous account's workouts.
+- [ ] src/core/AppHeader.tsx - replace the hard-coded "Hi Mukul" with
+      `Hi {user.name.split(' ')[0]}`, and add a right-aligned avatar (user.picture, falling
+      back to initials) that opens the profile sheet.
+- [ ] src/features/profile/ProfileSheet.tsx - minimum viable: name, email, the stored
+      vitals read back, "Edit vitals" (reuses the Phase 6 form), "Sign out".
+      Build it on the existing ModalSheet component.
+
+Done when: a cold start on the dev build shows Login; signing in with a brand-new Google
+account lands on Onboarding; signing in with an already-onboarded account lands on the Home
+tab; sign out returns to Login and a different account's sign-in shows an empty history.
+
+
+## Phase 6 - App: vitals onboarding
+
+- [ ] src/constants/profile.ts - the labelled option lists the UI renders, mirroring
+      backend/constants/profile.js. Keep the values identical to the backend enums:
+        ACTIVITY_LEVEL_OPTIONS  sedentary "Barely any exercise"
+                                light "1-3 days a week"
+                                moderate "3-5 days a week"
+                                active "6-7 days a week"
+                                very_active "Twice a day / physical job"
+        GOAL_OPTIONS            cut "Lose fat" / maintain "Stay the same" / bulk "Build muscle"
+        DIET_OPTIONS            veg "Vegetarian" / eggetarian "Veg + eggs"
+                                nonveg "Non-vegetarian" / vegan "Vegan"
+- [ ] src/utils/vitals.ts - pure functions, unit-tested in Phase 8:
+        ageFromDateOfBirth(dob, now)
+        bmi(weightKg, heightCm)
+        bmrMifflinStJeor({ sex, weightKg, heightCm, age })
+          male:   10*kg + 6.25*cm - 5*age + 5
+          female: 10*kg + 6.25*cm - 5*age - 161
+          other:  average of the two
+        tdee(bmr, activityLevel)
+          sedentary 1.2, light 1.375, moderate 1.55, active 1.725, very_active 1.9
+        calorieTarget(tdee, goal)   cut -500, maintain +0, bulk +300
+        cmToFeetInches / feetInchesToCm / kgToLb / lbToKg
+      Keep every formula here, not in a component, so the diet work later has one source.
+- [ ] src/features/onboarding/OnboardingScreen.tsx - a 4-step flow with a progress dots row,
+      Back / Next, and local state held in the screen until the final submit. One PUT at the
+      end, not one per step.
+        Step 1 Basics   name (prefilled from Google, editable), date of birth (show the
+                        computed age live), sex via SegmentedControl
+        Step 2 Body     unit toggle (metric / imperial) via SegmentedControl, height,
+                        weight. Show BMI live once both are valid.
+        Step 3 Training activity level and goal, as Chip lists
+        Step 4 Diet     diet type as Chip list, then a summary card showing age, BMI,
+                        maintenance calories and the goal-adjusted target, and a
+                        "Finish" button
+- [ ] Validate per step and block Next until that step is valid, with the same ranges the
+      backend enforces (age 13-100, height 100-250 cm, weight 30-300 kg). Convert imperial
+      input to metric before validating so the two sides never disagree.
+- [ ] Reuse Input, Button, Chip, Card, SegmentedControl from src/components. If a date
+      picker is needed, `npx expo install @react-native-community/datetimepicker`; a plain
+      three-field DD / MM / YYYY row using Input avoids the dependency and is acceptable.
+- [ ] No skip button. onboardingCompleted gates the app, so a skip would need a second,
+      partial state. If a skip is wanted later, add it as "remind me" with a real
+      `onboardingSkippedAt` field rather than leaving the profile half-filled.
+- [ ] Make the same form reachable from the profile sheet for editing. Extract the steps
+      into components that take value + onChange so the edit screen can render them all on
+      one scroll instead of as a wizard.
+
+Done when: a new account walks the four steps, Finish returns to Home, GET /api/me shows the
+stored profile with onboardingCompleted true, and killing and reopening the app goes straight
+to Home.
+
+
+## Phase 7 - Claim the 220 existing workouts
+
+Runs last. It needs your User document to exist, which means you must have signed in through
+the finished app at least once.
+
+- [ ] Back up first. The repo already has fitfreak_complete_backup.json (2026-10-29) as
+      precedent, but take a fresh one:
+        mongodump --uri "$MONGO_URI" --out ./backup-pre-auth-$(date +%F)
+      Do not count on the committed JSON file; it is two weeks stale.
+- [ ] backend/scripts/claimDefaultUser.js:
+        - reads ADMIN_EMAIL, finds that User; exits with a clear message if absent
+          ("sign in through the app first")
+        - counts documents with userId 'default_user' in CompletedWorkout, TargetMuscle and
+          CustomExercise and prints the counts
+        - with `--dry-run` (the default): prints what it would change and exits
+        - with `--commit`: updateMany userId 'default_user' -> user._id.toString() in all
+          three collections, then re-counts and prints the result
+        - idempotent: a second run finds zero and exits cleanly
+        - refuses to run if the target user already owns documents, unless `--force`, so a
+          mis-set ADMIN_EMAIL cannot merge two people's data
+- [ ] Watch for a unique-index collision: CustomExercise is unique on { userId, category }.
+      If your new account created any custom exercises during Phase 5/6 testing, the
+      updateMany will collide. Handle it explicitly - either delete the test documents
+      first, or merge the `exercises` arrays per category. The script should detect the
+      overlap and refuse rather than half-apply.
+- [ ] Run dry, read the counts (expect 220 / 52 / 6), then run with --commit.
+- [ ] Verify in the app: Home shows the muscle map populated, and the workout log scrolls
+      back through the old history.
+- [ ] After a clean run, remove `default: 'default_user'` anywhere it survived and confirm
+      `grep -rn "default_user" backend/` only matches the script.
+
+Done when: GET /api/workouts for your account returns the full history, and a second run of
+the script reports nothing left to claim.
+
+
+## Phase 8 - Verification and follow-ups
+
+- [ ] npm run typecheck
+- [ ] node --check on each new backend file (matches backend's existing `npm test`)
+- [ ] Add tests/vitals.test.mjs next to the existing tests/*.test.mjs, covering
+      ageFromDateOfBirth across a birthday boundary, bmrMifflinStJeor for all three sexes,
+      the tdee multipliers and the unit round-trips.
+- [ ] Manual matrix on the dev build:
+        new account        -> Login -> Google -> Onboarding -> Home
+        existing account   -> Login -> Google -> Home directly
+        cancel the Google sheet    -> back on Login, no error banner
+        airplane mode mid-workout  -> finish it, re-enable network, workout syncs
+        expired access token       -> force it by shortening the lifetime to 60s in a local
+                                      run; confirm one silent refresh and no data loss
+        revoked refresh token      -> delete the hash in the database; confirm the app lands
+                                      on Login with the queue intact
+        sign out, sign in as B     -> B sees no trace of A's history
+- [ ] Update currentStatus.txt: the "Single user, hard-coded ('default_user'). No auth." gap
+      is closed; add the new one - Expo Go no longer covers auth paths, a development build
+      is required.
+- [ ] Update agent.md / the repo docs with the new "where to add things" entries:
+        a profile field -> backend/models/User.js + src/types.ts + src/constants/profile.ts
+- [ ] Rotate JWT_ACCESS_SECRET and JWT_REFRESH_SECRET on the Oracle VPS deployment, and add
+      the five new variables to whatever the CD pipeline uses for backend/.env.
+
+Deliberately out of scope (write them down rather than half-building them):
+  - Any provider other than Google.
+  - iOS. Adding it later means an iOS OAuth client, `ios.bundleIdentifier` in app.json and
+    the plugin's `iosUrlScheme` prop set to the reversed iOS client ID.
+  - Account deletion. Google Play requires an in-app deletion path for published apps, so
+    this becomes mandatory if FitFreak ever ships: DELETE /api/me plus removal of the user's
+    workouts, target muscles and custom exercises.
+  - Weight history. `weightKg` is a single current value; a time series is the natural next
+    step once the diet features land, and it wants its own collection rather than an array
+    on User.
+  - Using the vitals anywhere. Nothing reads them yet - bodyweight is not used by
+    src/features/home/effortCalculator.ts or doseResponse.ts today. Feeding bodyweight into
+    volume for bodyweight exercises, and calories into a diet tab, are separate pieces of
+    work that this plan only makes possible.
