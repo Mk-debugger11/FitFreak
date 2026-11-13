@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Wrist Curl",
+    "aliases": ["Wrist curl", "Barbell Wrist Curl"],
+    "muscleGroup": "Forearm",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["forearm_flexors"],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Supinated wrist flexion isolates the anterior forearm flexors (flexor carpi radialis, flexor carpi ulnaris, palmaris longus, and flexor digitorum superficialis/profundus when rolling the bar to the fingertips), regardless of whether performed with a barbell, cable, or machine. Because the elbow stays fixed and the brachioradialis inserts on the distal radius without crossing the wrist joint, brachioradialis EMG remains minimal and forearm extensors show only low stabilizing co-activation."
+  },
+  {
+    "name": "Reverse Wrist Curl",
+    "aliases": ["Barbell Reverse Wrist Curl"],
+    "muscleGroup": "Forearm",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["forearm_extensors"],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Pronated wrist extension produces high concentric and eccentric EMG in the dorsal forearm extensors, led by extensor carpi radialis longus and brevis, extensor carpi ulnaris, and extensor digitorum. Full pronation aligns the extensor carpi radialis brevis line of pull efficiently, while the stationary elbow keeps brachioradialis activation low and the anterior flexors contribute only minimal grip and antagonist tone."
+  },
+  {
+    "name": "Reverse Cable Curl",
+    "aliases": ["Reverse cable curl", "Cable Reverse Curl"],
+    "muscleGroup": "Forearm",
+    "equipmentType": "cable",
+    "primaryMuscles": ["brachioradialis", "forearm_extensors"],
+    "secondaryMuscles": ["brachialis", "biceps_brachii"],
+    "stabilizerMuscles": [],
+    "notes": "Pronated elbow flexion places the biceps brachii at a mechanical disadvantage because its tendon wraps around the radius, markedly lowering biceps EMG compared with supinated curls while shifting elbow flexion load onto the brachioradialis and ulnar-inserting brachialis. Constant cable tension keeps the wrist extensors (notably extensor carpi radialis longus/brevis and extensor carpi ulnaris) strongly engaged isometrically to resist wrist flexion throughout the full range of motion."
+  }
+]

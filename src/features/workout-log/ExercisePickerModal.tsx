@@ -1,17 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { Button, ModalOption, ModalSheet } from '../../components';
+import { MUSCLE_LABELS, MuscleId } from '../../constants/muscles';
 import { theme } from '../../theme';
-import { EquipmentType } from '../../types';
+import { CategoryExerciseItem } from '../../utils/exercise';
 
 interface ExercisePickerModalProps {
   visible: boolean;
   category: string | null;
-  exercises: { name: string; equipmentType: EquipmentType }[];
-  onSelect: (exercise: { name: string; equipmentType: EquipmentType }) => void;
+  exercises: CategoryExerciseItem[];
+  onSelect: (exercise: CategoryExerciseItem) => void;
   onCreateCustom: () => void;
   onBack: () => void;
 }
+
+const formatMuscleSummary = (
+  primary: readonly MuscleId[],
+  secondary: readonly MuscleId[],
+): string | undefined => {
+  const parts: string[] = [];
+  if (primary.length > 0) {
+    parts.push(`Main: ${primary.map((id) => MUSCLE_LABELS[id]).join(', ')}`);
+  }
+  if (secondary.length > 0) {
+    parts.push(`Supporting: ${secondary.map((id) => MUSCLE_LABELS[id]).join(', ')}`);
+  }
+  return parts.length > 0 ? parts.join(' · ') : undefined;
+};
 
 /** Step 2 of starting a workout: which exercise? */
 export const ExercisePickerModal: React.FC<ExercisePickerModalProps> = ({
@@ -32,6 +47,7 @@ export const ExercisePickerModal: React.FC<ExercisePickerModalProps> = ({
       <ModalOption
         key={`${exercise.name}-${index}`}
         label={exercise.name}
+        subtitle={formatMuscleSummary(exercise.primaryMuscles, exercise.secondaryMuscles)}
         onPress={() => onSelect(exercise)}
         trailing={
           exercise.equipmentType ? (

@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Squat",
+    "aliases": ["Barbell Back Squat", "Back Squat"],
+    "muscleGroup": "Legs",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["quadriceps", "gluteus_maximus", "adductors"],
+    "secondaryMuscles": ["hamstrings"],
+    "stabilizerMuscles": [
+      "erector_spinae",
+      "rectus_abdominis",
+      "obliques",
+      "soleus",
+      "gluteus_medius"
+    ],
+    "notes": "Heavy compound knee-and-hip extension driven primarily by the uniarticular quadriceps vasti, gluteus maximus, and the posterior hip-extensor head of adductor magnus (full-squat MRI data by Kubo et al. 2019 show +6.7% glute max, +6.2% adductor, and +4.9% quad growth). Biarticular rectus femoris and hamstrings show lower hypertrophy and moderate EMG (15-35% MVIC) because concurrent hip and knee flexion/extension keeps net length relatively constant. Erector spinae (40-70%+ MVIC), rectus abdominis, and obliques (30-60%+ MVIC) brace isometrically via intra-abdominal pressure; soleus (20-40% MVIC) controls ankle dorsiflexion while deep knee flexion slackens the gastrocnemius, and gluteus medius (26-45% MVIC) stabilizes frontal-plane hip alignment."
+  },
+  {
+    "name": "Leg Press",
+    "aliases": ["Machine Leg Press"],
+    "muscleGroup": "Legs",
+    "equipmentType": "machine",
+    "primaryMuscles": ["quadriceps", "gluteus_maximus"],
+    "secondaryMuscles": ["adductors", "hamstrings"],
+    "stabilizerMuscles": ["soleus", "gastrocnemius"],
+    "notes": "Supported closed-chain machine press dominated by the quadriceps (vastus lateralis, vastus medialis, and rectus femoris, with low foot placement increasing knee flexion and rectus femoris EMG) alongside gluteus maximus hip extension (enhanced by higher foot placement, though lower overall than free-weight squats). Adductor magnus assists hip extension from deep flexion, hamstrings show low-to-moderate co-contraction (~half that of back squats per Escamilla et al.), and soleus and gastrocnemius stabilize the ankle against the footplate. Because the angled backrest supports the spine, erector spinae and abdominal bracing stay minimal (<20% MVIC)."
+  },
+  {
+    "name": "Romanian Deadlift",
+    "aliases": ["RDL", "Barbell Romanian Deadlift"],
+    "muscleGroup": "Legs",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["hamstrings", "gluteus_maximus"],
+    "secondaryMuscles": ["adductors"],
+    "stabilizerMuscles": [
+      "erector_spinae",
+      "forearm_flexors",
+      "latissimus_dorsi",
+      "trapezius_middle",
+      "rectus_abdominis",
+      "obliques"
+    ],
+    "notes": "Hip-hinge movement with fixed soft knees generating very high eccentric and concentric EMG (80-90%+ MVIC) in the stretched hamstrings (semitendinosus, semimembranosus, and biceps femoris long head) and strong gluteus maximus drive (50-75% MVIC) at lockout. Adductor magnus acts as a powerful synergistic hip extensor in deep hip flexion, while erector spinae (50-65%+ MVIC), rectus abdominis, and obliques contract isometrically to maintain a rigid neutral spine. Latissimus dorsi and middle trapezius stabilize the scapulae and keep the barbell close to the center of mass while forearm flexors sustain continuous grip."
+  },
+  {
+    "name": "Leg Curl",
+    "aliases": ["Lying Leg Curl", "Seated Leg Curl"],
+    "muscleGroup": "Legs",
+    "equipmentType": "machine",
+    "primaryMuscles": ["hamstrings"],
+    "secondaryMuscles": ["gastrocnemius"],
+    "stabilizerMuscles": [],
+    "notes": "Single-joint knee flexion targeting semitendinosus, semimembranosus, and both heads of biceps femoris; seated curls (~90 deg hip flexion) stretch the three biarticular heads at the hip and elicit greater overall EMG and hypertrophy than lying curls (Maeo et al. 2020), while the monoarticular biceps femoris short head responds similarly in both. The biarticular gastrocnemius provides notable knee-flexor assistance (McAllister et al. 2014) alongside deep popliteus joint stabilization, while minor medial knee flexors (gracilis and sartorius, slightly more active in lying curls) assist weakly."
+  },
+  {
+    "name": "Leg Extension",
+    "aliases": ["Machine Leg Extension"],
+    "muscleGroup": "Legs",
+    "equipmentType": "machine",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Open-chain knee-extension isolation producing high %MVIC across vastus lateralis, vastus medialis, vastus intermedius, and rectus femoris. Unlike compound squats where hip extension limits biarticular rectus femoris length change, leg extensions load rectus femoris directly—and reclining the backrest opens the hip angle to lengthen rectus femoris and boost its EMG and hypertrophy compared with upright seating. Tibialis anterior registers only low-level background co-activation to stabilize the ankle against the pad."
+  },
+  {
+    "name": "Bulgarian Split Squat",
+    "aliases": ["Dumbbell Bulgarian Split Squat"],
+    "muscleGroup": "Legs",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["quadriceps", "gluteus_maximus"],
+    "secondaryMuscles": ["adductors", "hamstrings"],
+    "stabilizerMuscles": [
+      "gluteus_medius",
+      "obliques",
+      "erector_spinae",
+      "rectus_abdominis",
+      "forearm_flexors",
+      "gastrocnemius",
+      "soleus"
+    ],
+    "notes": "Unilateral rear-foot-elevated split squat led by high quadriceps EMG on the front leg (maximized with an upright torso) and strong gluteus maximus hip-extension output (increased by forward trunk lean or a longer stride). Single-leg loading roughly doubles gluteus medius recruitment (~70-81%+ MVIC) versus bilateral squats to prevent contralateral pelvic drop and knee valgus, while external obliques (~58-62% MVIC) resist trunk rotation alongside isometric erector spinae and rectus abdominis bracing. Adductor magnus assists hip extension and femoral tracking, hamstrings co-contract dynamically, calves stabilize the ankle rocker, and forearm flexors grip the dumbbells."
+  },
+  {
+    "name": "Lunges",
+    "aliases": ["Dumbbell Lunges", "Walking Lunges"],
+    "muscleGroup": "Legs",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["quadriceps", "gluteus_maximus"],
+    "secondaryMuscles": [
+      "adductors",
+      "hamstrings",
+      "gastrocnemius",
+      "soleus"
+    ],
+    "stabilizerMuscles": [
+      "gluteus_medius",
+      "erector_spinae",
+      "obliques",
+      "rectus_abdominis",
+      "forearm_flexors"
+    ],
+    "notes": "Dynamic unilateral stepping lunge generating top %MVIC in the quadriceps across eccentric deceleration and concentric propulsion, with walking lunges eliciting higher gluteus maximus, lumbar erector spinae, and core/oblique EMG than static split squats due to shifting center-of-mass transitions (longer strides and slight forward trunk lean shift demand toward glutes and hamstrings). Gluteus medius fires strongly (~60-68% MVIC) to stabilize the pelvis upon foot strike, adductor magnus assists hip extension and knee alignment, gastrocnemius and soleus aid terminal push-off, and forearm flexors hold the dumbbells."
+  },
+  {
+    "name": "Calf Raise",
+    "aliases": ["Standing Calf Raise", "Machine Calf Raise"],
+    "muscleGroup": "Legs",
+    "equipmentType": "machine",
+    "primaryMuscles": ["gastrocnemius", "soleus"],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Standing straight-knee ankle plantarflexion places the biarticular medial and lateral gastrocnemius on an optimal length-tension curve alongside high soleus and deep tibialis posterior recruitment (whereas seated bent-knee calf raises shorten the gastrocnemius into active insufficiency and isolate the soleus). Peroneus (fibularis) longus and brevis co-activate strongly (50-80%+ MVIC) to stabilize the ankle mediolaterally and load the medial forefoot, while tibialis anterior provides only low reciprocal antagonist co-contraction."
+  }
+]

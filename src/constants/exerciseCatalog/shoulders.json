@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Dumbbell Shoulder Press",
+    "aliases": ["Dumbbell Press", "Seated Dumbbell Shoulder Press"],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["deltoid_anterior", "deltoid_lateral"],
+    "secondaryMuscles": [
+      "triceps_brachii",
+      "pectoralis_upper",
+      "trapezius_upper"
+    ],
+    "stabilizerMuscles": ["serratus_anterior", "infraspinatus"],
+    "notes": "Free-weight overhead pressing maximizes anterior deltoid recruitment while scapular-plane arm abduction and frontal-plane stabilization keep the lateral deltoids and rotator cuff (infraspinatus and supraspinatus) highly active. Triceps brachii extend the elbows toward lockout, the clavicular upper chest assists initial shoulder flexion, and upper traps plus serratus anterior upwardly rotate the scapulae overhead."
+  },
+  {
+    "name": "Machine Shoulder Press",
+    "aliases": ["Machine shoulder press", "Shoulder Press Machine"],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "machine",
+    "primaryMuscles": ["deltoid_anterior"],
+    "secondaryMuscles": [
+      "deltoid_lateral",
+      "triceps_brachii",
+      "pectoralis_upper",
+      "trapezius_upper"
+    ],
+    "stabilizerMuscles": ["serratus_anterior"],
+    "notes": "Fixed-track guided pressing isolates the anterior deltoid as the prime mover by eliminating multi-planar free-weight balance demands. Lateral deltoids assist abduction, triceps brachii drive upper-range elbow lockout, the clavicular upper chest contributes along forward-angled paths, and upper traps with serratus anterior stabilize scapular upward rotation."
+  },
+  {
+    "name": "Lateral Raise",
+    "aliases": ["Dumbbell Lateral Raise"],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["deltoid_lateral"],
+    "secondaryMuscles": ["trapezius_upper", "deltoid_anterior"],
+    "stabilizerMuscles": ["infraspinatus"],
+    "notes": "Gravity-loaded dumbbell abduction creates an ascending resistance curve that peaks near 60-90 degrees, eliciting peak lateral deltoid EMG. The rotator cuff (supraspinatus and infraspinatus) initiates early abduction and centers the humeral head, while anterior deltoids stabilize scapular-plane elevation and upper traps assist upward scapular rotation near shoulder height."
+  },
+  {
+    "name": "Cable Lateral Raise",
+    "aliases": ["Cable lateral raise"],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "cable",
+    "primaryMuscles": ["deltoid_lateral"],
+    "secondaryMuscles": ["trapezius_upper", "deltoid_anterior"],
+    "stabilizerMuscles": ["infraspinatus"],
+    "notes": "Low-pulley cable resistance applies a near-perpendicular horizontal vector right from zero degrees, shifting peak lateral deltoid tension into the stretched bottom and mid-range compared to dumbbells. Supraspinatus and infraspinatus fire early to stabilize against the medial pull, with anterior deltoids and upper traps assisting elevation and scapular control."
+  },
+  {
+    "name": "Rear Delt Fly",
+    "aliases": ["Reverse Pec Deck", "Rear Delt Machine Fly"],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "machine",
+    "primaryMuscles": ["deltoid_posterior"],
+    "secondaryMuscles": ["trapezius_middle", "deltoid_lateral"],
+    "stabilizerMuscles": ["infraspinatus"],
+    "notes": "Chest-supported horizontal abduction on a reverse pec deck isolates the posterior deltoid at high MVIC without lower-back momentum. Using a neutral grip elevates both posterior deltoid and infraspinatus activation over a pronated grip, while middle traps and rhomboids stabilize scapular retraction and lateral deltoid fibers assist transverse abduction."
+  },
+  {
+    "name": "Single-Arm Rear Delt Pec Deck",
+    "aliases": ["Single Arm Rear Delt Pec Dec"],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "machine",
+    "primaryMuscles": ["deltoid_posterior"],
+    "secondaryMuscles": ["trapezius_middle", "deltoid_lateral"],
+    "stabilizerMuscles": ["infraspinatus", "obliques"],
+    "notes": "Sitting sideways for unilateral reverse pec deck flyes allows the arm to cross further past the midline for a deeper posterior deltoid pre-stretch and direct fiber alignment. Infraspinatus stabilizes the humeral head, middle traps and rhomboids control unilateral scapular retraction, lateral deltoid fibers assist abduction, and the obliques brace isometrically against off-center trunk rotation."
+  },
+  {
+    "name": "Upright Row",
+    "aliases": ["Barbell Upright Row"],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["deltoid_lateral", "trapezius_upper"],
+    "secondaryMuscles": [
+      "deltoid_anterior",
+      "biceps_brachii",
+      "brachialis",
+      "brachioradialis",
+      "trapezius_middle"
+    ],
+    "stabilizerMuscles": ["infraspinatus"],
+    "notes": "Vertical pulling combines shoulder abduction and scapular elevation to drive high lateral deltoid and upper trapezius activation, both increasing with wider grips. Anterior deltoids assist anterior bar travel, biceps, brachialis, and brachioradialis flex the pronated elbows, middle traps stabilize the scapulae, and the rotator cuff (supraspinatus and infraspinatus) initiates humeral elevation."
+  },
+  {
+    "name": "Shrugs",
+    "aliases": ["Dumbbell Shrugs"],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["trapezius_upper"],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": ["trapezius_middle", "neck_extensors", "forearm_flexors"],
+    "notes": "Vertical scapular elevation with dumbbells elicits peak EMG activity in the upper trapezius and underlying levator scapulae. Middle trapezius fibers stabilize the shoulder girdle (increasing if arms abduct slightly), neck extensors brace the cervical spine against heavy downward loads, and forearm flexors sustain high isometric grip tension."
+  },
+  {
+    "name": "Farmer's Walk",
+    "aliases": ["Farmers Walk", "Farmer Walk"],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["trapezius_upper", "forearm_flexors"],
+    "secondaryMuscles": [
+      "gluteus_maximus",
+      "quadriceps",
+      "gastrocnemius",
+      "soleus"
+    ],
+    "stabilizerMuscles": [
+      "obliques",
+      "rectus_abdominis",
+      "erector_spinae",
+      "trapezius_middle",
+      "forearm_extensors",
+      "brachioradialis",
+      "gluteus_medius"
+    ],
+    "notes": "Heavy loaded carries impose continuous high-intensity isometric demand on the upper traps (resisting downward scapular depression) and forearm flexors (crush grip). Obliques, rectus abdominis, and erector spinae stiffen the trunk against lateral sway and flexion, middle traps and forearm extensors/brachioradialis brace the girdle and wrists, gluteus medius prevents pelvic drop during single-leg stance, and glutes, quads, and calves propel the loaded gait."
+  }
+]

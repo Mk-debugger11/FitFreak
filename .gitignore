@@ -17,6 +17,7 @@ expo-env.d.ts
 *.p12
 *.key
 *.mobileprovision
+*.apk
 
 # Metro
 .metro-health-check*
@@ -25,6 +26,9 @@ expo-env.d.ts
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+
+# local migration backups
+backend/backups/
 
 # macOS
 .DS_Store
@@ -44,3 +48,6 @@ backend/.env
 # generated native folders
 /ios
 /android
+
+*.jks
+@mukul.kumar2024__FitFreak.jks

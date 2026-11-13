@@ -22,14 +22,22 @@ export interface Entity {
 /** A built-in exercise from the catalogue in `constants/exercises.ts`. */
 export interface ExerciseMetadata {
   name: string;
-  muscleGroup: string;
+  aliases?: readonly string[];
+  muscleGroup: import('./constants/exercises').MuscleGroup;
   equipmentType: EquipmentType;
+  primaryMuscles: readonly import('./constants/muscles').MuscleId[];
+  secondaryMuscles: readonly import('./constants/muscles').MuscleId[];
+  stabilizerMuscles?: readonly import('./constants/muscles').MuscleId[];
+  notes?: string;
 }
 
 /** An exercise the user added themselves, stored per muscle-group category. */
 export interface CustomExercise {
   name: string;
   equipmentType: EquipmentType;
+  primaryMuscles?: readonly import('./constants/muscles').MuscleId[];
+  secondaryMuscles?: readonly import('./constants/muscles').MuscleId[];
+  stabilizerMuscles?: readonly import('./constants/muscles').MuscleId[];
 }
 
 export interface WorkoutSet extends Entity {
@@ -37,6 +45,8 @@ export interface WorkoutSet extends Entity {
   weight: number;
   reps: number;
   completed: boolean;
+  isWarmup?: boolean;
+  rir?: number;
 }
 
 /** A workout in progress. One workout tracks one exercise. */
@@ -45,6 +55,9 @@ export interface ActiveWorkout extends Entity {
   templateId?: string;
   category?: string;
   equipmentType?: EquipmentType;
+  primaryMuscles?: readonly import('./constants/muscles').MuscleId[];
+  secondaryMuscles?: readonly import('./constants/muscles').MuscleId[];
+  stabilizerMuscles?: readonly import('./constants/muscles').MuscleId[];
   startTime: Date;
   endTime?: Date;
   sets: WorkoutSet[];
@@ -55,6 +68,9 @@ export interface CompletedWorkout extends Entity {
   name: string;
   category?: string;
   equipmentType?: EquipmentType;
+  primaryMuscles?: readonly import('./constants/muscles').MuscleId[];
+  secondaryMuscles?: readonly import('./constants/muscles').MuscleId[];
+  stabilizerMuscles?: readonly import('./constants/muscles').MuscleId[];
   startTime: Date;
   endTime: Date;
   totalVolume: number;

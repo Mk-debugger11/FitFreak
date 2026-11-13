@@ -39,6 +39,7 @@ export const ModalSheet: React.FC<ModalSheetProps> = ({
 
 interface ModalOptionProps {
   label: string;
+  subtitle?: string;
   onPress: () => void;
   /** Shown on the right of the row, e.g. an equipment type. */
   trailing?: React.ReactNode;
@@ -49,13 +50,21 @@ interface ModalOptionProps {
 /** A single tappable row inside a `ModalSheet`. */
 export const ModalOption: React.FC<ModalOptionProps> = ({
   label,
+  subtitle,
   onPress,
   trailing,
   highlighted = false,
 }) => (
   <TouchableOpacity style={styles.option} onPress={onPress}>
     <View style={styles.optionRow}>
-      <Text style={[styles.optionText, highlighted && styles.optionTextHighlighted]}>{label}</Text>
+      <View style={styles.labelGroup}>
+        <Text style={[styles.optionText, highlighted && styles.optionTextHighlighted]}>{label}</Text>
+        {subtitle ? (
+          <Text style={styles.optionSubtitle} numberOfLines={1}>
+            {subtitle}
+          </Text>
+        ) : null}
+      </View>
       {trailing}
     </View>
   </TouchableOpacity>
@@ -85,7 +94,7 @@ const styles = StyleSheet.create({
     marginBottom: theme.spacing.md,
   },
   scrollBody: {
-    maxHeight: 300,
+    maxHeight: 420,
   },
   option: {
     paddingVertical: theme.spacing.md,
@@ -96,11 +105,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    gap: theme.spacing.sm,
     width: '100%',
+  },
+  labelGroup: {
+    flex: 1,
   },
   optionText: {
     color: theme.colors.text,
     fontSize: theme.typography.sizes.md,
+  },
+  optionSubtitle: {
+    color: theme.colors.textSecondary,
+    fontSize: theme.typography.sizes.xs,
+    marginTop: 2,
   },
   optionTextHighlighted: {
     color: theme.colors.primary,

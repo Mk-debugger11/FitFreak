@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Barbell Curl",
+    "aliases": ["Standing Barbell Curl"],
+    "muscleGroup": "Biceps",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["biceps_brachii"],
+    "secondaryMuscles": ["brachialis", "brachioradialis"],
+    "stabilizerMuscles": ["forearm_flexors", "deltoid_anterior"],
+    "notes": "Fixed bilateral supinated grip locks the forearms palms-up to maximize biceps brachii flexion and supination leverage. Higher absolute barbell loading elicits stronger concentric brachioradialis and eccentric biceps brachii EMG than dumbbell curls, while the brachialis assists across the entire range, forearm flexors resist wrist extension under bar torque, and the anterior deltoid provides minor isometric humeral stabilization while standing."
+  },
+  {
+    "name": "Dumbbell Curl",
+    "aliases": ["Dumbbell Bicep Curl", "Bicep Curl"],
+    "muscleGroup": "Biceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["biceps_brachii"],
+    "secondaryMuscles": ["brachialis", "brachioradialis"],
+    "stabilizerMuscles": ["forearm_flexors", "deltoid_anterior"],
+    "notes": "Unilateral free-weight elbow flexion allows natural forearm supination from neutral to palms-up through the concentric arc, combining the elbow-flexion and supination functions of the biceps brachii. The brachialis drives mid-range elbow flexion regardless of rotation, brachioradialis contributes strongly during the early neutral transition, forearm flexors control wrist alignment and grip, and the anterior deltoid stabilizes the unsupported upper arm."
+  },
+  {
+    "name": "Incline Dumbbell Curl",
+    "aliases": ["Incline Bicep Curl"],
+    "muscleGroup": "Biceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["biceps_brachii"],
+    "secondaryMuscles": ["brachialis", "brachioradialis"],
+    "stabilizerMuscles": ["forearm_flexors", "deltoid_anterior"],
+    "notes": "Reclining on an incline bench extends the shoulder behind the torso, pre-stretching the biarticular long head of the biceps brachii while maintaining high RMS activation across a broad range of motion. Unlike shoulder-flexed preacher curls that shorten the long head and bias the short head, incline curls load the long head at longer muscle lengths; brachialis and brachioradialis assist flexion, forearm flexors hold the grip, and the anterior deltoid lightly stabilizes the humerus against passive hyperextension while the backrest prevents torso swing."
+  },
+  {
+    "name": "Preacher Curl",
+    "aliases": ["Barbell Preacher Curl", "EZ-Bar Preacher Curl"],
+    "muscleGroup": "Biceps",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["biceps_brachii", "brachialis"],
+    "secondaryMuscles": ["brachioradialis"],
+    "stabilizerMuscles": ["forearm_flexors"],
+    "notes": "Supporting the upper arms forward in shoulder flexion places the biceps long head closer to active insufficiency toward the top, biasing short-head recruitment and concentrating peak biceps EMG in the stretched lower range. High external torque near full elbow extension strongly recruits the monoarticular brachialis for distal elbow-flexor growth, while the brachioradialis assists flexion (more noticeably with semi-supinated EZ-bar grips), forearm flexors stabilize the wrist, and pad support eliminates anterior deltoid stabilization."
+  },
+  {
+    "name": "Dumbbell Preacher Curl",
+    "aliases": ["Dumbbell preacher curl"],
+    "muscleGroup": "Biceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["biceps_brachii", "brachialis"],
+    "secondaryMuscles": ["brachioradialis"],
+    "stabilizerMuscles": ["forearm_flexors"],
+    "notes": "Unilateral preacher curling eliminates side-to-side compensation and lets each wrist supinate freely while keeping the shoulder flexed on the pad. Shoulder flexion biases the biceps short head and restricts peak biceps activation to the initial bottom range, where high torque near full extension heavily recruits the brachialis to drive distal hypertrophy; brachioradialis and forearm flexors assist flexion and wrist control while the pad removes anterior deltoid demand."
+  },
+  {
+    "name": "Hammer Curl",
+    "aliases": ["Dumbbell Hammer Curl"],
+    "muscleGroup": "Biceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["brachioradialis", "brachialis"],
+    "secondaryMuscles": ["biceps_brachii"],
+    "stabilizerMuscles": ["forearm_flexors"],
+    "notes": "Neutral palms-facing grip aligns the radial line of pull of the brachioradialis while placing the biceps brachii at reduced supination leverage, lowering relative biceps excitation and shifting primary elbow-flexion demand onto the brachioradialis and ulnar-inserting brachialis. The biceps brachii assists as a secondary elbow flexor, and forearm flexors contract isometrically to stabilize the neutral wrist against ulnar deviation."
+  }
+]

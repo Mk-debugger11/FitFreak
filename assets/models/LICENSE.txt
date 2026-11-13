@@ -1,0 +1,19 @@
+FitFreak 3D Anatomy Model (`body.glb`) License & Attribution
+=============================================================
+
+`body.glb` is licensed under Creative Commons Attribution-ShareAlike 4.0 International
+(CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/
+
+Required Credits:
+- Z-Anatomy — The libre 3D atlas of anatomy — CC-BY-SA 4.0
+  https://www.z-anatomy.com/ | https://github.com/Z-Anatomy/Models-of-human-anatomy
+- BodyParts3D — The Database Center for Life Science — CC-BY-SA 2.1 Japan
+  https://lifesciencedb.jp/bp3d/
+
+Derived From:
+- free-muscles (`public/anatomy.glb`) by tiralonghipol:
+  https://github.com/tiralonghipol/free-muscles
+  Modifications for FitFreak: Draco decompression and vertex decimation (~78.7k triangles,
+  uncompressed glTF 2.0 binary) with original `userData` muscle metadata preserved.
+  Any redistributed or further modified version of `body.glb` must remain under CC BY-SA 4.0.
+

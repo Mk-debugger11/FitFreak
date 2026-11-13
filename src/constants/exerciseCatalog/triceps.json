@@ -1,0 +1,123 @@
+[
+  {
+    "name": "Tricep Pushdown",
+    "aliases": [
+      "Triceps Pushdown",
+      "Cable Tricep Pushdown"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "latissimus_dorsi",
+      "forearm_flexors",
+      "forearm_extensors",
+      "rectus_abdominis"
+    ],
+    "notes": "Strict elbow-extension isolation targeting all three triceps heads with the humerus at the side. Latissimus dorsi contracts isometrically to keep the upper arm pinned against the upward cable pull, forearm flexors and extensors stabilize a neutral wrist and grip, and the rectus abdominis braces the torso against forward sway."
+  },
+  {
+    "name": "Single-Arm Tricep Pushdown",
+    "aliases": [
+      "Single hand tricep push down",
+      "Single Arm Tricep Pushdown"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "latissimus_dorsi",
+      "obliques",
+      "rectus_abdominis",
+      "forearm_flexors",
+      "forearm_extensors"
+    ],
+    "notes": "Unilateral elbow-extension isolation targeting the triceps brachii while allowing natural wrist and elbow alignment. The offset cable load adds anti-rotation and anti-lateral-flexion demand on the obliques and rectus abdominis, while the latissimus dorsi pins the humerus and forearm flexors and extensors lock the wrist neutral."
+  },
+  {
+    "name": "Overhead Cable Extension",
+    "aliases": [
+      "Overhead Extension",
+      "Cable Overhead Tricep Extension"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "deltoid_anterior",
+      "rectus_abdominis",
+      "forearm_flexors",
+      "forearm_extensors"
+    ],
+    "notes": "Overhead shoulder flexion places the biarticular triceps long head at a longer muscle length, yielding greater overall triceps hypertrophy than neutral-arm pushdowns. The anterior deltoid holds the humerus elevated overhead, the rectus abdominis prevents lumbar hyperextension, and forearm flexors and extensors stabilize the handle."
+  },
+  {
+    "name": "Overhead Dumbbell Extension",
+    "aliases": [
+      "Dumbbell Overhead Tricep Extension"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "deltoid_anterior",
+      "rectus_abdominis",
+      "forearm_flexors",
+      "forearm_extensors"
+    ],
+    "notes": "Overhead free-weight elbow extension maximizing stretch-mediated tension across the triceps long head under vertical gravity. The anterior deltoid stabilizes humeral flexion overhead, the rectus abdominis braces against rib flare and lumbar arching, and forearm flexors and extensors control the dumbbell behind the head."
+  },
+  {
+    "name": "Dips",
+    "aliases": [
+      "Tricep Dips",
+      "Parallel Bar Dips"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": [
+      "triceps_brachii",
+      "pectoralis_lower"
+    ],
+    "secondaryMuscles": [
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [
+      "latissimus_dorsi",
+      "trapezius_lower",
+      "rectus_abdominis",
+      "forearm_flexors"
+    ],
+    "notes": "Closed-chain compound press generating high EMG activation across the triceps brachii and sternocostal lower chest, with an upright torso biasing the triceps. The anterior deltoid assists shoulder flexion strongly, lower trapezius and latissimus dorsi depress the scapulae, rectus abdominis prevents trunk swing, and forearm flexors grip the bars."
+  },
+  {
+    "name": "Close-Grip Bench Press",
+    "aliases": [
+      "Close Grip Bench Press"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_lower",
+      "pectoralis_upper",
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Heavy compound barbell press where narrower hand spacing and tucked elbows increase elbow-extension range and triceps brachii EMG activity over wide-grip benching. Both the sternocostal and clavicular pectoralis heads assist alongside strong shoulder-flexion drive from the anterior deltoid."
+  }
+]
