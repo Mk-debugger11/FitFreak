@@ -13,6 +13,17 @@ export const theme = {
     success: '#03DAC6',
     onPrimary: '#FFFFFF',
     danger: '#FF4444',
+    // 3D anatomy palette: muted neutral structure with escalating heat toward `primary`.
+    anatomy: {
+      canvas: '#121316',
+      bone: '#2E313A',
+      other: '#3B3F4A',
+      none: '#545966',
+      light: '#7A3820',
+      moderate: '#C43E12',
+      high: '#FF4500',
+      selected: '#FF7D45',
+    },
   },
   spacing: {
     xs: 4,

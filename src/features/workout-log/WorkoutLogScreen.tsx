@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, FlatList, StyleSheet, Text, View } from 'react-native';
 import { HorizontalCalendar } from '../../components';
 import { useActiveWorkoutStore } from '../../store/activeWorkoutStore';
-import { useHistoryStore } from '../../store/historyStore';
+import { isDateInInitialWindow, useHistoryStore } from '../../store/historyStore';
 import { theme } from '../../theme';
 import { EquipmentType } from '../../types';
 import { isSameDay, isToday as isDateToday, toFetchKey, toLocalDateKey } from '../../utils/date';
-import { listExercisesForCategory } from '../../utils/exercise';
+import { ExplicitMuscleTargets, listExercisesForCategory } from '../../utils/exercise';
+import { formatWorkoutTitle } from '../active-workout/workoutSessionUtils';
 import { CategoryPickerModal } from './CategoryPickerModal';
 import { CustomExerciseModal } from './CustomExerciseModal';
 import { ExercisePickerModal } from './ExercisePickerModal';
@@ -19,11 +20,13 @@ import { shareWorkoutsForDate } from './exportWorkouts';
 type OpenModal = 'none' | 'category' | 'exercise' | 'custom' | 'filter';
 
 /**
- * The home screen: one day at a time, showing its target muscles and the
+ * The workout log screen: one day at a time, showing its target muscles and the
  * workouts logged against them.
  */
 export const WorkoutLogScreen: React.FC = () => {
+  const currentWorkout = useActiveWorkoutStore((state) => state.currentWorkout);
   const startWorkout = useActiveWorkoutStore((state) => state.startWorkout);
+  const resumeWorkout = useActiveWorkoutStore((state) => state.resumeWorkout);
   const {
     completedWorkouts,
     deleteCompletedWorkout,
@@ -31,9 +34,11 @@ export const WorkoutLogScreen: React.FC = () => {
     addTargetMuscleGroup,
     removeTargetMuscleGroup,
     customExercises,
+    exercisesCatalog,
     addCustomExercise,
     fetchWorkoutsForDate,
     fetchedDates,
+    isFetching,
   } = useHistoryStore();
 
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -44,7 +49,6 @@ export const WorkoutLogScreen: React.FC = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const dateKey = toLocalDateKey(selectedDate);
-  const selectedMuscles = targetMuscleGroups[dateKey] ?? [];
   const isToday = isDateToday(selectedDate);
 
   // A filter only makes sense for the day it was chosen on.
@@ -54,7 +58,17 @@ export const WorkoutLogScreen: React.FC = () => {
 
   // Days outside the initial window are fetched the first time they're opened.
   useEffect(() => {
-    if (fetchedDates[toFetchKey(selectedDate)]) return;
+    const fetchKey = toFetchKey(selectedDate);
+    if (fetchedDates[fetchKey]) {
+      setIsLoadingDate(false);
+      return;
+    }
+
+    if (isFetching && isDateInInitialWindow(selectedDate)) {
+      // Initial fetchData() already covers this date window; avoid a duplicate request.
+      setIsLoadingDate(true);
+      return;
+    }
 
     let cancelled = false;
     setIsLoadingDate(true);
@@ -65,13 +79,10 @@ export const WorkoutLogScreen: React.FC = () => {
     return () => {
       cancelled = true;
     };
-  }, [selectedDate, fetchedDates, fetchWorkoutsForDate]);
+  }, [selectedDate, fetchedDates, isFetching, fetchWorkoutsForDate]);
 
-  const workoutsForDate = useMemo(() => {
-    const workouts = completedWorkouts.filter((workout) => {
-      if (!isSameDay(workout.startTime, selectedDate)) return false;
-      return filterCategory ? workout.category === filterCategory : true;
-    });
+  const dayWorkouts = useMemo(() => {
+    const workouts = completedWorkouts.filter((workout) => isSameDay(workout.startTime, selectedDate));
 
     // Newest first while the day is still in progress, chronological once done.
     return workouts.sort((a, b) =>
@@ -79,15 +90,48 @@ export const WorkoutLogScreen: React.FC = () => {
         ? b.startTime.getTime() - a.startTime.getTime()
         : a.startTime.getTime() - b.startTime.getTime(),
     );
-  }, [completedWorkouts, selectedDate, filterCategory, isToday]);
+  }, [completedWorkouts, selectedDate, isToday]);
 
-  const categoryExercises = useMemo(
-    () => listExercisesForCategory(selectedCategory, customExercises),
-    [selectedCategory, customExercises],
+  const workoutsForDate = useMemo(
+    () => (filterCategory ? dayWorkouts.filter((workout) => workout.category === filterCategory) : dayWorkouts),
+    [dayWorkouts, filterCategory],
   );
 
-  const beginWorkout = (name: string, category?: string, equipmentType?: EquipmentType) => {
-    startWorkout(name, { startTime: selectedDate, category, equipmentType });
+  const selectedMuscles = useMemo(() => {
+    const explicit = targetMuscleGroups[dateKey] ?? [];
+    if (isToday) return explicit;
+
+    // On past days, surface muscle categories from logged workouts if target-muscles wasn't saved.
+    const seen = new Set(explicit);
+    const derived = [...explicit];
+    for (const workout of dayWorkouts) {
+      if (workout.category && workout.category !== 'Mixed' && !seen.has(workout.category)) {
+        seen.add(workout.category);
+        derived.push(workout.category);
+      }
+    }
+    return derived;
+  }, [targetMuscleGroups, dateKey, isToday, dayWorkouts]);
+
+  const categoryExercises = useMemo(
+    () => listExercisesForCategory(selectedCategory, customExercises, exercisesCatalog),
+    [selectedCategory, customExercises, exercisesCatalog],
+  );
+
+  const beginWorkout = (
+    name: string,
+    category?: string,
+    equipmentType?: EquipmentType,
+    explicitTargets?: ExplicitMuscleTargets,
+  ) => {
+    startWorkout(name, {
+      startTime: isToday ? new Date() : selectedDate,
+      category,
+      equipmentType,
+      primaryMuscles: explicitTargets?.primaryMuscles,
+      secondaryMuscles: explicitTargets?.secondaryMuscles,
+      stabilizerMuscles: explicitTargets?.stabilizerMuscles,
+    });
     setOpenModal('none');
   };
 
@@ -95,6 +139,27 @@ export const WorkoutLogScreen: React.FC = () => {
     if (!selectedCategory) return;
     addCustomExercise(selectedCategory, name, equipmentType);
     beginWorkout(name, selectedCategory, equipmentType);
+  };
+
+  const handleNewWorkout = () => {
+    if (currentWorkout === null) {
+      setOpenModal('category');
+      return;
+    }
+
+    Alert.alert(
+      'Workout in progress',
+      `${formatWorkoutTitle(currentWorkout.name, currentWorkout.category)} is minimized. Resume it or replace it with a new workout?`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Replace',
+          style: 'destructive',
+          onPress: () => setOpenModal('category'),
+        },
+        { text: 'Resume', onPress: resumeWorkout },
+      ],
+    );
   };
 
   return (
@@ -109,11 +174,11 @@ export const WorkoutLogScreen: React.FC = () => {
         onRemoveMuscle={(muscleGroup) => removeTargetMuscleGroup(dateKey, muscleGroup)}
         onExtract={() => shareWorkoutsForDate(completedWorkouts, selectedDate)}
         onOpenFilter={() => setOpenModal('filter')}
-        onNewWorkout={() => setOpenModal('category')}
+        onNewWorkout={handleNewWorkout}
         onDropdownVisibleChange={setIsDropdownVisible}
       />
 
-      {isLoadingDate ? (
+      {isLoadingDate && workoutsForDate.length === 0 ? (
         <View style={styles.centered}>
           <ActivityIndicator size="large" color={theme.colors.primary} />
         </View>
@@ -152,7 +217,11 @@ export const WorkoutLogScreen: React.FC = () => {
         category={selectedCategory}
         exercises={categoryExercises}
         onSelect={(exercise) =>
-          beginWorkout(exercise.name, selectedCategory ?? undefined, exercise.equipmentType)
+          beginWorkout(exercise.name, selectedCategory ?? undefined, exercise.equipmentType, {
+            primaryMuscles: exercise.primaryMuscles,
+            secondaryMuscles: exercise.secondaryMuscles,
+            stabilizerMuscles: exercise.stabilizerMuscles,
+          })
         }
         onCreateCustom={() => setOpenModal('custom')}
         onBack={() => setOpenModal('category')}

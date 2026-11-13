@@ -1,0 +1,1235 @@
+[
+  {
+    "name": "Cable Crunch",
+    "aliases": [
+      "Kneeling Cable Crunch"
+    ],
+    "muscleGroup": "Abs",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "rectus_abdominis"
+    ],
+    "secondaryMuscles": [
+      "obliques"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Loaded thoracic and lumbar spinal flexion places high EMG demand on the rectus abdominis, while the external/internal obliques and transversus abdominis assist trunk flexion and brace against cable shear. Keeping hips stacked vertically over the knees and arms locked beside the head minimizes hip flexor and latissimus dorsi takeover."
+  },
+  {
+    "name": "Hanging Leg Raise",
+    "aliases": [
+      "Hanging Knee Raise"
+    ],
+    "muscleGroup": "Abs",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": [
+      "rectus_abdominis"
+    ],
+    "secondaryMuscles": [
+      "obliques",
+      "quadriceps"
+    ],
+    "stabilizerMuscles": [
+      "forearm_flexors",
+      "latissimus_dorsi"
+    ],
+    "notes": "Posterior pelvic tilt and trunk curl generate peak rectus abdominis and high oblique EMG activity. Hip flexors (iliopsoas and rectus femoris, mapped to quadriceps) lift the legs or knees, forearm flexors sustain continuous isometric bar grip, and the latissimus dorsi depresses the scapulae to limit torso swing."
+  },
+  {
+    "name": "Reverse Crunch",
+    "aliases": [],
+    "muscleGroup": "Abs",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": [
+      "rectus_abdominis"
+    ],
+    "secondaryMuscles": [
+      "obliques",
+      "quadriceps"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Bottom-up lumbar flexion and posterior pelvic tilt strongly activate both upper and lower rectus abdominis fibers. The obliques co-activate to curl the pelvis and stabilize the trunk, while hip flexors (rectus femoris and iliopsoas, mapped to quadriceps) assist leg elevation and eccentric lowering."
+  },
+  {
+    "name": "Barbell Row",
+    "aliases": [
+      "Barbell rowing",
+      "Bent-Over Barbell Row"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "trapezius_middle"
+    ],
+    "secondaryMuscles": [
+      "trapezius_lower",
+      "deltoid_posterior",
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": [
+      "erector_spinae",
+      "forearm_flexors"
+    ],
+    "notes": "Unsupported bent-over barbell rowing generates balanced, high-level EMG across the latissimus dorsi, middle trapezius (including deep rhomboids), lower trapezius, and posterior deltoids. Maintaining the hinged torso against gravity imposes the highest isometric erector spinae demand among rowing variations alongside biceps brachii elbow flexion and heavy pronated forearm grip."
+  },
+  {
+    "name": "Cable Lat Pullover",
+    "aliases": [
+      "Cable lat pullover"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "teres_major",
+      "pectoralis_lower",
+      "triceps_brachii",
+      "deltoid_posterior"
+    ],
+    "stabilizerMuscles": [
+      "serratus_anterior"
+    ],
+    "notes": "Guided cam or cable-arc shoulder extension maintains constant resistance from overhead flexion down to the hips, targeting the latissimus dorsi and teres major without biceps takeover. As in pullover EMG studies, the sternocostal lower pectoralis major assists strongly in the overhead stretch alongside triceps long-head shoulder extension, posterior deltoids, and serratus anterior scapular control."
+  },
+  {
+    "name": "Deadlift",
+    "aliases": [
+      "Barbell Deadlift",
+      "Conventional Deadlift"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "erector_spinae",
+      "gluteus_maximus",
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "quadriceps"
+    ],
+    "stabilizerMuscles": [
+      "trapezius_upper",
+      "trapezius_middle",
+      "latissimus_dorsi",
+      "forearm_flexors"
+    ],
+    "notes": "Conventional floor pulling elicits intense erector spinae anti-flexion EMG paired with primary gluteus maximus and hamstring hip extension to lockout. Quadriceps drive initial knee extension off the floor, latissimus dorsi brace the barbell close to the shins, upper and middle trapezius resist scapular depression, and forearm flexors maintain heavy barbell grip."
+  },
+  {
+    "name": "Lat Pulldown",
+    "aliases": [
+      "Cable Lat Pulldown"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "teres_major",
+      "trapezius_middle",
+      "trapezius_lower",
+      "biceps_brachii",
+      "brachialis"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Shoulder-width pronated vertical pulling elicits high latissimus dorsi EMG equal to wider grips while permitting greater elbow-flexion range of motion and heavier loading. Teres major assists humeral adduction, middle and lower trapezius (including deep rhomboids) retract and depress the scapulae, and the biceps brachii and brachialis flex the elbows."
+  },
+  {
+    "name": "Lower Back Extension",
+    "aliases": [
+      "Lower back extension",
+      "Back Extension",
+      "Hyperextension"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": [
+      "erector_spinae"
+    ],
+    "secondaryMuscles": [
+      "gluteus_maximus",
+      "hamstrings"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Roman chair trunk extensions recruit the lumbar and thoracic erector spinae as prime spinal extensors when articulating the torso or as high-level isometric stabilizers during a neutral hip hinge. The gluteus maximus and hamstrings act as key hip-extensor synergists through the lower stretch and terminal lockout."
+  },
+  {
+    "name": "Neutral-Grip Pull-ups",
+    "aliases": [
+      "Neutral grip pull ups",
+      "Neutral Grip Pullups"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "teres_major",
+      "trapezius_lower",
+      "biceps_brachii",
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": [
+      "forearm_flexors"
+    ],
+    "notes": "Palms-facing vertical pulling delivers latissimus dorsi activation comparable to pronated pull-ups while reducing middle trapezius recruitment because the arms track closer to sagittal shoulder extension. The neutral hammer orientation places the brachioradialis (alongside deep brachialis and biceps brachii) in an optimal line of pull while teres major, lower trapezius, and forearm flexors assist."
+  },
+  {
+    "name": "One-arm Dumbbell Row",
+    "aliases": [
+      "Single Arm Dumbbell Row",
+      "One Arm Dumbbell Row"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "teres_major"
+    ],
+    "secondaryMuscles": [
+      "trapezius_middle",
+      "deltoid_posterior",
+      "biceps_brachii",
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": [
+      "obliques"
+    ],
+    "notes": "Unilateral bench-supported rowing permits deeper scapular protraction at the stretch and full humeral extension past the torso, strongly emphasizing the latissimus dorsi and teres major while unloading the lumbar spine relative to standing rows. Middle trapezius, posterior deltoids, biceps brachii, and brachioradialis assist the pull while the obliques brace against torso rotation."
+  },
+  {
+    "name": "Pull-ups",
+    "aliases": [
+      "Pull Ups",
+      "Pullups"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "teres_major",
+      "trapezius_middle",
+      "trapezius_lower",
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": [
+      "infraspinatus",
+      "forearm_flexors"
+    ],
+    "notes": "Closed-chain pronated vertical pulling produces the highest latissimus dorsi EMG among upper-back movements alongside strong biceps brachii, infraspinatus rotator cuff stabilization, and lower trapezius depression. Overhand grip orientation elicits significantly greater middle trapezius activation than neutral-grip pull-ups, with teres major assisting shoulder adduction and forearm flexors sustaining the hanging grip."
+  },
+  {
+    "name": "Seated Cable Row",
+    "aliases": [
+      "Cable Row"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "trapezius_middle",
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "teres_major",
+      "trapezius_lower",
+      "deltoid_posterior",
+      "biceps_brachii",
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Supported horizontal cable rowing produces high middle trapezius (including deep rhomboids) and latissimus dorsi EMG under constant cable tension while bracing against the foot platform minimizes lumbar erector spinae fatigue. Teres major, lower trapezius, posterior deltoids, biceps brachii, and neutral-grip brachioradialis act as primary synergists."
+  },
+  {
+    "name": "Straight-Arm Pulldown",
+    "aliases": [
+      "Straight Arm Pulldown"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "teres_major",
+      "triceps_brachii",
+      "deltoid_posterior",
+      "pectoralis_lower",
+      "trapezius_lower"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Standing cable shoulder extension with fixed near-straight elbows isolates the latissimus dorsi and teres major while eliminating elbow-flexor takeover and keeping tension more dorsal-dominant than horizontal pullovers. The bi-articular long head of the triceps brachii shows high EMG stabilizing the elbow and extending the shoulder alongside posterior deltoids, lower sternal chest, and lower trapezius scapular depression."
+  },
+  {
+    "name": "T-Bar Row",
+    "aliases": [
+      "T Bar Row"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "trapezius_middle",
+      "latissimus_dorsi"
+    ],
+    "secondaryMuscles": [
+      "teres_major",
+      "deltoid_posterior",
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": [
+      "erector_spinae",
+      "forearm_flexors"
+    ],
+    "notes": "Pivoting landmine rowing along a fixed arc allows heavy loading with a close neutral grip, emphasizing middle trapezius (including rhomboids) scapular retraction and latissimus dorsi shoulder extension. Teres major, posterior deltoids, biceps brachii, heavy grip forearm flexors, and isometric erector spinae stabilization support the hinged pull."
+  },
+  {
+    "name": "Wide-Grip Lat Pulldown",
+    "aliases": [
+      "Wide grip lat pulldown"
+    ],
+    "muscleGroup": "Back",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "latissimus_dorsi",
+      "teres_major"
+    ],
+    "secondaryMuscles": [
+      "trapezius_middle",
+      "trapezius_lower",
+      "deltoid_posterior",
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": [
+      "infraspinatus"
+    ],
+    "notes": "Wider pronated hand placement abducts the upper arms into a coronal-plane adduction vector, producing equivalent overall latissimus dorsi EMG while placing higher mechanical emphasis on the teres major and posterior deltoids. The infraspinatus and rotator cuff stabilize the abducted glenohumeral joint alongside middle and lower trapezius scapular control, with slightly reduced elbow-flexion excursion for the biceps."
+  },
+  {
+    "name": "Barbell Curl",
+    "aliases": [
+      "Standing Barbell Curl"
+    ],
+    "muscleGroup": "Biceps",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "biceps_brachii"
+    ],
+    "secondaryMuscles": [
+      "brachialis",
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": [
+      "forearm_flexors",
+      "deltoid_anterior"
+    ],
+    "notes": "Fixed bilateral supinated grip locks the forearms palms-up to maximize biceps brachii flexion and supination leverage. Higher absolute barbell loading elicits stronger concentric brachioradialis and eccentric biceps brachii EMG than dumbbell curls, while the brachialis assists across the entire range, forearm flexors resist wrist extension under bar torque, and the anterior deltoid provides minor isometric humeral stabilization while standing."
+  },
+  {
+    "name": "Dumbbell Curl",
+    "aliases": [
+      "Dumbbell Bicep Curl",
+      "Bicep Curl"
+    ],
+    "muscleGroup": "Biceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "biceps_brachii"
+    ],
+    "secondaryMuscles": [
+      "brachialis",
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": [
+      "forearm_flexors",
+      "deltoid_anterior"
+    ],
+    "notes": "Unilateral free-weight elbow flexion allows natural forearm supination from neutral to palms-up through the concentric arc, combining the elbow-flexion and supination functions of the biceps brachii. The brachialis drives mid-range elbow flexion regardless of rotation, brachioradialis contributes strongly during the early neutral transition, forearm flexors control wrist alignment and grip, and the anterior deltoid stabilizes the unsupported upper arm."
+  },
+  {
+    "name": "Dumbbell Preacher Curl",
+    "aliases": [
+      "Dumbbell preacher curl"
+    ],
+    "muscleGroup": "Biceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "biceps_brachii",
+      "brachialis"
+    ],
+    "secondaryMuscles": [
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": [
+      "forearm_flexors"
+    ],
+    "notes": "Unilateral preacher curling eliminates side-to-side compensation and lets each wrist supinate freely while keeping the shoulder flexed on the pad. Shoulder flexion biases the biceps short head and restricts peak biceps activation to the initial bottom range, where high torque near full extension heavily recruits the brachialis to drive distal hypertrophy; brachioradialis and forearm flexors assist flexion and wrist control while the pad removes anterior deltoid demand."
+  },
+  {
+    "name": "Hammer Curl",
+    "aliases": [
+      "Dumbbell Hammer Curl"
+    ],
+    "muscleGroup": "Biceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "brachioradialis",
+      "brachialis"
+    ],
+    "secondaryMuscles": [
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": [
+      "forearm_flexors"
+    ],
+    "notes": "Neutral palms-facing grip aligns the radial line of pull of the brachioradialis while placing the biceps brachii at reduced supination leverage, lowering relative biceps excitation and shifting primary elbow-flexion demand onto the brachioradialis and ulnar-inserting brachialis. The biceps brachii assists as a secondary elbow flexor, and forearm flexors contract isometrically to stabilize the neutral wrist against ulnar deviation."
+  },
+  {
+    "name": "Incline Dumbbell Curl",
+    "aliases": [
+      "Incline Bicep Curl"
+    ],
+    "muscleGroup": "Biceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "biceps_brachii"
+    ],
+    "secondaryMuscles": [
+      "brachialis",
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": [
+      "forearm_flexors",
+      "deltoid_anterior"
+    ],
+    "notes": "Reclining on an incline bench extends the shoulder behind the torso, pre-stretching the biarticular long head of the biceps brachii while maintaining high RMS activation across a broad range of motion. Unlike shoulder-flexed preacher curls that shorten the long head and bias the short head, incline curls load the long head at longer muscle lengths; brachialis and brachioradialis assist flexion, forearm flexors hold the grip, and the anterior deltoid lightly stabilizes the humerus against passive hyperextension while the backrest prevents torso swing."
+  },
+  {
+    "name": "Preacher Curl",
+    "aliases": [
+      "Barbell Preacher Curl",
+      "EZ-Bar Preacher Curl"
+    ],
+    "muscleGroup": "Biceps",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "biceps_brachii",
+      "brachialis"
+    ],
+    "secondaryMuscles": [
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": [
+      "forearm_flexors"
+    ],
+    "notes": "Supporting the upper arms forward in shoulder flexion places the biceps long head closer to active insufficiency toward the top, biasing short-head recruitment and concentrating peak biceps EMG in the stretched lower range. High external torque near full elbow extension strongly recruits the monoarticular brachialis for distal elbow-flexor growth, while the brachioradialis assists flexion (more noticeably with semi-supinated EZ-bar grips), forearm flexors stabilize the wrist, and pad support eliminates anterior deltoid stabilization."
+  },
+  {
+    "name": "Barbell Bench Press",
+    "aliases": [
+      "Bench_Press",
+      "Bench Press",
+      "Flat Barbell Bench Press"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "pectoralis_lower"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_upper",
+      "deltoid_anterior",
+      "triceps_brachii"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Horizontal barbell pressing maximizes sternocostal pectoralis major recruitment as the prime mover while the clavicular chest, anterior deltoids, and triceps brachii assist in shoulder adduction and elbow extension."
+  },
+  {
+    "name": "Cable Fly",
+    "aliases": [
+      "Standing Cable Fly",
+      "Cable Crossover"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "pectoralis_lower"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_upper",
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [
+      "serratus_anterior"
+    ],
+    "notes": "Standing mid-pulley horizontal adduction loads the sternocostal pectoralis major under constant cable tension while the clavicular chest, anterior deltoids, and unpinned serratus anterior assist convergence and scapular protraction."
+  },
+  {
+    "name": "Cable Fly High To Low",
+    "aliases": [
+      "High to Low Cable Fly",
+      "High-to-Low Cable Fly"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "pectoralis_lower"
+    ],
+    "secondaryMuscles": [
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [
+      "serratus_anterior"
+    ],
+    "notes": "A downward-converging cable path aligns resistance directly with the lower sternocostal pectoralis major while the anterior deltoids and serratus anterior support humeral control and terminal scapular protraction with minimal upper-chest demand."
+  },
+  {
+    "name": "Decline Bench Press",
+    "aliases": [
+      "Decline bench press"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "pectoralis_lower"
+    ],
+    "secondaryMuscles": [
+      "triceps_brachii",
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "A declined pressing angle aligns the humerus with the lower sternocostal pectoralis major as the prime mover alongside strong triceps brachii and reduced anterior deltoid assistance, with minimal clavicular recruitment."
+  },
+  {
+    "name": "Flat Dumbbell Press",
+    "aliases": [
+      "Flat DB Press"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "pectoralis_lower"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_upper",
+      "deltoid_anterior",
+      "triceps_brachii"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Independent horizontal dumbbell pressing drives the sternocostal pectoralis major through a deeper stretch and converging adduction path while recruiting the clavicular chest, anterior deltoids, and triceps brachii as synergists."
+  },
+  {
+    "name": "Flat Machine Press",
+    "aliases": [
+      "Flat machine press",
+      "Chest Press Machine"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "pectoralis_lower"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_upper",
+      "deltoid_anterior",
+      "triceps_brachii"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Guided horizontal pressing targets the sternocostal pectoralis major equivalently to free weights while minimizing stabilizer demand as the clavicular chest, anterior deltoids, and triceps brachii assist the push."
+  },
+  {
+    "name": "Incline Dumbbell Fly",
+    "aliases": [
+      "Incline dumbbell fly",
+      "Incline DB Fly"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "pectoralis_upper"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_lower",
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [
+      "biceps_brachii"
+    ],
+    "notes": "Incline horizontal adduction isolates the clavicular pectoralis major with sternocostal chest and anterior deltoid assistance, while the biceps brachii dynamically stabilizes the slightly flexed elbow without triceps involvement."
+  },
+  {
+    "name": "Incline Dumbbell Press",
+    "aliases": [
+      "Incline DB Press"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "pectoralis_upper"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_lower",
+      "deltoid_anterior",
+      "triceps_brachii"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "A 30-to-45-degree incline shifts primary emphasis to the clavicular pectoralis major while the sternocostal chest, anterior deltoids, and triceps brachii assist upward shoulder flexion and elbow lockout."
+  },
+  {
+    "name": "Incline Machine Press",
+    "aliases": [
+      "Incline machine press"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "pectoralis_upper"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_lower",
+      "deltoid_anterior",
+      "triceps_brachii"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "An upward-angled machine path focuses mechanical tension on the clavicular pectoralis major while the sternocostal chest, anterior deltoids, and triceps brachii support shoulder flexion and elbow extension."
+  },
+  {
+    "name": "Pec Deck Fly",
+    "aliases": [
+      "Pec Dec Fly",
+      "Machine Fly"
+    ],
+    "muscleGroup": "Chest",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "pectoralis_lower"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_upper",
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Guided seated horizontal adduction isolates the sternocostal pectoralis major with high pectoral activation while the clavicular chest and anterior deltoids assist and the elbow extensors remain disengaged."
+  },
+  {
+    "name": "Plank",
+    "aliases": [
+      "Forearm Plank"
+    ],
+    "muscleGroup": "Core",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": [
+      "rectus_abdominis"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "obliques",
+      "erector_spinae",
+      "serratus_anterior",
+      "quadriceps",
+      "deltoid_anterior"
+    ],
+    "notes": "Sagittal anti-extension bracing recruits the rectus abdominis primarily to resist lumbar sag, supported statically by the obliques and transversus abdominis for circumferential core stiffness, erector spinae for spinal neutrality, serratus anterior for scapular protraction, anterior deltoid for forearm weight support, and quadriceps for knee extension."
+  },
+  {
+    "name": "Russian Twist",
+    "aliases": [],
+    "muscleGroup": "Core",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": [
+      "obliques"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "rectus_abdominis",
+      "erector_spinae",
+      "quadriceps"
+    ],
+    "notes": "Rotational trunk torque elicits high alternating EMG bursts in the external and internal obliques. The rectus abdominis holds the reclined torso angle isometrically, the erector spinae (with quadratus lumborum) prevents lumbar collapse, and hip flexors (iliopsoas and rectus femoris, mapped to quadriceps) engage statically when keeping the hips flexed or feet elevated."
+  },
+  {
+    "name": "Reverse Cable Curl",
+    "aliases": [
+      "Reverse cable curl",
+      "Cable Reverse Curl"
+    ],
+    "muscleGroup": "Forearm",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "brachioradialis",
+      "forearm_extensors"
+    ],
+    "secondaryMuscles": [
+      "brachialis",
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Pronated elbow flexion places the biceps brachii at a mechanical disadvantage because its tendon wraps around the radius, markedly lowering biceps EMG compared with supinated curls while shifting elbow flexion load onto the brachioradialis and ulnar-inserting brachialis. Constant cable tension keeps the wrist extensors (notably extensor carpi radialis longus/brevis and extensor carpi ulnaris) strongly engaged isometrically to resist wrist flexion throughout the full range of motion."
+  },
+  {
+    "name": "Reverse Wrist Curl",
+    "aliases": [
+      "Barbell Reverse Wrist Curl"
+    ],
+    "muscleGroup": "Forearm",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "forearm_extensors"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Pronated wrist extension produces high concentric and eccentric EMG in the dorsal forearm extensors, led by extensor carpi radialis longus and brevis, extensor carpi ulnaris, and extensor digitorum. Full pronation aligns the extensor carpi radialis brevis line of pull efficiently, while the stationary elbow keeps brachioradialis activation low and the anterior flexors contribute only minimal grip and antagonist tone."
+  },
+  {
+    "name": "Wrist Curl",
+    "aliases": [
+      "Wrist curl",
+      "Barbell Wrist Curl"
+    ],
+    "muscleGroup": "Forearm",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "forearm_flexors"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Supinated wrist flexion isolates the anterior forearm flexors (flexor carpi radialis, flexor carpi ulnaris, palmaris longus, and flexor digitorum superficialis/profundus when rolling the bar to the fingertips), regardless of whether performed with a barbell, cable, or machine. Because the elbow stays fixed and the brachioradialis inserts on the distal radius without crossing the wrist joint, brachioradialis EMG remains minimal and forearm extensors show only low stabilizing co-activation."
+  },
+  {
+    "name": "Bulgarian Split Squat",
+    "aliases": [
+      "Dumbbell Bulgarian Split Squat"
+    ],
+    "muscleGroup": "Legs",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "quadriceps",
+      "gluteus_maximus"
+    ],
+    "secondaryMuscles": [
+      "adductors",
+      "hamstrings"
+    ],
+    "stabilizerMuscles": [
+      "gluteus_medius",
+      "obliques",
+      "erector_spinae",
+      "rectus_abdominis",
+      "forearm_flexors",
+      "gastrocnemius",
+      "soleus"
+    ],
+    "notes": "Unilateral rear-foot-elevated split squat led by high quadriceps EMG on the front leg (maximized with an upright torso) and strong gluteus maximus hip-extension output (increased by forward trunk lean or a longer stride). Single-leg loading roughly doubles gluteus medius recruitment (~70-81%+ MVIC) versus bilateral squats to prevent contralateral pelvic drop and knee valgus, while external obliques (~58-62% MVIC) resist trunk rotation alongside isometric erector spinae and rectus abdominis bracing. Adductor magnus assists hip extension and femoral tracking, hamstrings co-contract dynamically, calves stabilize the ankle rocker, and forearm flexors grip the dumbbells."
+  },
+  {
+    "name": "Calf Raise",
+    "aliases": [
+      "Standing Calf Raise",
+      "Machine Calf Raise"
+    ],
+    "muscleGroup": "Legs",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "gastrocnemius",
+      "soleus"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Standing straight-knee ankle plantarflexion places the biarticular medial and lateral gastrocnemius on an optimal length-tension curve alongside high soleus and deep tibialis posterior recruitment (whereas seated bent-knee calf raises shorten the gastrocnemius into active insufficiency and isolate the soleus). Peroneus (fibularis) longus and brevis co-activate strongly (50-80%+ MVIC) to stabilize the ankle mediolaterally and load the medial forefoot, while tibialis anterior provides only low reciprocal antagonist co-contraction."
+  },
+  {
+    "name": "Leg Curl",
+    "aliases": [
+      "Lying Leg Curl",
+      "Seated Leg Curl"
+    ],
+    "muscleGroup": "Legs",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "gastrocnemius"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Single-joint knee flexion targeting semitendinosus, semimembranosus, and both heads of biceps femoris; seated curls (~90 deg hip flexion) stretch the three biarticular heads at the hip and elicit greater overall EMG and hypertrophy than lying curls (Maeo et al. 2020), while the monoarticular biceps femoris short head responds similarly in both. The biarticular gastrocnemius provides notable knee-flexor assistance (McAllister et al. 2014) alongside deep popliteus joint stabilization, while minor medial knee flexors (gracilis and sartorius, slightly more active in lying curls) assist weakly."
+  },
+  {
+    "name": "Leg Extension",
+    "aliases": [
+      "Machine Leg Extension"
+    ],
+    "muscleGroup": "Legs",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Open-chain knee-extension isolation producing high %MVIC across vastus lateralis, vastus medialis, vastus intermedius, and rectus femoris. Unlike compound squats where hip extension limits biarticular rectus femoris length change, leg extensions load rectus femoris directly—and reclining the backrest opens the hip angle to lengthen rectus femoris and boost its EMG and hypertrophy compared with upright seating. Tibialis anterior registers only low-level background co-activation to stabilize the ankle against the pad."
+  },
+  {
+    "name": "Leg Press",
+    "aliases": [
+      "Machine Leg Press"
+    ],
+    "muscleGroup": "Legs",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "quadriceps",
+      "gluteus_maximus"
+    ],
+    "secondaryMuscles": [
+      "adductors",
+      "hamstrings"
+    ],
+    "stabilizerMuscles": [
+      "soleus",
+      "gastrocnemius"
+    ],
+    "notes": "Supported closed-chain machine press dominated by the quadriceps (vastus lateralis, vastus medialis, and rectus femoris, with low foot placement increasing knee flexion and rectus femoris EMG) alongside gluteus maximus hip extension (enhanced by higher foot placement, though lower overall than free-weight squats). Adductor magnus assists hip extension from deep flexion, hamstrings show low-to-moderate co-contraction (~half that of back squats per Escamilla et al.), and soleus and gastrocnemius stabilize the ankle against the footplate. Because the angled backrest supports the spine, erector spinae and abdominal bracing stay minimal (<20% MVIC)."
+  },
+  {
+    "name": "Lunges",
+    "aliases": [
+      "Dumbbell Lunges",
+      "Walking Lunges"
+    ],
+    "muscleGroup": "Legs",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "quadriceps",
+      "gluteus_maximus"
+    ],
+    "secondaryMuscles": [
+      "adductors",
+      "hamstrings",
+      "gastrocnemius",
+      "soleus"
+    ],
+    "stabilizerMuscles": [
+      "gluteus_medius",
+      "erector_spinae",
+      "obliques",
+      "rectus_abdominis",
+      "forearm_flexors"
+    ],
+    "notes": "Dynamic unilateral stepping lunge generating top %MVIC in the quadriceps across eccentric deceleration and concentric propulsion, with walking lunges eliciting higher gluteus maximus, lumbar erector spinae, and core/oblique EMG than static split squats due to shifting center-of-mass transitions (longer strides and slight forward trunk lean shift demand toward glutes and hamstrings). Gluteus medius fires strongly (~60-68% MVIC) to stabilize the pelvis upon foot strike, adductor magnus assists hip extension and knee alignment, gastrocnemius and soleus aid terminal push-off, and forearm flexors hold the dumbbells."
+  },
+  {
+    "name": "Romanian Deadlift",
+    "aliases": [
+      "RDL",
+      "Barbell Romanian Deadlift"
+    ],
+    "muscleGroup": "Legs",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "hamstrings",
+      "gluteus_maximus"
+    ],
+    "secondaryMuscles": [
+      "adductors"
+    ],
+    "stabilizerMuscles": [
+      "erector_spinae",
+      "forearm_flexors",
+      "latissimus_dorsi",
+      "trapezius_middle",
+      "rectus_abdominis",
+      "obliques"
+    ],
+    "notes": "Hip-hinge movement with fixed soft knees generating very high eccentric and concentric EMG (80-90%+ MVIC) in the stretched hamstrings (semitendinosus, semimembranosus, and biceps femoris long head) and strong gluteus maximus drive (50-75% MVIC) at lockout. Adductor magnus acts as a powerful synergistic hip extensor in deep hip flexion, while erector spinae (50-65%+ MVIC), rectus abdominis, and obliques contract isometrically to maintain a rigid neutral spine. Latissimus dorsi and middle trapezius stabilize the scapulae and keep the barbell close to the center of mass while forearm flexors sustain continuous grip."
+  },
+  {
+    "name": "Squat",
+    "aliases": [
+      "Barbell Back Squat",
+      "Back Squat"
+    ],
+    "muscleGroup": "Legs",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "quadriceps",
+      "gluteus_maximus",
+      "adductors"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "stabilizerMuscles": [
+      "erector_spinae",
+      "rectus_abdominis",
+      "obliques",
+      "soleus",
+      "gluteus_medius"
+    ],
+    "notes": "Heavy compound knee-and-hip extension driven primarily by the uniarticular quadriceps vasti, gluteus maximus, and the posterior hip-extensor head of adductor magnus (full-squat MRI data by Kubo et al. 2019 show +6.7% glute max, +6.2% adductor, and +4.9% quad growth). Biarticular rectus femoris and hamstrings show lower hypertrophy and moderate EMG (15-35% MVIC) because concurrent hip and knee flexion/extension keeps net length relatively constant. Erector spinae (40-70%+ MVIC), rectus abdominis, and obliques (30-60%+ MVIC) brace isometrically via intra-abdominal pressure; soleus (20-40% MVIC) controls ankle dorsiflexion while deep knee flexion slackens the gastrocnemius, and gluteus medius (26-45% MVIC) stabilizes frontal-plane hip alignment."
+  },
+  {
+    "name": "Neck Extension",
+    "aliases": [],
+    "muscleGroup": "Neck",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "neck_extensors"
+    ],
+    "secondaryMuscles": [
+      "trapezius_upper"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Resisted cervical extension recruits the splenius capitis/cervicis, semispinalis capitis/cervicis, cervical erectors, and suboccipitals as primary movers. The upper trapezius and levator scapulae assist extension via cranial attachments and stabilize the cervicothoracic base against the machine pad."
+  },
+  {
+    "name": "Neck Flexion",
+    "aliases": [
+      "Plate Neck Flexion"
+    ],
+    "muscleGroup": "Neck",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "sternocleidomastoid"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Resisted cervical flexion targets the bilateral sternocleidomastoid as the prime mover alongside anterior/middle scalenes and deep cervical flexors (longus colli and longus capitis, mapped to sternocleidomastoid). Upper trapezius activation remains minimal when performed without shrugging."
+  },
+  {
+    "name": "Neck Harness Work",
+    "aliases": [
+      "Neck Harness Extension"
+    ],
+    "muscleGroup": "Neck",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "neck_extensors"
+    ],
+    "secondaryMuscles": [
+      "trapezius_upper"
+    ],
+    "stabilizerMuscles": [
+      "erector_spinae",
+      "sternocleidomastoid"
+    ],
+    "notes": "Cable harness resistance primarily loads the posterior neck extensors through a continuous strength curve, assisted by the upper trapezius and levator scapulae. Thoracic and lumbar erector spinae brace isometrically against the forward cable pull, while the sternocleidomastoid provides lateral/eccentric control and activates during multi-directional harness work."
+  },
+  {
+    "name": "Cable Lateral Raise",
+    "aliases": [
+      "Cable lateral raise"
+    ],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "deltoid_lateral"
+    ],
+    "secondaryMuscles": [
+      "trapezius_upper",
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [
+      "infraspinatus"
+    ],
+    "notes": "Low-pulley cable resistance applies a near-perpendicular horizontal vector right from zero degrees, shifting peak lateral deltoid tension into the stretched bottom and mid-range compared to dumbbells. Supraspinatus and infraspinatus fire early to stabilize against the medial pull, with anterior deltoids and upper traps assisting elevation and scapular control."
+  },
+  {
+    "name": "Dumbbell Shoulder Press",
+    "aliases": [
+      "Dumbbell Press",
+      "Seated Dumbbell Shoulder Press"
+    ],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "deltoid_anterior",
+      "deltoid_lateral"
+    ],
+    "secondaryMuscles": [
+      "triceps_brachii",
+      "pectoralis_upper",
+      "trapezius_upper"
+    ],
+    "stabilizerMuscles": [
+      "serratus_anterior",
+      "infraspinatus"
+    ],
+    "notes": "Free-weight overhead pressing maximizes anterior deltoid recruitment while scapular-plane arm abduction and frontal-plane stabilization keep the lateral deltoids and rotator cuff (infraspinatus and supraspinatus) highly active. Triceps brachii extend the elbows toward lockout, the clavicular upper chest assists initial shoulder flexion, and upper traps plus serratus anterior upwardly rotate the scapulae overhead."
+  },
+  {
+    "name": "Farmer's Walk",
+    "aliases": [
+      "Farmers Walk",
+      "Farmer Walk"
+    ],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "trapezius_upper",
+      "forearm_flexors"
+    ],
+    "secondaryMuscles": [
+      "gluteus_maximus",
+      "quadriceps",
+      "gastrocnemius",
+      "soleus"
+    ],
+    "stabilizerMuscles": [
+      "obliques",
+      "rectus_abdominis",
+      "erector_spinae",
+      "trapezius_middle",
+      "forearm_extensors",
+      "brachioradialis",
+      "gluteus_medius"
+    ],
+    "notes": "Heavy loaded carries impose continuous high-intensity isometric demand on the upper traps (resisting downward scapular depression) and forearm flexors (crush grip). Obliques, rectus abdominis, and erector spinae stiffen the trunk against lateral sway and flexion, middle traps and forearm extensors/brachioradialis brace the girdle and wrists, gluteus medius prevents pelvic drop during single-leg stance, and glutes, quads, and calves propel the loaded gait."
+  },
+  {
+    "name": "Lateral Raise",
+    "aliases": [
+      "Dumbbell Lateral Raise"
+    ],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "deltoid_lateral"
+    ],
+    "secondaryMuscles": [
+      "trapezius_upper",
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [
+      "infraspinatus"
+    ],
+    "notes": "Gravity-loaded dumbbell abduction creates an ascending resistance curve that peaks near 60-90 degrees, eliciting peak lateral deltoid EMG. The rotator cuff (supraspinatus and infraspinatus) initiates early abduction and centers the humeral head, while anterior deltoids stabilize scapular-plane elevation and upper traps assist upward scapular rotation near shoulder height."
+  },
+  {
+    "name": "Machine Shoulder Press",
+    "aliases": [
+      "Machine shoulder press",
+      "Shoulder Press Machine"
+    ],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "deltoid_anterior"
+    ],
+    "secondaryMuscles": [
+      "deltoid_lateral",
+      "triceps_brachii",
+      "pectoralis_upper",
+      "trapezius_upper"
+    ],
+    "stabilizerMuscles": [
+      "serratus_anterior"
+    ],
+    "notes": "Fixed-track guided pressing isolates the anterior deltoid as the prime mover by eliminating multi-planar free-weight balance demands. Lateral deltoids assist abduction, triceps brachii drive upper-range elbow lockout, the clavicular upper chest contributes along forward-angled paths, and upper traps with serratus anterior stabilize scapular upward rotation."
+  },
+  {
+    "name": "Rear Delt Fly",
+    "aliases": [
+      "Reverse Pec Deck",
+      "Rear Delt Machine Fly"
+    ],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "deltoid_posterior"
+    ],
+    "secondaryMuscles": [
+      "trapezius_middle",
+      "deltoid_lateral"
+    ],
+    "stabilizerMuscles": [
+      "infraspinatus"
+    ],
+    "notes": "Chest-supported horizontal abduction on a reverse pec deck isolates the posterior deltoid at high MVIC without lower-back momentum. Using a neutral grip elevates both posterior deltoid and infraspinatus activation over a pronated grip, while middle traps and rhomboids stabilize scapular retraction and lateral deltoid fibers assist transverse abduction."
+  },
+  {
+    "name": "Shrugs",
+    "aliases": [
+      "Dumbbell Shrugs"
+    ],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "trapezius_upper"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "trapezius_middle",
+      "neck_extensors",
+      "forearm_flexors"
+    ],
+    "notes": "Vertical scapular elevation with dumbbells elicits peak EMG activity in the upper trapezius and underlying levator scapulae. Middle trapezius fibers stabilize the shoulder girdle (increasing if arms abduct slightly), neck extensors brace the cervical spine against heavy downward loads, and forearm flexors sustain high isometric grip tension."
+  },
+  {
+    "name": "Single-Arm Rear Delt Pec Deck",
+    "aliases": [
+      "Single Arm Rear Delt Pec Dec"
+    ],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "machine",
+    "primaryMuscles": [
+      "deltoid_posterior"
+    ],
+    "secondaryMuscles": [
+      "trapezius_middle",
+      "deltoid_lateral"
+    ],
+    "stabilizerMuscles": [
+      "infraspinatus",
+      "obliques"
+    ],
+    "notes": "Sitting sideways for unilateral reverse pec deck flyes allows the arm to cross further past the midline for a deeper posterior deltoid pre-stretch and direct fiber alignment. Infraspinatus stabilizes the humeral head, middle traps and rhomboids control unilateral scapular retraction, lateral deltoid fibers assist abduction, and the obliques brace isometrically against off-center trunk rotation."
+  },
+  {
+    "name": "Upright Row",
+    "aliases": [
+      "Barbell Upright Row"
+    ],
+    "muscleGroup": "Shoulders",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "deltoid_lateral",
+      "trapezius_upper"
+    ],
+    "secondaryMuscles": [
+      "deltoid_anterior",
+      "biceps_brachii",
+      "brachialis",
+      "brachioradialis",
+      "trapezius_middle"
+    ],
+    "stabilizerMuscles": [
+      "infraspinatus"
+    ],
+    "notes": "Vertical pulling combines shoulder abduction and scapular elevation to drive high lateral deltoid and upper trapezius activation, both increasing with wider grips. Anterior deltoids assist anterior bar travel, biceps, brachialis, and brachioradialis flex the pronated elbows, middle traps stabilize the scapulae, and the rotator cuff (supraspinatus and infraspinatus) initiates humeral elevation."
+  },
+  {
+    "name": "Close-Grip Bench Press",
+    "aliases": [
+      "Close Grip Bench Press"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "barbell",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [
+      "pectoralis_lower",
+      "pectoralis_upper",
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Heavy compound barbell press where narrower hand spacing and tucked elbows increase elbow-extension range and triceps brachii EMG activity over wide-grip benching. Both the sternocostal and clavicular pectoralis heads assist alongside strong shoulder-flexion drive from the anterior deltoid."
+  },
+  {
+    "name": "Dips",
+    "aliases": [
+      "Tricep Dips",
+      "Parallel Bar Dips"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": [
+      "triceps_brachii",
+      "pectoralis_lower"
+    ],
+    "secondaryMuscles": [
+      "deltoid_anterior"
+    ],
+    "stabilizerMuscles": [
+      "latissimus_dorsi",
+      "trapezius_lower",
+      "rectus_abdominis",
+      "forearm_flexors"
+    ],
+    "notes": "Closed-chain compound press generating high EMG activation across the triceps brachii and sternocostal lower chest, with an upright torso biasing the triceps. The anterior deltoid assists shoulder flexion strongly, lower trapezius and latissimus dorsi depress the scapulae, rectus abdominis prevents trunk swing, and forearm flexors grip the bars."
+  },
+  {
+    "name": "Overhead Cable Extension",
+    "aliases": [
+      "Overhead Extension",
+      "Cable Overhead Tricep Extension"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "deltoid_anterior",
+      "rectus_abdominis",
+      "forearm_flexors",
+      "forearm_extensors"
+    ],
+    "notes": "Overhead shoulder flexion places the biarticular triceps long head at a longer muscle length, yielding greater overall triceps hypertrophy than neutral-arm pushdowns. The anterior deltoid holds the humerus elevated overhead, the rectus abdominis prevents lumbar hyperextension, and forearm flexors and extensors stabilize the handle."
+  },
+  {
+    "name": "Overhead Dumbbell Extension",
+    "aliases": [
+      "Dumbbell Overhead Tricep Extension"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "deltoid_anterior",
+      "rectus_abdominis",
+      "forearm_flexors",
+      "forearm_extensors"
+    ],
+    "notes": "Overhead free-weight elbow extension maximizing stretch-mediated tension across the triceps long head under vertical gravity. The anterior deltoid stabilizes humeral flexion overhead, the rectus abdominis braces against rib flare and lumbar arching, and forearm flexors and extensors control the dumbbell behind the head."
+  },
+  {
+    "name": "Single-Arm Tricep Pushdown",
+    "aliases": [
+      "Single hand tricep push down",
+      "Single Arm Tricep Pushdown"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "latissimus_dorsi",
+      "obliques",
+      "rectus_abdominis",
+      "forearm_flexors",
+      "forearm_extensors"
+    ],
+    "notes": "Unilateral elbow-extension isolation targeting the triceps brachii while allowing natural wrist and elbow alignment. The offset cable load adds anti-rotation and anti-lateral-flexion demand on the obliques and rectus abdominis, while the latissimus dorsi pins the humerus and forearm flexors and extensors lock the wrist neutral."
+  },
+  {
+    "name": "Tricep Pushdown",
+    "aliases": [
+      "Triceps Pushdown",
+      "Cable Tricep Pushdown"
+    ],
+    "muscleGroup": "Triceps",
+    "equipmentType": "cable",
+    "primaryMuscles": [
+      "triceps_brachii"
+    ],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "latissimus_dorsi",
+      "forearm_flexors",
+      "forearm_extensors",
+      "rectus_abdominis"
+    ],
+    "notes": "Strict elbow-extension isolation targeting all three triceps heads with the humerus at the side. Latissimus dorsi contracts isometrically to keep the upper arm pinned against the upward cable pull, forearm flexors and extensors stabilize a neutral wrist and grip, and the rectus abdominis braces the torso against forward sway."
+  }
+]

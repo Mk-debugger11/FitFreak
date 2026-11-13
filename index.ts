@@ -1,3 +1,4 @@
+import './src/core/threePolyfills';
 import { registerRootComponent } from 'expo';
 
 import App from './src/core/App';

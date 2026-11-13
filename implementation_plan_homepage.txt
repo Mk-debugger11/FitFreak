@@ -1,0 +1,348 @@
+# FitFreak - New Home Page with 3D Muscle Map
+
+Status: Phases 1-5 implemented (written 2026-10-29; Phase 1 EAS preview APK build and Phase 6 optional extras remain unchecked).
+Work through the phases in order (Phase 4 can run alongside Phase 3). Tick the [ ] boxes as
+work lands; each phase ends with a "Done when" check.
+
+
+## Goal
+
+- A new Home tab showing a 3D body with every major muscle. Muscles trained in the chosen
+  period light up: the more sets, the brighter.
+- A Daily / Weekly switch picks the period.
+- Everything the app does today (workout log + active workout) moves, unchanged, to a new
+  Workout tab.
+
+
+## Starting point
+
+- One bottom tab, "Home". src/core/HomeTab.tsx shows ActiveWorkoutScreen while a workout is
+  running, otherwise WorkoutLogScreen.
+- Each CompletedWorkout is one exercise: `name`, muscle group `category`, `totalSets` (completed
+  sets only) and `startTime`. That is enough to work out which muscles were trained, so the
+  backend needs no changes.
+- At launch, historyStore.fetchData() loads the last 7 days of workouts, so "today" and "this
+  week" are always in memory.
+- Bug to fix first: MUSCLE_GROUPS (the list that target-muscle chips and workout categories are
+  picked from) spells Forearm, Abs and Core, but DEFAULT_MUSCLE_EXERCISES uses Forearms and
+  Abs/Core. Picking Forearm, Abs or Core shows no built-in exercises. The muscle map depends on
+  these names matching. Both lists are in src/constants/exercises.ts.
+- expo-asset and expo-file-system are only installed inside node_modules/expo/node_modules.
+  React Three Fiber needs them at the top level.
+
+
+## Decisions
+
+| Topic                | Decision                                                           |
+|----------------------|--------------------------------------------------------------------|
+| What lights up       | Completed workouts (what was done), not the target-muscle chips    |
+| "Weekly"             | Current calendar week, Monday to Sunday                            |
+| Brightness           | Completed sets: 1 per set for main muscles, 0.5 for helper muscles |
+| Level of detail      | About 30 visible muscles; left and right are separate meshes       |
+| Where old screens go | A second bottom tab, "Workout"                                     |
+| 3D library           | React Three Fiber 9.x + drei 10.x + expo-gl (works in Expo Go)     |
+| 3D model             | Z-Anatomy (free, CC BY-SA 4.0)                                     |
+| Backend              | No changes for v1                                                  |
+
+
+## Phase 1 - Prove 3D works on a real phone
+
+Before building any UI, confirm that a .glb model loads, rotates and responds to taps, both in
+Expo Go and in a release APK.
+
+- [x] Install (npx expo install picks the versions that match SDK 56):
+        npx expo install expo-gl expo-asset expo-file-system
+        npm install three @react-three/fiber @react-three/drei
+        npm install -D @types/three
+      Stay on @react-three/fiber 9.x and @react-three/drei 10.x; newer majors are alphas.
+      Fiber 9.8.2 already includes the fix for the newer-Expo file-system crash.
+- [x] Add metro.config.js so the bundler accepts .glb files:
+        const { getDefaultConfig } = require('expo/metro-config');
+        const config = getDefaultConfig(__dirname);
+        config.resolver.assetExts.push('glb');
+        module.exports = config;
+- [x] On a temporary test screen (don't commit it), load any free human .glb with useGLTF and
+      OrbitControls from @react-three/drei/native, and recolor a mesh when it's tapped.
+- [ ] Test in Expo Go, then in an `eas build --profile preview` APK on a real Android phone.
+      Android release builds load bundled files through a different code path, and expo-gl is
+      new native code, so the APK has to be rebuilt anyway.
+
+Done when: the model shows, dragging rotates it and tapping recolors a mesh, in both Expo Go
+and the APK.
+
+
+## Phase 2 - Split the tabs and fix the muscle-group names
+
+- [x] git mv src/core/HomeTab.tsx src/core/WorkoutTab.tsx and rename the export to WorkoutTab.
+      The logic stays the same.
+- [x] src/core/Navigation.tsx: TabParamList = { Home: undefined; Workout: undefined }.
+        Home    -> HomeScreen (a placeholder until Phase 5), AppHeader, House icon.
+        Workout -> WorkoutTab, standard header titled "Workout" (its styles are already in
+                   screenOptions), Dumbbell icon, and a dot badge while
+                   activeWorkoutStore.currentWorkout is set.
+- [x] src/constants/exercises.ts:
+        - Make MUSCLE_GROUPS `as const` and export
+          type MuscleGroup = (typeof MUSCLE_GROUPS)[number].
+        - Type DEFAULT_MUSCLE_EXERCISES as Record<MuscleGroup, ExerciseMetadata[]>, with empty
+          arrays for Cardio and Full Body, so a misspelled or missing key fails
+          `npm run typecheck`. Add an isMuscleGroup() guard where a plain string is used as a
+          key (listExercisesForCategory).
+        - Rename the Forearms key to Forearm.
+        - Split Abs/Core into Abs (Cable Crunch, Hanging Leg Raise, Reverse Crunch) and Core
+          (Plank, Russian Twist). Update each entry's muscleGroup field to match.
+      No data migration: saved target muscles, categories and custom exercises already use the
+      MUSCLE_GROUPS spellings.
+- [x] Update the comments that call WorkoutLogScreen "the home screen".
+
+Done when: both tabs work, picking Forearm, Abs or Core lists built-in exercises, and
+`npm run typecheck` passes.
+
+
+## Phase 3 - Muscle data (plain TypeScript, no UI)
+
+3a. Muscle list - new src/constants/muscles.ts
+
+- [x] Export a MuscleId type and a display label for each muscle. In the model, each muscle's
+      meshes are named <muscleId>_l and <muscleId>_r.
+        Front: sternocleidomastoid (neck), deltoid_anterior, deltoid_lateral, pectoralis_upper,
+               pectoralis_lower, serratus_anterior, biceps_brachii, brachialis, brachioradialis,
+               forearm_flexors, rectus_abdominis, obliques, quadriceps, adductors,
+               tibialis_anterior
+        Back:  trapezius_upper, trapezius_middle, trapezius_lower, deltoid_posterior,
+               infraspinatus, teres_major, latissimus_dorsi, erector_spinae (lower back),
+               triceps_brachii, forearm_extensors, gluteus_maximus, gluteus_medius, hamstrings,
+               gastrocnemius, soleus, neck_extensors
+      Deep muscles covered by others (for example rhomboids, under the middle traps) are not
+      modelled; their work counts toward the muscle on top.
+- [x] Group fallback, used when an exercise isn't in the catalogue (custom or renamed):
+        Chest      pectoralis_upper, pectoralis_lower
+        Back       latissimus_dorsi, trapezius_middle, trapezius_lower, teres_major, erector_spinae
+        Shoulders  deltoid_anterior, deltoid_lateral, deltoid_posterior
+        Biceps     biceps_brachii, brachialis
+        Triceps    triceps_brachii
+        Forearm    forearm_flexors, forearm_extensors, brachioradialis
+        Legs       quadriceps, hamstrings, gluteus_maximus, adductors, gastrocnemius
+        Abs        rectus_abdominis, obliques
+        Core       rectus_abdominis, obliques, erector_spinae
+        Neck       sternocleidomastoid, neck_extensors
+        Cardio     nothing
+        Full Body  every muscle, at helper weight (0.5)
+
+3b. Muscles per exercise - src/constants/exercises.ts
+
+- [x] Add primaryMuscles and secondaryMuscles to ExerciseMetadata and fill them in for all ~45
+      catalogue exercises. Examples:
+        Barbell Bench Press     main: pectoralis_lower             helpers: deltoid_anterior, triceps_brachii
+        Incline Dumbbell Press  main: pectoralis_upper             helpers: deltoid_anterior, triceps_brachii
+        Lat Pulldown            main: latissimus_dorsi             helpers: biceps_brachii, teres_major, trapezius_middle
+        Romanian Deadlift       main: hamstrings, gluteus_maximus  helpers: erector_spinae
+        Lateral Raise           main: deltoid_lateral              helpers: trapezius_upper
+        Shrugs                  main: trapezius_upper
+        Hammer Curl             main: brachialis, brachioradialis  helpers: biceps_brachii
+        Calf Raise              main: gastrocnemius, soleus
+- [x] src/utils/exercise.ts: resolveExerciseMuscles(name, category). Match the catalogue by name
+      (case-insensitive, like resolveEquipmentType), else use the group fallback, else return
+      null (the workout can't be shown on the body).
+
+3c. Dates - src/utils/date.ts
+
+- [x] startOfWeek(date) (Monday 00:00, local time), endOfWeek(date) (Sunday 23:59:59.999) and
+      isWithin(date, start, end).
+
+3d. Scoring - new src/features/home/muscleActivity.ts (pure functions, no React)
+
+- [x] computeMuscleActivity(workouts, { start, end }) returns:
+        per muscle: { sets, score, exercises }
+        totals:     { workouts, sets }
+        unmapped:   number of workouts that couldn't be placed (e.g. Mixed/Other, custom name)
+      Rules:
+        - Only workouts whose startTime falls inside the range.
+        - Use totalSets (completed sets only); a workout with 0 completed sets adds nothing.
+        - Main muscles: score += sets. Helper muscles: score += sets x 0.5.
+- [x] Levels, kept in one constant so they're easy to tune:
+        Daily:  score >= 6 high,  >= 3 moderate, > 0 light
+        Weekly: score >= 10 high, >= 5 moderate, > 0 light
+      (10+ weekly sets per muscle is a common muscle-building guideline.)
+
+3e. Hook - new src/features/home/useMuscleActivity.ts
+
+- [x] useMuscleActivity(period: 'daily' | 'weekly'): select only completedWorkouts from
+      useHistoryStore, build the range (today or this week) and memoize computeMuscleActivity.
+- [x] Rebuild the range when the screen regains focus, so "Today" rolls over after midnight.
+
+Done when: `npm run typecheck` passes and computeMuscleActivity gives the expected levels for
+a few hand-made workouts (one today, one earlier this week, one Mixed/Other).
+
+
+## Phase 4 - Prepare the 3D model from Z-Anatomy (longest step; can run alongside Phase 3)
+
+Source: Z-Anatomy, "The libre 3D atlas of anatomy". Every muscle is its own object.
+  - Blender template: https://github.com/Z-Anatomy/Models-of-human-anatomy
+    Follow its README: install Z-Anatomy.zip as a Blender application template, then
+    File > New > Z-Anatomy. The README's examples use Blender 3.1/3.2.
+  - FBX exports, if the template is awkward: https://github.com/LluisV/Z-Anatomy
+    (branch PC-Version, folder Resources/Models/FBX)
+  - Option A (used): https://github.com/tiralonghipol/free-muscles (`public/anatomy.glb`),
+    a pre-separated Z-Anatomy GLB export preserving `userData` metadata (`kind`, `label`,
+    `side`, `group`).
+
+License (CC BY-SA 4.0) - required:
+  - Credit both in the app and in the repo:
+      "Z-Anatomy - The libre 3D atlas of anatomy - CC-BY-SA 4.0"
+      "BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan"
+  - The edited model (body.glb) must stay under CC BY-SA 4.0. Keep a license note next to it.
+  - Use only muscles plus a neutral base. A few Z-Anatomy extras (e.g. the inner ear and kidney
+    models) are non-commercial-only; leave them out.
+
+Model preparation steps (completed via Option A: `free-muscles` + `@gltf-transform` + `src/constants/anatomyMap.ts`, without manual Blender edits):
+- [x] Keep the outer layer of the muscles in 3a, plus one neutral base mesh (skin or skeleton)
+      for the head, hands, feet and joints.
+      (Option A: `free-muscles` provides muscles plus neutral skeleton/connective meshes
+      without non-commercial extras; deep/sub-muscles map onto superficial `MuscleId`s via
+      `src/constants/anatomyMap.ts`.)
+- [x] Join the objects that make up one app muscle, per side. Example: rectus femoris + the
+      three vasti -> quadriceps_l. If a muscle that 3a splits (upper/lower chest, trapezius
+      parts) comes as one object, separate it (Edit Mode > select faces > P > Selection), or
+      merge those IDs in muscles.ts.
+      (Option A: kept the ~155 unique `free-muscles` muscle labels across 325 muscle meshes
+      and rolled them up onto all 31 `MuscleId`s in `src/constants/anatomyMap.ts` instead of
+      joining/splitting meshes in Blender.)
+- [x] Name the objects <muscleId>_l or <muscleId>_r (three.js uses object names, not mesh-data
+      names), using only lowercase letters, digits and underscores. three.js strips
+      . : / [ ] from names, so Blender's "Deltoid.L" or ".001" suffixes arrive mangled.
+      (Option A: preserved glTF node `extras`/`userData.label` from `free-muscles` and
+      mapped all 31 `MuscleId`s via `resolveAnatomyMuscleId()` in
+      `src/constants/anatomyMap.ts` instead of Blender `<muscleId>_l` / `_r` renaming.)
+- [x] One material per object, so each muscle loads as a single mesh.
+      (Verified: 666 single-mesh nodes with 0 embedded materials; shared `theme.colors.anatomy`
+      materials are created and assigned at runtime in `src/features/home/BodyModel.tsx`.)
+- [x] Apply all transforms. Y-up, about 1.8 units tall, facing +Z (glTF's "front").
+      (Option A: `free-muscles` GLB is Y-up, ~1.7-1.8 units tall, facing +Z as exported,
+      with original node transforms preserved rather than baked in Blender.)
+- [x] Decimate to 50-80k triangles in total. Delete UVs, textures, bones and shape keys; the app
+      sets colors itself.
+      (Verified: vertex-decimated via `@gltf-transform` to 78,693 triangles total with 0
+      materials, 0 textures, 0 UVs, 0 skins, and 0 animations.)
+- [x] Export as glTF Binary (.glb), then optimize:
+        npx @gltf-transform/cli weld body-raw.glb body-welded.glb
+        npx @gltf-transform/cli quantize body-welded.glb body.glb
+        npx @gltf-transform/cli inspect body.glb      (check names and triangle count)
+      Do NOT use Draco or Meshopt compression: their decoders need WebAssembly or Web Workers,
+      which React Native doesn't have.
+      (Option A: Draco-decompressed and decimated `free-muscles` GLB via `@gltf-transform`
+      into uncompressed glTF 2.0 binary with zero `extensionsUsed` / `extensionsRequired`.)
+- [x] Save as assets/models/body.glb (target: 3 MB or less) with its license note.
+      (Verified: `assets/models/body.glb` is 2.48 MB / 2.37 MiB paired with
+      `assets/models/LICENSE.txt` with CC BY-SA 4.0, Z-Anatomy, BodyParts3D, and
+      `free-muscles` attribution.)
+
+Done when: body.glb loads on the Phase 1 test screen and every muscle in 3a is found by name
+(or mapped via `src/constants/anatomyMap.ts` — verified: all 31 `MuscleId`s mapped and loaded).
+
+
+## Phase 5 - Home screen
+
+New and changed files:
+  src/features/home/HomeScreen.tsx         UI state (period, selected muscle, front/back); reads the stores
+  src/features/home/BodyViewer.tsx         <Canvas frameloop="demand">, lights, OrbitControls, spinner, error fallback
+  src/features/home/BodyModel.tsx          loads body.glb, indexes meshes by muscle once, colors by level, tap -> muscle
+  src/features/home/MuscleLegend.tsx       none / light / moderate / high
+  src/features/home/MuscleSummary.tsx      "3 workouts, 14 sets" plus muscle chips sorted by score
+  src/features/home/MuscleDetailSheet.tsx  built on ModalSheet: sets and exercises for one muscle
+  src/components/SegmentedControl.tsx      Daily | Weekly (also export it from components/index.ts)
+  src/theme.ts                             muscle colors (`theme.colors.anatomy`): idle gray, then light / moderate / high toward colors.primary
+  src/constants/anatomyMap.ts              Option A mapping from GLB `userData.label` to all 31 `MuscleId`s
+
+Layout, top to bottom: AppHeader; Daily | Weekly with a period label ("Today, 29 Oct" or
+"27 Oct - 2 Nov"); the 3D body with a Front/Back button; legend; summary strip.
+
+Tasks:
+- [x] Load the model with useGLTF(require('../../../assets/models/body.glb'), false, false).
+      The two false flags turn off the Draco and Meshopt decoders.
+- [x] Create the materials once (idle, light, moderate, high, base body, selected). When levels
+      change, swap mesh.material and call invalidate(). With frameloop="demand" the GPU only
+      works while the body is rotating or the data changes.
+- [x] OrbitControls: enablePan={false}, limit the polar angle so the body stays upright, set min
+      and max distance. If pinch-zoom is flaky on Android, turn zoom off.
+      (Zoom turned off via `enableZoom={false}`; polar angle clamped to `0.25*PI..0.72*PI`.)
+- [x] Taps: React Three Fiber's native canvas only fires onClick if the finger moved less than
+      20 px, so rotating never selects. In onClick, call e.stopPropagation() and map
+      e.object.name to a muscle ID by stripping _l / _r.
+      (Option A: resolves `e.object.userData` via `resolveAnatomyMuscleId()` in
+      `src/constants/anatomyMap.ts`.)
+- [x] Front/Back button: animate the model's rotation.y to 0 or Math.PI.
+- [x] The canvas takes every touch that starts on it, so don't put it inside a ScrollView. Use a
+      fixed layout and show details in the sheet.
+- [x] Keep the canvas mounted across tab switches. Bottom tabs already do this; don't add
+      unmount-on-blur.
+- [x] Error boundary around the canvas: if 3D fails (some emulators), still show the summary
+      and muscle list.
+- [x] Empty period: all-gray body, "No workouts today" (or "this week") and a button that calls
+      navigation.navigate('Workout').
+- [x] Workout in progress: a "Continue workout" banner that opens the Workout tab.
+- [x] Credits (required by the license): an About/Credits section with the two lines from
+      Phase 4 (Anatomy Model Credits modal in `HomeScreen.tsx` including `free-muscles`).
+- [x] Follow the existing conventions: only HomeScreen reads the stores, child components take
+      props, and no colors outside theme.ts.
+
+Done when: finishing a workout on the Workout tab immediately updates the Home body, the
+Daily/Weekly switch works, and tapping a muscle opens its details.
+
+
+## Phase 6 - Optional extras
+
+- [ ] < > arrows to browse past days and weeks. Add historyStore.fetchWorkoutsForRange(start,
+      end): one api.getWorkouts call, then mark each day in fetchedDates. The existing
+      GET /workouts?startDate&endDate already supports ranges.
+- [ ] Count completed sets from the workout in progress, so the body lights up during a workout.
+- [ ] Let users pick muscles for custom exercises: CustomExerciseModal, a `muscles` field on
+      backend/models/CustomExercise.js, and the parser in src/services/api.ts.
+- [ ] Show today's target-muscle chips as a faint outline until they're trained.
+- [ ] Fade colors smoothly when levels change.
+
+
+## Wrap-up
+
+- [x] Update currentStatus.txt: two tabs, src/features/home, new dependencies, the model and
+      its license.
+
+
+## Risks
+
+- The model. Cleaning up Z-Anatomy is the biggest unknown. BodyViewer only receives a level per
+  muscle, so a 2D front/back SVG map (react-native-svg is already installed) could replace it
+  without changing any Phase 3 code.
+- 3D on Android. expo-gl can misbehave on some devices and emulators; Phase 1 is there to catch
+  this early.
+- Pinch-zoom through OrbitControls may be unreliable with React Native touch. Rotation matters
+  most, so drop zoom if needed.
+- Custom or renamed exercises light up at the group level only (e.g. all of Back) until the
+  Phase 6 muscle tagging.
+- App size grows by the model (target 3 MB or less) plus three.js.
+
+
+## How to verify
+
+- `npm run typecheck` and `npx expo export`.
+- Log 3 completed sets of Barbell Bench Press. Daily: lower chest brightest, front delts and
+  triceps lighter. Weekly: also shows earlier days this week. Deleting the workout clears it.
+- Mixed/Other with a custom name is counted as "not shown on the body". Cardio lights nothing.
+  Full Body lights everything faintly.
+- Rotating never selects a muscle. Switching tabs many times doesn't crash or reload the model.
+- On Monday the weekly view starts empty; on Sunday it still shows the whole week.
+- Preview APK on a low-end Android phone: the model loads in about 1-2 seconds and rotates
+  smoothly.
+
+
+## References
+
+- React Three Fiber install (React Native section):
+  https://r3f.docs.pmnd.rs/getting-started/installation
+- Expo file-system crash in older versions (fixed in @react-three/fiber 9.8.2, which loads
+  expo-file-system/legacy first): https://github.com/pmndrs/drei/issues/2572
+- React Native thread, including the new-architecture GLView fix:
+  https://github.com/pmndrs/react-three-fiber/issues/3517
+- Expo SDK 56 (React Native 0.85, React 19.2): https://expo.dev/changelog/sdk-56
+- Z-Anatomy Blender template, license and credits:
+  https://github.com/Z-Anatomy/Models-of-human-anatomy
+- Z-Anatomy FBX exports: https://github.com/LluisV/Z-Anatomy

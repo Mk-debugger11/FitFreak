@@ -1,0 +1,88 @@
+[
+  {
+    "name": "Cable Crunch",
+    "aliases": ["Kneeling Cable Crunch"],
+    "muscleGroup": "Abs",
+    "equipmentType": "cable",
+    "primaryMuscles": ["rectus_abdominis"],
+    "secondaryMuscles": ["obliques"],
+    "stabilizerMuscles": [],
+    "notes": "Loaded thoracic and lumbar spinal flexion places high EMG demand on the rectus abdominis, while the external/internal obliques and transversus abdominis assist trunk flexion and brace against cable shear. Keeping hips stacked vertically over the knees and arms locked beside the head minimizes hip flexor and latissimus dorsi takeover."
+  },
+  {
+    "name": "Hanging Leg Raise",
+    "aliases": ["Hanging Knee Raise"],
+    "muscleGroup": "Abs",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": ["rectus_abdominis"],
+    "secondaryMuscles": ["obliques", "quadriceps"],
+    "stabilizerMuscles": ["forearm_flexors", "latissimus_dorsi"],
+    "notes": "Posterior pelvic tilt and trunk curl generate peak rectus abdominis and high oblique EMG activity. Hip flexors (iliopsoas and rectus femoris, mapped to quadriceps) lift the legs or knees, forearm flexors sustain continuous isometric bar grip, and the latissimus dorsi depresses the scapulae to limit torso swing."
+  },
+  {
+    "name": "Reverse Crunch",
+    "aliases": [],
+    "muscleGroup": "Abs",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": ["rectus_abdominis"],
+    "secondaryMuscles": ["obliques", "quadriceps"],
+    "stabilizerMuscles": [],
+    "notes": "Bottom-up lumbar flexion and posterior pelvic tilt strongly activate both upper and lower rectus abdominis fibers. The obliques co-activate to curl the pelvis and stabilize the trunk, while hip flexors (rectus femoris and iliopsoas, mapped to quadriceps) assist leg elevation and eccentric lowering."
+  },
+  {
+    "name": "Plank",
+    "aliases": ["Forearm Plank"],
+    "muscleGroup": "Core",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": ["rectus_abdominis"],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [
+      "obliques",
+      "erector_spinae",
+      "serratus_anterior",
+      "quadriceps",
+      "deltoid_anterior"
+    ],
+    "notes": "Sagittal anti-extension bracing recruits the rectus abdominis primarily to resist lumbar sag, supported statically by the obliques and transversus abdominis for circumferential core stiffness, erector spinae for spinal neutrality, serratus anterior for scapular protraction, anterior deltoid for forearm weight support, and quadriceps for knee extension."
+  },
+  {
+    "name": "Russian Twist",
+    "aliases": [],
+    "muscleGroup": "Core",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": ["obliques"],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": ["rectus_abdominis", "erector_spinae", "quadriceps"],
+    "notes": "Rotational trunk torque elicits high alternating EMG bursts in the external and internal obliques. The rectus abdominis holds the reclined torso angle isometrically, the erector spinae (with quadratus lumborum) prevents lumbar collapse, and hip flexors (iliopsoas and rectus femoris, mapped to quadriceps) engage statically when keeping the hips flexed or feet elevated."
+  },
+  {
+    "name": "Neck Flexion",
+    "aliases": ["Plate Neck Flexion"],
+    "muscleGroup": "Neck",
+    "equipmentType": "machine",
+    "primaryMuscles": ["sternocleidomastoid"],
+    "secondaryMuscles": [],
+    "stabilizerMuscles": [],
+    "notes": "Resisted cervical flexion targets the bilateral sternocleidomastoid as the prime mover alongside anterior/middle scalenes and deep cervical flexors (longus colli and longus capitis, mapped to sternocleidomastoid). Upper trapezius activation remains minimal when performed without shrugging."
+  },
+  {
+    "name": "Neck Extension",
+    "aliases": [],
+    "muscleGroup": "Neck",
+    "equipmentType": "machine",
+    "primaryMuscles": ["neck_extensors"],
+    "secondaryMuscles": ["trapezius_upper"],
+    "stabilizerMuscles": [],
+    "notes": "Resisted cervical extension recruits the splenius capitis/cervicis, semispinalis capitis/cervicis, cervical erectors, and suboccipitals as primary movers. The upper trapezius and levator scapulae assist extension via cranial attachments and stabilize the cervicothoracic base against the machine pad."
+  },
+  {
+    "name": "Neck Harness Work",
+    "aliases": ["Neck Harness Extension"],
+    "muscleGroup": "Neck",
+    "equipmentType": "cable",
+    "primaryMuscles": ["neck_extensors"],
+    "secondaryMuscles": ["trapezius_upper"],
+    "stabilizerMuscles": ["erector_spinae", "sternocleidomastoid"],
+    "notes": "Cable harness resistance primarily loads the posterior neck extensors through a continuous strength curve, assisted by the upper trapezius and levator scapulae. Thoracic and lumbar erector spinae brace isometrically against the forward cable pull, while the sternocleidomastoid provides lateral/eccentric control and activates during multi-directional harness work."
+  }
+]

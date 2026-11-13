@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Barbell Bench Press",
+    "aliases": ["Bench_Press", "Bench Press", "Flat Barbell Bench Press"],
+    "muscleGroup": "Chest",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["pectoralis_lower"],
+    "secondaryMuscles": ["pectoralis_upper", "deltoid_anterior", "triceps_brachii"],
+    "stabilizerMuscles": [],
+    "notes": "Horizontal barbell pressing maximizes sternocostal pectoralis major recruitment as the prime mover while the clavicular chest, anterior deltoids, and triceps brachii assist in shoulder adduction and elbow extension."
+  },
+  {
+    "name": "Flat Dumbbell Press",
+    "aliases": ["Flat DB Press"],
+    "muscleGroup": "Chest",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["pectoralis_lower"],
+    "secondaryMuscles": ["pectoralis_upper", "deltoid_anterior", "triceps_brachii"],
+    "stabilizerMuscles": [],
+    "notes": "Independent horizontal dumbbell pressing drives the sternocostal pectoralis major through a deeper stretch and converging adduction path while recruiting the clavicular chest, anterior deltoids, and triceps brachii as synergists."
+  },
+  {
+    "name": "Incline Dumbbell Press",
+    "aliases": ["Incline DB Press"],
+    "muscleGroup": "Chest",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["pectoralis_upper"],
+    "secondaryMuscles": ["pectoralis_lower", "deltoid_anterior", "triceps_brachii"],
+    "stabilizerMuscles": [],
+    "notes": "A 30-to-45-degree incline shifts primary emphasis to the clavicular pectoralis major while the sternocostal chest, anterior deltoids, and triceps brachii assist upward shoulder flexion and elbow lockout."
+  },
+  {
+    "name": "Decline Bench Press",
+    "aliases": ["Decline bench press"],
+    "muscleGroup": "Chest",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["pectoralis_lower"],
+    "secondaryMuscles": ["triceps_brachii", "deltoid_anterior"],
+    "stabilizerMuscles": [],
+    "notes": "A declined pressing angle aligns the humerus with the lower sternocostal pectoralis major as the prime mover alongside strong triceps brachii and reduced anterior deltoid assistance, with minimal clavicular recruitment."
+  },
+  {
+    "name": "Flat Machine Press",
+    "aliases": ["Flat machine press", "Chest Press Machine"],
+    "muscleGroup": "Chest",
+    "equipmentType": "machine",
+    "primaryMuscles": ["pectoralis_lower"],
+    "secondaryMuscles": ["pectoralis_upper", "deltoid_anterior", "triceps_brachii"],
+    "stabilizerMuscles": [],
+    "notes": "Guided horizontal pressing targets the sternocostal pectoralis major equivalently to free weights while minimizing stabilizer demand as the clavicular chest, anterior deltoids, and triceps brachii assist the push."
+  },
+  {
+    "name": "Incline Machine Press",
+    "aliases": ["Incline machine press"],
+    "muscleGroup": "Chest",
+    "equipmentType": "machine",
+    "primaryMuscles": ["pectoralis_upper"],
+    "secondaryMuscles": ["pectoralis_lower", "deltoid_anterior", "triceps_brachii"],
+    "stabilizerMuscles": [],
+    "notes": "An upward-angled machine path focuses mechanical tension on the clavicular pectoralis major while the sternocostal chest, anterior deltoids, and triceps brachii support shoulder flexion and elbow extension."
+  },
+  {
+    "name": "Incline Dumbbell Fly",
+    "aliases": ["Incline dumbbell fly", "Incline DB Fly"],
+    "muscleGroup": "Chest",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["pectoralis_upper"],
+    "secondaryMuscles": ["pectoralis_lower", "deltoid_anterior"],
+    "stabilizerMuscles": ["biceps_brachii"],
+    "notes": "Incline horizontal adduction isolates the clavicular pectoralis major with sternocostal chest and anterior deltoid assistance, while the biceps brachii dynamically stabilizes the slightly flexed elbow without triceps involvement."
+  },
+  {
+    "name": "Pec Deck Fly",
+    "aliases": ["Pec Dec Fly", "Machine Fly"],
+    "muscleGroup": "Chest",
+    "equipmentType": "machine",
+    "primaryMuscles": ["pectoralis_lower"],
+    "secondaryMuscles": ["pectoralis_upper", "deltoid_anterior"],
+    "stabilizerMuscles": [],
+    "notes": "Guided seated horizontal adduction isolates the sternocostal pectoralis major with high pectoral activation while the clavicular chest and anterior deltoids assist and the elbow extensors remain disengaged."
+  },
+  {
+    "name": "Cable Fly",
+    "aliases": ["Standing Cable Fly", "Cable Crossover"],
+    "muscleGroup": "Chest",
+    "equipmentType": "cable",
+    "primaryMuscles": ["pectoralis_lower"],
+    "secondaryMuscles": ["pectoralis_upper", "deltoid_anterior"],
+    "stabilizerMuscles": ["serratus_anterior"],
+    "notes": "Standing mid-pulley horizontal adduction loads the sternocostal pectoralis major under constant cable tension while the clavicular chest, anterior deltoids, and unpinned serratus anterior assist convergence and scapular protraction."
+  },
+  {
+    "name": "Cable Fly High To Low",
+    "aliases": ["High to Low Cable Fly", "High-to-Low Cable Fly"],
+    "muscleGroup": "Chest",
+    "equipmentType": "cable",
+    "primaryMuscles": ["pectoralis_lower"],
+    "secondaryMuscles": ["deltoid_anterior"],
+    "stabilizerMuscles": ["serratus_anterior"],
+    "notes": "A downward-converging cable path aligns resistance directly with the lower sternocostal pectoralis major while the anterior deltoids and serratus anterior support humeral control and terminal scapular protraction with minimal upper-chest demand."
+  }
+]

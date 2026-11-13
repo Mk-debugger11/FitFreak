@@ -9,6 +9,7 @@ const errorHandler = require('./middleware/errorHandler');
 const workoutRoutes = require('./routes/workoutRoutes');
 const targetMuscleRoutes = require('./routes/targetMuscleRoutes');
 const customExerciseRoutes = require('./routes/customExerciseRoutes');
+const exerciseRoutes = require('./routes/exerciseRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ app.use(auth);
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/target-muscles', targetMuscleRoutes);
 app.use('/api/custom-exercises', customExerciseRoutes);
+app.use('/api/exercises', exerciseRoutes);
 
 app.use(errorHandler);
 

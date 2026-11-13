@@ -1,0 +1,178 @@
+[
+  {
+    "name": "Lat Pulldown",
+    "aliases": ["Cable Lat Pulldown"],
+    "muscleGroup": "Back",
+    "equipmentType": "cable",
+    "primaryMuscles": ["latissimus_dorsi"],
+    "secondaryMuscles": [
+      "teres_major",
+      "trapezius_middle",
+      "trapezius_lower",
+      "biceps_brachii",
+      "brachialis"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Shoulder-width pronated vertical pulling elicits high latissimus dorsi EMG equal to wider grips while permitting greater elbow-flexion range of motion and heavier loading. Teres major assists humeral adduction, middle and lower trapezius (including deep rhomboids) retract and depress the scapulae, and the biceps brachii and brachialis flex the elbows."
+  },
+  {
+    "name": "Wide-Grip Lat Pulldown",
+    "aliases": ["Wide grip lat pulldown"],
+    "muscleGroup": "Back",
+    "equipmentType": "machine",
+    "primaryMuscles": ["latissimus_dorsi", "teres_major"],
+    "secondaryMuscles": [
+      "trapezius_middle",
+      "trapezius_lower",
+      "deltoid_posterior",
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": ["infraspinatus"],
+    "notes": "Wider pronated hand placement abducts the upper arms into a coronal-plane adduction vector, producing equivalent overall latissimus dorsi EMG while placing higher mechanical emphasis on the teres major and posterior deltoids. The infraspinatus and rotator cuff stabilize the abducted glenohumeral joint alongside middle and lower trapezius scapular control, with slightly reduced elbow-flexion excursion for the biceps."
+  },
+  {
+    "name": "Pull-ups",
+    "aliases": ["Pull Ups", "Pullups"],
+    "muscleGroup": "Back",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": ["latissimus_dorsi"],
+    "secondaryMuscles": [
+      "teres_major",
+      "trapezius_middle",
+      "trapezius_lower",
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": ["infraspinatus", "forearm_flexors"],
+    "notes": "Closed-chain pronated vertical pulling produces the highest latissimus dorsi EMG among upper-back movements alongside strong biceps brachii, infraspinatus rotator cuff stabilization, and lower trapezius depression. Overhand grip orientation elicits significantly greater middle trapezius activation than neutral-grip pull-ups, with teres major assisting shoulder adduction and forearm flexors sustaining the hanging grip."
+  },
+  {
+    "name": "Neutral-Grip Pull-ups",
+    "aliases": ["Neutral grip pull ups", "Neutral Grip Pullups"],
+    "muscleGroup": "Back",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": ["latissimus_dorsi"],
+    "secondaryMuscles": [
+      "teres_major",
+      "trapezius_lower",
+      "biceps_brachii",
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": ["forearm_flexors"],
+    "notes": "Palms-facing vertical pulling delivers latissimus dorsi activation comparable to pronated pull-ups while reducing middle trapezius recruitment because the arms track closer to sagittal shoulder extension. The neutral hammer orientation places the brachioradialis (alongside deep brachialis and biceps brachii) in an optimal line of pull while teres major, lower trapezius, and forearm flexors assist."
+  },
+  {
+    "name": "Seated Cable Row",
+    "aliases": ["Cable Row"],
+    "muscleGroup": "Back",
+    "equipmentType": "cable",
+    "primaryMuscles": ["trapezius_middle", "latissimus_dorsi"],
+    "secondaryMuscles": [
+      "teres_major",
+      "trapezius_lower",
+      "deltoid_posterior",
+      "biceps_brachii",
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Supported horizontal cable rowing produces high middle trapezius (including deep rhomboids) and latissimus dorsi EMG under constant cable tension while bracing against the foot platform minimizes lumbar erector spinae fatigue. Teres major, lower trapezius, posterior deltoids, biceps brachii, and neutral-grip brachioradialis act as primary synergists."
+  },
+  {
+    "name": "One-arm Dumbbell Row",
+    "aliases": ["Single Arm Dumbbell Row", "One Arm Dumbbell Row"],
+    "muscleGroup": "Back",
+    "equipmentType": "dumbbell",
+    "primaryMuscles": ["latissimus_dorsi", "teres_major"],
+    "secondaryMuscles": [
+      "trapezius_middle",
+      "deltoid_posterior",
+      "biceps_brachii",
+      "brachioradialis"
+    ],
+    "stabilizerMuscles": ["obliques"],
+    "notes": "Unilateral bench-supported rowing permits deeper scapular protraction at the stretch and full humeral extension past the torso, strongly emphasizing the latissimus dorsi and teres major while unloading the lumbar spine relative to standing rows. Middle trapezius, posterior deltoids, biceps brachii, and brachioradialis assist the pull while the obliques brace against torso rotation."
+  },
+  {
+    "name": "Barbell Row",
+    "aliases": ["Barbell rowing", "Bent-Over Barbell Row"],
+    "muscleGroup": "Back",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["latissimus_dorsi", "trapezius_middle"],
+    "secondaryMuscles": [
+      "trapezius_lower",
+      "deltoid_posterior",
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": ["erector_spinae", "forearm_flexors"],
+    "notes": "Unsupported bent-over barbell rowing generates balanced, high-level EMG across the latissimus dorsi, middle trapezius (including deep rhomboids), lower trapezius, and posterior deltoids. Maintaining the hinged torso against gravity imposes the highest isometric erector spinae demand among rowing variations alongside biceps brachii elbow flexion and heavy pronated forearm grip."
+  },
+  {
+    "name": "T-Bar Row",
+    "aliases": ["T Bar Row"],
+    "muscleGroup": "Back",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["trapezius_middle", "latissimus_dorsi"],
+    "secondaryMuscles": [
+      "teres_major",
+      "deltoid_posterior",
+      "biceps_brachii"
+    ],
+    "stabilizerMuscles": ["erector_spinae", "forearm_flexors"],
+    "notes": "Pivoting landmine rowing along a fixed arc allows heavy loading with a close neutral grip, emphasizing middle trapezius (including rhomboids) scapular retraction and latissimus dorsi shoulder extension. Teres major, posterior deltoids, biceps brachii, heavy grip forearm flexors, and isometric erector spinae stabilization support the hinged pull."
+  },
+  {
+    "name": "Cable Lat Pullover",
+    "aliases": ["Cable lat pullover"],
+    "muscleGroup": "Back",
+    "equipmentType": "machine",
+    "primaryMuscles": ["latissimus_dorsi"],
+    "secondaryMuscles": [
+      "teres_major",
+      "pectoralis_lower",
+      "triceps_brachii",
+      "deltoid_posterior"
+    ],
+    "stabilizerMuscles": ["serratus_anterior"],
+    "notes": "Guided cam or cable-arc shoulder extension maintains constant resistance from overhead flexion down to the hips, targeting the latissimus dorsi and teres major without biceps takeover. As in pullover EMG studies, the sternocostal lower pectoralis major assists strongly in the overhead stretch alongside triceps long-head shoulder extension, posterior deltoids, and serratus anterior scapular control."
+  },
+  {
+    "name": "Straight-Arm Pulldown",
+    "aliases": ["Straight Arm Pulldown"],
+    "muscleGroup": "Back",
+    "equipmentType": "cable",
+    "primaryMuscles": ["latissimus_dorsi"],
+    "secondaryMuscles": [
+      "teres_major",
+      "triceps_brachii",
+      "deltoid_posterior",
+      "pectoralis_lower",
+      "trapezius_lower"
+    ],
+    "stabilizerMuscles": [],
+    "notes": "Standing cable shoulder extension with fixed near-straight elbows isolates the latissimus dorsi and teres major while eliminating elbow-flexor takeover and keeping tension more dorsal-dominant than horizontal pullovers. The bi-articular long head of the triceps brachii shows high EMG stabilizing the elbow and extending the shoulder alongside posterior deltoids, lower sternal chest, and lower trapezius scapular depression."
+  },
+  {
+    "name": "Deadlift",
+    "aliases": ["Barbell Deadlift", "Conventional Deadlift"],
+    "muscleGroup": "Back",
+    "equipmentType": "barbell",
+    "primaryMuscles": ["erector_spinae", "gluteus_maximus", "hamstrings"],
+    "secondaryMuscles": ["quadriceps"],
+    "stabilizerMuscles": [
+      "trapezius_upper",
+      "trapezius_middle",
+      "latissimus_dorsi",
+      "forearm_flexors"
+    ],
+    "notes": "Conventional floor pulling elicits intense erector spinae anti-flexion EMG paired with primary gluteus maximus and hamstring hip extension to lockout. Quadriceps drive initial knee extension off the floor, latissimus dorsi brace the barbell close to the shins, upper and middle trapezius resist scapular depression, and forearm flexors maintain heavy barbell grip."
+  },
+  {
+    "name": "Lower Back Extension",
+    "aliases": ["Lower back extension", "Back Extension", "Hyperextension"],
+    "muscleGroup": "Back",
+    "equipmentType": "bodyweight",
+    "primaryMuscles": ["erector_spinae"],
+    "secondaryMuscles": ["gluteus_maximus", "hamstrings"],
+    "stabilizerMuscles": [],
+    "notes": "Roman chair trunk extensions recruit the lumbar and thoracic erector spinae as prime spinal extensors when articulating the torso or as high-level isometric stabilizers during a neutral hip hinge. The gluteus maximus and hamstrings act as key hip-extensor synergists through the lower stretch and terminal lockout."
+  }
+]
