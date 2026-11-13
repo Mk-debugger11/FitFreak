@@ -56,3 +56,17 @@ export const minutesBetween = (start: Date, end: Date): number =>
 
 export const formatTime = (date: Date): string =>
   date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+/**
+ * Whole completed years between birthDate and reference date `on` (defaults to now).
+ * Month- and day-aware: returns full completed years.
+ */
+export const ageFromBirthDate = (birthDate: Date, on: Date = new Date()): number => {
+  let age = on.getFullYear() - birthDate.getFullYear();
+  const monthDiff = on.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && on.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return Math.max(0, age);
+};
+

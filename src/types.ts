@@ -83,3 +83,84 @@ export type TargetMuscleGroups = Record<string, string[]>;
 
 /** Custom exercises keyed by muscle-group category. */
 export type CustomExercisesByCategory = Record<string, CustomExercise[]>;
+
+/* -------------------------------------------------------------------------- */
+/*                               Nutrition Types                              */
+/* -------------------------------------------------------------------------- */
+
+import type { FoodCategory } from './constants/nutrition';
+export type { FoodCategory };
+
+export const MEAL_TYPES = ['breakfast', 'lunch', 'snacks', 'dinner'] as const;
+export type MealType = (typeof MEAL_TYPES)[number];
+
+export const MEAL_LABELS: Record<MealType, string> = {
+  breakfast: 'Breakfast',
+  lunch: 'Lunch',
+  snacks: 'Snacks',
+  dinner: 'Dinner',
+};
+
+export const SEXES = ['male', 'female'] as const;
+export type Sex = (typeof SEXES)[number];
+
+export const ACTIVITY_LEVELS = ['sedentary', 'light', 'moderate', 'active', 'very_active'] as const;
+export type ActivityLevel = (typeof ACTIVITY_LEVELS)[number];
+
+export const NUTRITION_GOALS = ['cut', 'maintain', 'bulk'] as const;
+export type NutritionGoal = (typeof NUTRITION_GOALS)[number];
+
+export const FOOD_BASES = ['per_100g', 'per_100ml', 'per_piece'] as const;
+export type FoodBasis = (typeof FOOD_BASES)[number];
+
+export interface MacroNutrients {
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+}
+
+export interface FoodServing {
+  label: string;
+  grams: number;
+}
+
+export interface FoodItem {
+  name: string;
+  aliases?: readonly string[];
+  category: FoodCategory;
+  basis: FoodBasis;
+  macros: MacroNutrients;
+  servings?: readonly FoodServing[];
+  defaultQuantity?: number;
+  notes?: string;
+}
+
+export interface CustomFood extends FoodItem {
+  id: string;
+}
+
+export interface LoggedFood extends Entity {
+  dateString: string;
+  mealType: MealType;
+  foodName: string;
+  basis: FoodBasis;
+  quantity: number;
+  servingLabel?: string;
+  macros: MacroNutrients;
+  foodId?: string;
+  loggedAt: Date;
+}
+
+export interface UserProfile extends Entity {
+  sex: Sex;
+  heightCm: number;
+  weightKg: number;
+  birthDate: Date;
+  activityLevel: ActivityLevel;
+  goal: NutritionGoal;
+  bodyFatPercent?: number;
+  maintenanceOverride?: number;
+  proteinPerKg?: number;
+}
+
