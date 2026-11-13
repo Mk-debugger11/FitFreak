@@ -336,10 +336,10 @@ filling it in offline syncs on reconnect.
 
 4a. Catalogue data
 
-- [ ] `src/constants/foodCatalog/` with one JSON file per group, mirroring
+- [x] `src/constants/foodCatalog/` with one JSON file per group, mirroring
       `src/constants/exerciseCatalog/`: grains.json, protein.json, dairy.json, fruitsVeg.json,
       nutsSeeds.json, cookedDishes.json, snacks.json, beverages.json.
-- [ ] Target ~150 entries, weighted to what this user actually eats (the app is kg-based and
+- [x] Target ~150 entries, weighted to what this user actually eats (the app is kg-based and
       Indian-market hosted, so cover roti, dal, rice, paneer, curd, idli, poha, rajma, chana,
       egg, chicken breast, whey, oats, banana, milk, ghee, oil). Each entry:
         { "name": "Chapati (wheat roti)", "aliases": ["roti", "phulka"],
@@ -347,14 +347,14 @@ filling it in offline syncs on reconnect.
           "macros": { "calories": 297, "protein": 11, "carbs": 58, "fat": 3 },
           "servings": [{ "label": "1 medium roti", "grams": 45 }],
           "defaultQuantity": 45 }
-- [ ] `src/constants/foods.ts` - imports every JSON file, validates each entry through a
+- [x] `src/constants/foods.ts` - imports every JSON file, validates each entry through a
       `parseFoodEntry` guard (unknown category/basis -> dropped, missing calories -> derived via
       caloriesFromMacros), and exports ALL_BUILTIN_FOODS: readonly FoodItem[] plus
       FOODS_BY_CATEGORY. Same shape and same strictness as
       `src/constants/exercises.ts`/`ALL_BUILTIN_EXERCISES`.
-- [ ] `backend/data/foodCatalog.json` - the flattened byte-parity copy, as
+- [x] `backend/data/foodCatalog.json` - the flattened byte-parity copy, as
       `exerciseCatalog.json` is for exercises.
-- [ ] `scripts/validateFoodCatalog.mjs` - modelled on `scripts/validateCatalog.mjs`. Asserts:
+- [x] `scripts/validateFoodCatalog.mjs` - modelled on `scripts/validateCatalog.mjs`. Asserts:
         - frontend split files and the backend JSON agree field by field;
         - names are unique after `normalizeFoodName`, and no alias collides with another name;
         - every category and basis is known;

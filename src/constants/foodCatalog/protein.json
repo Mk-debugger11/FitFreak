@@ -1,0 +1,658 @@
+[
+  {
+    "name": "Chana Dal (raw)",
+    "aliases": [
+      "split bengal gram",
+      "chana lentil"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 372,
+      "protein": 20.8,
+      "carbs": 59.8,
+      "fat": 5.6
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 small bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Polished split Bengal gram lentils."
+  },
+  {
+    "name": "Chicken Breast (cooked, grilled)",
+    "aliases": [
+      "grilled chicken breast",
+      "boiled chicken breast"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 160,
+      "protein": 31.0,
+      "carbs": 0.0,
+      "fat": 3.6
+    },
+    "servings": [
+      {
+        "label": "1 piece cooked",
+        "grams": 120
+      },
+      {
+        "label": "100g portion",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 120,
+    "notes": "Cooked skinless chicken breast without added heavy oil."
+  },
+  {
+    "name": "Chicken Breast (raw, boneless)",
+    "aliases": [
+      "raw chicken breast",
+      "boneless chicken breast"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 120,
+      "protein": 26.0,
+      "carbs": 0.0,
+      "fat": 1.8
+    },
+    "servings": [
+      {
+        "label": "1 breast fillet",
+        "grams": 150
+      },
+      {
+        "label": "100g portion",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Skinless boneless raw chicken breast, leanest poultry cut."
+  },
+  {
+    "name": "Chicken Thigh (cooked, roasted)",
+    "aliases": [
+      "cooked chicken thigh",
+      "grilled chicken thigh"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 205,
+      "protein": 26.0,
+      "carbs": 0.0,
+      "fat": 11.0
+    },
+    "servings": [
+      {
+        "label": "1 thigh roasted",
+        "grams": 90
+      }
+    ],
+    "defaultQuantity": 90,
+    "notes": "Cooked skinless bone-out chicken thigh."
+  },
+  {
+    "name": "Chicken Thigh (raw, skinless)",
+    "aliases": [
+      "raw chicken thigh"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 144,
+      "protein": 20.0,
+      "carbs": 0.0,
+      "fat": 7.2
+    },
+    "servings": [
+      {
+        "label": "1 medium thigh",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Raw skinless chicken thigh meat."
+  },
+  {
+    "name": "Chickpeas / Kabuli Chana (raw)",
+    "aliases": [
+      "white chana",
+      "garbanzo beans",
+      "dry chickpeas"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 370,
+      "protein": 19.3,
+      "carbs": 60.7,
+      "fat": 6.0
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 portion raw",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Dry whole white garbanzo beans."
+  },
+  {
+    "name": "Egg White",
+    "aliases": [
+      "boiled egg white",
+      "egg whites"
+    ],
+    "category": "Protein",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 17,
+      "protein": 3.6,
+      "carbs": 0.2,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 egg white",
+        "grams": 1
+      },
+      {
+        "label": "3 egg whites",
+        "grams": 3
+      },
+      {
+        "label": "5 egg whites",
+        "grams": 5
+      }
+    ],
+    "defaultQuantity": 3,
+    "notes": "Cooked or raw egg white from a large hen egg (~33g)."
+  },
+  {
+    "name": "Egg Yolk",
+    "aliases": [
+      "yolk"
+    ],
+    "category": "Protein",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 54,
+      "protein": 2.7,
+      "carbs": 0.6,
+      "fat": 4.5
+    },
+    "servings": [
+      {
+        "label": "1 yolk",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Cooked or raw egg yolk from a large hen egg (~17g)."
+  },
+  {
+    "name": "Fish (Rohu / Indian Carp, raw)",
+    "aliases": [
+      "rohu fish",
+      "carp fillet"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 102,
+      "protein": 19.7,
+      "carbs": 0.0,
+      "fat": 2.5
+    },
+    "servings": [
+      {
+        "label": "1 fillet",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Freshwater rohu carp fillet, widely consumed across India."
+  },
+  {
+    "name": "Fish (Salmon, raw)",
+    "aliases": [
+      "salmon",
+      "salmon fillet"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 205,
+      "protein": 20.4,
+      "carbs": 0.0,
+      "fat": 13.4
+    },
+    "servings": [
+      {
+        "label": "1 fillet",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Atlantic salmon fillet, exceptionally rich in EPA and DHA omega-3s."
+  },
+  {
+    "name": "Kala Chana (black chickpeas, raw)",
+    "aliases": [
+      "black chickpeas",
+      "brown chana",
+      "desi chana"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 362,
+      "protein": 20.0,
+      "carbs": 61.0,
+      "fat": 4.5
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 portion raw",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Dry whole brown Bengal gram chickpeas."
+  },
+  {
+    "name": "Moong Dal (raw)",
+    "aliases": [
+      "yellow moong dal",
+      "split mung beans"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 24.0,
+      "carbs": 59.0,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 small bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Split husked yellow mung lentils."
+  },
+  {
+    "name": "Mutton / Goat Meat (lean, raw)",
+    "aliases": [
+      "goat meat",
+      "lean mutton"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 143,
+      "protein": 20.6,
+      "carbs": 0.0,
+      "fat": 6.5
+    },
+    "servings": [
+      {
+        "label": "1 serving",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Trimmed lean goat meat cut."
+  },
+  {
+    "name": "Prawns / Shrimp (raw)",
+    "aliases": [
+      "raw prawns",
+      "shrimp",
+      "jhinga"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 85,
+      "protein": 20.1,
+      "carbs": 0.2,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 portion",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Peeled and deveined raw shrimp tail meat."
+  },
+  {
+    "name": "Rajma (raw kidney beans)",
+    "aliases": [
+      "dry kidney beans",
+      "raw rajma"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 340,
+      "protein": 24.0,
+      "carbs": 60.0,
+      "fat": 1.0
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 portion raw",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Dry red kidney beans."
+  },
+  {
+    "name": "Soya Chunks (dry)",
+    "aliases": [
+      "soy chunks",
+      "mealmaker",
+      "soya wadi"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 52.0,
+      "carbs": 33.0,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 cup dry chunks",
+        "grams": 40
+      },
+      {
+        "label": "1 bowl cooked equivalent",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Defatted soy protein chunks, over 50% protein by dry weight."
+  },
+  {
+    "name": "Tempeh",
+    "aliases": [
+      "soy tempeh"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 200,
+      "protein": 20.3,
+      "carbs": 7.6,
+      "fat": 10.8
+    },
+    "servings": [
+      {
+        "label": "1 block",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fermented whole soybean cake, rich in prebiotics and protein."
+  },
+  {
+    "name": "Tofu (firm)",
+    "aliases": [
+      "firm tofu",
+      "bean curd"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 84,
+      "protein": 10.0,
+      "carbs": 1.9,
+      "fat": 4.2
+    },
+    "servings": [
+      {
+        "label": "1 block",
+        "grams": 100
+      },
+      {
+        "label": "1/2 block",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Pressed soy curd, versatile low-carb plant protein."
+  },
+  {
+    "name": "Toor Dal (raw)",
+    "aliases": [
+      "arhar dal",
+      "split pigeon peas"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 22.0,
+      "carbs": 61.5,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 small bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Split yellow pigeon pea lentils, staple of dal tadka and sambhar."
+  },
+  {
+    "name": "Tuna (canned in water, drained)",
+    "aliases": [
+      "canned tuna",
+      "tuna in water"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 115,
+      "protein": 25.5,
+      "carbs": 0.0,
+      "fat": 1.0
+    },
+    "servings": [
+      {
+        "label": "1 drained can",
+        "grams": 130
+      }
+    ],
+    "defaultQuantity": 130,
+    "notes": "Chunk light or skipjack tuna canned in spring water."
+  },
+  {
+    "name": "Urad Dal (raw)",
+    "aliases": [
+      "black gram dal",
+      "white urad dal"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 25.2,
+      "carbs": 58.9,
+      "fat": 1.6
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 small bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Skinned split black gram lentils, key ingredient in idli and dosa batter."
+  },
+  {
+    "name": "Whole Egg",
+    "aliases": [
+      "boiled egg",
+      "egg",
+      "ande"
+    ],
+    "category": "Protein",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 72,
+      "protein": 6.3,
+      "carbs": 0.4,
+      "fat": 4.8
+    },
+    "servings": [
+      {
+        "label": "1 large egg",
+        "grams": 1
+      },
+      {
+        "label": "2 large eggs",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Standard whole hen egg (~50g edible portion)."
+  },
+  {
+    "name": "Micellar Casein",
+    "aliases": [
+      "casein protein",
+      "casein powder"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 355,
+      "protein": 78.0,
+      "carbs": 4.0,
+      "fat": 2.0
+    },
+    "servings": [
+      {
+        "label": "1 scoop",
+        "grams": 32
+      }
+    ],
+    "defaultQuantity": 32,
+    "notes": "Slow-digesting native micellar milk protein powder."
+  },
+  {
+    "name": "Plant Protein Powder",
+    "aliases": [
+      "vegan protein powder",
+      "pea protein powder"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 375,
+      "protein": 76.0,
+      "carbs": 7.0,
+      "fat": 4.0
+    },
+    "servings": [
+      {
+        "label": "1 scoop",
+        "grams": 33
+      }
+    ],
+    "defaultQuantity": 33,
+    "notes": "Blended pea and brown rice vegan protein isolate powder."
+  },
+  {
+    "name": "Whey Protein Concentrate",
+    "aliases": [
+      "whey concentrate",
+      "whey protein powder"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 400,
+      "protein": 80.0,
+      "carbs": 6.0,
+      "fat": 6.0
+    },
+    "servings": [
+      {
+        "label": "1 scoop",
+        "grams": 33
+      }
+    ],
+    "defaultQuantity": 33,
+    "notes": "Standard 80% whey concentrate delivering ~24-25g protein per scoop."
+  },
+  {
+    "name": "Whey Protein Isolate",
+    "aliases": [
+      "whey isolate",
+      "isolate whey"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 370,
+      "protein": 88.0,
+      "carbs": 2.0,
+      "fat": 1.0
+    },
+    "servings": [
+      {
+        "label": "1 scoop",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Micro-filtered whey isolate delivering 26-27g protein per scoop."
+  }
+]

@@ -1,0 +1,423 @@
+[
+  {
+    "name": "Buffalo Milk",
+    "aliases": [
+      "raw buffalo milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 97,
+      "protein": 3.8,
+      "carbs": 5.2,
+      "fat": 6.9
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Whole rich buffalo milk with naturally high milk fat."
+  },
+  {
+    "name": "Butter (unsalted)",
+    "aliases": [
+      "white butter",
+      "makhan",
+      "dairy butter"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 717,
+      "protein": 0.9,
+      "carbs": 0.1,
+      "fat": 81.1
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 14
+      }
+    ],
+    "defaultQuantity": 10,
+    "notes": "Pure churned dairy cream butter."
+  },
+  {
+    "name": "Cheddar Cheese",
+    "aliases": [
+      "cheese slice",
+      "processed cheese block"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 403,
+      "protein": 24.9,
+      "carbs": 1.3,
+      "fat": 33.1
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 20
+      },
+      {
+        "label": "1 cube",
+        "grams": 25
+      }
+    ],
+    "defaultQuantity": 25,
+    "notes": "Firm aged cheddar cheese."
+  },
+  {
+    "name": "Cottage Cheese (Western style)",
+    "aliases": [
+      "low fat cottage cheese"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 98,
+      "protein": 11.1,
+      "carbs": 3.4,
+      "fat": 4.3
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 200
+      },
+      {
+        "label": "1/2 cup",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Soft curd creamy Western-style cottage cheese."
+  },
+  {
+    "name": "Cow Milk",
+    "aliases": [
+      "fresh cow milk",
+      "desi cow milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 62,
+      "protein": 3.2,
+      "carbs": 4.5,
+      "fat": 3.5
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Pure fresh cow milk."
+  },
+  {
+    "name": "Curd / Dahi (toned/low-fat)",
+    "aliases": [
+      "toned curd",
+      "low fat dahi"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 50,
+      "protein": 4.0,
+      "carbs": 5.0,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1 medium bowl",
+        "grams": 150
+      },
+      {
+        "label": "1 small katori",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Cultured yogurt made from 1.5% to 3% fat milk."
+  },
+  {
+    "name": "Curd / Dahi (whole milk)",
+    "aliases": [
+      "curd",
+      "dahi",
+      "plain yogurt"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 61,
+      "protein": 3.5,
+      "carbs": 4.7,
+      "fat": 3.3
+    },
+    "servings": [
+      {
+        "label": "1 medium bowl",
+        "grams": 150
+      },
+      {
+        "label": "1 small katori",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Fermented full cream buffalo/cow milk yogurt."
+  },
+  {
+    "name": "Double Toned Milk",
+    "aliases": [
+      "double toned milk packet"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 47,
+      "protein": 3.3,
+      "carbs": 4.8,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      },
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Low fat pasteurized milk (1.5% fat, 9.0% SNF)."
+  },
+  {
+    "name": "Full Cream Milk (whole milk)",
+    "aliases": [
+      "whole milk",
+      "full cream milk",
+      "gold milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 65,
+      "protein": 3.2,
+      "carbs": 4.7,
+      "fat": 3.7
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      },
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Pasteurized whole milk (~3.5-4% fat)."
+  },
+  {
+    "name": "Ghee (clarified butter)",
+    "aliases": [
+      "desi ghee",
+      "clarified butter",
+      "cow ghee"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 900,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "fat": 100.0
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Traditional clarified milk fat."
+  },
+  {
+    "name": "Greek Yogurt (plain, unsweetened)",
+    "aliases": [
+      "greek yogurt",
+      "hung curd",
+      "strained yogurt"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 59,
+      "protein": 10.0,
+      "carbs": 3.6,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 150
+      },
+      {
+        "label": "1 small tub",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Triple-strained high protein unsweetened yogurt."
+  },
+  {
+    "name": "Low-Fat Paneer",
+    "aliases": [
+      "skimmed milk paneer",
+      "diet paneer"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 175,
+      "protein": 25.0,
+      "carbs": 4.0,
+      "fat": 6.5
+    },
+    "servings": [
+      {
+        "label": "100g block",
+        "grams": 100
+      },
+      {
+        "label": "50g portion",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "High-protein low-fat paneer made from skimmed or toned milk."
+  },
+  {
+    "name": "Mozzarella Cheese",
+    "aliases": [
+      "pizza cheese",
+      "shredded mozzarella"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 280,
+      "protein": 22.2,
+      "carbs": 2.2,
+      "fat": 20.7
+    },
+    "servings": [
+      {
+        "label": "1 portion",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Part-skim pizza mozzarella cheese."
+  },
+  {
+    "name": "Paneer (cottage cheese, regular)",
+    "aliases": [
+      "paneer",
+      "indian cottage cheese"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 270,
+      "protein": 18.3,
+      "carbs": 3.4,
+      "fat": 20.8
+    },
+    "servings": [
+      {
+        "label": "100g block",
+        "grams": 100
+      },
+      {
+        "label": "50g portion",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Traditional Indian full-fat milk paneer."
+  },
+  {
+    "name": "Skimmed Milk",
+    "aliases": [
+      "fat free milk",
+      "diet milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 35,
+      "protein": 3.4,
+      "carbs": 4.9,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      },
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Fat-free milk (<0.5% fat, 8.7% SNF)."
+  },
+  {
+    "name": "Toned Milk",
+    "aliases": [
+      "toned milk packet"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 58,
+      "protein": 3.1,
+      "carbs": 4.6,
+      "fat": 3.0
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      },
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Standard Indian toned pasteurized milk (3.0% fat, 8.5% SNF)."
+  }
+]
