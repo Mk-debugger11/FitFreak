@@ -13,3 +13,10 @@ export const formatSetDisplay = (weight: number, reps: number, equipment?: Equip
 
 export const toErrorMessage = (error: unknown): string =>
   error instanceof Error ? error.message : String(error);
+
+/** Formats kilocalories rounded with thousands separator. */
+export const formatCalories = (kcal: number): string => Math.round(kcal).toLocaleString();
+
+/** Formats grams rounded with 'g' suffix. */
+export const formatGrams = (grams: number): string => `${Math.round(grams)}g`;
+

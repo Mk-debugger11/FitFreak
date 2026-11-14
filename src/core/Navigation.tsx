@@ -3,13 +3,14 @@ import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Dumbbell, House } from 'lucide-react-native';
+import { Apple, Dumbbell, House } from 'lucide-react-native';
 import {
   ActiveWorkoutSheet,
   useActiveWorkoutSheetController,
 } from '../features/active-workout/ActiveWorkoutSheet';
 import { MinimizedWorkoutBar } from '../features/active-workout/MinimizedWorkoutBar';
 import { HomeScreen } from '../features/home/HomeScreen';
+import { NutritionScreen } from '../features/nutrition/NutritionScreen';
 import { theme } from '../theme';
 import { AppHeader } from './AppHeader';
 import { WorkoutTab } from './WorkoutTab';
@@ -20,6 +21,7 @@ export type RootStackParamList = {
 
 export type TabParamList = {
   Home: undefined;
+  Nutrition: undefined;
   Workout: undefined;
 };
 
@@ -90,6 +92,15 @@ const TabNavigator: React.FC = () => {
           options={{
             header: () => <AppHeader />,
             tabBarIcon: ({ color, size }) => <House color={color} size={size} />,
+          }}
+        />
+        <Tab.Screen
+          name="Nutrition"
+          component={NutritionScreen}
+          options={{
+            headerShown: false,
+            title: 'Nutrition',
+            tabBarIcon: ({ color, size }) => <Apple color={color} size={size} />,
           }}
         />
         <Tab.Screen

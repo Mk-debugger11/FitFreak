@@ -32,6 +32,7 @@ function compileWorkspaceModules() {
     path.join(ROOT_DIR, 'src/types.ts'),
     path.join(ROOT_DIR, 'src/theme.ts'),
     path.join(ROOT_DIR, 'src/constants/nutrition.ts'),
+    path.join(ROOT_DIR, 'src/utils/format.ts'),
     path.join(ROOT_DIR, 'src/features/nutrition/servingMath.ts'),
     path.join(ROOT_DIR, 'src/features/nutrition/energyBalance.ts'),
     path.join(ROOT_DIR, 'src/features/nutrition/nutritionTotals.ts'),
@@ -95,6 +96,7 @@ const energyBalance = loadTsModule('src/features/nutrition/energyBalance');
 const servingMath = loadTsModule('src/features/nutrition/servingMath');
 const nutritionTotals = loadTsModule('src/features/nutrition/nutritionTotals');
 const themeModule = loadTsModule('src/theme');
+const formatModule = loadTsModule('src/utils/format');
 
 const {
   classifyEnergyBalance,
@@ -114,6 +116,8 @@ const {
   computeDayNutrition,
   computeRemaining,
 } = nutritionTotals;
+
+const { formatCalories, formatGrams } = formatModule;
 
 const { theme } = themeModule;
 
@@ -392,4 +396,16 @@ test('10. computeRemaining computes calories left vs over target', () => {
   const floatUnder = computeRemaining({ calories: 1599.6, protein: 0, carbs: 0, fat: 0 }, 2000);
   assert.deepEqual(floatUnder, { kcal: 400, isOver: false });
 });
+
+test('11. formatCalories and formatGrams display rounded values with correct units and separators', () => {
+  assert.equal(formatCalories(0), '0');
+  assert.equal(formatCalories(1712.4), '1,712');
+  assert.equal(formatCalories(2654.8), '2,655');
+  assert.equal(formatCalories(500), '500');
+
+  assert.equal(formatGrams(0), '0g');
+  assert.equal(formatGrams(24.3), '24g');
+  assert.equal(formatGrams(127.8), '128g');
+});
+
 
