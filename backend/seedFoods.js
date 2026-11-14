@@ -1,12 +1,13 @@
-require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const mongoose = require('mongoose');
-const Food = require('../models/Food');
-const foodCatalog = require('../data/foodCatalog.json');
+const Food = require('./models/Food');
+const foodCatalog = require('./data/foodCatalog.json');
 const {
   normalizeFoodName,
   sanitizeMacros,
   sanitizeServings,
-} = require('../constants/nutrition');
+} = require('./constants/nutrition');
 
 const sanitizeAliases = (aliases) => {
   if (!Array.isArray(aliases)) return [];
@@ -33,7 +34,7 @@ const seedFoods = async () => {
 
   try {
     await mongoose.connect(uri);
-    console.log('Connected to MongoDB.');
+    console.log('Connected to MongoDB on VPS network.');
 
     const ops = foodCatalog.map((item) => {
       const normalizedName = normalizeFoodName(item.name);
@@ -60,7 +61,7 @@ const seedFoods = async () => {
     });
 
     const result = await Food.bulkWrite(ops, { ordered: false });
-    console.log(`Seeding complete: matched ${result.matchedCount}, upserted ${result.upsertedCount}, modified ${result.modifiedCount}`);
+    console.log(`Food seeding complete: matched ${result.matchedCount}, upserted ${result.upsertedCount}, modified ${result.modifiedCount}`);
 
     const totalCount = await Food.countDocuments();
     console.log(`Total Food documents in database: ${totalCount}`);

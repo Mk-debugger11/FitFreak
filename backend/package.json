@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "node --check server.js",
-    "seed:foods": "node scripts/seedFoodCatalog.js"
+    "seed:foods": "node seedFoods.js"
   },
   "keywords": [],
   "author": "",
