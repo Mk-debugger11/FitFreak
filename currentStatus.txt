@@ -1,10 +1,13 @@
 FITFREAK - CURRENT STATUS
-Last updated: 2026-11-12
+Last updated: 2026-11-14
 
-A React Native (Expo) workout tracker with an Express + MongoDB backend.
-Two bottom tabs:
+A React Native (Expo) workout tracker and nutrition tracker with an Express + MongoDB backend.
+Three bottom tabs:
   - Home (`src/features/home/HomeScreen.tsx`): interactive 3D muscle anatomy
     heat map with daily/weekly training intensity and per-muscle breakdowns.
+  - Nutrition (`src/features/nutrition/NutritionScreen.tsx`): daily meal logging
+    (Breakfast, Lunch, Snacks, Dinner), macro breakdown, energy balance against
+    maintenance calories (Mifflin-St Jeor / Katch-McArdle) and goal targets.
   - Workout (`src/core/WorkoutTab.tsx`): workout log and active workout logger
     (one workout = one exercise, logged against a day and target muscle group),
     with an active-workout indicator dot on the Workout tab icon.
@@ -191,6 +194,38 @@ AddSetForm.tsx        Weight + reps + "+" card at the top of the set list.
 SetRow.tsx            One set: inline weight/reps editing, the kg vs kg/hand
                       unit label, complete toggle and delete.
 
+--- src/features/nutrition/ : meal logging and energy balance (Nutrition tab) --
+
+NutritionScreen.tsx   Main screen for the Nutrition tab: calendar date strip,
+                      `CalorieSummaryCard`, `MacroTotalsBar`, four `MealSection`s
+                      (Breakfast, Lunch, Snacks, Dinner), and modal wiring.
+                      Aligns "today" across midnight on focus.
+CalorieSummaryCard.tsx Card displaying consumed calories against maintenance,
+                      remaining kcal vs target, progress bar with over-target marker,
+                      and energy balance status pill (Deficit, Maintenance, Surplus).
+MacroTotalsBar.tsx    Proportional stacked macronutrient bar (protein, carbs, fat)
+                      and 3 target chips with per-macro progress bars.
+MealSection.tsx       One meal part of the day: meal label, kcal, macro line,
+                      tappable entries, and "+" button to log food (disabled on future dates).
+FoodEntryRow.tsx      Logged food row: name, portion/serving label, calories,
+                      macros breakdown, tap to edit portion, delete button.
+FoodPickerModal.tsx   Food search with recent foods, categories, and "+ Create custom food".
+ServingModal.tsx      Portion selector: named serving chips, quantity input,
+                      and live scaled-macro preview.
+CustomFoodModal.tsx   Custom food creator: name, category, basis (100g/100ml/piece),
+                      and macro inputs with 4/4/9 auto-calculated calories.
+ProfileSheet.tsx      User metabolic profile sheet: sex, birth date (derived age),
+                      height, weight, activity level, goal, and advanced options
+                      (body fat %, maintenance override) with live formula readout.
+energyFormulas.ts     Pure BMR (Mifflin-St Jeor & Katch-McArdle), maintenance (TDEE),
+                      calorie target, and macro target calculation formulas.
+energyBalance.ts      Pure energy balance classification (Deficit / Maintenance /
+                      Surplus) with dynamic +/- 5% (min 100 kcal) tolerance band.
+servingMath.ts        Pure food scaling math, 4/4/9 macro calories, and calorie share ratios.
+nutritionTotals.ts    Day nutrition aggregator: date filtering, chronologically sorted
+                      meal bucketing across all 4 meal types, and remaining calories.
+useDayNutrition.ts    Hook memoizing day nutrition calculations from `nutritionStore`.
+
 --- src/store/ : Zustand stores (all global state lives here) -------------------
 
 historyStore.ts       Completed workouts, target muscle groups, custom
@@ -200,6 +235,13 @@ historyStore.ts       Completed workouts, target muscle groups, custom
 activeWorkoutStore.ts The workout being logged (or null). start / rename /
                       add / update / delete / toggle sets / finish / cancel.
                       Not persisted - a workout in progress is lost on restart.
+profileStore.ts       User metabolic profile (`UserProfile | null`). Persisted to
+                      AsyncStorage ("profile-storage"), revives Dates on merge,
+                      and enqueues sync to `PUT /api/profile`. Exports `getMaintenanceCalories()`.
+nutritionStore.ts     Logged foods, food catalog, custom foods, and date fetch cache.
+                      Persisted to AsyncStorage ("nutrition-storage"), revives Dates
+                      on merge, offline-first mutations to `/api/nutrition-entries`
+                      and `/api/custom-foods`, and derived selectors `searchFoods` and `recentFoods`.
 syncStore.ts          The offline write queue. Persisted ("sync-storage"),
                       drained sequentially. Server errors are logged and the
                       request dropped; network errors keep it for the next
@@ -214,6 +256,14 @@ api.ts                The only file that knows the API's URLs and wire format.
 
 --- src/constants/ --------------------------------------------------------------
 
+nutrition.ts          Food categories, macro calorie multipliers (4/4/9), activity
+                      multipliers & labels, goal adjustments & labels, default macro
+                      ratios (proteinPerKg 1.8, fatShare 0.25), tolerance band (+/- 5%,
+                      min 100 kcal), and basis unit configurations.
+foods.ts              Built-in food catalog (161 foods across 8 categories), validated
+                      from `src/constants/foodCatalog/` split JSON files.
+foodCatalog/          Split JSON catalog files: grains, protein, dairy, fruitsVeg,
+                      nutsSeeds, cookedDishes, snacks, beverages.
 muscles.ts            31 trackable `MUSCLE_IDS` (`MuscleId` union),
                       `MUSCLE_LABELS`, `MuscleTargets`, and
                       `GROUP_MUSCLE_FALLBACK` (category fallback mapping across
@@ -236,15 +286,16 @@ exercises.ts          `MUSCLE_GROUPS` (`as const` -> `MuscleGroup` type for the
 date.ts               toLocalDateKey / toFetchKey (both local YYYY-MM-DD),
                       isSameDay / isToday / startOfDay / endOfDay / addDays /
                       startOfWeek (Monday 00:00) / endOfWeek (Sunday
-                      23:59:59.999) / isWithin / minutesBetween / formatTime.
+                      23:59:59.999) / isWithin / minutesBetween / formatTime /
+                      ageFromBirthDate.
+food.ts               normalizeFoodName, isFoodCategory, isFoodBasis, findFoodInCatalog.
 exercise.ts           parseEquipmentType, resolveEquipmentType,
                       listExercisesForCategory (with `isMuscleGroup` guard), and
                       `resolveExerciseMuscles(exerciseName, category)` (case-
                       insensitive catalogue match first, else category fallback
                       with internal legacy aliases `'Forearms' -> 'Forearm'` and
                       `'Abs/Core' -> 'Core'`, or `null` when unmappable).
-format.ts             formatSetDisplay ("60kg x 8", "30kg/hand x 10",
-                      "Bodyweight x 12") and toErrorMessage.
+format.ts             formatSetDisplay, toErrorMessage, formatCalories, formatGrams.
 id.ts                 createId() for locally created records.
 
 --- src/ root -------------------------------------------------------------------
@@ -264,18 +315,31 @@ theme.ts              Design tokens: colours (including `theme.colors.anatomy`:
 
 server.js             Express entry point. Loads dotenv, connects MongoDB via
                       `config/db.js`, wires CORS, JSON parsing, `middleware/auth.js`
-                      (stamps `req.userId = 'default_user'`), the three route
+                      (stamps `req.userId = 'default_user'`), the seven route
                       modules, and `middleware/errorHandler.js`.
 routes/               `workoutRoutes.js`, `targetMuscleRoutes.js`,
-                      `customExerciseRoutes.js`.
+                      `customExerciseRoutes.js`, `exerciseRoutes.js`,
+                      `profileRoutes.js`, `foodRoutes.js`,
+                      `customFoodRoutes.js`, `nutritionRoutes.js`.
 controllers/          `workoutController.js`, `targetMuscleController.js`,
-                      `customExerciseController.js`.
+                      `customExerciseController.js`, `exerciseController.js`,
+                      `profileController.js`, `foodController.js`,
+                      `customFoodController.js`, `nutritionController.js`.
 models/CompletedWorkout.js  Workout schema, with the nested activeWorkout and
                             workoutSet sub-schemas. `id` is unique.
 models/TargetMuscle.js      Muscles per user per dateString. Unique compound
                             index on (userId, dateString).
 models/CustomExercise.js    Exercises per user per category. Unique compound
                             index on (userId, category).
+models/UserProfile.js       User metabolic profile (sex, heightCm, weightKg, birthDate,
+                            activityLevel, goal, bodyFatPercent, maintenanceOverride).
+models/Food.js              Canonical food items, unique normalizedName, aliases,
+                            macros, servings, defaultQuantity.
+models/CustomFood.js        User custom foods, compound index on (userId, normalizedName).
+models/LoggedFood.js        Logged meal items, compound index on (userId, dateString).
+constants/nutrition.js      Backend shared nutrition constants, limits, normalizeFoodName,
+                            and sanitizeMacros.
+data/foodCatalog.json       Byte-parity static seed of 161 foods for Food model.
 seedData.js           One-off script that parses a hard-coded export of past
                       workouts into CompletedWorkout and TargetMuscle docs.
 package.json          Backend deps (express, mongoose, cors, dotenv).
@@ -291,6 +355,19 @@ API surface (all under /api):
   DELETE /target-muscles               remove a muscle from a date
   GET    /custom-exercises             all custom exercises
   POST   /custom-exercises             add one to a category (idempotent)
+  GET    /exercises                    canonical exercise catalog
+  GET    /profile                      user metabolic profile (or null)
+  PUT    /profile                      upsert user profile (validates & clamps)
+  GET    /foods                        canonical food items (seeds lazily)
+  GET    /foods/:name                  single food by name or alias
+  POST   /foods                        upsert canonical food
+  GET    /custom-foods                 user custom foods
+  POST   /custom-foods                 add user custom food
+  DELETE /custom-foods/:id             delete user custom food
+  GET    /nutrition-entries?startDate&endDate  logged foods in date range
+  POST   /nutrition-entries            log a food entry (idempotent upsert)
+  PUT    /nutrition-entries/:id        update a logged food entry
+  DELETE /nutrition-entries/:id        delete a logged food entry
 
 
 ================================================================================
@@ -397,14 +474,23 @@ API surface (all under /api):
   fetchData if `hasSyncedFromServer` is false), so the app is usable offline and
   catches up on its own.
 
---- 4.7 Exporting a day ----------------------------------------------------------
+--- 4.8 Logging a meal and tracking nutrition -----------------------------------
 
-  Download icon -> exportWorkouts.shareWorkoutsForDate(all workouts, date)
-    -> filters to that day (the category filter is deliberately ignored)
-    -> groups into { date: { category: { exercise: ["60kg x 8", ...] } } },
-       resolving equipment per workout so the wording is right
-    -> hands the JSON to the native Share sheet.
-       (This is the same shape backend/seedData.js reads.)
+  NutritionScreen
+    -> reads user profile from `profileStore` (or prompts to setup if null)
+    -> selectedDate drives `useDayNutrition(dateKey)`
+    -> `CalorieSummaryCard` displays consumed calories, maintenance, remaining kcal vs target,
+       and Deficit / Maintenance / Surplus pill (+/- 5%, min 100 kcal band)
+    -> `MacroTotalsBar` shows stacked bar (shares) + 3 macro target chips
+    -> four `MealSection`s (Breakfast, Lunch, Snacks, Dinner):
+       "+" / empty row -> `FoodPickerModal`
+       - search food catalog or recent foods, or "+ Create custom food" -> `CustomFoodModal`
+       - selecting food opens `ServingModal` with live scaled macros preview
+       - "Add to Meal" -> `nutritionStore.logFood(...)`: snapshots macros via `scaleMacros`,
+         prepends locally, enqueues sync to `POST /api/nutrition-entries`.
+       - tapping entry opens `ServingModal` to edit portion (`PUT /api/nutrition-entries/:id`)
+       - delete icon deletes entry locally and enqueues `DELETE /api/nutrition-entries/:id`.
+       - past day edits/deletes are allowed; future dates disable adding.
 
 
 ================================================================================
@@ -437,6 +523,8 @@ API surface (all under /api):
 ================================================================================
 
   - Backend is still JavaScript; its model definitions duplicate src/types.ts.
+  - Nutrition constants duplicate across `src/constants/nutrition.ts` and `backend/constants/nutrition.js`, mirroring the muscle constants pattern.
+  - Automated test coverage exists for pure math, nutrition balance, catalog parity, and client stores (`node --test tests/*.test.mjs`).
   - Single user, hard-coded ('default_user'). No auth.
   - An in-progress workout is not persisted - killing the app loses it.
   - Elapsed time on the active workout is computed on render, so it only
@@ -445,9 +533,5 @@ API surface (all under /api):
     week arrows, lighting up in-progress sets, per-exercise muscle picking for
     custom exercises, target-muscle outlines, smooth color fades) are not yet
     implemented; custom or renamed exercises fall back to category-level muscles.
-  - No automated tests. `npm run typecheck`, `npx expo export --platform android`,
-    and Expo Go testing are the current verification; an EAS preview/development
-    APK build (`eas build --profile preview`) for Phase 1 native verification
-    remains optional/pending.
   - Failed syncs are dropped after logging; there is no retry or error surface
     in the UI.

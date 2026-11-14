@@ -51,7 +51,7 @@ export function classifyEnergyBalance(
     maintenanceKcal * MAINTENANCE_BAND.fraction,
   );
 
-  const deltaKcal = Math.round(intakeKcal - maintenanceKcal);
+  const deltaKcal = Math.round(intakeKcal - maintenanceKcal) || 0;
 
   let status: EnergyBalanceStatus;
   if (Math.abs(deltaKcal) <= toleranceKcal) {

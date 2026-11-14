@@ -1,6 +1,6 @@
 # FitFreak - Nutrition Tab (maintenance calories, meal logging, energy balance)
 
-Status: not started (written 2026-11-13).
+Status: Phases 1 to 7 complete (2026-11-14).
 Work through the phases in order. Phase 4 can run alongside Phase 3, and Phase 2 can run
 alongside Phase 1 once the types in 1a exist. Tick the [ ] boxes as work lands; each phase ends
 with a "Done when" check.

@@ -14,3 +14,4 @@ export function useDayNutrition(dateKey: string): DayNutrition {
     [loggedFoods, dateKey],
   );
 }
+

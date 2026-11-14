@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -14,7 +14,7 @@ import { HorizontalCalendar } from '../../components';
 import { BASIS_UNITS } from '../../constants/nutrition';
 import { theme } from '../../theme';
 import { CustomFood, FoodItem, LoggedFood, MEAL_TYPES, MealType } from '../../types';
-import { addDays, endOfDay, isToday, startOfDay, toLocalDateKey } from '../../utils/date';
+import { addDays, endOfDay, isSameDay, isToday, startOfDay, toLocalDateKey } from '../../utils/date';
 import { useNutritionStore } from '../../store/nutritionStore';
 import { CalorieSummaryCard } from './CalorieSummaryCard';
 import { CustomFoodModal } from './CustomFoodModal';
@@ -60,16 +60,21 @@ export const NutritionScreen: React.FC = () => {
   const updateLoggedFood = useNutritionStore((state) => state.updateLoggedFood);
   const deleteLoggedFood = useNutritionStore((state) => state.deleteLoggedFood);
 
+  const isViewingTodayRef = useRef(true);
+
+  const handleSelectDate = (date: Date) => {
+    isViewingTodayRef.current = isToday(date);
+    setSelectedDate(date);
+  };
+
   // Focus effect to keep "today" aligned across midnight
   useFocusEffect(
     useCallback(() => {
-      if (isToday(selectedDate)) {
+      if (isViewingTodayRef.current) {
         const now = new Date();
-        if (!isToday(selectedDate)) {
-          setSelectedDate(now);
-        }
+        setSelectedDate((prev) => (isSameDay(prev, now) ? prev : now));
       }
-    }, [selectedDate]),
+    }, []),
   );
 
   // Date fetch on date change
@@ -214,7 +219,7 @@ export const NutritionScreen: React.FC = () => {
       {/* Date Bar */}
       <HorizontalCalendar
         selectedDate={selectedDate}
-        onSelectDate={setSelectedDate}
+        onSelectDate={handleSelectDate}
       />
 
       {/* Main Content List */}
@@ -320,3 +325,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+

@@ -399,13 +399,21 @@ test('10. computeRemaining computes calories left vs over target', () => {
 
 test('11. formatCalories and formatGrams display rounded values with correct units and separators', () => {
   assert.equal(formatCalories(0), '0');
+  assert.equal(formatCalories(-0), '0');
+  assert.equal(formatCalories(-0.2), '0');
   assert.equal(formatCalories(1712.4), '1,712');
   assert.equal(formatCalories(2654.8), '2,655');
   assert.equal(formatCalories(500), '500');
 
   assert.equal(formatGrams(0), '0g');
+  assert.equal(formatGrams(-0), '0g');
+  assert.equal(formatGrams(-0.2), '0g');
   assert.equal(formatGrams(24.3), '24g');
   assert.equal(formatGrams(127.8), '128g');
+
+  const nearZero = classifyEnergyBalance(1999.9, 2000, { hasEntries: true });
+  assert.equal(nearZero.deltaKcal, 0);
+  assert.equal(Object.is(nearZero.deltaKcal, -0), false);
 });
 
 
