@@ -75,3 +75,4 @@ const seedFoods = async () => {
 };
 
 seedFoods();
+
