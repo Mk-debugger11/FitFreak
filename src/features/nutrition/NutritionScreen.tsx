@@ -13,7 +13,7 @@ import { User } from 'lucide-react-native';
 import { HorizontalCalendar } from '../../components';
 import { BASIS_UNITS } from '../../constants/nutrition';
 import { theme } from '../../theme';
-import { CustomFood, FoodItem, LoggedFood, MEAL_TYPES, MealType } from '../../types';
+import { CustomFood, FoodItem, LoggedFood, MEAL_TYPES, MealType, MacroNutrients } from '../../types';
 import { addDays, endOfDay, isSameDay, isToday, startOfDay, toLocalDateKey } from '../../utils/date';
 import { useNutritionStore } from '../../store/nutritionStore';
 import { CalorieSummaryCard } from './CalorieSummaryCard';
@@ -170,21 +170,20 @@ export const NutritionScreen: React.FC = () => {
     setIsServingOpen(true);
   };
 
-  const handleSaveServing = (quantity: number, servingLabel?: string) => {
+  const handleSaveServing = (
+    quantity: number,
+    servingLabel?: string,
+    customMacros?: MacroNutrients,
+  ) => {
     if (editingEntry) {
-      if (selectedFood) {
-        const macros = scaleMacros(selectedFood, quantity);
-        updateLoggedFood(editingEntry.id, {
-          quantity,
-          servingLabel,
-          macros,
-        });
-      } else {
-        updateLoggedFood(editingEntry.id, {
-          quantity,
-          servingLabel,
-        });
-      }
+      const macros =
+        customMacros ??
+        (selectedFood ? scaleMacros(selectedFood, quantity) : editingEntry.macros);
+      updateLoggedFood(editingEntry.id, {
+        quantity,
+        servingLabel,
+        macros,
+      });
     } else if (selectedFood && activeMealType) {
       logFood({
         dateString: dateKey,
@@ -193,6 +192,7 @@ export const NutritionScreen: React.FC = () => {
         quantity,
         servingLabel,
         foodId: 'id' in selectedFood ? selectedFood.id : undefined,
+        customMacros,
       });
     }
 

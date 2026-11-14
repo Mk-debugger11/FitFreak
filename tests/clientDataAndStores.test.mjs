@@ -573,6 +573,25 @@ test('8. nutritionStore: logFood, updateLoggedFood, deleteLoggedFood', () => {
   assert.equal(queue3.length, 3);
   assert.equal(queue3[2].url, endpoints.nutritionEntry(logged.id));
   assert.equal(queue3[2].method, 'DELETE');
+
+  // logFood with customMacros overrides default scaling (e.g. for cooked dishes)
+  const cookedDish = {
+    name: 'Cooked Rajma',
+    category: 'Cooked Dishes',
+    basis: 'per_100g',
+    macros: { calories: 120, protein: 7, carbs: 18, fat: 2 },
+  };
+  const customLogged = useNutritionStore.getState().logFood({
+    dateString: '2026-11-14',
+    mealType: 'lunch',
+    food: cookedDish,
+    quantity: 150,
+    customMacros: { calories: 250, protein: 12, carbs: 26, fat: 8 },
+  });
+  assert.equal(customLogged.macros.calories, 250);
+  assert.equal(customLogged.macros.protein, 12);
+  assert.equal(customLogged.macros.carbs, 26);
+  assert.equal(customLogged.macros.fat, 8);
 });
 
 test('9. nutritionStore: addCustomFood, duplicate rejection, deleteCustomFood', () => {

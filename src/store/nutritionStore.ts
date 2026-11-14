@@ -48,6 +48,7 @@ export interface NutritionState {
     quantity: number;
     servingLabel?: string;
     foodId?: string;
+    customMacros?: MacroNutrients;
   }) => LoggedFood;
   updateLoggedFood: (
     id: string,
@@ -252,7 +253,7 @@ export const useNutritionStore = create<NutritionState>()(
 
       logFood: (input) => {
         const now = new Date();
-        const macros = scaleMacros(input.food, input.quantity);
+        const macros = input.customMacros ?? scaleMacros(input.food, input.quantity);
         const foodId =
           input.foodId ??
           ('id' in input.food && typeof input.food.id === 'string' ? input.food.id : undefined);

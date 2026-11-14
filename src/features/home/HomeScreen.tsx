@@ -13,6 +13,7 @@ import { ActivityPeriod } from './muscleActivity';
 import { MuscleDetailSheet } from './MuscleDetailSheet';
 import { MuscleLegend } from './MuscleLegend';
 import { MuscleSummary } from './MuscleSummary';
+import { HomeCalorieCard } from './HomeCalorieCard';
 import { useMuscleActivity } from './useMuscleActivity';
 
 const PERIOD_OPTIONS: readonly { value: ActivityPeriod; label: string }[] = [
@@ -92,6 +93,11 @@ export const HomeScreen: React.FC = () => {
           {dateLabel}
         </Text>
       </View>
+
+      <HomeCalorieCard
+        period={period}
+        onPress={() => navigation.navigate('Nutrition')}
+      />
 
       <View style={styles.viewerContainer}>
         <BodyViewer

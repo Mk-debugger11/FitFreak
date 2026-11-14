@@ -21,8 +21,8 @@ export type RootStackParamList = {
 
 export type TabParamList = {
   Home: undefined;
-  Nutrition: undefined;
   Workout: undefined;
+  Nutrition: undefined;
 };
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -95,15 +95,6 @@ const TabNavigator: React.FC = () => {
           }}
         />
         <Tab.Screen
-          name="Nutrition"
-          component={NutritionScreen}
-          options={{
-            headerShown: false,
-            title: 'Nutrition',
-            tabBarIcon: ({ color, size }) => <Apple color={color} size={size} />,
-          }}
-        />
-        <Tab.Screen
           name="Workout"
           component={WorkoutTab}
           options={{
@@ -111,6 +102,15 @@ const TabNavigator: React.FC = () => {
             tabBarIcon: ({ color, size }) => (
               <WorkoutTabIcon color={color} size={size} hasActiveWorkout={hasActiveWorkout} />
             ),
+          }}
+        />
+        <Tab.Screen
+          name="Nutrition"
+          component={NutritionScreen}
+          options={{
+            headerShown: false,
+            title: 'Nutrition',
+            tabBarIcon: ({ color, size }) => <Apple color={color} size={size} />,
           }}
         />
       </Tab.Navigator>
