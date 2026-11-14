@@ -11,6 +11,7 @@ import grainsCatalog from './foodCatalog/grains.json';
 import nutsSeedsCatalog from './foodCatalog/nutsSeeds.json';
 import proteinCatalog from './foodCatalog/protein.json';
 import snacksCatalog from './foodCatalog/snacks.json';
+import otherCatalog from './foodCatalog/other.json';
 
 interface RawCatalogServing {
   readonly label: string;
@@ -115,6 +116,7 @@ const parsedGrains = parseFoodEntries(grainsCatalog);
 const parsedNutsSeeds = parseFoodEntries(nutsSeedsCatalog);
 const parsedProtein = parseFoodEntries(proteinCatalog);
 const parsedSnacks = parseFoodEntries(snacksCatalog);
+const parsedOther = parseFoodEntries(otherCatalog);
 
 /** Built-in food catalogue, grouped by FoodCategory. */
 export const FOODS_BY_CATEGORY: Record<FoodCategory, FoodItem[]> = {
@@ -128,7 +130,7 @@ export const FOODS_BY_CATEGORY: Record<FoodCategory, FoodItem[]> = {
   Snacks: parsedSnacks.filter((item) => item.category === 'Snacks'),
   Beverages: parsedBeverages.filter((item) => item.category === 'Beverages'),
   Supplements: parsedProtein.filter((item) => item.category === 'Supplements'),
-  Other: [],
+  Other: parsedOther.filter((item) => item.category === 'Other'),
 };
 
 /** Flat list of every built-in food across all categories. */

@@ -34,7 +34,7 @@
       "calories": 2,
       "protein": 0.2,
       "carbs": 0.3,
-      "fat": 0.0
+      "fat": 0
     },
     "servings": [
       {
@@ -61,7 +61,7 @@
       "calories": 1,
       "protein": 0.1,
       "carbs": 0.15,
-      "fat": 0.0
+      "fat": 0
     },
     "servings": [
       {
@@ -107,7 +107,7 @@
     "basis": "per_100ml",
     "macros": {
       "calories": 62,
-      "protein": 2.0,
+      "protein": 2,
       "carbs": 8.5,
       "fat": 2.2
     },
@@ -131,9 +131,9 @@
     "basis": "per_100ml",
     "macros": {
       "calories": 42,
-      "protein": 0.0,
+      "protein": 0,
       "carbs": 10.6,
-      "fat": 0.0
+      "fat": 0
     },
     "servings": [
       {
@@ -182,9 +182,9 @@
     "basis": "per_100ml",
     "macros": {
       "calories": 0,
-      "protein": 0.0,
-      "carbs": 0.0,
-      "fat": 0.0
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
     },
     "servings": [
       {
@@ -206,7 +206,7 @@
       "calories": 1,
       "protein": 0.1,
       "carbs": 0.15,
-      "fat": 0.0
+      "fat": 0
     },
     "servings": [
       {
@@ -230,7 +230,7 @@
       "calories": 38,
       "protein": 0.1,
       "carbs": 9.5,
-      "fat": 0.0
+      "fat": 0
     },
     "servings": [
       {
@@ -275,7 +275,7 @@
     "macros": {
       "calories": 65,
       "protein": 3.8,
-      "carbs": 10.0,
+      "carbs": 10,
       "fat": 1.1
     },
     "servings": [
@@ -319,8 +319,8 @@
     "macros": {
       "calories": 68,
       "protein": 0.2,
-      "carbs": 17.0,
-      "fat": 0.0
+      "carbs": 17,
+      "fat": 0
     },
     "servings": [
       {
@@ -341,9 +341,9 @@
     "basis": "per_100ml",
     "macros": {
       "calories": 110,
-      "protein": 3.0,
+      "protein": 3,
       "carbs": 17.5,
-      "fat": 3.0
+      "fat": 3
     },
     "servings": [
       {
@@ -386,8 +386,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 90,
-      "protein": 2.0,
-      "carbs": 11.0,
+      "protein": 2,
+      "carbs": 11,
       "fat": 4.2
     },
     "servings": [
@@ -409,8 +409,8 @@
     "basis": "per_piece",
     "macros": {
       "calories": 290,
-      "protein": 6.0,
-      "carbs": 43.0,
+      "protein": 6,
+      "carbs": 43,
       "fat": 10.5
     },
     "servings": [
@@ -455,7 +455,7 @@
     "basis": "per_100g",
     "macros": {
       "calories": 85,
-      "protein": 2.0,
+      "protein": 2,
       "carbs": 8.5,
       "fat": 4.8
     },
@@ -478,8 +478,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 180,
-      "protein": 12.0,
-      "carbs": 5.0,
+      "protein": 12,
+      "carbs": 5,
       "fat": 12.5
     },
     "servings": [
@@ -500,8 +500,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 165,
-      "protein": 9.0,
-      "carbs": 20.0,
+      "protein": 9,
+      "carbs": 20,
       "fat": 5.5
     },
     "servings": [
@@ -527,9 +527,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 135,
-      "protein": 14.0,
+      "protein": 14,
       "carbs": 3.5,
-      "fat": 7.0
+      "fat": 7
     },
     "servings": [
       {
@@ -550,8 +550,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 145,
-      "protein": 6.0,
-      "carbs": 20.0,
+      "protein": 6,
+      "carbs": 20,
       "fat": 4.5
     },
     "servings": [
@@ -573,8 +573,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 140,
-      "protein": 5.0,
-      "carbs": 15.0,
+      "protein": 5,
+      "carbs": 15,
       "fat": 6.7
     },
     "servings": [
@@ -597,8 +597,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 115,
-      "protein": 6.0,
-      "carbs": 15.0,
+      "protein": 6,
+      "carbs": 15,
       "fat": 3.5
     },
     "servings": [
@@ -620,8 +620,8 @@
     "macros": {
       "calories": 125,
       "protein": 7.5,
-      "carbs": 4.0,
-      "fat": 9.0
+      "carbs": 4,
+      "fat": 9
     },
     "servings": [
       {
@@ -643,7 +643,7 @@
     "macros": {
       "calories": 58,
       "protein": 1.8,
-      "carbs": 12.0,
+      "carbs": 12,
       "fat": 0.3
     },
     "servings": [
@@ -693,7 +693,7 @@
       "calories": 110,
       "protein": 3.8,
       "carbs": 19.5,
-      "fat": 2.0
+      "fat": 2
     },
     "servings": [
       {
@@ -713,8 +713,8 @@
     "basis": "per_piece",
     "macros": {
       "calories": 210,
-      "protein": 4.0,
-      "carbs": 30.0,
+      "protein": 4,
+      "carbs": 30,
       "fat": 8.2
     },
     "servings": [
@@ -736,7 +736,7 @@
     "macros": {
       "calories": 140,
       "protein": 6.5,
-      "carbs": 9.0,
+      "carbs": 9,
       "fat": 8.5
     },
     "servings": [
@@ -758,8 +758,8 @@
     "macros": {
       "calories": 190,
       "protein": 8.5,
-      "carbs": 21.0,
-      "fat": 8.0
+      "carbs": 21,
+      "fat": 8
     },
     "servings": [
       {
@@ -779,7 +779,7 @@
     "basis": "per_100g",
     "macros": {
       "calories": 150,
-      "protein": 7.0,
+      "protein": 7,
       "carbs": 4.5,
       "fat": 11.5
     },
@@ -824,8 +824,8 @@
     "basis": "per_piece",
     "macros": {
       "calories": 260,
-      "protein": 5.0,
-      "carbs": 36.0,
+      "protein": 5,
+      "carbs": 36,
       "fat": 10.7
     },
     "servings": [
@@ -847,7 +847,7 @@
     "macros": {
       "calories": 133,
       "protein": 2.8,
-      "carbs": 22.0,
+      "carbs": 22,
       "fat": 3.8
     },
     "servings": [
@@ -872,7 +872,7 @@
       "calories": 160,
       "protein": 3.5,
       "carbs": 25.5,
-      "fat": 5.0
+      "fat": 5
     },
     "servings": [
       {
@@ -884,9 +884,41 @@
     "notes": "Tempered flattened rice cooked with onions, roasted peanuts, mustard seeds, and turmeric."
   },
   {
-    "name": "Rajma Masala (cooked kidney bean curry)",
+    "name": "Rajma (cooked / boiled kidney beans)",
     "aliases": [
       "cooked rajma",
+      "boiled rajma",
+      "boiled kidney beans"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 127,
+      "protein": 8.7,
+      "carbs": 22.8,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 medium bowl / katori",
+        "grams": 150
+      },
+      {
+        "label": "1 cup cooked",
+        "grams": 177
+      },
+      {
+        "label": "1 large bowl",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Plain boiled/pressure-cooked red kidney beans without added oil or gravy. Source: Averaged from USDA FoodData Central (FDC ID 173735), ICMR-NIN IFCT 2017 hydration conversion, and UK CoFID."
+  },
+  {
+    "name": "Rajma Masala (cooked kidney bean curry)",
+    "aliases": [
+      "rajma masala",
       "rajma curry"
     ],
     "category": "Cooked Dishes",
@@ -894,8 +926,8 @@
     "macros": {
       "calories": 130,
       "protein": 5.5,
-      "carbs": 18.0,
-      "fat": 4.0
+      "carbs": 18,
+      "fat": 4
     },
     "servings": [
       {
@@ -940,7 +972,7 @@
     "macros": {
       "calories": 140,
       "protein": 3.2,
-      "carbs": 22.0,
+      "carbs": 22,
       "fat": 4.4
     },
     "servings": [
@@ -963,7 +995,7 @@
     "macros": {
       "calories": 135,
       "protein": 2.8,
-      "carbs": 24.0,
+      "carbs": 24,
       "fat": 3.1
     },
     "servings": [
@@ -1111,8 +1143,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 50,
-      "protein": 4.0,
-      "carbs": 5.0,
+      "protein": 4,
+      "carbs": 5,
       "fat": 1.5
     },
     "servings": [
@@ -1221,9 +1253,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 900,
-      "protein": 0.0,
-      "carbs": 0.0,
-      "fat": 100.0
+      "protein": 0,
+      "carbs": 0,
+      "fat": 100
     },
     "servings": [
       {
@@ -1249,7 +1281,7 @@
     "basis": "per_100g",
     "macros": {
       "calories": 59,
-      "protein": 10.0,
+      "protein": 10,
       "carbs": 3.6,
       "fat": 0.4
     },
@@ -1276,8 +1308,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 175,
-      "protein": 25.0,
-      "carbs": 4.0,
+      "protein": 25,
+      "carbs": 4,
       "fat": 6.5
     },
     "servings": [
@@ -1292,6 +1324,69 @@
     ],
     "defaultQuantity": 100,
     "notes": "High-protein low-fat paneer made from skimmed or toned milk."
+  },
+  {
+    "name": "Milky Mist High Protein Paneer",
+    "aliases": [
+      "milky mist paneer",
+      "high protein paneer"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 190,
+      "protein": 25,
+      "carbs": 5.7,
+      "fat": 7
+    },
+    "servings": [
+      {
+        "label": "1/2 pack (100g)",
+        "grams": 100
+      },
+      {
+        "label": "1 full pack (200g)",
+        "grams": 200
+      },
+      {
+        "label": "1 cube portion (50g)",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Milky Mist High Protein Paneer (25g protein, 7g fat, 529mg calcium per 100g; 50g protein per 200g pack). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Mother Dairy Toned Milk",
+    "aliases": [
+      "mother dairy milk",
+      "mother dairy toned",
+      "blue packet milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 59,
+      "protein": 3.1,
+      "carbs": 4.7,
+      "fat": 3.1
+    },
+    "servings": [
+      {
+        "label": "1 cup / mug (200 ml)",
+        "grams": 200
+      },
+      {
+        "label": "1 glass (250 ml)",
+        "grams": 250
+      },
+      {
+        "label": "1 small cup / tea portion (100 ml)",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Mother Dairy Pasteurised Toned Milk (min 3.0% fat, min 8.5% SNF, 127mg calcium per 100ml). Source: Official packaging nutrition label."
   },
   {
     "name": "Mozzarella Cheese",
@@ -1381,7 +1476,7 @@
       "calories": 58,
       "protein": 3.1,
       "carbs": 4.6,
-      "fat": 3.0
+      "fat": 3
     },
     "servings": [
       {
@@ -1407,7 +1502,7 @@
     "macros": {
       "calories": 95,
       "protein": 0.5,
-      "carbs": 25.0,
+      "carbs": 25,
       "fat": 0.3
     },
     "servings": [
@@ -1428,7 +1523,7 @@
     "basis": "per_100g",
     "macros": {
       "calories": 160,
-      "protein": 2.0,
+      "protein": 2,
       "carbs": 8.5,
       "fat": 14.7
     },
@@ -1456,7 +1551,7 @@
     "macros": {
       "calories": 105,
       "protein": 1.3,
-      "carbs": 27.0,
+      "carbs": 27,
       "fat": 0.3
     },
     "servings": [
@@ -1532,7 +1627,7 @@
     "macros": {
       "calories": 62,
       "protein": 0.8,
-      "carbs": 15.0,
+      "carbs": 15,
       "fat": 0.4
     },
     "servings": [
@@ -1710,7 +1805,7 @@
       "calories": 361,
       "protein": 11.6,
       "carbs": 67.5,
-      "fat": 5.0
+      "fat": 5
     },
     "servings": [
       {
@@ -1736,7 +1831,7 @@
     "macros": {
       "calories": 350,
       "protein": 7.5,
-      "carbs": 77.0,
+      "carbs": 77,
       "fat": 0.6
     },
     "servings": [
@@ -1790,7 +1885,7 @@
       "calories": 123,
       "protein": 2.7,
       "carbs": 25.6,
-      "fat": 1.0
+      "fat": 1
     },
     "servings": [
       {
@@ -1806,31 +1901,37 @@
     "notes": "Steamed whole grain brown rice with intact bran and germ."
   },
   {
-    "name": "Chapati (wheat roti)",
+    "name": "Chapati (plain whole wheat roti, cooked)",
     "aliases": [
       "roti",
-      "phulka"
+      "phulka",
+      "cooked chapati",
+      "wheat roti"
     ],
     "category": "Grains",
     "basis": "per_100g",
     "macros": {
-      "calories": 297,
-      "protein": 11.0,
-      "carbs": 58.0,
-      "fat": 3.0
+      "calories": 250,
+      "protein": 8.3,
+      "carbs": 48,
+      "fat": 1.5
     },
     "servings": [
       {
-        "label": "1 medium roti",
-        "grams": 45
+        "label": "1 medium chapati (40g)",
+        "grams": 40
       },
       {
-        "label": "1 large roti",
-        "grams": 60
+        "label": "1 large chapati (55g)",
+        "grams": 55
+      },
+      {
+        "label": "1 small phulka (30g)",
+        "grams": 30
       }
     ],
-    "defaultQuantity": 45,
-    "notes": "Traditional Indian whole wheat flatbread cooked on a tawa."
+    "defaultQuantity": 40,
+    "notes": "Traditional Indian whole wheat flatbread made from 100% atta, dry-roasted on tawa without added oil or ghee (~100 kcal per medium 40g roti). Source: Averaged from ICMR-NIN IFCT 2017, USDA FoodData Central, and NIN research publications."
   },
   {
     "name": "Dalia (broken wheat, dry)",
@@ -1843,8 +1944,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 345,
-      "protein": 12.0,
-      "carbs": 71.0,
+      "protein": 12,
+      "carbs": 71,
       "fat": 1.5
     },
     "servings": [
@@ -1861,6 +1962,34 @@
     "notes": "Cracked whole wheat groats, high in dietary fiber."
   },
   {
+    "name": "Harvest Gold Brown Bread",
+    "aliases": [
+      "harvest gold bread",
+      "harvest gold brown",
+      "harvest brown bread"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 217,
+      "protein": 8.3,
+      "carbs": 43.7,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 28
+      },
+      {
+        "label": "2 slices",
+        "grams": 56
+      }
+    ],
+    "defaultQuantity": 56,
+    "notes": "Harvest Gold Hearty Brown Bread (30% whole wheat atta, 0.96g fat, 3.5g fibre per 100g; ~61 kcal per 28g slice). Source: Official packaging nutrition label."
+  },
+  {
     "name": "Instant Oats (dry)",
     "aliases": [
       "quick oats"
@@ -1870,8 +1999,8 @@
     "macros": {
       "calories": 372,
       "protein": 12.5,
-      "carbs": 67.0,
-      "fat": 6.0
+      "carbs": 67,
+      "fat": 6
     },
     "servings": [
       {
@@ -1921,7 +2050,7 @@
       "calories": 360,
       "protein": 10.3,
       "carbs": 76.3,
-      "fat": 1.0
+      "fat": 1
     },
     "servings": [
       {
@@ -1945,8 +2074,8 @@
     "basis": "per_piece",
     "macros": {
       "calories": 75,
-      "protein": 4.0,
-      "carbs": 13.0,
+      "protein": 4,
+      "carbs": 13,
       "fat": 1.1
     },
     "servings": [
@@ -2024,7 +2153,7 @@
     "macros": {
       "calories": 328,
       "protein": 7.3,
-      "carbs": 72.0,
+      "carbs": 72,
       "fat": 1.3
     },
     "servings": [
@@ -2078,7 +2207,7 @@
     "macros": {
       "calories": 408,
       "protein": 25.5,
-      "carbs": 64.0,
+      "carbs": 64,
       "fat": 5.5
     },
     "servings": [
@@ -2150,11 +2279,12 @@
     "notes": "Standard sliced sandwich loaf (~25g per slice)."
   },
   {
-    "name": "White Rice (cooked)",
+    "name": "White Rice (cooked / steamed)",
     "aliases": [
       "cooked white rice",
       "steamed rice",
-      "boiled rice"
+      "boiled rice",
+      "white rice cooked"
     ],
     "category": "Grains",
     "basis": "per_100g",
@@ -2166,16 +2296,20 @@
     },
     "servings": [
       {
+        "label": "1 medium bowl / katori",
+        "grams": 150
+      },
+      {
         "label": "1 cup cooked",
         "grams": 158
       },
       {
-        "label": "1 medium bowl",
-        "grams": 150
+        "label": "1 plate / serving",
+        "grams": 200
       }
     ],
     "defaultQuantity": 150,
-    "notes": "Steamed polished long/medium grain white rice."
+    "notes": "Steamed/boiled long-grain white rice cooked without added oil or salt. Source: Averaged from USDA FoodData Central (FDC ID 168878), ICMR-NIN IFCT 2017, and UK McCance & Widdowson (CoFID)."
   },
   {
     "name": "Whole Wheat Bread",
@@ -2188,7 +2322,7 @@
     "macros": {
       "calories": 69,
       "protein": 3.6,
-      "carbs": 12.0,
+      "carbs": 12,
       "fat": 0.9
     },
     "servings": [
@@ -2215,8 +2349,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 345,
-      "protein": 12.0,
-      "carbs": 71.0,
+      "protein": 12,
+      "carbs": 71,
       "fat": 1.8
     },
     "servings": [
@@ -2231,6 +2365,38 @@
     ],
     "defaultQuantity": 60,
     "notes": "Stone-ground whole wheat chakki atta."
+  },
+  {
+    "name": "Yogabar High Protein Oats (Dark Chocolate)",
+    "aliases": [
+      "yoga bar protein oats",
+      "yogabar oats",
+      "high protein oats"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 364,
+      "protein": 26,
+      "carbs": 57.3,
+      "fat": 5.9
+    },
+    "servings": [
+      {
+        "label": "1 scoop / serving",
+        "grams": 50
+      },
+      {
+        "label": "1 bowl",
+        "grams": 40
+      },
+      {
+        "label": "1 large bowl",
+        "grams": 75
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Yogabar Dark Chocolate High Protein Oats (rolled oats with soy protein isolate and whey; 13g protein per 50g scoop, 0g added sugar). Source: Official packaging nutrition label."
   },
   {
     "name": "Almonds (raw)",
@@ -2315,9 +2481,9 @@
     "basis": "per_100ml",
     "macros": {
       "calories": 862,
-      "protein": 0.0,
-      "carbs": 0.0,
-      "fat": 100.0
+      "protein": 0,
+      "carbs": 0,
+      "fat": 100
     },
     "servings": [
       {
@@ -2392,9 +2558,9 @@
     "basis": "per_100ml",
     "macros": {
       "calories": 884,
-      "protein": 0.0,
-      "carbs": 0.0,
-      "fat": 100.0
+      "protein": 0,
+      "carbs": 0,
+      "fat": 100
     },
     "servings": [
       {
@@ -2419,9 +2585,9 @@
     "basis": "per_100ml",
     "macros": {
       "calories": 884,
-      "protein": 0.0,
-      "carbs": 0.0,
-      "fat": 100.0
+      "protein": 0,
+      "carbs": 0,
+      "fat": 100
     },
     "servings": [
       {
@@ -2447,7 +2613,7 @@
     "macros": {
       "calories": 588,
       "protein": 25.1,
-      "carbs": 20.0,
+      "carbs": 20,
       "fat": 50.4
     },
     "servings": [
@@ -2573,7 +2739,7 @@
     "macros": {
       "calories": 584,
       "protein": 20.8,
-      "carbs": 20.0,
+      "carbs": 20,
       "fat": 51.5
     },
     "servings": [
@@ -2613,6 +2779,40 @@
     "notes": "Raw walnut halves, plant source of ALA omega-3 fatty acids."
   },
   {
+    "name": "Sugar (white, granulated)",
+    "aliases": [
+      "white sugar",
+      "table sugar",
+      "cheeni",
+      "shakkar",
+      "cane sugar"
+    ],
+    "category": "Other",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 387,
+      "protein": 0,
+      "carbs": 99.8,
+      "fat": 0
+    },
+    "servings": [
+      {
+        "label": "1 teaspoon / 1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tablespoon / 1 tbsp",
+        "grams": 15
+      },
+      {
+        "label": "1 sugar cube / packet",
+        "grams": 4
+      }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Refined cane white granulated sugar (99.8% sucrose). Source: USDA FoodData Central (FDC ID 169655) & ICMR-NIN IFCT 2017."
+  },
+  {
     "name": "Chana Dal (raw)",
     "aliases": [
       "split bengal gram",
@@ -2649,8 +2849,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 160,
-      "protein": 31.0,
-      "carbs": 0.0,
+      "protein": 31,
+      "carbs": 0,
       "fat": 3.6
     },
     "servings": [
@@ -2676,8 +2876,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 120,
-      "protein": 26.0,
-      "carbs": 0.0,
+      "protein": 26,
+      "carbs": 0,
       "fat": 1.8
     },
     "servings": [
@@ -2703,9 +2903,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 205,
-      "protein": 26.0,
-      "carbs": 0.0,
-      "fat": 11.0
+      "protein": 26,
+      "carbs": 0,
+      "fat": 11
     },
     "servings": [
       {
@@ -2725,8 +2925,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 144,
-      "protein": 20.0,
-      "carbs": 0.0,
+      "protein": 20,
+      "carbs": 0,
       "fat": 7.2
     },
     "servings": [
@@ -2751,7 +2951,7 @@
       "calories": 370,
       "protein": 19.3,
       "carbs": 60.7,
-      "fat": 6.0
+      "fat": 6
     },
     "servings": [
       {
@@ -2830,7 +3030,7 @@
     "macros": {
       "calories": 102,
       "protein": 19.7,
-      "carbs": 0.0,
+      "carbs": 0,
       "fat": 2.5
     },
     "servings": [
@@ -2853,7 +3053,7 @@
     "macros": {
       "calories": 205,
       "protein": 20.4,
-      "carbs": 0.0,
+      "carbs": 0,
       "fat": 13.4
     },
     "servings": [
@@ -2876,8 +3076,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 362,
-      "protein": 20.0,
-      "carbs": 61.0,
+      "protein": 20,
+      "carbs": 61,
       "fat": 4.5
     },
     "servings": [
@@ -2903,8 +3103,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 345,
-      "protein": 24.0,
-      "carbs": 59.0,
+      "protein": 24,
+      "carbs": 59,
       "fat": 1.2
     },
     "servings": [
@@ -2931,7 +3131,7 @@
     "macros": {
       "calories": 143,
       "protein": 20.6,
-      "carbs": 0.0,
+      "carbs": 0,
       "fat": 6.5
     },
     "servings": [
@@ -2977,9 +3177,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 340,
-      "protein": 24.0,
-      "carbs": 60.0,
-      "fat": 1.0
+      "protein": 24,
+      "carbs": 60,
+      "fat": 1
     },
     "servings": [
       {
@@ -2999,28 +3199,34 @@
     "aliases": [
       "soy chunks",
       "mealmaker",
-      "soya wadi"
+      "soya wadi",
+      "nutrela",
+      "fortune soya"
     ],
     "category": "Protein",
     "basis": "per_100g",
     "macros": {
       "calories": 345,
-      "protein": 52.0,
-      "carbs": 33.0,
-      "fat": 0.5
+      "protein": 52.5,
+      "carbs": 32.5,
+      "fat": 0.8
     },
     "servings": [
       {
-        "label": "1 cup dry chunks",
+        "label": "1 serving dry (30g)",
+        "grams": 30
+      },
+      {
+        "label": "1 cup dry chunks (40g)",
         "grams": 40
       },
       {
-        "label": "1 bowl cooked equivalent",
+        "label": "1 large bowl dry (50g)",
         "grams": 50
       }
     ],
-    "defaultQuantity": 50,
-    "notes": "Defatted soy protein chunks, over 50% protein by dry weight."
+    "defaultQuantity": 40,
+    "notes": "Defatted soya chunks dry weight. Source: Brand nutrition labels (Fortune & Nutrela average) and ICMR-NIN IFCT defatted soy flour."
   },
   {
     "name": "Tempeh",
@@ -3054,7 +3260,7 @@
     "basis": "per_100g",
     "macros": {
       "calories": 84,
-      "protein": 10.0,
+      "protein": 10,
       "carbs": 1.9,
       "fat": 4.2
     },
@@ -3081,7 +3287,7 @@
     "basis": "per_100g",
     "macros": {
       "calories": 345,
-      "protein": 22.0,
+      "protein": 22,
       "carbs": 61.5,
       "fat": 1.5
     },
@@ -3109,8 +3315,8 @@
     "macros": {
       "calories": 115,
       "protein": 25.5,
-      "carbs": 0.0,
-      "fat": 1.0
+      "carbs": 0,
+      "fat": 1
     },
     "servings": [
       {
@@ -3187,7 +3393,7 @@
     "macros": {
       "calories": 210,
       "protein": 4.5,
-      "carbs": 37.0,
+      "carbs": 37,
       "fat": 4.8
     },
     "servings": [
@@ -3237,7 +3443,7 @@
     "macros": {
       "calories": 75,
       "protein": 2.5,
-      "carbs": 11.0,
+      "carbs": 11,
       "fat": 2.3
     },
     "servings": [
@@ -3292,7 +3498,7 @@
       "calories": 85,
       "protein": 2.5,
       "carbs": 14.5,
-      "fat": 2.0
+      "fat": 2
     },
     "servings": [
       {
@@ -3314,7 +3520,7 @@
     "macros": {
       "calories": 28,
       "protein": 0.6,
-      "carbs": 5.0,
+      "carbs": 5,
       "fat": 0.6
     },
     "servings": [
@@ -3338,7 +3544,7 @@
       "calories": 145,
       "protein": 3.8,
       "carbs": 14.5,
-      "fat": 8.0
+      "fat": 8
     },
     "servings": [
       {
@@ -3387,9 +3593,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 536,
-      "protein": 7.0,
-      "carbs": 53.0,
-      "fat": 33.0
+      "protein": 7,
+      "carbs": 53,
+      "fat": 33
     },
     "servings": [
       {
@@ -3413,9 +3619,9 @@
     "basis": "per_piece",
     "macros": {
       "calories": 215,
-      "protein": 20.0,
-      "carbs": 21.0,
-      "fat": 7.0
+      "protein": 20,
+      "carbs": 21,
+      "fat": 7
     },
     "servings": [
       {
@@ -3462,8 +3668,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 369,
-      "protein": 21.0,
-      "carbs": 58.0,
+      "protein": 21,
+      "carbs": 58,
       "fat": 5.5
     },
     "servings": [
@@ -3518,8 +3724,8 @@
     "macros": {
       "calories": 262,
       "protein": 3.5,
-      "carbs": 24.0,
-      "fat": 17.0
+      "carbs": 24,
+      "fat": 17
     },
     "servings": [
       {
@@ -3541,9 +3747,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 560,
-      "protein": 12.0,
-      "carbs": 44.0,
-      "fat": 37.0
+      "protein": 12,
+      "carbs": 44,
+      "fat": 37
     },
     "servings": [
       {
@@ -3566,7 +3772,7 @@
     "macros": {
       "calories": 275,
       "protein": 5.5,
-      "carbs": 24.0,
+      "carbs": 24,
       "fat": 17.5
     },
     "servings": [
@@ -3579,6 +3785,38 @@
     "notes": "Mixed vegetables dipped in seasoned gram flour batter and deep fried."
   },
   {
+    "name": "AS-IT-IS Soy Protein Isolate (Unflavored)",
+    "aliases": [
+      "as it is soy protein",
+      "asitis soy isolate",
+      "soy protein isolate powder"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 377,
+      "protein": 85.7,
+      "carbs": 1.5,
+      "fat": 1.4
+    },
+    "servings": [
+      {
+        "label": "1 scoop (35g)",
+        "grams": 35
+      },
+      {
+        "label": "1 scoop (30g)",
+        "grams": 30
+      },
+      {
+        "label": "2 scoops (70g)",
+        "grams": 70
+      }
+    ],
+    "defaultQuantity": 35,
+    "notes": "AS-IT-IS Nutrition 90% Soy Protein Isolate unflavoured (30g protein, 132 kcal, 0.48g fat per 35g scoop). Source: Official packaging nutrition label."
+  },
+  {
     "name": "Micellar Casein",
     "aliases": [
       "casein protein",
@@ -3588,9 +3826,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 355,
-      "protein": 78.0,
-      "carbs": 4.0,
-      "fat": 2.0
+      "protein": 78,
+      "carbs": 4,
+      "fat": 2
     },
     "servings": [
       {
@@ -3611,9 +3849,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 375,
-      "protein": 76.0,
-      "carbs": 7.0,
-      "fat": 4.0
+      "protein": 76,
+      "carbs": 7,
+      "fat": 4
     },
     "servings": [
       {
@@ -3634,9 +3872,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 400,
-      "protein": 80.0,
-      "carbs": 6.0,
-      "fat": 6.0
+      "protein": 80,
+      "carbs": 6,
+      "fat": 6
     },
     "servings": [
       {
@@ -3657,9 +3895,9 @@
     "basis": "per_100g",
     "macros": {
       "calories": 370,
-      "protein": 88.0,
-      "carbs": 2.0,
-      "fat": 1.0
+      "protein": 88,
+      "carbs": 2,
+      "fat": 1
     },
     "servings": [
       {
@@ -3810,7 +4048,7 @@
     "macros": {
       "calories": 28,
       "protein": 1.9,
-      "carbs": 5.0,
+      "carbs": 5,
       "fat": 0.3
     },
     "servings": [

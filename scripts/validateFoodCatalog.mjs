@@ -19,6 +19,7 @@ const FRONTEND_FILES = [
   { file: 'nutsSeeds.json', expectedCategories: ['Nuts & Seeds'] },
   { file: 'protein.json', expectedCategories: ['Protein', 'Supplements'] },
   { file: 'snacks.json', expectedCategories: ['Snacks'] },
+  { file: 'other.json', expectedCategories: ['Other'] },
 ];
 
 const PARITY_FIELDS = [

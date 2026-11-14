@@ -60,7 +60,7 @@ const buildFoodCatalogBulkOps = () =>
  */
 const ensureFoodsSeeded = async () => {
   const count = await Food.countDocuments();
-  if (count > 0) return;
+  if (count >= foodCatalog.length) return;
   const ops = buildFoodCatalogBulkOps();
   if (ops.length > 0) {
     await Food.bulkWrite(ops, { ordered: false });

@@ -11,7 +11,7 @@
       "calories": 361,
       "protein": 11.6,
       "carbs": 67.5,
-      "fat": 5.0
+      "fat": 5
     },
     "servings": [
       {
@@ -37,7 +37,7 @@
     "macros": {
       "calories": 350,
       "protein": 7.5,
-      "carbs": 77.0,
+      "carbs": 77,
       "fat": 0.6
     },
     "servings": [
@@ -91,7 +91,7 @@
       "calories": 123,
       "protein": 2.7,
       "carbs": 25.6,
-      "fat": 1.0
+      "fat": 1
     },
     "servings": [
       {
@@ -107,31 +107,37 @@
     "notes": "Steamed whole grain brown rice with intact bran and germ."
   },
   {
-    "name": "Chapati (wheat roti)",
+    "name": "Chapati (plain whole wheat roti, cooked)",
     "aliases": [
       "roti",
-      "phulka"
+      "phulka",
+      "cooked chapati",
+      "wheat roti"
     ],
     "category": "Grains",
     "basis": "per_100g",
     "macros": {
-      "calories": 297,
-      "protein": 11.0,
-      "carbs": 58.0,
-      "fat": 3.0
+      "calories": 250,
+      "protein": 8.3,
+      "carbs": 48,
+      "fat": 1.5
     },
     "servings": [
       {
-        "label": "1 medium roti",
-        "grams": 45
+        "label": "1 medium chapati (40g)",
+        "grams": 40
       },
       {
-        "label": "1 large roti",
-        "grams": 60
+        "label": "1 large chapati (55g)",
+        "grams": 55
+      },
+      {
+        "label": "1 small phulka (30g)",
+        "grams": 30
       }
     ],
-    "defaultQuantity": 45,
-    "notes": "Traditional Indian whole wheat flatbread cooked on a tawa."
+    "defaultQuantity": 40,
+    "notes": "Traditional Indian whole wheat flatbread made from 100% atta, dry-roasted on tawa without added oil or ghee (~100 kcal per medium 40g roti). Source: Averaged from ICMR-NIN IFCT 2017, USDA FoodData Central, and NIN research publications."
   },
   {
     "name": "Dalia (broken wheat, dry)",
@@ -144,8 +150,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 345,
-      "protein": 12.0,
-      "carbs": 71.0,
+      "protein": 12,
+      "carbs": 71,
       "fat": 1.5
     },
     "servings": [
@@ -162,6 +168,34 @@
     "notes": "Cracked whole wheat groats, high in dietary fiber."
   },
   {
+    "name": "Harvest Gold Brown Bread",
+    "aliases": [
+      "harvest gold bread",
+      "harvest gold brown",
+      "harvest brown bread"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 217,
+      "protein": 8.3,
+      "carbs": 43.7,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 28
+      },
+      {
+        "label": "2 slices",
+        "grams": 56
+      }
+    ],
+    "defaultQuantity": 56,
+    "notes": "Harvest Gold Hearty Brown Bread (30% whole wheat atta, 0.96g fat, 3.5g fibre per 100g; ~61 kcal per 28g slice). Source: Official packaging nutrition label."
+  },
+  {
     "name": "Instant Oats (dry)",
     "aliases": [
       "quick oats"
@@ -171,8 +205,8 @@
     "macros": {
       "calories": 372,
       "protein": 12.5,
-      "carbs": 67.0,
-      "fat": 6.0
+      "carbs": 67,
+      "fat": 6
     },
     "servings": [
       {
@@ -222,7 +256,7 @@
       "calories": 360,
       "protein": 10.3,
       "carbs": 76.3,
-      "fat": 1.0
+      "fat": 1
     },
     "servings": [
       {
@@ -246,8 +280,8 @@
     "basis": "per_piece",
     "macros": {
       "calories": 75,
-      "protein": 4.0,
-      "carbs": 13.0,
+      "protein": 4,
+      "carbs": 13,
       "fat": 1.1
     },
     "servings": [
@@ -325,7 +359,7 @@
     "macros": {
       "calories": 328,
       "protein": 7.3,
-      "carbs": 72.0,
+      "carbs": 72,
       "fat": 1.3
     },
     "servings": [
@@ -379,7 +413,7 @@
     "macros": {
       "calories": 408,
       "protein": 25.5,
-      "carbs": 64.0,
+      "carbs": 64,
       "fat": 5.5
     },
     "servings": [
@@ -451,11 +485,12 @@
     "notes": "Standard sliced sandwich loaf (~25g per slice)."
   },
   {
-    "name": "White Rice (cooked)",
+    "name": "White Rice (cooked / steamed)",
     "aliases": [
       "cooked white rice",
       "steamed rice",
-      "boiled rice"
+      "boiled rice",
+      "white rice cooked"
     ],
     "category": "Grains",
     "basis": "per_100g",
@@ -467,16 +502,20 @@
     },
     "servings": [
       {
+        "label": "1 medium bowl / katori",
+        "grams": 150
+      },
+      {
         "label": "1 cup cooked",
         "grams": 158
       },
       {
-        "label": "1 medium bowl",
-        "grams": 150
+        "label": "1 plate / serving",
+        "grams": 200
       }
     ],
     "defaultQuantity": 150,
-    "notes": "Steamed polished long/medium grain white rice."
+    "notes": "Steamed/boiled long-grain white rice cooked without added oil or salt. Source: Averaged from USDA FoodData Central (FDC ID 168878), ICMR-NIN IFCT 2017, and UK McCance & Widdowson (CoFID)."
   },
   {
     "name": "Whole Wheat Bread",
@@ -489,7 +528,7 @@
     "macros": {
       "calories": 69,
       "protein": 3.6,
-      "carbs": 12.0,
+      "carbs": 12,
       "fat": 0.9
     },
     "servings": [
@@ -516,8 +555,8 @@
     "basis": "per_100g",
     "macros": {
       "calories": 345,
-      "protein": 12.0,
-      "carbs": 71.0,
+      "protein": 12,
+      "carbs": 71,
       "fat": 1.8
     },
     "servings": [
@@ -532,5 +571,37 @@
     ],
     "defaultQuantity": 60,
     "notes": "Stone-ground whole wheat chakki atta."
+  },
+  {
+    "name": "Yogabar High Protein Oats (Dark Chocolate)",
+    "aliases": [
+      "yoga bar protein oats",
+      "yogabar oats",
+      "high protein oats"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 364,
+      "protein": 26,
+      "carbs": 57.3,
+      "fat": 5.9
+    },
+    "servings": [
+      {
+        "label": "1 scoop / serving",
+        "grams": 50
+      },
+      {
+        "label": "1 bowl",
+        "grams": 40
+      },
+      {
+        "label": "1 large bowl",
+        "grams": 75
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Yogabar Dark Chocolate High Protein Oats (rolled oats with soy protein isolate and whey; 13g protein per 50g scoop, 0g added sugar). Source: Official packaging nutrition label."
   }
 ]
