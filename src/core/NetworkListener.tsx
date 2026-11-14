@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import { useHistoryStore } from '../store/historyStore';
+import { useProfileStore } from '../store/profileStore';
+import { useNutritionStore } from '../store/nutritionStore';
 import { useSyncStore } from '../store/syncStore';
 
 /** Drains the offline write queue and retries initial sync when back online. */
@@ -15,6 +17,8 @@ export const NetworkListener: React.FC = () => {
           if (history.hasHydrated && !history.hasSyncedFromServer) {
             history.fetchData();
           }
+          useProfileStore.getState().fetchProfile();
+          useNutritionStore.getState().fetchNutritionData();
         });
       }
     });
