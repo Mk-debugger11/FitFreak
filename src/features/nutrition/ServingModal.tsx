@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Button, Chip, Input, ModalSheet } from '../../components';
+import { Button, Input, ModalSheet } from '../../components';
 import { BASIS_UNITS } from '../../constants/nutrition';
 import { theme } from '../../theme';
 import { CustomFood, FoodItem, LoggedFood, MacroNutrients, MEAL_LABELS, MealType } from '../../types';
@@ -28,11 +28,11 @@ export const ServingModal: React.FC<ServingModalProps> = ({
   onSave,
   onClose,
 }) => {
-  const [quantityText, setQuantityText] = useState('');
-  const [servingLabel, setServingLabel] = useState<string | undefined>(undefined);
+  const [quantityText, setQuantityText] = useState('100');
 
-  // Custom macro editing state (for cooked dishes / custom preparations)
+  // Custom macro editing state (prominently available for cooked food items)
   const [isCustomMacrosActive, setIsCustomMacrosActive] = useState(false);
+  const [hasManuallyEditedMacros, setHasManuallyEditedMacros] = useState(false);
   const [customCalories, setCustomCalories] = useState('');
   const [customProtein, setCustomProtein] = useState('');
   const [customCarbs, setCustomCarbs] = useState('');
@@ -44,15 +44,17 @@ export const ServingModal: React.FC<ServingModalProps> = ({
 
   const isCookedDish = Boolean(
     food?.category === 'Cooked Dishes' ||
-    (food?.name && /cooked|curry|sabzi|dal|boiled|fried|roast|bhurji|khichdi|paneer tikka|dosa|pulao|biryani/i.test(food.name)),
+    (food?.name &&
+      /cooked|curry|sabzi|dal|boiled|fried|roast|bhurji|khichdi|paneer tikka|dosa|pulao|biryani|tadka|gravy|chapati|roti|rice/i.test(
+        food.name,
+      )),
   );
 
-  // Initialize form state
+  // Initialize form state whenever modal opens or food/entry changes
   useEffect(() => {
     if (visible) {
       if (editingEntry) {
         setQuantityText(String(editingEntry.quantity));
-        setServingLabel(editingEntry.servingLabel);
 
         const standardScaled = food ? scaleMacros(food, editingEntry.quantity) : null;
         const isOverridden = Boolean(
@@ -64,35 +66,29 @@ export const ServingModal: React.FC<ServingModalProps> = ({
               Math.abs(standardScaled.fat - editingEntry.macros.fat) > 0.5)),
         );
 
-        if (isOverridden) {
-          setIsCustomMacrosActive(true);
-          setCustomCalories(String(Math.round(editingEntry.macros.calories)));
-          setCustomProtein(String(editingEntry.macros.protein));
-          setCustomCarbs(String(editingEntry.macros.carbs));
-          setCustomFat(String(editingEntry.macros.fat));
-        } else {
-          setIsCustomMacrosActive(false);
-          setCustomCalories('');
-          setCustomProtein('');
-          setCustomCarbs('');
-          setCustomFat('');
-        }
+        setIsCustomMacrosActive(isCookedDish || isOverridden);
+        setHasManuallyEditedMacros(isOverridden);
+        setCustomCalories(String(Math.round(editingEntry.macros.calories)));
+        setCustomProtein(String(editingEntry.macros.protein));
+        setCustomCarbs(String(editingEntry.macros.carbs));
+        setCustomFat(String(editingEntry.macros.fat));
       } else if (food) {
-        const defaultQty =
-          food.defaultQuantity ?? (food.basis === 'per_piece' ? 1 : 100);
+        const defaultQty = food.basis === 'per_piece' ? 1 : 100;
         setQuantityText(String(defaultQty));
 
-        const matchedServing = food.servings?.find((s) => s.grams === defaultQty);
-        setServingLabel(matchedServing?.label);
-        setIsCustomMacrosActive(false);
-        setCustomCalories('');
-        setCustomProtein('');
-        setCustomCarbs('');
-        setCustomFat('');
+        const initialScaled = scaleMacros(food, defaultQty);
+        setCustomCalories(String(Math.round(initialScaled.calories)));
+        setCustomProtein(String(initialScaled.protein));
+        setCustomCarbs(String(initialScaled.carbs));
+        setCustomFat(String(initialScaled.fat));
+
+        // Cooked food items have macro editing active right away
+        setIsCustomMacrosActive(isCookedDish);
+        setHasManuallyEditedMacros(false);
       } else {
         setQuantityText('100');
-        setServingLabel(undefined);
         setIsCustomMacrosActive(false);
+        setHasManuallyEditedMacros(false);
         setCustomCalories('');
         setCustomProtein('');
         setCustomCarbs('');
@@ -106,37 +102,29 @@ export const ServingModal: React.FC<ServingModalProps> = ({
     !isNaN(parsedQuantity) && parsedQuantity > 0 && parsedQuantity <= 5000;
 
   const quantityLabel = isPerPiece
-    ? 'Quantity (pieces)'
+    ? 'Enter Quantity (pieces)'
     : isPer100ml
-    ? 'Volume (ml)'
-    : 'Weight (grams)';
+    ? 'Enter Volume (ml)'
+    : 'Enter Weight (grams)';
 
-  const quantityPlaceholder = isPerPiece ? 'e.g. 2' : isPer100ml ? 'e.g. 250' : 'e.g. 150';
+  const quantityPlaceholder = isPerPiece ? 'e.g. 1, 2, 3' : isPer100ml ? 'e.g. 200' : 'e.g. 150';
 
   const quantityError =
     quantityText.trim().length > 0 && !isQuantityValid
       ? `Please enter a valid ${isPerPiece ? 'quantity' : 'weight'} between 1 and 5,000`
       : undefined;
 
-  // Live scaled macros from food definition
+  // Live scaled macros based on base catalog/custom definition
   const scaledMacros = useMemo(() => {
     if (!food || !isQuantityValid) return null;
     return scaleMacros(food, parsedQuantity);
   }, [food, isQuantityValid, parsedQuantity]);
 
-  // When quantity changes, if custom macros are NOT active or newly toggling, keep them in sync
+  // When quantity or weight changes, auto-scale macros if not manually overridden
   const handleQuantityChange = (text: string) => {
     setQuantityText(text);
     const num = parseFloat(text.trim());
-    if (food?.servings) {
-      const match = food.servings.find((s) => s.grams === num);
-      setServingLabel(match?.label);
-    } else {
-      setServingLabel(undefined);
-    }
-
-    // If custom macros were not manually altered, re-seed them for the new quantity
-    if (isCustomMacrosActive && food && !isNaN(num) && num > 0) {
+    if (food && !isNaN(num) && num > 0 && !hasManuallyEditedMacros) {
       const nextScaled = scaleMacros(food, num);
       setCustomCalories(String(Math.round(nextScaled.calories)));
       setCustomProtein(String(nextScaled.protein));
@@ -145,16 +133,24 @@ export const ServingModal: React.FC<ServingModalProps> = ({
     }
   };
 
-  const handleSelectServing = (grams: number, label: string) => {
-    setQuantityText(String(grams));
-    setServingLabel(label);
+  const handleCustomMacroChange = (
+    field: 'calories' | 'protein' | 'carbs' | 'fat',
+    value: string,
+  ) => {
+    setHasManuallyEditedMacros(true);
+    if (field === 'calories') setCustomCalories(value);
+    if (field === 'protein') setCustomProtein(value);
+    if (field === 'carbs') setCustomCarbs(value);
+    if (field === 'fat') setCustomFat(value);
+  };
 
-    if (isCustomMacrosActive && food) {
-      const nextScaled = scaleMacros(food, grams);
-      setCustomCalories(String(Math.round(nextScaled.calories)));
-      setCustomProtein(String(nextScaled.protein));
-      setCustomCarbs(String(nextScaled.carbs));
-      setCustomFat(String(nextScaled.fat));
+  const handleResetToStandardMacros = () => {
+    setHasManuallyEditedMacros(false);
+    if (scaledMacros) {
+      setCustomCalories(String(Math.round(scaledMacros.calories)));
+      setCustomProtein(String(scaledMacros.protein));
+      setCustomCarbs(String(scaledMacros.carbs));
+      setCustomFat(String(scaledMacros.fat));
     }
   };
 
@@ -169,15 +165,7 @@ export const ServingModal: React.FC<ServingModalProps> = ({
       setIsCustomMacrosActive(true);
     } else {
       setIsCustomMacrosActive(false);
-    }
-  };
-
-  const handleResetToStandardMacros = () => {
-    if (scaledMacros) {
-      setCustomCalories(String(Math.round(scaledMacros.calories)));
-      setCustomProtein(String(scaledMacros.protein));
-      setCustomCarbs(String(scaledMacros.carbs));
-      setCustomFat(String(scaledMacros.fat));
+      setHasManuallyEditedMacros(false);
     }
   };
 
@@ -199,10 +187,10 @@ export const ServingModal: React.FC<ServingModalProps> = ({
 
   const handleSave = () => {
     if (!isQuantityValid) return;
-    if (isCustomMacrosActive && displayMacros) {
-      onSave(parsedQuantity, servingLabel, displayMacros);
+    if (isCustomMacrosActive && hasManuallyEditedMacros && displayMacros) {
+      onSave(parsedQuantity, undefined, displayMacros);
     } else {
-      onSave(parsedQuantity, servingLabel, undefined);
+      onSave(parsedQuantity, undefined, undefined);
     }
   };
 
@@ -237,30 +225,7 @@ export const ServingModal: React.FC<ServingModalProps> = ({
         </View>
       }
     >
-      {/* Portion presets as optional shortcuts (user is not constrained) */}
-      {food?.servings && food.servings.length > 0 && (
-        <View style={styles.servingsSection}>
-          <Text style={styles.sectionLabel}>Quick Portions (Optional Shortcuts):</Text>
-          <View style={styles.chipRow}>
-            {food.servings.map((serving) => {
-              const isSelected =
-                servingLabel === serving.label ||
-                parsedQuantity === serving.grams;
-              return (
-                <Chip
-                  key={serving.label}
-                  label={`${serving.label} (${serving.grams}${basisInfo.unit})`}
-                  variant="option"
-                  selected={isSelected}
-                  onPress={() => handleSelectServing(serving.grams, serving.label)}
-                />
-              );
-            })}
-          </View>
-        </View>
-      )}
-
-      {/* Primary User Input: Weight (g), Volume (ml), or Quantity (pieces) */}
+      {/* Primary Input: Select Quantity or Weight */}
       <View style={styles.inputSection}>
         <Input
           label={quantityLabel}
@@ -269,109 +234,169 @@ export const ServingModal: React.FC<ServingModalProps> = ({
           value={quantityText}
           onChangeText={handleQuantityChange}
           error={quantityError}
+          autoFocus
         />
         <Text style={styles.inputHelperText}>
           {isPerPiece
-            ? 'Enter exact piece count. Macros update automatically.'
+            ? 'Enter exact number of pieces. Nutrition calculates dynamically.'
             : isPer100ml
-            ? 'Enter exact volume in ml. Macros scale automatically.'
-            : 'Enter exact weight in grams. Macros scale automatically.'}
+            ? 'Enter exact volume in ml. Nutrition calculates dynamically.'
+            : 'Enter exact weight in grams. Nutrition calculates dynamically.'}
         </Text>
       </View>
 
-      {/* Option to Edit Macros (especially prominent for Cooked Food Items) */}
-      <View style={styles.macroOptionSection}>
-        <View style={styles.macroOptionHeader}>
-          <View style={styles.macroOptionLabelGroup}>
-            <Text style={styles.macroOptionTitle}>
-              {isCookedDish ? 'Cooked Dish Preparation' : 'Custom Nutrition'}
-            </Text>
-            <Text style={styles.macroOptionSubtitle}>
-              {isCookedDish
-                ? 'Cooking oils, water absorption, and spices vary. You can edit the macros.'
-                : 'Fine-tune or override macros for this portion.'}
-            </Text>
-          </View>
-          <TouchableOpacity
-            style={[
-              styles.macroToggleBtn,
-              isCustomMacrosActive && styles.macroToggleBtnActive,
-            ]}
-            onPress={handleToggleCustomMacros}
-          >
-            <Text
-              style={[
-                styles.macroToggleBtnText,
-                isCustomMacrosActive && styles.macroToggleBtnTextActive,
-              ]}
-            >
-              {isCustomMacrosActive ? 'Custom ON' : 'Edit Macros'}
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        {isCustomMacrosActive && (
-          <View style={styles.customMacroFieldsCard}>
-            <View style={styles.customMacroFieldsHeader}>
-              <Text style={styles.customMacroFieldsTitle}>
-                Edit Portion Macros ({parsedQuantity || 0} {basisInfo.unit})
+      {/* Cooked Dish Preparation / Editable Macros */}
+      {isCookedDish ? (
+        <View style={styles.cookedSection}>
+          <View style={styles.cookedHeader}>
+            <View style={styles.cookedTitleGroup}>
+              <Text style={styles.cookedTitle}>Cooked Dish Macros (Editable)</Text>
+              <Text style={styles.cookedSubtitle}>
+                Oil, spices, and water vary. Adjust the macros below for your recipe:
               </Text>
-              <TouchableOpacity onPress={handleResetToStandardMacros}>
-                <Text style={styles.resetButtonText}>Reset to Standard</Text>
+            </View>
+            {hasManuallyEditedMacros && (
+              <TouchableOpacity
+                onPress={handleResetToStandardMacros}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              >
+                <Text style={styles.resetButtonText}>Reset</Text>
               </TouchableOpacity>
-            </View>
+            )}
+          </View>
 
-            <View style={styles.macroInputsRow}>
-              <View style={styles.macroInputHalf}>
-                <Input
-                  label="Calories (kcal)"
-                  placeholder="e.g. 220"
-                  keyboardType="decimal-pad"
-                  value={customCalories}
-                  onChangeText={setCustomCalories}
-                />
-              </View>
-              <View style={styles.macroInputHalf}>
-                <Input
-                  label="Protein (g)"
-                  placeholder="e.g. 15"
-                  keyboardType="decimal-pad"
-                  value={customProtein}
-                  onChangeText={setCustomProtein}
-                />
-              </View>
+          <View style={styles.macroInputsRow}>
+            <View style={styles.macroInputHalf}>
+              <Input
+                label="Calories (kcal)"
+                placeholder="kcal"
+                keyboardType="decimal-pad"
+                value={customCalories}
+                onChangeText={(v) => handleCustomMacroChange('calories', v)}
+              />
             </View>
-
-            <View style={styles.macroInputsRow}>
-              <View style={styles.macroInputHalf}>
-                <Input
-                  label="Carbs (g)"
-                  placeholder="e.g. 28"
-                  keyboardType="decimal-pad"
-                  value={customCarbs}
-                  onChangeText={setCustomCarbs}
-                />
-              </View>
-              <View style={styles.macroInputHalf}>
-                <Input
-                  label="Fat (g)"
-                  placeholder="e.g. 6"
-                  keyboardType="decimal-pad"
-                  value={customFat}
-                  onChangeText={setCustomFat}
-                />
-              </View>
+            <View style={styles.macroInputHalf}>
+              <Input
+                label="Protein (g)"
+                placeholder="g"
+                keyboardType="decimal-pad"
+                value={customProtein}
+                onChangeText={(v) => handleCustomMacroChange('protein', v)}
+              />
             </View>
           </View>
-        )}
-      </View>
 
-      {/* Live Nutrition Display */}
+          <View style={styles.macroInputsRow}>
+            <View style={styles.macroInputHalf}>
+              <Input
+                label="Carbs (g)"
+                placeholder="g"
+                keyboardType="decimal-pad"
+                value={customCarbs}
+                onChangeText={(v) => handleCustomMacroChange('carbs', v)}
+              />
+            </View>
+            <View style={styles.macroInputHalf}>
+              <Input
+                label="Fat (g)"
+                placeholder="g"
+                keyboardType="decimal-pad"
+                value={customFat}
+                onChangeText={(v) => handleCustomMacroChange('fat', v)}
+              />
+            </View>
+          </View>
+        </View>
+      ) : (
+        /* Non-cooked items: option to customize macros */
+        <View style={styles.macroOptionSection}>
+          <View style={styles.macroOptionHeader}>
+            <Text style={styles.macroOptionTitle}>Custom Nutrition</Text>
+            <TouchableOpacity
+              style={[
+                styles.macroToggleBtn,
+                isCustomMacrosActive && styles.macroToggleBtnActive,
+              ]}
+              onPress={handleToggleCustomMacros}
+            >
+              <Text
+                style={[
+                  styles.macroToggleBtnText,
+                  isCustomMacrosActive && styles.macroToggleBtnTextActive,
+                ]}
+              >
+                {isCustomMacrosActive ? 'Hide Edit' : 'Edit Macros'}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {isCustomMacrosActive && (
+            <View style={styles.customMacroFieldsCard}>
+              <View style={styles.customMacroFieldsHeader}>
+                <Text style={styles.customMacroFieldsTitle}>
+                  Edit Portion Macros ({parsedQuantity || 0} {basisInfo.unit})
+                </Text>
+                {hasManuallyEditedMacros && (
+                  <TouchableOpacity onPress={handleResetToStandardMacros}>
+                    <Text style={styles.resetButtonText}>Reset</Text>
+                  </TouchableOpacity>
+                )}
+              </View>
+
+              <View style={styles.macroInputsRow}>
+                <View style={styles.macroInputHalf}>
+                  <Input
+                    label="Calories (kcal)"
+                    placeholder="kcal"
+                    keyboardType="decimal-pad"
+                    value={customCalories}
+                    onChangeText={(v) => handleCustomMacroChange('calories', v)}
+                  />
+                </View>
+                <View style={styles.macroInputHalf}>
+                  <Input
+                    label="Protein (g)"
+                    placeholder="g"
+                    keyboardType="decimal-pad"
+                    value={customProtein}
+                    onChangeText={(v) => handleCustomMacroChange('protein', v)}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.macroInputsRow}>
+                <View style={styles.macroInputHalf}>
+                  <Input
+                    label="Carbs (g)"
+                    placeholder="g"
+                    keyboardType="decimal-pad"
+                    value={customCarbs}
+                    onChangeText={(v) => handleCustomMacroChange('carbs', v)}
+                  />
+                </View>
+                <View style={styles.macroInputHalf}>
+                  <Input
+                    label="Fat (g)"
+                    placeholder="g"
+                    keyboardType="decimal-pad"
+                    value={customFat}
+                    onChangeText={(v) => handleCustomMacroChange('fat', v)}
+                  />
+                </View>
+              </View>
+            </View>
+          )}
+        </View>
+      )}
+
+      {/* Live Nutrition Summary Box */}
       {displayMacros ? (
         <View style={styles.previewBox}>
           <View style={styles.previewHeaderRow}>
-            <Text style={styles.previewTitle}>Nutrition for this portion</Text>
-            {isCustomMacrosActive && (
+            <Text style={styles.previewTitle}>
+              Total Nutrition ({parsedQuantity || 0} {basisInfo.unit})
+            </Text>
+            {hasManuallyEditedMacros && (
               <View style={styles.customBadge}>
                 <Text style={styles.customBadgeText}>Customized</Text>
               </View>
@@ -424,20 +449,6 @@ export const ServingModal: React.FC<ServingModalProps> = ({
 };
 
 const styles = StyleSheet.create({
-  servingsSection: {
-    marginBottom: theme.spacing.sm,
-  },
-  sectionLabel: {
-    color: theme.colors.textSecondary,
-    fontSize: theme.typography.sizes.xs,
-    fontWeight: theme.typography.weights.medium,
-    marginBottom: theme.spacing.xs,
-  },
-  chipRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: theme.spacing.xs,
-  },
   inputSection: {
     marginBottom: theme.spacing.md,
   },
@@ -446,6 +457,35 @@ const styles = StyleSheet.create({
     fontSize: theme.typography.sizes.xs,
     marginTop: -theme.spacing.xs + 2,
     marginBottom: theme.spacing.xs,
+  },
+  cookedSection: {
+    backgroundColor: theme.colors.surfaceHighlight,
+    borderRadius: theme.borderRadius.md,
+    padding: theme.spacing.md,
+    marginBottom: theme.spacing.md,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
+  },
+  cookedHeader: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    marginBottom: theme.spacing.sm,
+    gap: theme.spacing.sm,
+  },
+  cookedTitleGroup: {
+    flex: 1,
+  },
+  cookedTitle: {
+    color: theme.colors.text,
+    fontSize: theme.typography.sizes.sm,
+    fontWeight: theme.typography.weights.semibold,
+  },
+  cookedSubtitle: {
+    color: theme.colors.textSecondary,
+    fontSize: theme.typography.sizes.xs,
+    marginTop: 2,
+    lineHeight: 16,
   },
   macroOptionSection: {
     backgroundColor: theme.colors.surfaceHighlight,
@@ -459,24 +499,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    gap: theme.spacing.sm,
-  },
-  macroOptionLabelGroup: {
-    flex: 1,
   },
   macroOptionTitle: {
-    color: theme.colors.text,
-    fontSize: theme.typography.sizes.sm,
-    fontWeight: theme.typography.weights.semibold,
-  },
-  macroOptionSubtitle: {
     color: theme.colors.textSecondary,
-    fontSize: theme.typography.sizes.xs,
-    marginTop: 2,
+    fontSize: theme.typography.sizes.sm,
+    fontWeight: theme.typography.weights.medium,
   },
   macroToggleBtn: {
     paddingHorizontal: theme.spacing.sm,
-    paddingVertical: 6,
+    paddingVertical: 5,
     borderRadius: theme.borderRadius.sm,
     borderWidth: 1,
     borderColor: theme.colors.primary,

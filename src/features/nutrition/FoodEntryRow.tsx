@@ -17,9 +17,10 @@ export const FoodEntryRow: React.FC<FoodEntryRowProps> = ({
   onEdit,
   onDelete,
 }) => {
-  const servingText =
-    entry.servingLabel ||
-    `${Math.round(entry.quantity)}${BASIS_UNITS[entry.basis]?.unit ?? 'g'}`;
+  const unit = BASIS_UNITS[entry.basis]?.unit ?? 'g';
+  const servingText = entry.servingLabel
+    ? `${Math.round(entry.quantity)}${unit} (${entry.servingLabel})`
+    : `${Math.round(entry.quantity)}${unit}`;
 
   const macroSubtitle = `P ${formatGrams(entry.macros.protein)} • C ${formatGrams(
     entry.macros.carbs,
