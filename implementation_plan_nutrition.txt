@@ -1,0 +1,604 @@
+# FitFreak - Nutrition Tab (maintenance calories, meal logging, energy balance)
+
+Status: Phases 1 to 7 complete (2026-11-14).
+Work through the phases in order. Phase 4 can run alongside Phase 3, and Phase 2 can run
+alongside Phase 1 once the types in 1a exist. Tick the [ ] boxes as work lands; each phase ends
+with a "Done when" check.
+
+
+## Goal
+
+- A third bottom tab, "Nutrition", showing one day at a time (same date strip as the Workout
+  tab).
+- The user's maintenance calories, computed from a formula (Mifflin-St Jeor BMR x activity
+  multiplier) using a profile they fill in once.
+- Meals logged into four parts of the day: Breakfast, Lunch, Snacks, Dinner. Each meal lists its
+  entries and its own macro totals.
+- A day total: calories plus protein / carbs / fat.
+- An energy-balance verdict against maintenance: Deficit, Maintenance, or Surplus, with the
+  signed difference in kcal.
+
+
+## Starting point
+
+- Two bottom tabs (Home, Workout) wired in `src/core/Navigation.tsx`, with a global
+  `ActiveWorkoutSheet` and a `MinimizedWorkoutBar` rendered above the tab bar. A third tab drops
+  in next to them; nothing about the sheet changes.
+- There is NO user profile anywhere in the app. `grep -ri "profile\|heightCm\|birth" src backend`
+  finds nothing but unrelated hits. Height, weight, age, sex and activity level all have to be
+  introduced - this is the one genuinely new concept in the feature, and the maintenance number
+  cannot be computed without it.
+- `src/components/HorizontalCalendar.tsx` already gives a date strip (365 days back, 1 forward,
+  future dates disabled). The Nutrition screen reuses it as-is.
+- `src/components/ModalSheet.tsx` (+ `ModalOption`, `ModalEmptyText`), `Button`, `Card`, `Chip`,
+  `Input` and `SegmentedControl` cover every dialog and control this feature needs. No new
+  shared component is required except a macro bar, which is nutrition-specific and therefore
+  lives in the feature folder, not `src/components/`.
+- The offline-first pattern is fixed and must be followed: local state first, then
+  `enqueueSync(url, method, body)`. Reads go through `api.*`, which is the only module that
+  knows URLs or converts ISO strings to `Date`.
+- `historyStore.ts` is already large (fetch windows, merge-by-id, migration-on-rehydrate).
+  Nutrition gets its own stores rather than being bolted onto it.
+- The exercise catalogue shows the pattern to copy for a food catalogue: split JSON under
+  `src/constants/exerciseCatalog/`, a byte-parity copy at `backend/data/exerciseCatalog.json`,
+  lazy seeding in the controller (`ensureExercisesSeeded`), a parity checker in
+  `scripts/validateCatalog.mjs`, and a client read that tolerates a 404 from an older server
+  (`api.getExercises()` returns `null`).
+- Tests are `node:test` files in `tests/` that compile the TypeScript under test on the fly
+  (see `tests/scoringEngine.test.mjs`). The pure nutrition maths gets the same treatment.
+
+
+## Decisions
+
+| Topic                   | Decision                                                              |
+|-------------------------|-----------------------------------------------------------------------|
+| Maintenance formula     | Mifflin-St Jeor BMR x activity multiplier (TDEE)                      |
+| Second formula          | Katch-McArdle when body fat % is filled in (optional, more accurate)  |
+| Manual escape hatch     | `maintenanceOverride` on the profile wins over any computed value     |
+| Age                     | Store `birthDate`, derive age, so the number never goes stale         |
+| Parts of day            | Exactly four: breakfast, lunch, snacks, dinner (fixed, not editable)  |
+| Day bucket              | Local `YYYY-MM-DD` `dateString`, like target muscles - not an ISO range |
+| Food macro basis        | per 100 g / per 100 ml / per piece, plus named servings (e.g. "1 roti") |
+| Entry macros            | Snapshotted onto the entry at log time, never re-derived from the food |
+| Calories of a food      | Stored explicitly; derived from 4/4/9 only when missing from the data |
+| Verdict band            | Within +/- max(100 kcal, 5% of maintenance) counts as Maintenance     |
+| Empty day               | No entries = no verdict (not "deficit"); show a prompt instead        |
+| Exercise calories       | NOT subtracted in v1. Maintenance already includes an activity factor |
+| Backend                 | New: foods, custom foods, nutrition entries, profile                  |
+| Where state lives       | Two new stores: `nutritionStore.ts` and `profileStore.ts`             |
+
+
+## Phase 1 - Domain foundations (types, tokens, constants)
+
+1a. `src/types.ts` - add the nutrition models alongside the workout ones
+
+- [ ] Meal parts of the day, as a const tuple so a typo fails `npm run typecheck`:
+        export const MEAL_TYPES = ['breakfast', 'lunch', 'snacks', 'dinner'] as const;
+        export type MealType = (typeof MEAL_TYPES)[number];
+      Display labels live next to it: MEAL_LABELS: Record<MealType, string>
+      ('Breakfast', 'Lunch', 'Snacks', 'Dinner').
+- [ ] Profile enums, same `as const` treatment:
+        SEXES = ['male', 'female']                      -> Sex
+        ACTIVITY_LEVELS = ['sedentary', 'light', 'moderate', 'active', 'very_active']
+                                                        -> ActivityLevel
+        NUTRITION_GOALS = ['cut', 'maintain', 'bulk']   -> NutritionGoal
+        FOOD_BASES = ['per_100g', 'per_100ml', 'per_piece'] -> FoodBasis
+- [ ] interface MacroNutrients { calories: number; protein: number; carbs: number; fat: number; }
+      Grams for the three macros, kcal for calories. One shape used for a food's basis values,
+      for a logged entry's snapshot, for a meal subtotal and for a day total.
+- [ ] interface FoodServing { label: string; grams: number; }
+      A named portion ("1 medium roti", 45). `grams` is in the food's basis unit (g, ml or
+      pieces), so a per_piece food's serving is `{ label: '2 eggs', grams: 2 }`.
+- [ ] interface FoodItem {
+        name: string;
+        aliases?: readonly string[];
+        category: FoodCategory;        // see 1c
+        basis: FoodBasis;
+        macros: MacroNutrients;        // the values AT that basis (per 100 g / 100 ml / piece)
+        servings?: readonly FoodServing[];
+        defaultQuantity?: number;      // pre-filled in the serving dialog; default 100 (or 1)
+        notes?: string;
+      }
+- [ ] interface CustomFood extends FoodItem { id: string }
+      User-created foods carry an id so they can be deleted; catalogue foods are keyed by name.
+- [ ] interface LoggedFood extends Entity {
+        dateString: string;            // local YYYY-MM-DD
+        mealType: MealType;
+        foodName: string;              // denormalized, survives a food being renamed/deleted
+        basis: FoodBasis;
+        quantity: number;              // in basis units: grams, ml, or pieces
+        servingLabel?: string;         // what the user picked, for display ("2 rotis")
+        macros: MacroNutrients;        // SNAPSHOT for `quantity`, already scaled
+        foodId?: string;               // custom food reference, when there was one
+        loggedAt: Date;                // time of day, for ordering inside a meal
+      }
+- [ ] interface UserProfile extends Entity {
+        sex: Sex;
+        heightCm: number;
+        weightKg: number;
+        birthDate: Date;
+        activityLevel: ActivityLevel;
+        goal: NutritionGoal;
+        bodyFatPercent?: number;       // enables Katch-McArdle
+        maintenanceOverride?: number;  // user-typed kcal, wins over the formula
+        proteinPerKg?: number;         // macro-target tuning; defaults in Phase 2
+      }
+- [ ] type LoggedFoodsByDate = Record<string, LoggedFood[]> is NOT added - entries are kept as
+      a flat array and filtered by `dateString`, mirroring `completedWorkouts`.
+
+1b. `src/theme.ts` - a `theme.colors.nutrition` block
+
+- [ ] Add alongside `theme.colors.anatomy`, so no nutrition screen hardcodes a colour:
+        nutrition: {
+          track: '#242424',      // unfilled part of a ring or bar
+          protein: '#3FA9F5',
+          carbs: '#F7B32B',
+          fat: '#B57BFF',
+          deficit: '#3FA9F5',
+          maintenance: '#03DAC6',
+          surplus: '#FF8A3D',
+        }
+      These read as direction, not judgement: a deficit is the goal when cutting, so none of the
+      three is styled as an error. `theme.colors.danger` stays reserved for destructive actions.
+
+1c. `src/constants/nutrition.ts` - new
+
+- [ ] FOOD_CATEGORIES as const ('Grains', 'Protein', 'Dairy', 'Fruit', 'Vegetables', 'Nuts &
+      Seeds', 'Cooked Dishes', 'Snacks', 'Beverages', 'Supplements', 'Other') -> FoodCategory.
+- [ ] CALORIES_PER_GRAM = { protein: 4, carbs: 4, fat: 9 } as const.
+- [ ] ACTIVITY_MULTIPLIERS: Record<ActivityLevel, number> =
+        sedentary 1.2, light 1.375, moderate 1.55, active 1.725, very_active 1.9
+      and ACTIVITY_LABELS with a one-line description each ("Light - 1-3 workouts a week").
+- [ ] GOAL_ADJUSTMENTS: Record<NutritionGoal, number> = { cut: -500, maintain: 0, bulk: 300 }
+      and GOAL_LABELS ('Cut', 'Maintain', 'Bulk').
+- [ ] DEFAULT_PROTEIN_PER_KG = 1.8 and DEFAULT_FAT_CALORIE_SHARE = 0.25, used to derive macro
+      targets in Phase 2.
+- [ ] MAINTENANCE_BAND = { fraction: 0.05, minKcal: 100 } - the tolerance for calling a day
+      "Maintenance". Kept as one constant so it is easy to tune, like
+      MUSCLE_ACTIVITY_THRESHOLDS.
+- [ ] BASIS_UNITS: Record<FoodBasis, { unit: string; amount: number }> =
+        per_100g { 'g', 100 }, per_100ml { 'ml', 100 }, per_piece { 'piece', 1 }
+      so the serving dialog and every label read their unit from one place.
+
+1d. `src/utils/date.ts` - two additions
+
+- [ ] ageFromBirthDate(birthDate: Date, on = new Date()): number - whole completed years,
+      month- and day-aware (a birthday later this month has not happened yet).
+- [ ] isSameDateKey is not needed; `toLocalDateKey` already exists and is what entries are
+      keyed and compared by.
+
+Done when: `npm run typecheck` passes with the new types exported and nothing importing them yet.
+
+
+## Phase 2 - The maths (pure functions + tests, no React, no store)
+
+All of this is pure and unit-tested before any UI exists, exactly as
+`src/features/home/muscleActivity.ts` was.
+
+2a. `src/features/nutrition/energyFormulas.ts` - new
+
+- [ ] mifflinStJeorBmr({ sex, weightKg, heightCm, ageYears }): number
+        male:   10*weightKg + 6.25*heightCm - 5*ageYears + 5
+        female: 10*weightKg + 6.25*heightCm - 5*ageYears - 161
+- [ ] katchMcArdleBmr({ weightKg, bodyFatPercent }): number
+        leanMass = weightKg * (1 - bodyFatPercent/100); bmr = 370 + 21.6 * leanMass
+- [ ] computeBmr(profile): { kcal: number; formula: 'mifflin_st_jeor' | 'katch_mcardle' } | null
+      Uses Katch-McArdle when `bodyFatPercent` is a sane number (3-60), else Mifflin-St Jeor.
+      Returns null when the profile is missing or any required field is out of range, so callers
+      must handle "unknown" rather than render a wrong number. The returned `formula` is what the
+      profile sheet names on screen.
+- [ ] computeMaintenanceCalories(profile): { kcal, bmr, multiplier, formula, isOverride } | null
+      `maintenanceOverride` short-circuits everything and comes back with `isOverride: true`.
+      Otherwise kcal = round(bmr * ACTIVITY_MULTIPLIERS[activityLevel]).
+- [ ] computeCalorieTarget(profile): number | null
+      maintenance + GOAL_ADJUSTMENTS[goal], floored at 1200 so a cut never suggests something
+      unsafe.
+- [ ] computeMacroTargets(profile): MacroNutrients | null
+        protein g = round(weightKg * (proteinPerKg ?? DEFAULT_PROTEIN_PER_KG))
+        fat g     = round(target * DEFAULT_FAT_CALORIE_SHARE / 9)
+        carbs g   = round(remaining kcal / 4), floored at 0
+      Guard the degenerate case where protein + fat already exceed the target (very low target,
+      very heavy user): scale protein and fat down proportionally rather than returning negative
+      carbs.
+- [ ] Validation ranges in one place (PROFILE_LIMITS): weightKg 25-300, heightCm 100-250,
+      age 13-100, bodyFatPercent 3-60. Used by both these functions and the profile form, so
+      the form and the maths can never disagree.
+
+2b. `src/features/nutrition/energyBalance.ts` - new
+
+- [ ] export type EnergyBalanceStatus = 'deficit' | 'maintenance' | 'surplus';
+- [ ] classifyEnergyBalance(intakeKcal, maintenanceKcal, { hasEntries }):
+        { status: EnergyBalanceStatus; deltaKcal: number; toleranceKcal: number } | null
+      Returns null when `maintenanceKcal` is null/0 (no profile yet) OR when `hasEntries` is
+      false - a day with nothing logged is not a 2000 kcal deficit, it is an unfilled day. This
+      is the single most important edge case in the feature; the screen shows a prompt instead
+      of a verdict in both cases.
+      tolerance = max(MAINTENANCE_BAND.minKcal, maintenance * MAINTENANCE_BAND.fraction)
+        delta = intake - maintenance
+        |delta| <= tolerance -> 'maintenance'; delta < 0 -> 'deficit'; else 'surplus'
+- [ ] STATUS_LABELS: Record<EnergyBalanceStatus, string> = Deficit / Maintenance / Surplus and
+      statusColor(status) reading `theme.colors.nutrition`.
+
+2c. `src/features/nutrition/servingMath.ts` - new
+
+- [ ] caloriesFromMacros(macros): number - 4/4/9, for foods whose data omits calories.
+- [ ] scaleMacros(food, quantity): MacroNutrients
+      quantity is in basis units; divide by BASIS_UNITS[basis].amount and multiply. Keeps full
+      float precision - rounding happens only at display time.
+- [ ] addMacros(a, b) and emptyMacros() - the accumulators the totals module folds with.
+- [ ] macroCalorieShares(macros): { protein: number; carbs: number; fat: number }
+      Each macro's share of the kcal it accounts for, normalized to sum to 1 (0/0/0 when the
+      entry is empty). This is what drives the stacked macro bar, so the bar stays honest even
+      when a food's stored calories disagree slightly with 4/4/9.
+
+2d. `src/features/nutrition/nutritionTotals.ts` - new
+
+- [ ] computeDayNutrition(entries: LoggedFood[], dateKey: string) returns:
+        {
+          byMeal: Record<MealType, { entries: LoggedFood[]; totals: MacroNutrients }>,
+          totals: MacroNutrients,
+          entryCount: number,
+        }
+      Rules: keep only entries whose `dateString === dateKey`; order each meal's entries by
+      `loggedAt` ascending; every MealType key is always present (empty array + zero totals), so
+      the screen can render four sections without null checks.
+- [ ] computeRemaining(totals, target): { kcal: number; isOver: boolean } for the "N left" line.
+
+2e. Tests
+
+- [ ] `tests/energyFormulas.test.mjs` - copy the compile harness from
+      `tests/scoringEngine.test.mjs`. Cover:
+        - Mifflin-St Jeor against hand-worked values for a male and a female profile.
+        - Katch-McArdle taking over when bodyFatPercent is set, and being ignored at 0 or 80.
+        - every ACTIVITY_MULTIPLIERS rung.
+        - `maintenanceOverride` beating the formula.
+        - null for an incomplete or out-of-range profile.
+        - computeMacroTargets summing to the target within rounding, and the degenerate
+          low-target case not producing negative carbs.
+- [ ] `tests/nutritionBalance.test.mjs` - cover:
+        - deficit / maintenance / surplus either side of the band, and exactly ON the band edge.
+        - null with no profile, and null with a profile but zero entries.
+        - computeDayNutrition bucketing four meals, ignoring other dates, ordering by loggedAt,
+          and summing macros; scaleMacros for all three bases and for a named serving.
+- [ ] Both files runnable with `node --test tests/`.
+
+Done when: `node --test tests/` passes (new files included) and `npm run typecheck` is clean.
+
+
+## Phase 3 - The profile (store, backend, form)
+
+3a. Backend - `backend/models/UserProfile.js`
+
+- [ ] Schema: userId (unique index), sex (enum), heightCm, weightKg, birthDate (Date),
+      activityLevel (enum), goal (enum), bodyFatPercent, maintenanceOverride, proteinPerKg,
+      `{ timestamps: true }`. Enums come from a new `backend/constants/nutrition.js` (3b), not
+      inline literals.
+- [ ] `backend/controllers/profileController.js`: getProfile (returns the doc or `null`, never a
+      404 - "no profile yet" is a normal state) and upsertProfile (validate, clamp to the same
+      PROFILE_LIMITS ranges as the client, `findOneAndUpdate` with upsert).
+- [ ] `backend/routes/profileRoutes.js`: GET `/`, PUT `/`. Wire `/api/profile` in
+      `backend/server.js` next to the existing four routers.
+
+3b. `backend/constants/nutrition.js` - new
+
+- [ ] MEAL_TYPES, SEXES, ACTIVITY_LEVELS, NUTRITION_GOALS, FOOD_CATEGORIES, FOOD_BASES,
+      PROFILE_LIMITS, normalizeFoodName (lowercase, collapse whitespace, strip punctuation -
+      copy `normalizeExerciseName`'s approach), sanitizeMacros (coerce to finite
+      non-negative numbers, fill calories from 4/4/9 when absent).
+      This knowingly duplicates `src/constants/nutrition.ts`, the same way
+      `backend/constants/muscles.js` duplicates `src/constants/muscles.ts`. It is already listed
+      under "Known gaps" in currentStatus.txt; do not invent a sharing mechanism here.
+
+3c. `src/services/api.ts`
+
+- [ ] endpoints.profile = `${API_URL}/profile`.
+- [ ] parseUserProfile(dto): UserProfile | null - narrows enums, rejects out-of-range numbers,
+      converts `birthDate`/`createdAt`/`updatedAt` to Dates. Exported, because the store reuses
+      it to revive AsyncStorage records (same trick as `parseCompletedWorkout`).
+- [ ] api.getProfile(): Promise<UserProfile | null> - tolerates a 404 from a server that has not
+      been redeployed yet, returning null, exactly like `api.getExercises()`.
+
+3d. `src/store/profileStore.ts` - new
+
+- [ ] State: profile: UserProfile | null, hasHydrated, isFetching.
+      Actions: fetchProfile(), saveProfile(patch: Partial<UserProfile>).
+- [ ] saveProfile merges into local state immediately, then
+      `enqueueSync(endpoints.profile, 'PUT', payload)`. Nothing waits on the network.
+- [ ] Persist as "profile-storage" with `createJSONStorage(() => AsyncStorage)` and a `merge`
+      that runs the persisted blob back through `parseUserProfile`, because `birthDate` comes
+      out of storage as a string.
+- [ ] Call `fetchProfile()` from `src/core/App.tsx` next to the existing `fetchData()` call, and
+      add it to the `NetworkListener.tsx` reconnect retry.
+- [ ] Export a non-hook selector `getMaintenanceCalories()` for callers outside React, mirroring
+      `enqueueSync`'s precedent.
+
+3e. `src/features/nutrition/ProfileSheet.tsx` - new
+
+- [ ] Built on `ModalSheet`, scrollable. Fields: sex (`SegmentedControl`), birth date, height cm,
+      weight kg, activity level (list of `ModalOption`s with the descriptions from
+      ACTIVITY_LABELS), goal (`SegmentedControl`), and an "Advanced" group for body fat % and a
+      maintenance override.
+- [ ] Live readout at the bottom, recomputed as the user types: "BMR 1,712 kcal (Mifflin-St
+      Jeor) x 1.55 Moderate = 2,654 kcal maintenance". Showing the formula by name is a stated
+      requirement, not decoration.
+- [ ] Validation with `Input`'s existing `error` prop, using PROFILE_LIMITS. Save is disabled
+      until every required field is valid. Numeric fields use `keyboardType="numeric"` and are
+      parsed, not trusted.
+- [ ] Reachable from two places: a gear/`User` icon in the Nutrition screen header, and the
+      empty-state card that appears when `profile === null`.
+
+Done when: the profile round-trips (fill in, kill the app, reopen, values are still there),
+`PUT /api/profile` lands in MongoDB, the maintenance readout matches a hand calculation, and
+filling it in offline syncs on reconnect.
+
+
+## Phase 4 - Food catalogue (can run alongside Phase 3)
+
+4a. Catalogue data
+
+- [x] `src/constants/foodCatalog/` with one JSON file per group, mirroring
+      `src/constants/exerciseCatalog/`: grains.json, protein.json, dairy.json, fruitsVeg.json,
+      nutsSeeds.json, cookedDishes.json, snacks.json, beverages.json.
+- [x] Target ~150 entries, weighted to what this user actually eats (the app is kg-based and
+      Indian-market hosted, so cover roti, dal, rice, paneer, curd, idli, poha, rajma, chana,
+      egg, chicken breast, whey, oats, banana, milk, ghee, oil). Each entry:
+        { "name": "Chapati (wheat roti)", "aliases": ["roti", "phulka"],
+          "category": "Grains", "basis": "per_100g",
+          "macros": { "calories": 297, "protein": 11, "carbs": 58, "fat": 3 },
+          "servings": [{ "label": "1 medium roti", "grams": 45 }],
+          "defaultQuantity": 45 }
+- [x] `src/constants/foods.ts` - imports every JSON file, validates each entry through a
+      `parseFoodEntry` guard (unknown category/basis -> dropped, missing calories -> derived via
+      caloriesFromMacros), and exports ALL_BUILTIN_FOODS: readonly FoodItem[] plus
+      FOODS_BY_CATEGORY. Same shape and same strictness as
+      `src/constants/exercises.ts`/`ALL_BUILTIN_EXERCISES`.
+- [x] `backend/data/foodCatalog.json` - the flattened byte-parity copy, as
+      `exerciseCatalog.json` is for exercises.
+- [x] `scripts/validateFoodCatalog.mjs` - modelled on `scripts/validateCatalog.mjs`. Asserts:
+        - frontend split files and the backend JSON agree field by field;
+        - names are unique after `normalizeFoodName`, and no alias collides with another name;
+        - every category and basis is known;
+        - stored calories are within 15% of 4/4/9 from the macros (catches transcription slips);
+        - macros per 100 g never sum past 100 g.
+
+4b. Backend foods
+
+- [ ] `backend/models/Food.js` - name, normalizedName (unique), aliases, category, basis,
+      macros (nested, required), servings (array of { label, grams }), notes, timestamps.
+      Follow `models/Exercise.js` field for field.
+- [ ] `backend/models/CustomFood.js` - per-user foods: userId, id (client-generated, unique),
+      name, normalizedName, category, basis, macros, servings, timestamps, with a unique
+      compound index on (userId, normalizedName).
+      NOTE: deliberately one document per food, not `CustomExercise`'s array-per-category. Foods
+      have no category-keyed parent to hang off, and per-document rows make a single delete a
+      single `DELETE /:id` instead of a read-modify-write.
+- [ ] `backend/controllers/foodController.js` - getFoods (with `ensureFoodsSeeded()` lazily
+      upserting `foodCatalog.json` when the collection is empty, copied from
+      `ensureExercisesSeeded`), getFoodByName (normalized name then alias scan), upsertFood.
+- [ ] `backend/controllers/customFoodController.js` - getCustomFoods, addCustomFood (idempotent
+      on normalizedName), deleteCustomFood.
+- [ ] Routes `backend/routes/foodRoutes.js` (GET `/`, GET `/:name`, POST `/`) and
+      `backend/routes/customFoodRoutes.js` (GET `/`, POST `/`, DELETE `/:id`); mount
+      `/api/foods` and `/api/custom-foods` in `server.js`.
+
+4c. Client reads
+
+- [ ] endpoints.foods, endpoints.customFoods, endpoints.customFood(id).
+- [ ] parseFoodItem(dto): FoodItem | null and parseCustomFood(dto): CustomFood | null in
+      `api.ts`, both exported for store rehydration.
+- [ ] api.getFoods(): Promise<FoodItem[] | null> - null on 404 so the app keeps working against
+      today's deployed server, which has no `/api/foods`. The store then falls back to
+      ALL_BUILTIN_FOODS, so food search works offline and on first launch regardless.
+- [ ] api.getCustomFoods(): Promise<CustomFood[]>.
+
+Done when: `node scripts/validateFoodCatalog.mjs` passes, `GET /api/foods` returns the seeded
+catalogue, and `npm run typecheck` is clean.
+
+
+## Phase 5 - Nutrition log store and its endpoint
+
+5a. Backend entries
+
+- [ ] `backend/models/LoggedFood.js` - userId, id (client-generated, unique), dateString,
+      mealType (enum), foodName, basis, quantity, servingLabel, macros (nested), foodId,
+      loggedAt, timestamps. Compound index on (userId, dateString) - every read is "one day" or
+      "a range of days".
+- [ ] `backend/controllers/nutritionController.js`:
+        getEntries   - `?startDate=&endDate=` as `YYYY-MM-DD` strings, compared
+                       lexicographically (`$gte`/`$lte`), sorted by dateString then loggedAt.
+                       Range-by-dateString is the whole reason entries are keyed this way:
+                       an ISO instant range, like `/workouts` uses, splits a day across
+                       timezones and would make the day total wrong near midnight.
+        addEntry     - validate mealType and dateString shape, sanitizeMacros, upsert on `id`
+                       so a replayed offline POST is idempotent.
+        updateEntry  - PUT `/:id`, accepts quantity + macros + mealType (the serving dialog can
+                       edit an existing row).
+        deleteEntry  - DELETE `/:id`.
+- [ ] `backend/routes/nutritionRoutes.js` and `/api/nutrition-entries` in `server.js`.
+
+5b. `src/store/nutritionStore.ts` - new
+
+- [ ] State:
+        isLoading, isFetching, hasHydrated
+        loggedFoods: LoggedFood[]            // flat, newest day first
+        foodsCatalog: FoodItem[]             // server catalogue, falls back to builtins
+        customFoods: CustomFood[]
+        fetchedNutritionDates: Record<string, boolean>
+- [ ] Actions:
+        fetchNutritionData()        - cold start: entries for the last 7 days (reuse
+                                      INITIAL_HISTORY_DAYS' value via a local
+                                      INITIAL_NUTRITION_DAYS), foods, custom foods, in a single
+                                      `Promise.allSettled`, each failure logged but not fatal -
+                                      the exact shape of `historyStore.fetchData`.
+        fetchEntriesForDate(date)   - guarded by `fetchedNutritionDates` and an
+                                      `inFlightDateFetches` map, like
+                                      `fetchWorkoutsForDate`.
+        logFood(input)              - build the LoggedFood (createId, loggedAt, snapshot macros
+                                      via scaleMacros), prepend locally, then
+                                      `enqueueSync(endpoints.nutritionEntries, 'POST', entry)`.
+        updateLoggedFood(id, patch) - re-scale the snapshot, patch locally, PUT.
+        deleteLoggedFood(id)        - filter locally, DELETE.
+        addCustomFood(food)         - createId, append locally, POST. Reject a name that already
+                                      exists (normalized), returning false so the modal can show
+                                      an error.
+        deleteCustomFood(id)        - local filter + DELETE. Past entries are untouched: they
+                                      hold their own macro snapshot and their own `foodName`.
+- [ ] Derived selector `searchFoods(query)`: merges `customFoods` first, then `foodsCatalog`
+      (or ALL_BUILTIN_FOODS when the catalogue is empty), matching name and aliases
+      case-insensitively, prefix matches ranked above substring matches, capped at 50 results.
+- [ ] Derived selector `recentFoods(limit = 8)`: distinct `foodName`s from the newest entries,
+      so re-logging a usual breakfast is two taps.
+- [ ] Persist as "nutrition-storage" with `partialize` over loggedFoods / foodsCatalog /
+      customFoods / fetchedNutritionDates and a `merge` that revives dates through
+      `parseLoggedFood` and drops malformed rows, mirroring `historyStore`'s merge.
+- [ ] Merge-by-id on fetch (`mergeEntries`), so a server read never duplicates a row that is
+      still sitting in the offline queue.
+- [ ] Call `fetchNutritionData()` from `App.tsx` and add it to `NetworkListener`'s reconnect
+      retry, next to the Phase 3 `fetchProfile()` call.
+
+Done when: logging a food offline shows up instantly, survives a restart, and appears in
+MongoDB after reconnect; and a date outside the initial window fetches once and only once.
+
+
+## Phase 6 - The Nutrition tab UI
+
+New files, all under `src/features/nutrition/`:
+  NutritionScreen.tsx        owns UI state (selectedDate, openModal, pendingMeal, editingEntry)
+                             and every store subscription
+  CalorieSummaryCard.tsx     intake vs maintenance, remaining, and the Deficit/Maintenance/
+                             Surplus pill
+  MacroTotalsBar.tsx         stacked protein/carbs/fat bar + three labelled chips
+  MealSection.tsx            one part of the day: header, its macro line, its entries, "+"
+  FoodEntryRow.tsx           one logged food: name, serving, kcal, macros, edit/delete
+  FoodPickerModal.tsx        search + recents + categories, and "Create custom food"
+  ServingModal.tsx           quantity + serving picker with a live macro preview
+  CustomFoodModal.tsx        name, category, basis, macros per basis
+  ProfileSheet.tsx           from Phase 3
+  useDayNutrition.ts         hook: memoized computeDayNutrition for the selected date
+
+6a. Navigation
+
+- [ ] `src/core/Navigation.tsx`: TabParamList gains `Nutrition: undefined`; a third
+      `Tab.Screen` between Home and Workout (Home, Nutrition, Workout reads better than
+      bolting it on the end), `title: 'Nutrition'`, `tabBarIcon` = lucide `Apple` (confirmed
+      present in `lucide-react-native`; `Salad` and `Flame` are alternatives).
+      The standard header is fine - only Home uses the custom `AppHeader`.
+- [ ] Nothing about `ActiveWorkoutSheet` or `MinimizedWorkoutBar` changes; they are rendered by
+      the tab host above the tab bar and already sit over any tab.
+
+6b. Layout, top to bottom
+
+  HorizontalCalendar (reused as-is, future dates already disabled)
+  CalorieSummaryCard
+  MacroTotalsBar
+  Breakfast / Lunch / Snacks / Dinner sections, in MEAL_TYPES order
+
+- [ ] The four sections live inside a single `FlatList` keyed on MEAL_TYPES (data is four items,
+      with the summary as `ListHeaderComponent`), not nested ScrollViews.
+- [ ] `useDayNutrition(dateKey)` selects `loggedFoods` from the store, memoizes
+      `computeDayNutrition`, and refreshes its anchor date on focus with `useFocusEffect` so
+      "today" rolls over at midnight - copy `useMuscleActivity.ts`.
+- [ ] Per-date fetching repeats `WorkoutLogScreen`'s effect: skip when `fetchedNutritionDates`
+      has the key, defer to the in-flight initial fetch when the date is inside the initial
+      window, otherwise show an inline spinner while `fetchEntriesForDate` runs.
+
+6c. CalorieSummaryCard
+
+- [ ] Three states, in priority order:
+        1. `profile === null` (or maintenance is null) -> "Set up your profile to see your
+           maintenance calories" + a `Button` opening `ProfileSheet`. Day totals still render
+           above it; only the verdict is withheld.
+        2. maintenance known, `entryCount === 0` -> maintenance and target shown, verdict
+           replaced by "Nothing logged yet".
+        3. both known -> the full card.
+- [ ] Full card contents: calories consumed (large), "of 2,654 maintenance", a progress bar
+      (`theme.colors.nutrition.track` behind a fill tinted by status, clamped at 100% with an
+      over-target marker), "N kcal left" or "N kcal over", the status pill
+      (Deficit/Maintenance/Surplus + signed delta), and a secondary line for the goal target
+      ("Cut target 2,154").
+- [ ] The pill text and colour come from `classifyEnergyBalance` and
+      `theme.colors.nutrition` - no logic in the component.
+
+6d. MacroTotalsBar
+
+- [ ] A single stacked bar from `macroCalorieShares(totals)` plus three chips: "Protein 128 g"
+      with, when macro targets exist, "/ 144 g" and a thin per-macro progress bar.
+- [ ] Grams displayed to 0 decimals, calories as integers with a thousands separator. Add
+      `formatCalories(kcal)` and `formatGrams(grams)` to `src/utils/format.ts` so the rounding
+      rule lives in one place, next to `formatSetDisplay`.
+
+6e. MealSection and FoodEntryRow
+
+- [ ] Section header: meal label, its kcal, a `Plus` button (disabled on future dates, which the
+      calendar already prevents selecting), and a collapsed macro line
+      ("P 32 / C 61 / F 14 g").
+- [ ] Empty meal: a muted "Nothing logged" row that is itself tappable to open the food picker.
+- [ ] `FoodEntryRow`: food name, the serving as logged ("2 rotis" or "150 g"), kcal on the
+      right, macros underneath; tap opens `ServingModal` pre-filled for editing; a `Trash2`
+      button deletes. Deletes on past days are allowed (unlike workouts, which are read-only
+      once the day passes) - a mis-logged meal is worth fixing whenever it is noticed, and
+      there is no "active nutrition session" to protect.
+
+6f. FoodPickerModal, ServingModal, CustomFoodModal
+
+- [ ] `FoodPickerModal`: an `Input` search box over `searchFoods(query)`, `recentFoods()` shown
+      when the query is empty, results as `ModalOption`s with the kcal per basis as the
+      `subtitle` and the category as `trailing`, `ModalEmptyText` for no matches, and a
+      highlighted "+ Create custom food" row at the bottom - the same two-step shape as
+      `ExercisePickerModal`.
+- [ ] `ServingModal`: the chosen food's name, a quantity `Input`, the named servings as
+      selectable `Chip`s ("1 roti", "2 rotis", "100 g"), and a live macro preview recomputed
+      from `scaleMacros` on every keystroke. Primary action "Add to Breakfast" (the meal name is
+      passed in). In edit mode the action reads "Save" and calls `updateLoggedFood`.
+      Reject quantity <= 0 or > 5000 basis units with an inline error.
+- [ ] `CustomFoodModal`: name, category (`ModalOption` list), basis (`SegmentedControl`), and
+      the four macro inputs labelled with the basis ("per 100 g"). Calories auto-fill from
+      4/4/9 as the macros are typed, but stay editable. On save, `addCustomFood` then straight
+      into `ServingModal` for the food just created - mirroring how `CustomExerciseModal`
+      creates and immediately starts.
+      Clear its own state on dismiss, as `CustomExerciseModal` does.
+
+Done when: a full day can be logged across all four meals, each meal shows its own macros, the
+day total and the Deficit/Maintenance/Surplus verdict are correct against a hand calculation,
+the numbers survive a restart and a flight-mode round trip, and `npm run typecheck` passes.
+
+
+## Phase 7 - Verification and documentation
+
+- [ ] `npm run typecheck` - zero errors.
+- [ ] `node --test tests/` - the two new suites plus the two existing ones.
+- [ ] `node scripts/validateFoodCatalog.mjs` and `node scripts/validateCatalog.mjs`.
+- [ ] `cd backend && npm test` (`node --check server.js`) after wiring the four new routers.
+- [ ] `npx expo export --platform android` to catch a bundler-level mistake before a device run.
+- [ ] Manual pass in Expo Go:
+        - no profile -> the setup prompt, not a bogus maintenance number;
+        - fill the profile -> maintenance matches the formula by hand;
+        - log breakfast/lunch/snacks/dinner -> meal subtotals and day total add up;
+        - cross the band in both directions -> the pill flips Deficit -> Maintenance -> Surplus;
+        - flight mode: log, restart, reconnect -> rows reach MongoDB exactly once;
+        - move to a day a week back -> one fetch, spinner, then the day's entries;
+        - leave the app open across midnight -> "today" rolls over.
+- [ ] Update `currentStatus.txt`: the new tab in the summary, the `src/features/nutrition/`
+      and store entries in section 2, the four new models/controllers/routes and the six new
+      endpoints in section 3, a "4.x Logging a meal" flow in section 4, and - in section 6 -
+      that nutrition duplicates its constants across `src/constants/nutrition.ts` and
+      `backend/constants/nutrition.js`, like muscles already do.
+- [ ] Set this file's Status line to the phases that actually landed.
+
+
+## Phase 8 - Optional extras (not required for v1)
+
+- [ ] Weekly view on the Nutrition tab: a `SegmentedControl` Daily/Weekly reusing
+      `startOfWeek`/`endOfWeek`, showing the 7-day average intake against maintenance. The
+      average, not the sum, is what tells you whether the week was a deficit.
+- [ ] Weight log: a `weightEntries` collection plus a trend line, so maintenance can be checked
+      against reality (the formula is an estimate; two weeks of weight change is the truth) and
+      `weightKg` stops being a number the user has to remember to update.
+- [ ] A "copy yesterday's breakfast" / "repeat meal" action.
+- [ ] Barcode scanning or an external food API (Open Food Facts). Note this needs a native
+      camera module and an EAS build - it will not work in Expo Go.
+- [ ] Surface today's calories on the Home tab next to the muscle map.
+- [ ] Subtract logged workout calories from the day's balance. Deliberately excluded from v1:
+      the activity multiplier already counts training, so doing both double-counts it. If this
+      is added, the multiplier must drop to `sedentary` at the same time.
+- [ ] Water intake, fibre and sugar tracking.

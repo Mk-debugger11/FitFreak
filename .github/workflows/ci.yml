@@ -136,6 +136,14 @@ jobs:
             echo "seedExercises.js not present in image; skipping seed."
           fi
 
+          # Run idempotent food catalog seed/migration when present
+          if docker compose exec -T express test -f /backend/seedFoods.js; then
+            echo "Running node seedFoods.js inside ftfrk_express..."
+            docker compose exec -T express node seedFoods.js
+          else
+            echo "seedFoods.js not present in image; skipping food seed."
+          fi
+
           # Verify external HTTPS endpoint end-to-end
           curl -fsS -o /dev/null https://mukulkr.space/api/workouts
           echo "Deploy verified: https://mukulkr.space/api/workouts returned 200"

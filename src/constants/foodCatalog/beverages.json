@@ -1,0 +1,380 @@
+[
+  {
+    "name": "Almond Milk (unsweetened)",
+    "aliases": [
+      "plain almond milk"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 15,
+      "protein": 0.6,
+      "carbs": 0.3,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 240
+      }
+    ],
+    "defaultQuantity": 240,
+    "notes": "Plant-based unsweetened almond drink fortified with calcium and vitamins."
+  },
+  {
+    "name": "Black Coffee (espresso/filter, unsweetened)",
+    "aliases": [
+      "black coffee",
+      "espresso",
+      "americano"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 2,
+      "protein": 0.2,
+      "carbs": 0.3,
+      "fat": 0.0
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 150
+      },
+      {
+        "label": "1 mug",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Freshly brewed drip or espresso coffee without milk or sugar."
+  },
+  {
+    "name": "Black Tea (unsweetened)",
+    "aliases": [
+      "brewed black tea",
+      "plain tea"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 1,
+      "protein": 0.1,
+      "carbs": 0.15,
+      "fat": 0.0
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Plain brewed black tea without sugar or milk."
+  },
+  {
+    "name": "Buttermilk / Chaas (salted, spiced)",
+    "aliases": [
+      "chaas",
+      "mattha",
+      "spiced buttermilk"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 28,
+      "protein": 1.6,
+      "carbs": 2.5,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Diluted yogurt churned with water, roasted cumin, black salt, and coriander."
+  },
+  {
+    "name": "Chai / Milk Tea (with milk and 1 tsp sugar)",
+    "aliases": [
+      "masala chai",
+      "indian tea",
+      "milk tea"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 62,
+      "protein": 2.0,
+      "carbs": 8.5,
+      "fat": 2.2
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Brewed black tea with toned milk and 1 teaspoon of sugar per 150ml."
+  },
+  {
+    "name": "Coca-Cola / Pepsi (regular)",
+    "aliases": [
+      "coca cola",
+      "pepsi",
+      "cola"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 42,
+      "protein": 0.0,
+      "carbs": 10.6,
+      "fat": 0.0
+    },
+    "servings": [
+      {
+        "label": "1 can",
+        "grams": 330
+      },
+      {
+        "label": "1 small bottle",
+        "grams": 500
+      }
+    ],
+    "defaultQuantity": 330,
+    "notes": "Standard carbonated caffeinated sugar sweetened cola beverage."
+  },
+  {
+    "name": "Coffee with Milk (toned milk, 1 tsp sugar)",
+    "aliases": [
+      "filter coffee with milk",
+      "milk coffee"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 55,
+      "protein": 2.2,
+      "carbs": 7.5,
+      "fat": 1.8
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "South Indian filter or instant coffee with toned milk and sugar."
+  },
+  {
+    "name": "Diet Coke / Coke Zero (sugar free)",
+    "aliases": [
+      "diet coke",
+      "coke zero",
+      "diet pepsi"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "fat": 0.0
+    },
+    "servings": [
+      {
+        "label": "1 can",
+        "grams": 330
+      }
+    ],
+    "defaultQuantity": 330,
+    "notes": "Zero calorie artificially sweetened carbonated soft drink."
+  },
+  {
+    "name": "Green Tea (brewed, unsweetened)",
+    "aliases": [
+      "green tea"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 1,
+      "protein": 0.1,
+      "carbs": 0.15,
+      "fat": 0.0
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Brewed green tea leaves rich in EGCG catechins."
+  },
+  {
+    "name": "Nimbu Pani / Lemonade (with sugar)",
+    "aliases": [
+      "shikanji",
+      "nimbu soda",
+      "lemon water sweet"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 38,
+      "protein": 0.1,
+      "carbs": 9.5,
+      "fat": 0.0
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Fresh lime juice diluted with water, sweetened with cane sugar."
+  },
+  {
+    "name": "Orange Juice (fresh, unsweetened)",
+    "aliases": [
+      "fresh orange juice",
+      "mosambi juice"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 45,
+      "protein": 0.7,
+      "carbs": 10.4,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "100% fresh squeezed orange juice without added sugar."
+  },
+  {
+    "name": "Sattu Drink (sattu sharbat, salted)",
+    "aliases": [
+      "sattu sharbat",
+      "sattu ghol"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 65,
+      "protein": 3.8,
+      "carbs": 10.0,
+      "fat": 1.1
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 300
+      }
+    ],
+    "defaultQuantity": 300,
+    "notes": "Savory roasted gram beverage stirred with cold water, roasted cumin, and black salt."
+  },
+  {
+    "name": "Soy Milk (unsweetened)",
+    "aliases": [
+      "plain soy milk"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 33,
+      "protein": 3.3,
+      "carbs": 1.8,
+      "fat": 1.6
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 240
+      }
+    ],
+    "defaultQuantity": 240,
+    "notes": "Unsweetened whole bean soy milk."
+  },
+  {
+    "name": "Sugarcane Juice (fresh)",
+    "aliases": [
+      "ganne ka ras"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 68,
+      "protein": 0.2,
+      "carbs": 17.0,
+      "fat": 0.0
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Cold-pressed fresh sugarcane juice with ginger, lemon, and mint."
+  },
+  {
+    "name": "Sweet Lassi",
+    "aliases": [
+      "punjabi lassi",
+      "lassi"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 110,
+      "protein": 3.0,
+      "carbs": 17.5,
+      "fat": 3.0
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Creamy thick sweet curd drink flavored with cardamom."
+  },
+  {
+    "name": "Tender Coconut Water",
+    "aliases": [
+      "nariyal pani",
+      "coconut water"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 19,
+      "protein": 0.7,
+      "carbs": 3.7,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 glass / coconut",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Natural refreshing isotonic green coconut water, rich in potassium."
+  }
+]

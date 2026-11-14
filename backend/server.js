@@ -10,6 +10,10 @@ const workoutRoutes = require('./routes/workoutRoutes');
 const targetMuscleRoutes = require('./routes/targetMuscleRoutes');
 const customExerciseRoutes = require('./routes/customExerciseRoutes');
 const exerciseRoutes = require('./routes/exerciseRoutes');
+const profileRoutes = require('./routes/profileRoutes');
+const foodRoutes = require('./routes/foodRoutes');
+const customFoodRoutes = require('./routes/customFoodRoutes');
+const nutritionRoutes = require('./routes/nutritionRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,6 +28,10 @@ app.use('/api/workouts', workoutRoutes);
 app.use('/api/target-muscles', targetMuscleRoutes);
 app.use('/api/custom-exercises', customExerciseRoutes);
 app.use('/api/exercises', exerciseRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/foods', foodRoutes);
+app.use('/api/custom-foods', customFoodRoutes);
+app.use('/api/nutrition-entries', nutritionRoutes);
 
 app.use(errorHandler);
 

@@ -1,0 +1,4267 @@
+[
+  {
+    "name": "Almond Milk (unsweetened)",
+    "aliases": [
+      "plain almond milk"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 15,
+      "protein": 0.6,
+      "carbs": 0.3,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 240
+      }
+    ],
+    "defaultQuantity": 240,
+    "notes": "Plant-based unsweetened almond drink fortified with calcium and vitamins."
+  },
+  {
+    "name": "Black Coffee (espresso/filter, unsweetened)",
+    "aliases": [
+      "black coffee",
+      "espresso",
+      "americano"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 2,
+      "protein": 0.2,
+      "carbs": 0.3,
+      "fat": 0
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 150
+      },
+      {
+        "label": "1 mug",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Freshly brewed drip or espresso coffee without milk or sugar."
+  },
+  {
+    "name": "Black Tea (unsweetened)",
+    "aliases": [
+      "brewed black tea",
+      "plain tea"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 1,
+      "protein": 0.1,
+      "carbs": 0.15,
+      "fat": 0
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Plain brewed black tea without sugar or milk."
+  },
+  {
+    "name": "Buttermilk / Chaas (salted, spiced)",
+    "aliases": [
+      "chaas",
+      "mattha",
+      "spiced buttermilk"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 28,
+      "protein": 1.6,
+      "carbs": 2.5,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Diluted yogurt churned with water, roasted cumin, black salt, and coriander."
+  },
+  {
+    "name": "Chai / Milk Tea (with milk and 1 tsp sugar)",
+    "aliases": [
+      "masala chai",
+      "indian tea",
+      "milk tea"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 62,
+      "protein": 2,
+      "carbs": 8.5,
+      "fat": 2.2
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Brewed black tea with toned milk and 1 teaspoon of sugar per 150ml."
+  },
+  {
+    "name": "Coca-Cola / Pepsi (regular)",
+    "aliases": [
+      "coca cola",
+      "pepsi",
+      "cola"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 42,
+      "protein": 0,
+      "carbs": 10.6,
+      "fat": 0
+    },
+    "servings": [
+      {
+        "label": "1 can",
+        "grams": 330
+      },
+      {
+        "label": "1 small bottle",
+        "grams": 500
+      }
+    ],
+    "defaultQuantity": 330,
+    "notes": "Standard carbonated caffeinated sugar sweetened cola beverage."
+  },
+  {
+    "name": "Coffee with Milk (toned milk, 1 tsp sugar)",
+    "aliases": [
+      "filter coffee with milk",
+      "milk coffee"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 55,
+      "protein": 2.2,
+      "carbs": 7.5,
+      "fat": 1.8
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "South Indian filter or instant coffee with toned milk and sugar."
+  },
+  {
+    "name": "Diet Coke / Coke Zero (sugar free)",
+    "aliases": [
+      "diet coke",
+      "coke zero",
+      "diet pepsi"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "servings": [
+      {
+        "label": "1 can",
+        "grams": 330
+      }
+    ],
+    "defaultQuantity": 330,
+    "notes": "Zero calorie artificially sweetened carbonated soft drink."
+  },
+  {
+    "name": "Green Tea (brewed, unsweetened)",
+    "aliases": [
+      "green tea"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 1,
+      "protein": 0.1,
+      "carbs": 0.15,
+      "fat": 0
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Brewed green tea leaves rich in EGCG catechins."
+  },
+  {
+    "name": "Nimbu Pani / Lemonade (with sugar)",
+    "aliases": [
+      "shikanji",
+      "nimbu soda",
+      "lemon water sweet"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 38,
+      "protein": 0.1,
+      "carbs": 9.5,
+      "fat": 0
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Fresh lime juice diluted with water, sweetened with cane sugar."
+  },
+  {
+    "name": "Orange Juice (fresh, unsweetened)",
+    "aliases": [
+      "fresh orange juice",
+      "mosambi juice"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 45,
+      "protein": 0.7,
+      "carbs": 10.4,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "100% fresh squeezed orange juice without added sugar."
+  },
+  {
+    "name": "Sattu Drink (sattu sharbat, salted)",
+    "aliases": [
+      "sattu sharbat",
+      "sattu ghol"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 65,
+      "protein": 3.8,
+      "carbs": 10,
+      "fat": 1.1
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 300
+      }
+    ],
+    "defaultQuantity": 300,
+    "notes": "Savory roasted gram beverage stirred with cold water, roasted cumin, and black salt."
+  },
+  {
+    "name": "Soy Milk (unsweetened)",
+    "aliases": [
+      "plain soy milk"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 33,
+      "protein": 3.3,
+      "carbs": 1.8,
+      "fat": 1.6
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 240
+      }
+    ],
+    "defaultQuantity": 240,
+    "notes": "Unsweetened whole bean soy milk."
+  },
+  {
+    "name": "Sugarcane Juice (fresh)",
+    "aliases": [
+      "ganne ka ras"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 68,
+      "protein": 0.2,
+      "carbs": 17,
+      "fat": 0
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Cold-pressed fresh sugarcane juice with ginger, lemon, and mint."
+  },
+  {
+    "name": "Sweet Lassi",
+    "aliases": [
+      "punjabi lassi",
+      "lassi"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 110,
+      "protein": 3,
+      "carbs": 17.5,
+      "fat": 3
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Creamy thick sweet curd drink flavored with cardamom."
+  },
+  {
+    "name": "Tender Coconut Water",
+    "aliases": [
+      "nariyal pani",
+      "coconut water"
+    ],
+    "category": "Beverages",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 19,
+      "protein": 0.7,
+      "carbs": 3.7,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 glass / coconut",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Natural refreshing isotonic green coconut water, rich in potassium."
+  },
+  {
+    "name": "Aloo Gobi (cooked)",
+    "aliases": [
+      "aloo gobi sabzi"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 90,
+      "protein": 2,
+      "carbs": 11,
+      "fat": 4.2
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Stir-fried spiced potatoes and cauliflower florets with turmeric."
+  },
+  {
+    "name": "Aloo Paratha",
+    "aliases": [
+      "potato paratha",
+      "stuffed aloo paratha"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 290,
+      "protein": 6,
+      "carbs": 43,
+      "fat": 10.5
+    },
+    "servings": [
+      {
+        "label": "1 paratha",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Whole wheat flatbread stuffed with spiced potato mixture (~120g)."
+  },
+  {
+    "name": "Baingan Bharta (cooked eggplant)",
+    "aliases": [
+      "baingan bhurji",
+      "roasted eggplant mash"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 75,
+      "protein": 1.5,
+      "carbs": 7.5,
+      "fat": 4.3
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Charcoal-smoked roasted eggplant mashed and sautéed with garlic and tomatoes."
+  },
+  {
+    "name": "Bhindi Masala (cooked okra)",
+    "aliases": [
+      "bhindi ki sabzi",
+      "okra masala"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 85,
+      "protein": 2,
+      "carbs": 8.5,
+      "fat": 4.8
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 120
+      }
+    ],
+    "defaultQuantity": 120,
+    "notes": "Crisp stir-fried sliced okra with onions, cumin, and dry mango powder."
+  },
+  {
+    "name": "Butter Chicken (Murgh Makhani)",
+    "aliases": [
+      "murgh makhani",
+      "butter chicken"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 180,
+      "protein": 12,
+      "carbs": 5,
+      "fat": 12.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Tender chicken cooked in rich velvety tomato, butter, and cream sauce."
+  },
+  {
+    "name": "Chicken Biryani",
+    "aliases": [
+      "dum biryani chicken"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 165,
+      "protein": 9,
+      "carbs": 20,
+      "fat": 5.5
+    },
+    "servings": [
+      {
+        "label": "1 plate",
+        "grams": 300
+      },
+      {
+        "label": "1 bowl",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Layered aromatic basmati rice cooked with marinated spiced chicken."
+  },
+  {
+    "name": "Chicken Curry (homestyle)",
+    "aliases": [
+      "tariwala chicken",
+      "indian chicken curry"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 135,
+      "protein": 14,
+      "carbs": 3.5,
+      "fat": 7
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Homestyle spiced chicken curry with thin flavorful gravy."
+  },
+  {
+    "name": "Chole / Chana Masala (cooked)",
+    "aliases": [
+      "cooked chole",
+      "chana masala"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 145,
+      "protein": 6,
+      "carbs": 20,
+      "fat": 4.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Spiced white chickpea curry with fragrant garam masala."
+  },
+  {
+    "name": "Dal Makhani",
+    "aliases": [
+      "maa ki dal",
+      "makhani dal"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 140,
+      "protein": 5,
+      "carbs": 15,
+      "fat": 6.7
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Slow-cooked whole black lentils and kidney beans with butter and cream."
+  },
+  {
+    "name": "Dal Tadka (cooked yellow dal)",
+    "aliases": [
+      "yellow dal",
+      "dal fry",
+      "cooked toor dal"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 115,
+      "protein": 6,
+      "carbs": 15,
+      "fat": 3.5
+    },
+    "servings": [
+      {
+        "label": "1 katori / bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Yellow pigeon pea stew tempered with ghee, cumin, garlic, and spices."
+  },
+  {
+    "name": "Egg Curry",
+    "aliases": [
+      "anda curry"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 125,
+      "protein": 7.5,
+      "carbs": 4,
+      "fat": 9
+    },
+    "servings": [
+      {
+        "label": "1 bowl (2 eggs)",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Boiled whole eggs simmered in spiced onion-tomato gravy."
+  },
+  {
+    "name": "Idli (steamed rice-lentil cake)",
+    "aliases": [
+      "steamed idli",
+      "idly"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 58,
+      "protein": 1.8,
+      "carbs": 12,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 idli",
+        "grams": 1
+      },
+      {
+        "label": "2 idlis",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Steamed fermented rice and de-husked black gram batter cake (~40g each)."
+  },
+  {
+    "name": "Jeera Rice",
+    "aliases": [
+      "cumin rice"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 145,
+      "protein": 2.6,
+      "carbs": 26.5,
+      "fat": 3.2
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Fluffy basmati rice tempered with roasted cumin seeds and ghee."
+  },
+  {
+    "name": "Khichdi (moong dal & rice, cooked)",
+    "aliases": [
+      "moong dal khichdi",
+      "cooked khichdi"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 110,
+      "protein": 3.8,
+      "carbs": 19.5,
+      "fat": 2
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Wholesome porridge of rice and yellow moong lentils tempered with cumin."
+  },
+  {
+    "name": "Masala Dosa",
+    "aliases": [
+      "potato masala dosa"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 210,
+      "protein": 4,
+      "carbs": 30,
+      "fat": 8.2
+    },
+    "servings": [
+      {
+        "label": "1 dosa",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Crispy golden dosa stuffed with spiced mashed potato filling."
+  },
+  {
+    "name": "Matar Paneer",
+    "aliases": [
+      "mutter paneer"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 140,
+      "protein": 6.5,
+      "carbs": 9,
+      "fat": 8.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Cottage cheese and sweet peas in spiced homestyle onion-tomato gravy."
+  },
+  {
+    "name": "Mutton Biryani",
+    "aliases": [
+      "gosht biryani"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 190,
+      "protein": 8.5,
+      "carbs": 21,
+      "fat": 8
+    },
+    "servings": [
+      {
+        "label": "1 plate",
+        "grams": 300
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Aromatic basmati rice layered with tender braised goat meat."
+  },
+  {
+    "name": "Palak Paneer",
+    "aliases": [
+      "spinach paneer"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 150,
+      "protein": 7,
+      "carbs": 4.5,
+      "fat": 11.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Fresh cottage cheese cubes in spiced pureed spinach sauce."
+  },
+  {
+    "name": "Paneer Butter Masala",
+    "aliases": [
+      "paneer makhani"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 195,
+      "protein": 6.5,
+      "carbs": 7.5,
+      "fat": 15.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Paneer cubes in creamy, buttery spiced tomato gravy."
+  },
+  {
+    "name": "Paratha (plain, shallow fried)",
+    "aliases": [
+      "plain paratha",
+      "tawa paratha"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 260,
+      "protein": 5,
+      "carbs": 36,
+      "fat": 10.7
+    },
+    "servings": [
+      {
+        "label": "1 paratha",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Layered whole wheat flatbread shallow fried with oil or ghee (~70g)."
+  },
+  {
+    "name": "Plain Dosa",
+    "aliases": [
+      "sada dosa"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 133,
+      "protein": 2.8,
+      "carbs": 22,
+      "fat": 3.8
+    },
+    "servings": [
+      {
+        "label": "1 medium dosa",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Thin crispy fermented rice and lentil crepe cooked with light oil."
+  },
+  {
+    "name": "Poha (cooked with peanuts & potatoes)",
+    "aliases": [
+      "batata poha",
+      "kanda poha",
+      "cooked poha"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 160,
+      "protein": 3.5,
+      "carbs": 25.5,
+      "fat": 5
+    },
+    "servings": [
+      {
+        "label": "1 plate / bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Tempered flattened rice cooked with onions, roasted peanuts, mustard seeds, and turmeric."
+  },
+  {
+    "name": "Rajma (cooked / boiled kidney beans)",
+    "aliases": [
+      "cooked rajma",
+      "boiled rajma",
+      "boiled kidney beans"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 127,
+      "protein": 8.7,
+      "carbs": 22.8,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 medium bowl / katori",
+        "grams": 150
+      },
+      {
+        "label": "1 cup cooked",
+        "grams": 177
+      },
+      {
+        "label": "1 large bowl",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Plain boiled/pressure-cooked red kidney beans without added oil or gravy. Source: Averaged from USDA FoodData Central (FDC ID 173735), ICMR-NIN IFCT 2017 hydration conversion, and UK CoFID."
+  },
+  {
+    "name": "Rajma Masala (cooked kidney bean curry)",
+    "aliases": [
+      "rajma masala",
+      "rajma curry"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 130,
+      "protein": 5.5,
+      "carbs": 18,
+      "fat": 4
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Punjabi-style red kidney bean curry cooked in onion-tomato gravy."
+  },
+  {
+    "name": "Sambhar",
+    "aliases": [
+      "south indian sambhar",
+      "sambar"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 65,
+      "protein": 2.5,
+      "carbs": 9.5,
+      "fat": 1.8
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "South Indian tangy pigeon pea and vegetable stew with tamarind."
+  },
+  {
+    "name": "Upma (cooked suji)",
+    "aliases": [
+      "rava upma",
+      "cooked upma"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 140,
+      "protein": 3.2,
+      "carbs": 22,
+      "fat": 4.4
+    },
+    "servings": [
+      {
+        "label": "1 plate / bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Savory roasted semolina porridge tempered with curry leaves and mustard seeds."
+  },
+  {
+    "name": "Vegetable Pulao",
+    "aliases": [
+      "veg pulav",
+      "peas pulao"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 135,
+      "protein": 2.8,
+      "carbs": 24,
+      "fat": 3.1
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Fragrant basmati rice gently cooked with mixed vegetables and whole spices."
+  },
+  {
+    "name": "Buffalo Milk",
+    "aliases": [
+      "raw buffalo milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 97,
+      "protein": 3.8,
+      "carbs": 5.2,
+      "fat": 6.9
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Whole rich buffalo milk with naturally high milk fat."
+  },
+  {
+    "name": "Butter (unsalted)",
+    "aliases": [
+      "white butter",
+      "makhan",
+      "dairy butter"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 717,
+      "protein": 0.9,
+      "carbs": 0.1,
+      "fat": 81.1
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 14
+      }
+    ],
+    "defaultQuantity": 10,
+    "notes": "Pure churned dairy cream butter."
+  },
+  {
+    "name": "Cheddar Cheese",
+    "aliases": [
+      "cheese slice",
+      "processed cheese block"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 403,
+      "protein": 24.9,
+      "carbs": 1.3,
+      "fat": 33.1
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 20
+      },
+      {
+        "label": "1 cube",
+        "grams": 25
+      }
+    ],
+    "defaultQuantity": 25,
+    "notes": "Firm aged cheddar cheese."
+  },
+  {
+    "name": "Cottage Cheese (Western style)",
+    "aliases": [
+      "low fat cottage cheese"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 98,
+      "protein": 11.1,
+      "carbs": 3.4,
+      "fat": 4.3
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 200
+      },
+      {
+        "label": "1/2 cup",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Soft curd creamy Western-style cottage cheese."
+  },
+  {
+    "name": "Cow Milk",
+    "aliases": [
+      "fresh cow milk",
+      "desi cow milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 62,
+      "protein": 3.2,
+      "carbs": 4.5,
+      "fat": 3.5
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Pure fresh cow milk."
+  },
+  {
+    "name": "Curd / Dahi (toned/low-fat)",
+    "aliases": [
+      "toned curd",
+      "low fat dahi"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 50,
+      "protein": 4,
+      "carbs": 5,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1 medium bowl",
+        "grams": 150
+      },
+      {
+        "label": "1 small katori",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Cultured yogurt made from 1.5% to 3% fat milk."
+  },
+  {
+    "name": "Curd / Dahi (whole milk)",
+    "aliases": [
+      "curd",
+      "dahi",
+      "plain yogurt"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 61,
+      "protein": 3.5,
+      "carbs": 4.7,
+      "fat": 3.3
+    },
+    "servings": [
+      {
+        "label": "1 medium bowl",
+        "grams": 150
+      },
+      {
+        "label": "1 small katori",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Fermented full cream buffalo/cow milk yogurt."
+  },
+  {
+    "name": "Double Toned Milk",
+    "aliases": [
+      "double toned milk packet"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 47,
+      "protein": 3.3,
+      "carbs": 4.8,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      },
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Low fat pasteurized milk (1.5% fat, 9.0% SNF)."
+  },
+  {
+    "name": "Full Cream Milk (whole milk)",
+    "aliases": [
+      "whole milk",
+      "full cream milk",
+      "gold milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 65,
+      "protein": 3.2,
+      "carbs": 4.7,
+      "fat": 3.7
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      },
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Pasteurized whole milk (~3.5-4% fat)."
+  },
+  {
+    "name": "Ghee (clarified butter)",
+    "aliases": [
+      "desi ghee",
+      "clarified butter",
+      "cow ghee"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 900,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 100
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Traditional clarified milk fat."
+  },
+  {
+    "name": "Greek Yogurt (plain, unsweetened)",
+    "aliases": [
+      "greek yogurt",
+      "hung curd",
+      "strained yogurt"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 59,
+      "protein": 10,
+      "carbs": 3.6,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 150
+      },
+      {
+        "label": "1 small tub",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Triple-strained high protein unsweetened yogurt."
+  },
+  {
+    "name": "Low-Fat Paneer",
+    "aliases": [
+      "skimmed milk paneer",
+      "diet paneer"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 175,
+      "protein": 25,
+      "carbs": 4,
+      "fat": 6.5
+    },
+    "servings": [
+      {
+        "label": "100g block",
+        "grams": 100
+      },
+      {
+        "label": "50g portion",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "High-protein low-fat paneer made from skimmed or toned milk."
+  },
+  {
+    "name": "Milky Mist High Protein Paneer",
+    "aliases": [
+      "milky mist paneer",
+      "high protein paneer"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 190,
+      "protein": 25,
+      "carbs": 5.7,
+      "fat": 7
+    },
+    "servings": [
+      {
+        "label": "1/2 pack (100g)",
+        "grams": 100
+      },
+      {
+        "label": "1 full pack (200g)",
+        "grams": 200
+      },
+      {
+        "label": "1 cube portion (50g)",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Milky Mist High Protein Paneer (25g protein, 7g fat, 529mg calcium per 100g; 50g protein per 200g pack). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Mother Dairy Toned Milk",
+    "aliases": [
+      "mother dairy milk",
+      "mother dairy toned",
+      "blue packet milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 59,
+      "protein": 3.1,
+      "carbs": 4.7,
+      "fat": 3.1
+    },
+    "servings": [
+      {
+        "label": "1 cup / mug (200 ml)",
+        "grams": 200
+      },
+      {
+        "label": "1 glass (250 ml)",
+        "grams": 250
+      },
+      {
+        "label": "1 small cup / tea portion (100 ml)",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Mother Dairy Pasteurised Toned Milk (min 3.0% fat, min 8.5% SNF, 127mg calcium per 100ml). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Mozzarella Cheese",
+    "aliases": [
+      "pizza cheese",
+      "shredded mozzarella"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 280,
+      "protein": 22.2,
+      "carbs": 2.2,
+      "fat": 20.7
+    },
+    "servings": [
+      {
+        "label": "1 portion",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Part-skim pizza mozzarella cheese."
+  },
+  {
+    "name": "Paneer (cottage cheese, regular)",
+    "aliases": [
+      "paneer",
+      "indian cottage cheese"
+    ],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 270,
+      "protein": 18.3,
+      "carbs": 3.4,
+      "fat": 20.8
+    },
+    "servings": [
+      {
+        "label": "100g block",
+        "grams": 100
+      },
+      {
+        "label": "50g portion",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Traditional Indian full-fat milk paneer."
+  },
+  {
+    "name": "Skimmed Milk",
+    "aliases": [
+      "fat free milk",
+      "diet milk"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 35,
+      "protein": 3.4,
+      "carbs": 4.9,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      },
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Fat-free milk (<0.5% fat, 8.7% SNF)."
+  },
+  {
+    "name": "Toned Milk",
+    "aliases": [
+      "toned milk packet"
+    ],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 58,
+      "protein": 3.1,
+      "carbs": 4.6,
+      "fat": 3
+    },
+    "servings": [
+      {
+        "label": "1 glass",
+        "grams": 250
+      },
+      {
+        "label": "1 cup",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Standard Indian toned pasteurized milk (3.0% fat, 8.5% SNF)."
+  },
+  {
+    "name": "Apple",
+    "aliases": [
+      "seb",
+      "fresh apple"
+    ],
+    "category": "Fruit",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 95,
+      "protein": 0.5,
+      "carbs": 25,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 medium apple",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Medium fresh eating apple (~182g with skin)."
+  },
+  {
+    "name": "Avocado",
+    "aliases": [
+      "butter fruit"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 160,
+      "protein": 2,
+      "carbs": 8.5,
+      "fat": 14.7
+    },
+    "servings": [
+      {
+        "label": "1/2 medium avocado",
+        "grams": 75
+      },
+      {
+        "label": "1 whole avocado",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 75,
+    "notes": "Fresh Hass avocado flesh, rich in monounsaturated fats."
+  },
+  {
+    "name": "Banana",
+    "aliases": [
+      "kela",
+      "fresh banana"
+    ],
+    "category": "Fruit",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 105,
+      "protein": 1.3,
+      "carbs": 27,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 medium banana",
+        "grams": 1
+      },
+      {
+        "label": "2 bananas",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Medium ripe Cavendish banana (~118g peeled)."
+  },
+  {
+    "name": "Blueberries",
+    "aliases": [
+      "fresh blueberries"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 57,
+      "protein": 0.7,
+      "carbs": 14.5,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 148
+      },
+      {
+        "label": "1 handful",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Raw blueberries, rich in anthocyanins."
+  },
+  {
+    "name": "Guava",
+    "aliases": [
+      "amrood",
+      "fresh guava"
+    ],
+    "category": "Fruit",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 38,
+      "protein": 1.4,
+      "carbs": 7.9,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 medium guava",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Fresh green/white guava (~55g edible portion), high vitamin C."
+  },
+  {
+    "name": "Mango (ripe)",
+    "aliases": [
+      "aam",
+      "ripe mango"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 62,
+      "protein": 0.8,
+      "carbs": 15,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup sliced",
+        "grams": 165
+      },
+      {
+        "label": "1 medium bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Sweet ripe sliced mango pulp."
+  },
+  {
+    "name": "Orange",
+    "aliases": [
+      "santara",
+      "fresh orange",
+      "mosambi"
+    ],
+    "category": "Fruit",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 62,
+      "protein": 1.2,
+      "carbs": 15.4,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 medium orange",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Whole peeled fresh citrus orange (~130g)."
+  },
+  {
+    "name": "Papaya (raw)",
+    "aliases": [
+      "papita",
+      "fresh papaya"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 43,
+      "protein": 0.5,
+      "carbs": 10.8,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 bowl diced",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Ripe diced papaya, rich in papain enzymes and vitamin C."
+  },
+  {
+    "name": "Pineapple",
+    "aliases": [
+      "ananas",
+      "fresh pineapple"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 50,
+      "protein": 0.5,
+      "carbs": 13.1,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 cup chunks",
+        "grams": 165
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Fresh peeled pineapple pieces containing bromelain."
+  },
+  {
+    "name": "Pomegranate",
+    "aliases": [
+      "anaar",
+      "anar seeds"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 83,
+      "protein": 1.7,
+      "carbs": 18.7,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1 small bowl arils",
+        "grams": 100
+      },
+      {
+        "label": "1 medium fruit",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh pomegranate seed arils, high polyphenol antioxidants."
+  },
+  {
+    "name": "Strawberries",
+    "aliases": [
+      "fresh strawberries"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 32,
+      "protein": 0.7,
+      "carbs": 7.7,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cup halved",
+        "grams": 150
+      },
+      {
+        "label": "1 serving",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Whole fresh strawberries."
+  },
+  {
+    "name": "Watermelon",
+    "aliases": [
+      "tarbooj",
+      "fresh watermelon"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 30,
+      "protein": 0.6,
+      "carbs": 7.6,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 bowl diced",
+        "grams": 150
+      },
+      {
+        "label": "1 large wedge",
+        "grams": 280
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Fresh red diced watermelon flesh, 92% water."
+  },
+  {
+    "name": "Bajra Flour (pearl millet)",
+    "aliases": [
+      "pearl millet flour",
+      "bajri flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 361,
+      "protein": 11.6,
+      "carbs": 67.5,
+      "fat": 5
+    },
+    "servings": [
+      {
+        "label": "1 roti equivalent",
+        "grams": 45
+      },
+      {
+        "label": "1/2 cup",
+        "grams": 60
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Iron-dense gluten-free pearl millet flour."
+  },
+  {
+    "name": "Basmati Rice (raw)",
+    "aliases": [
+      "raw white rice",
+      "uncooked rice"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 350,
+      "protein": 7.5,
+      "carbs": 77,
+      "fat": 0.6
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 90
+      },
+      {
+        "label": "1 serving raw",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Aromatic long grain dry basmati rice."
+  },
+  {
+    "name": "Besan (Bengal gram flour)",
+    "aliases": [
+      "gram flour",
+      "chickpea flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 385,
+      "protein": 22.4,
+      "carbs": 57.8,
+      "fat": 6.7
+    },
+    "servings": [
+      {
+        "label": "1/2 cup besan",
+        "grams": 60
+      },
+      {
+        "label": "2 tbsp",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Flour made from ground split brown chickpeas."
+  },
+  {
+    "name": "Brown Rice (cooked)",
+    "aliases": [
+      "cooked brown rice"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 123,
+      "protein": 2.7,
+      "carbs": 25.6,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 cup cooked",
+        "grams": 195
+      },
+      {
+        "label": "1 medium bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Steamed whole grain brown rice with intact bran and germ."
+  },
+  {
+    "name": "Chapati (plain whole wheat roti, cooked)",
+    "aliases": [
+      "roti",
+      "phulka",
+      "cooked chapati",
+      "wheat roti"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 250,
+      "protein": 8.3,
+      "carbs": 48,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1 medium chapati (40g)",
+        "grams": 40
+      },
+      {
+        "label": "1 large chapati (55g)",
+        "grams": 55
+      },
+      {
+        "label": "1 small phulka (30g)",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Traditional Indian whole wheat flatbread made from 100% atta, dry-roasted on tawa without added oil or ghee (~100 kcal per medium 40g roti). Source: Averaged from ICMR-NIN IFCT 2017, USDA FoodData Central, and NIN research publications."
+  },
+  {
+    "name": "Dalia (broken wheat, dry)",
+    "aliases": [
+      "broken wheat",
+      "bulgur wheat",
+      "cracked wheat"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 12,
+      "carbs": 71,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1/2 cup dry",
+        "grams": 65
+      },
+      {
+        "label": "1 bowl cooked equivalent",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Cracked whole wheat groats, high in dietary fiber."
+  },
+  {
+    "name": "Harvest Gold Brown Bread",
+    "aliases": [
+      "harvest gold bread",
+      "harvest gold brown",
+      "harvest brown bread"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 217,
+      "protein": 8.3,
+      "carbs": 43.7,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 28
+      },
+      {
+        "label": "2 slices",
+        "grams": 56
+      }
+    ],
+    "defaultQuantity": 56,
+    "notes": "Harvest Gold Hearty Brown Bread (30% whole wheat atta, 0.96g fat, 3.5g fibre per 100g; ~61 kcal per 28g slice). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Instant Oats (dry)",
+    "aliases": [
+      "quick oats"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 372,
+      "protein": 12.5,
+      "carbs": 67,
+      "fat": 6
+    },
+    "servings": [
+      {
+        "label": "1 serving",
+        "grams": 40
+      }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Pre-cooked and thinly rolled quick-cooking oats."
+  },
+  {
+    "name": "Jowar Flour (sorghum)",
+    "aliases": [
+      "sorghum flour",
+      "jowar atta"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 349,
+      "protein": 10.4,
+      "carbs": 72.6,
+      "fat": 1.9
+    },
+    "servings": [
+      {
+        "label": "1 roti equivalent",
+        "grams": 45
+      },
+      {
+        "label": "1/2 cup",
+        "grams": 60
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Mild gluten-free white sorghum flour."
+  },
+  {
+    "name": "Maida (refined wheat flour)",
+    "aliases": [
+      "all purpose flour",
+      "refined flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 360,
+      "protein": 10.3,
+      "carbs": 76.3,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 cup maida",
+        "grams": 125
+      },
+      {
+        "label": "1/2 cup maida",
+        "grams": 60
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Finely milled and refined wheat flour."
+  },
+  {
+    "name": "Multigrain Bread",
+    "aliases": [
+      "multigrain bread slice"
+    ],
+    "category": "Grains",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 75,
+      "protein": 4,
+      "carbs": 13,
+      "fat": 1.1
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 1
+      },
+      {
+        "label": "2 slices",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Seed and grain enriched sandwich slice (~30g per slice)."
+  },
+  {
+    "name": "Poha (flattened rice, dry)",
+    "aliases": [
+      "flattened rice",
+      "aval",
+      "chuda",
+      "dry poha"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 347,
+      "protein": 6.8,
+      "carbs": 77.2,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1 cup dry",
+        "grams": 60
+      }
+    ],
+    "defaultQuantity": 60,
+    "notes": "De-husked and parboiled rolled flat rice flakes."
+  },
+  {
+    "name": "Quinoa (cooked)",
+    "aliases": [
+      "cooked quinoa"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 120,
+      "protein": 4.4,
+      "carbs": 21.3,
+      "fat": 1.9
+    },
+    "servings": [
+      {
+        "label": "1 cup cooked",
+        "grams": 185
+      },
+      {
+        "label": "1/2 cup cooked",
+        "grams": 90
+      }
+    ],
+    "defaultQuantity": 185,
+    "notes": "Complete plant protein pseudocereal grain, cooked."
+  },
+  {
+    "name": "Ragi Flour (finger millet)",
+    "aliases": [
+      "finger millet flour",
+      "nachni flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 328,
+      "protein": 7.3,
+      "carbs": 72,
+      "fat": 1.3
+    },
+    "servings": [
+      {
+        "label": "1/2 cup",
+        "grams": 60
+      },
+      {
+        "label": "1 roti equivalent",
+        "grams": 40
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Calcium-rich red millet flour."
+  },
+  {
+    "name": "Rolled Oats (dry)",
+    "aliases": [
+      "oats",
+      "oatmeal"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 379,
+      "protein": 13.5,
+      "carbs": 66.3,
+      "fat": 6.5
+    },
+    "servings": [
+      {
+        "label": "1/2 cup dry",
+        "grams": 40
+      },
+      {
+        "label": "1 bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Whole rolled oat flakes, rich in beta-glucan soluble fiber."
+  },
+  {
+    "name": "Sattu (roasted chana flour)",
+    "aliases": [
+      "chana sattu",
+      "roasted gram flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 408,
+      "protein": 25.5,
+      "carbs": 64,
+      "fat": 5.5
+    },
+    "servings": [
+      {
+        "label": "2 tbsp sattu",
+        "grams": 30
+      },
+      {
+        "label": "1 scoop",
+        "grams": 40
+      }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Nutrient-dense roasted Bengal gram flour popular in Northern and Eastern India."
+  },
+  {
+    "name": "Suji / Semolina (dry)",
+    "aliases": [
+      "sooji",
+      "semolina",
+      "rava"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 355,
+      "protein": 12.7,
+      "carbs": 72.8,
+      "fat": 1.1
+    },
+    "servings": [
+      {
+        "label": "1/2 cup dry",
+        "grams": 80
+      },
+      {
+        "label": "1 serving",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Coarsely ground durum wheat semolina."
+  },
+  {
+    "name": "White Bread",
+    "aliases": [
+      "white bread slice",
+      "sandwich bread"
+    ],
+    "category": "Grains",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 67,
+      "protein": 2.4,
+      "carbs": 12.7,
+      "fat": 0.8
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 1
+      },
+      {
+        "label": "2 slices",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Standard sliced sandwich loaf (~25g per slice)."
+  },
+  {
+    "name": "White Rice (cooked / steamed)",
+    "aliases": [
+      "cooked white rice",
+      "steamed rice",
+      "boiled rice",
+      "white rice cooked"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 130,
+      "protein": 2.7,
+      "carbs": 28.2,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 medium bowl / katori",
+        "grams": 150
+      },
+      {
+        "label": "1 cup cooked",
+        "grams": 158
+      },
+      {
+        "label": "1 plate / serving",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Steamed/boiled long-grain white rice cooked without added oil or salt. Source: Averaged from USDA FoodData Central (FDC ID 168878), ICMR-NIN IFCT 2017, and UK McCance & Widdowson (CoFID)."
+  },
+  {
+    "name": "Whole Wheat Bread",
+    "aliases": [
+      "brown bread slice",
+      "wheat bread"
+    ],
+    "category": "Grains",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 69,
+      "protein": 3.6,
+      "carbs": 12,
+      "fat": 0.9
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 1
+      },
+      {
+        "label": "2 slices",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Commercial whole wheat bread slice (~28g per slice)."
+  },
+  {
+    "name": "Whole Wheat Flour (Atta)",
+    "aliases": [
+      "atta",
+      "wheat flour",
+      "gehun ka atta"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 12,
+      "carbs": 71,
+      "fat": 1.8
+    },
+    "servings": [
+      {
+        "label": "1 cup atta",
+        "grams": 120
+      },
+      {
+        "label": "1 roti equivalent",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 60,
+    "notes": "Stone-ground whole wheat chakki atta."
+  },
+  {
+    "name": "Yogabar High Protein Oats (Dark Chocolate)",
+    "aliases": [
+      "yoga bar protein oats",
+      "yogabar oats",
+      "high protein oats"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 364,
+      "protein": 26,
+      "carbs": 57.3,
+      "fat": 5.9
+    },
+    "servings": [
+      {
+        "label": "1 scoop / serving",
+        "grams": 50
+      },
+      {
+        "label": "1 bowl",
+        "grams": 40
+      },
+      {
+        "label": "1 large bowl",
+        "grams": 75
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Yogabar Dark Chocolate High Protein Oats (rolled oats with soy protein isolate and whey; 13g protein per 50g scoop, 0g added sugar). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Almonds (raw)",
+    "aliases": [
+      "badam",
+      "raw almonds"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 579,
+      "protein": 21.2,
+      "carbs": 21.6,
+      "fat": 49.9
+    },
+    "servings": [
+      {
+        "label": "1 handful (20 nuts)",
+        "grams": 28
+      }
+    ],
+    "defaultQuantity": 28,
+    "notes": "Unroasted whole kernel almonds, high in vitamin E."
+  },
+  {
+    "name": "Cashews / Kaju (raw)",
+    "aliases": [
+      "kaju",
+      "raw cashews"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 553,
+      "protein": 18.2,
+      "carbs": 30.2,
+      "fat": 43.8
+    },
+    "servings": [
+      {
+        "label": "1 handful (15-18 nuts)",
+        "grams": 28
+      }
+    ],
+    "defaultQuantity": 28,
+    "notes": "Whole raw cashew nuts."
+  },
+  {
+    "name": "Chia Seeds",
+    "aliases": [
+      "chia seed",
+      "salvia hispanica"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 486,
+      "protein": 16.5,
+      "carbs": 42.1,
+      "fat": 30.7
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 12
+      },
+      {
+        "label": "2 tbsp",
+        "grams": 24
+      }
+    ],
+    "defaultQuantity": 12,
+    "notes": "Whole black chia seeds, exceptionally rich in soluble fiber."
+  },
+  {
+    "name": "Coconut Oil",
+    "aliases": [
+      "nariyal tel",
+      "virgin coconut oil"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 862,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 100
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Pure edible coconut cooking oil, rich in lauric acid MCTs."
+  },
+  {
+    "name": "Desiccated Coconut",
+    "aliases": [
+      "dry coconut powder",
+      "nariyal burada"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 660,
+      "protein": 6.9,
+      "carbs": 23.7,
+      "fat": 64.5
+    },
+    "servings": [
+      {
+        "label": "2 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 15,
+    "notes": "Finely grated and dried unsweetened coconut kernel."
+  },
+  {
+    "name": "Flax Seeds (ground / whole)",
+    "aliases": [
+      "alsi",
+      "flaxseed",
+      "linseed"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 534,
+      "protein": 18.3,
+      "carbs": 28.9,
+      "fat": 42.2
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 10
+      },
+      {
+        "label": "2 tbsp",
+        "grams": 20
+      }
+    ],
+    "defaultQuantity": 10,
+    "notes": "Whole or freshly ground brown flax seeds, rich in lignans."
+  },
+  {
+    "name": "Mustard Oil",
+    "aliases": [
+      "sarson ka tel"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 884,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 100
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Cold-pressed pungent mustard seed oil common in North/East Indian cooking."
+  },
+  {
+    "name": "Olive Oil (extra virgin)",
+    "aliases": [
+      "evoo",
+      "extra virgin olive oil"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 884,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 100
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 10,
+    "notes": "Cold-pressed extra virgin olive oil."
+  },
+  {
+    "name": "Peanut Butter (creamy, unsweetened)",
+    "aliases": [
+      "peanut butter",
+      "natural peanut butter"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 588,
+      "protein": 25.1,
+      "carbs": 20,
+      "fat": 50.4
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 16
+      },
+      {
+        "label": "2 tbsp",
+        "grams": 32
+      }
+    ],
+    "defaultQuantity": 32,
+    "notes": "100% roasted peanut spread without hydrogenated oils or added sugar."
+  },
+  {
+    "name": "Peanuts (roasted, unsalted)",
+    "aliases": [
+      "moongfali",
+      "roasted peanuts"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 585,
+      "protein": 23.7,
+      "carbs": 21.5,
+      "fat": 49.2
+    },
+    "servings": [
+      {
+        "label": "1 handful",
+        "grams": 30
+      },
+      {
+        "label": "1 bowl",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Dry roasted unsalted peanuts."
+  },
+  {
+    "name": "Pistachios (shelled, roasted)",
+    "aliases": [
+      "pista",
+      "roasted pistachios"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 562,
+      "protein": 20.2,
+      "carbs": 27.2,
+      "fat": 45.3
+    },
+    "servings": [
+      {
+        "label": "1 handful (about 45 nuts)",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Shelled roasted pistachios, nutrient-dense and antioxidant rich."
+  },
+  {
+    "name": "Pumpkin Seeds",
+    "aliases": [
+      "pepitas",
+      "kaddu ke beej"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 559,
+      "protein": 30.2,
+      "carbs": 10.7,
+      "fat": 49.1
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      },
+      {
+        "label": "1 handful",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Hulled raw pumpkin seeds, very high in zinc and magnesium."
+  },
+  {
+    "name": "Sesame Seeds / Til",
+    "aliases": [
+      "til",
+      "white sesame seeds"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 573,
+      "protein": 17.7,
+      "carbs": 23.4,
+      "fat": 49.7
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 10
+      }
+    ],
+    "defaultQuantity": 10,
+    "notes": "Whole unhulled white sesame seeds, rich in calcium."
+  },
+  {
+    "name": "Sunflower Seeds",
+    "aliases": [
+      "surajmukhi ke beej"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 584,
+      "protein": 20.8,
+      "carbs": 20,
+      "fat": 51.5
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      },
+      {
+        "label": "1 handful",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Hulled raw sunflower seed kernels."
+  },
+  {
+    "name": "Walnuts (raw)",
+    "aliases": [
+      "akhrot",
+      "walnut halves"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 654,
+      "protein": 15.2,
+      "carbs": 13.7,
+      "fat": 65.2
+    },
+    "servings": [
+      {
+        "label": "1 handful (7-8 halves)",
+        "grams": 28
+      }
+    ],
+    "defaultQuantity": 28,
+    "notes": "Raw walnut halves, plant source of ALA omega-3 fatty acids."
+  },
+  {
+    "name": "Sugar (white, granulated)",
+    "aliases": [
+      "white sugar",
+      "table sugar",
+      "cheeni",
+      "shakkar",
+      "cane sugar"
+    ],
+    "category": "Other",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 387,
+      "protein": 0,
+      "carbs": 99.8,
+      "fat": 0
+    },
+    "servings": [
+      {
+        "label": "1 teaspoon / 1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tablespoon / 1 tbsp",
+        "grams": 15
+      },
+      {
+        "label": "1 sugar cube / packet",
+        "grams": 4
+      }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Refined cane white granulated sugar (99.8% sucrose). Source: USDA FoodData Central (FDC ID 169655) & ICMR-NIN IFCT 2017."
+  },
+  {
+    "name": "Chana Dal (raw)",
+    "aliases": [
+      "split bengal gram",
+      "chana lentil"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 372,
+      "protein": 20.8,
+      "carbs": 59.8,
+      "fat": 5.6
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 small bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Polished split Bengal gram lentils."
+  },
+  {
+    "name": "Chicken Breast (cooked, grilled)",
+    "aliases": [
+      "grilled chicken breast",
+      "boiled chicken breast"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 160,
+      "protein": 31,
+      "carbs": 0,
+      "fat": 3.6
+    },
+    "servings": [
+      {
+        "label": "1 piece cooked",
+        "grams": 120
+      },
+      {
+        "label": "100g portion",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 120,
+    "notes": "Cooked skinless chicken breast without added heavy oil."
+  },
+  {
+    "name": "Chicken Breast (raw, boneless)",
+    "aliases": [
+      "raw chicken breast",
+      "boneless chicken breast"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 120,
+      "protein": 26,
+      "carbs": 0,
+      "fat": 1.8
+    },
+    "servings": [
+      {
+        "label": "1 breast fillet",
+        "grams": 150
+      },
+      {
+        "label": "100g portion",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Skinless boneless raw chicken breast, leanest poultry cut."
+  },
+  {
+    "name": "Chicken Thigh (cooked, roasted)",
+    "aliases": [
+      "cooked chicken thigh",
+      "grilled chicken thigh"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 205,
+      "protein": 26,
+      "carbs": 0,
+      "fat": 11
+    },
+    "servings": [
+      {
+        "label": "1 thigh roasted",
+        "grams": 90
+      }
+    ],
+    "defaultQuantity": 90,
+    "notes": "Cooked skinless bone-out chicken thigh."
+  },
+  {
+    "name": "Chicken Thigh (raw, skinless)",
+    "aliases": [
+      "raw chicken thigh"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 144,
+      "protein": 20,
+      "carbs": 0,
+      "fat": 7.2
+    },
+    "servings": [
+      {
+        "label": "1 medium thigh",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Raw skinless chicken thigh meat."
+  },
+  {
+    "name": "Chickpeas / Kabuli Chana (raw)",
+    "aliases": [
+      "white chana",
+      "garbanzo beans",
+      "dry chickpeas"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 370,
+      "protein": 19.3,
+      "carbs": 60.7,
+      "fat": 6
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 portion raw",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Dry whole white garbanzo beans."
+  },
+  {
+    "name": "Egg White",
+    "aliases": [
+      "boiled egg white",
+      "egg whites"
+    ],
+    "category": "Protein",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 17,
+      "protein": 3.6,
+      "carbs": 0.2,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 egg white",
+        "grams": 1
+      },
+      {
+        "label": "3 egg whites",
+        "grams": 3
+      },
+      {
+        "label": "5 egg whites",
+        "grams": 5
+      }
+    ],
+    "defaultQuantity": 3,
+    "notes": "Cooked or raw egg white from a large hen egg (~33g)."
+  },
+  {
+    "name": "Egg Yolk",
+    "aliases": [
+      "yolk"
+    ],
+    "category": "Protein",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 54,
+      "protein": 2.7,
+      "carbs": 0.6,
+      "fat": 4.5
+    },
+    "servings": [
+      {
+        "label": "1 yolk",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Cooked or raw egg yolk from a large hen egg (~17g)."
+  },
+  {
+    "name": "Fish (Rohu / Indian Carp, raw)",
+    "aliases": [
+      "rohu fish",
+      "carp fillet"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 102,
+      "protein": 19.7,
+      "carbs": 0,
+      "fat": 2.5
+    },
+    "servings": [
+      {
+        "label": "1 fillet",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Freshwater rohu carp fillet, widely consumed across India."
+  },
+  {
+    "name": "Fish (Salmon, raw)",
+    "aliases": [
+      "salmon",
+      "salmon fillet"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 205,
+      "protein": 20.4,
+      "carbs": 0,
+      "fat": 13.4
+    },
+    "servings": [
+      {
+        "label": "1 fillet",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Atlantic salmon fillet, exceptionally rich in EPA and DHA omega-3s."
+  },
+  {
+    "name": "Kala Chana (black chickpeas, raw)",
+    "aliases": [
+      "black chickpeas",
+      "brown chana",
+      "desi chana"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 362,
+      "protein": 20,
+      "carbs": 61,
+      "fat": 4.5
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 portion raw",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Dry whole brown Bengal gram chickpeas."
+  },
+  {
+    "name": "Moong Dal (raw)",
+    "aliases": [
+      "yellow moong dal",
+      "split mung beans"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 24,
+      "carbs": 59,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 small bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Split husked yellow mung lentils."
+  },
+  {
+    "name": "Mutton / Goat Meat (lean, raw)",
+    "aliases": [
+      "goat meat",
+      "lean mutton"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 143,
+      "protein": 20.6,
+      "carbs": 0,
+      "fat": 6.5
+    },
+    "servings": [
+      {
+        "label": "1 serving",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Trimmed lean goat meat cut."
+  },
+  {
+    "name": "Prawns / Shrimp (raw)",
+    "aliases": [
+      "raw prawns",
+      "shrimp",
+      "jhinga"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 85,
+      "protein": 20.1,
+      "carbs": 0.2,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 portion",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Peeled and deveined raw shrimp tail meat."
+  },
+  {
+    "name": "Rajma (raw kidney beans)",
+    "aliases": [
+      "dry kidney beans",
+      "raw rajma"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 340,
+      "protein": 24,
+      "carbs": 60,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 portion raw",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Dry red kidney beans."
+  },
+  {
+    "name": "Soya Chunks (dry)",
+    "aliases": [
+      "soy chunks",
+      "mealmaker",
+      "soya wadi",
+      "nutrela",
+      "fortune soya"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 52.5,
+      "carbs": 32.5,
+      "fat": 0.8
+    },
+    "servings": [
+      {
+        "label": "1 serving dry (30g)",
+        "grams": 30
+      },
+      {
+        "label": "1 cup dry chunks (40g)",
+        "grams": 40
+      },
+      {
+        "label": "1 large bowl dry (50g)",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Defatted soya chunks dry weight. Source: Brand nutrition labels (Fortune & Nutrela average) and ICMR-NIN IFCT defatted soy flour."
+  },
+  {
+    "name": "Tempeh",
+    "aliases": [
+      "soy tempeh"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 200,
+      "protein": 20.3,
+      "carbs": 7.6,
+      "fat": 10.8
+    },
+    "servings": [
+      {
+        "label": "1 block",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fermented whole soybean cake, rich in prebiotics and protein."
+  },
+  {
+    "name": "Tofu (firm)",
+    "aliases": [
+      "firm tofu",
+      "bean curd"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 84,
+      "protein": 10,
+      "carbs": 1.9,
+      "fat": 4.2
+    },
+    "servings": [
+      {
+        "label": "1 block",
+        "grams": 100
+      },
+      {
+        "label": "1/2 block",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Pressed soy curd, versatile low-carb plant protein."
+  },
+  {
+    "name": "Toor Dal (raw)",
+    "aliases": [
+      "arhar dal",
+      "split pigeon peas"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 22,
+      "carbs": 61.5,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 small bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Split yellow pigeon pea lentils, staple of dal tadka and sambhar."
+  },
+  {
+    "name": "Tuna (canned in water, drained)",
+    "aliases": [
+      "canned tuna",
+      "tuna in water"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 115,
+      "protein": 25.5,
+      "carbs": 0,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 drained can",
+        "grams": 130
+      }
+    ],
+    "defaultQuantity": 130,
+    "notes": "Chunk light or skipjack tuna canned in spring water."
+  },
+  {
+    "name": "Urad Dal (raw)",
+    "aliases": [
+      "black gram dal",
+      "white urad dal"
+    ],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 25.2,
+      "carbs": 58.9,
+      "fat": 1.6
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 100
+      },
+      {
+        "label": "1 small bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Skinned split black gram lentils, key ingredient in idli and dosa batter."
+  },
+  {
+    "name": "Whole Egg",
+    "aliases": [
+      "boiled egg",
+      "egg",
+      "ande"
+    ],
+    "category": "Protein",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 72,
+      "protein": 6.3,
+      "carbs": 0.4,
+      "fat": 4.8
+    },
+    "servings": [
+      {
+        "label": "1 large egg",
+        "grams": 1
+      },
+      {
+        "label": "2 large eggs",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Standard whole hen egg (~50g edible portion)."
+  },
+  {
+    "name": "Bhel Puri",
+    "aliases": [
+      "bhelpuri",
+      "mumbai bhel"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 210,
+      "protein": 4.5,
+      "carbs": 37,
+      "fat": 4.8
+    },
+    "servings": [
+      {
+        "label": "1 plate",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Puffed rice tossed with onions, tomatoes, sev, and tangy chutneys."
+  },
+  {
+    "name": "Dark Chocolate (70-85% cocoa)",
+    "aliases": [
+      "dark chocolate"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 598,
+      "protein": 7.8,
+      "carbs": 45.9,
+      "fat": 42.6
+    },
+    "servings": [
+      {
+        "label": "1 square",
+        "grams": 10
+      },
+      {
+        "label": "2 squares",
+        "grams": 20
+      }
+    ],
+    "defaultQuantity": 20,
+    "notes": "Bittersweet dark chocolate rich in cocoa flavonols."
+  },
+  {
+    "name": "Dhokla (khaman, steamed)",
+    "aliases": [
+      "khaman",
+      "khaman dhokla",
+      "steamed dhokla"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 75,
+      "protein": 2.5,
+      "carbs": 11,
+      "fat": 2.3
+    },
+    "servings": [
+      {
+        "label": "1 piece",
+        "grams": 1
+      },
+      {
+        "label": "2 pieces",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Steamed savory gram flour sponge cake tempered with mustard seeds (~40g each)."
+  },
+  {
+    "name": "Digestive Biscuit",
+    "aliases": [
+      "digestive biscuit slice",
+      "wheat biscuit"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 71,
+      "protein": 1.1,
+      "carbs": 9.4,
+      "fat": 3.2
+    },
+    "servings": [
+      {
+        "label": "1 biscuit",
+        "grams": 1
+      },
+      {
+        "label": "2 biscuits",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Semi-sweet wholemeal biscuit (~15g each)."
+  },
+  {
+    "name": "Khakhra (plain whole wheat)",
+    "aliases": [
+      "methi khakhra",
+      "wheat khakhra"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 85,
+      "protein": 2.5,
+      "carbs": 14.5,
+      "fat": 2
+    },
+    "servings": [
+      {
+        "label": "1 khakhra",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Crisp roasted Gujarati whole wheat cracker disk (~20g each)."
+  },
+  {
+    "name": "Marie Biscuit",
+    "aliases": [
+      "marie gold",
+      "tea biscuit"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 28,
+      "protein": 0.6,
+      "carbs": 5,
+      "fat": 0.6
+    },
+    "servings": [
+      {
+        "label": "2 biscuits",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Crisp light sweet tea biscuit (~6g each)."
+  },
+  {
+    "name": "Medu Vada",
+    "aliases": [
+      "urad vada",
+      "sambar vada"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 145,
+      "protein": 3.8,
+      "carbs": 14.5,
+      "fat": 8
+    },
+    "servings": [
+      {
+        "label": "1 vada",
+        "grams": 1
+      },
+      {
+        "label": "2 vadas",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Deep fried savory black gram lentil donut (~50g each)."
+  },
+  {
+    "name": "Pani Puri / Golgappa (with water & filling)",
+    "aliases": [
+      "golgappa",
+      "puchka",
+      "pani puri"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 36,
+      "protein": 0.6,
+      "carbs": 5.5,
+      "fat": 1.3
+    },
+    "servings": [
+      {
+        "label": "6 puris",
+        "grams": 6
+      }
+    ],
+    "defaultQuantity": 6,
+    "notes": "Crisp puffed hollow puri filled with spiced water, tamarind, and potato-chana mash."
+  },
+  {
+    "name": "Potato Chips (salted)",
+    "aliases": [
+      "lays classic",
+      "potato wafers"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 536,
+      "protein": 7,
+      "carbs": 53,
+      "fat": 33
+    },
+    "servings": [
+      {
+        "label": "1 small bag",
+        "grams": 30
+      },
+      {
+        "label": "1 bowl",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Crisp fried thin sliced salted potato crisps."
+  },
+  {
+    "name": "Protein Bar (average chocolate peanut)",
+    "aliases": [
+      "protein bar"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 215,
+      "protein": 20,
+      "carbs": 21,
+      "fat": 7
+    },
+    "servings": [
+      {
+        "label": "1 bar",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Commercial 60g protein snack bar delivering 20g protein."
+  },
+  {
+    "name": "Rice Cakes (plain, puffed)",
+    "aliases": [
+      "puffed rice cake"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 35,
+      "protein": 0.7,
+      "carbs": 7.3,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cake",
+        "grams": 1
+      },
+      {
+        "label": "2 cakes",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Puffed whole grain brown or white rice cake (~9g each)."
+  },
+  {
+    "name": "Roasted Chana (roasted Bengal gram with skin)",
+    "aliases": [
+      "bhuna chana",
+      "roasted chana"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 369,
+      "protein": 21,
+      "carbs": 58,
+      "fat": 5.5
+    },
+    "servings": [
+      {
+        "label": "1 handful",
+        "grams": 30
+      },
+      {
+        "label": "1 bowl",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Dry roasted whole black chickpeas with edible outer husk, high fiber."
+  },
+  {
+    "name": "Roasted Makhana (fox nuts, plain)",
+    "aliases": [
+      "makhana",
+      "fox nuts",
+      "phool makhana"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 350,
+      "protein": 9.7,
+      "carbs": 76.9,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl roasted",
+        "grams": 25
+      },
+      {
+        "label": "2 bowls roasted",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 25,
+    "notes": "Puffed lotus seed fox nuts roasted without added heavy fat."
+  },
+  {
+    "name": "Samosa (potato filled, deep fried)",
+    "aliases": [
+      "samosa",
+      "punjabi samosa"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 262,
+      "protein": 3.5,
+      "carbs": 24,
+      "fat": 17
+    },
+    "servings": [
+      {
+        "label": "1 samosa",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Crisp pastry filled with spiced potatoes and peas (~90g)."
+  },
+  {
+    "name": "Sev / Bhujia (namkeen)",
+    "aliases": [
+      "bhujia",
+      "aloo bhujia",
+      "besan sev"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 560,
+      "protein": 12,
+      "carbs": 44,
+      "fat": 37
+    },
+    "servings": [
+      {
+        "label": "1 handful",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Crispy fried seasoned gram flour noodles."
+  },
+  {
+    "name": "Vegetable Pakora / Fritters",
+    "aliases": [
+      "pakoda",
+      "mix veg pakora",
+      "bhajia"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 275,
+      "protein": 5.5,
+      "carbs": 24,
+      "fat": 17.5
+    },
+    "servings": [
+      {
+        "label": "3-4 pieces",
+        "grams": 80
+      }
+    ],
+    "defaultQuantity": 80,
+    "notes": "Mixed vegetables dipped in seasoned gram flour batter and deep fried."
+  },
+  {
+    "name": "AS-IT-IS Soy Protein Isolate (Unflavored)",
+    "aliases": [
+      "as it is soy protein",
+      "asitis soy isolate",
+      "soy protein isolate powder"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 377,
+      "protein": 85.7,
+      "carbs": 1.5,
+      "fat": 1.4
+    },
+    "servings": [
+      {
+        "label": "1 scoop (35g)",
+        "grams": 35
+      },
+      {
+        "label": "1 scoop (30g)",
+        "grams": 30
+      },
+      {
+        "label": "2 scoops (70g)",
+        "grams": 70
+      }
+    ],
+    "defaultQuantity": 35,
+    "notes": "AS-IT-IS Nutrition 90% Soy Protein Isolate unflavoured (30g protein, 132 kcal, 0.48g fat per 35g scoop). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Micellar Casein",
+    "aliases": [
+      "casein protein",
+      "casein powder"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 355,
+      "protein": 78,
+      "carbs": 4,
+      "fat": 2
+    },
+    "servings": [
+      {
+        "label": "1 scoop",
+        "grams": 32
+      }
+    ],
+    "defaultQuantity": 32,
+    "notes": "Slow-digesting native micellar milk protein powder."
+  },
+  {
+    "name": "Plant Protein Powder",
+    "aliases": [
+      "vegan protein powder",
+      "pea protein powder"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 375,
+      "protein": 76,
+      "carbs": 7,
+      "fat": 4
+    },
+    "servings": [
+      {
+        "label": "1 scoop",
+        "grams": 33
+      }
+    ],
+    "defaultQuantity": 33,
+    "notes": "Blended pea and brown rice vegan protein isolate powder."
+  },
+  {
+    "name": "Whey Protein Concentrate",
+    "aliases": [
+      "whey concentrate",
+      "whey protein powder"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 400,
+      "protein": 80,
+      "carbs": 6,
+      "fat": 6
+    },
+    "servings": [
+      {
+        "label": "1 scoop",
+        "grams": 33
+      }
+    ],
+    "defaultQuantity": 33,
+    "notes": "Standard 80% whey concentrate delivering ~24-25g protein per scoop."
+  },
+  {
+    "name": "Whey Protein Isolate",
+    "aliases": [
+      "whey isolate",
+      "isolate whey"
+    ],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 370,
+      "protein": 88,
+      "carbs": 2,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 scoop",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Micro-filtered whey isolate delivering 26-27g protein per scoop."
+  },
+  {
+    "name": "Bhindi / Okra (raw)",
+    "aliases": [
+      "bhindi",
+      "ladies finger",
+      "raw okra"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 37,
+      "protein": 1.9,
+      "carbs": 7.5,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 bowl chopped",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh tender green okra pods."
+  },
+  {
+    "name": "Broccoli (raw)",
+    "aliases": [
+      "fresh broccoli",
+      "broccoli florets"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 39,
+      "protein": 2.8,
+      "carbs": 6.6,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup chopped",
+        "grams": 90
+      },
+      {
+        "label": "1 medium stalk",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh raw broccoli florets and tender stems."
+  },
+  {
+    "name": "Cabbage / Patta Gobi (raw)",
+    "aliases": [
+      "patta gobi",
+      "shredded cabbage"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 25,
+      "protein": 1.3,
+      "carbs": 5.8,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 cup shredded",
+        "grams": 70
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh crisp green cabbage."
+  },
+  {
+    "name": "Capsicum / Bell Pepper (green)",
+    "aliases": [
+      "shimla mirch",
+      "green capsicum",
+      "bell pepper"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 22,
+      "protein": 0.9,
+      "carbs": 4.6,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 medium bell pepper",
+        "grams": 120
+      },
+      {
+        "label": "1 cup chopped",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Crisp green bell pepper."
+  },
+  {
+    "name": "Carrot / Gajar (raw)",
+    "aliases": [
+      "gajar",
+      "raw carrot"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 41,
+      "protein": 0.9,
+      "carbs": 9.6,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 medium carrot",
+        "grams": 60
+      },
+      {
+        "label": "1 cup grated",
+        "grams": 110
+      }
+    ],
+    "defaultQuantity": 60,
+    "notes": "Sweet raw red or orange carrots, rich in beta-carotene."
+  },
+  {
+    "name": "Cauliflower / Gobi (raw)",
+    "aliases": [
+      "phool gobi",
+      "raw cauliflower"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 28,
+      "protein": 1.9,
+      "carbs": 5,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cup chopped",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh raw white cauliflower florets."
+  },
+  {
+    "name": "Cucumber / Kheera (raw)",
+    "aliases": [
+      "kheera",
+      "cucumber slices"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 17,
+      "protein": 0.7,
+      "carbs": 3.6,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 medium cucumber",
+        "grams": 200
+      },
+      {
+        "label": "1 cup sliced",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh unpeeled crisp salad cucumber."
+  },
+  {
+    "name": "Green Peas / Matar (raw)",
+    "aliases": [
+      "matar",
+      "fresh green peas"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 81,
+      "protein": 5.4,
+      "carbs": 14.5,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup peas",
+        "grams": 145
+      },
+      {
+        "label": "1/2 cup peas",
+        "grams": 70
+      }
+    ],
+    "defaultQuantity": 70,
+    "notes": "Fresh sweet shelled green peas."
+  },
+  {
+    "name": "Mushroom (button, raw)",
+    "aliases": [
+      "button mushroom",
+      "white mushrooms"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 26,
+      "protein": 3.1,
+      "carbs": 3.3,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cup sliced",
+        "grams": 70
+      },
+      {
+        "label": "1 packet",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh edible cultivated white button mushrooms."
+  },
+  {
+    "name": "Onion (raw)",
+    "aliases": [
+      "pyaaz",
+      "raw onion"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 40,
+      "protein": 1.1,
+      "carbs": 9.3,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 medium onion",
+        "grams": 110
+      },
+      {
+        "label": "1/2 onion chopped",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Fresh red or yellow onion."
+  },
+  {
+    "name": "Potato (boiled)",
+    "aliases": [
+      "boiled aloo",
+      "boiled potato"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 87,
+      "protein": 1.9,
+      "carbs": 20.1,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 medium potato",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Peeled boiled white/yellow potato."
+  },
+  {
+    "name": "Spinach / Palak (raw)",
+    "aliases": [
+      "palak",
+      "raw spinach"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 25,
+      "protein": 2.9,
+      "carbs": 2.5,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup raw leaves",
+        "grams": 30
+      },
+      {
+        "label": "1 bunch leaves",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh tender green palak leaves."
+  },
+  {
+    "name": "Sweet Potato (boiled)",
+    "aliases": [
+      "shakarkandi",
+      "boiled sweet potato"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 86,
+      "protein": 1.6,
+      "carbs": 20.1,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 medium sweet potato",
+        "grams": 130
+      }
+    ],
+    "defaultQuantity": 130,
+    "notes": "Boiled orange/white sweet potato root."
+  },
+  {
+    "name": "Tomato (raw)",
+    "aliases": [
+      "tamatar",
+      "raw tomato"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 20,
+      "protein": 0.9,
+      "carbs": 3.9,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 medium tomato",
+        "grams": 120
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh red ripe tomato, rich in lycopene."
+  }
+]

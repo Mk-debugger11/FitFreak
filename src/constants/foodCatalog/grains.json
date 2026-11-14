@@ -1,0 +1,607 @@
+[
+  {
+    "name": "Bajra Flour (pearl millet)",
+    "aliases": [
+      "pearl millet flour",
+      "bajri flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 361,
+      "protein": 11.6,
+      "carbs": 67.5,
+      "fat": 5
+    },
+    "servings": [
+      {
+        "label": "1 roti equivalent",
+        "grams": 45
+      },
+      {
+        "label": "1/2 cup",
+        "grams": 60
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Iron-dense gluten-free pearl millet flour."
+  },
+  {
+    "name": "Basmati Rice (raw)",
+    "aliases": [
+      "raw white rice",
+      "uncooked rice"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 350,
+      "protein": 7.5,
+      "carbs": 77,
+      "fat": 0.6
+    },
+    "servings": [
+      {
+        "label": "1/2 cup raw",
+        "grams": 90
+      },
+      {
+        "label": "1 serving raw",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Aromatic long grain dry basmati rice."
+  },
+  {
+    "name": "Besan (Bengal gram flour)",
+    "aliases": [
+      "gram flour",
+      "chickpea flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 385,
+      "protein": 22.4,
+      "carbs": 57.8,
+      "fat": 6.7
+    },
+    "servings": [
+      {
+        "label": "1/2 cup besan",
+        "grams": 60
+      },
+      {
+        "label": "2 tbsp",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Flour made from ground split brown chickpeas."
+  },
+  {
+    "name": "Brown Rice (cooked)",
+    "aliases": [
+      "cooked brown rice"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 123,
+      "protein": 2.7,
+      "carbs": 25.6,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 cup cooked",
+        "grams": 195
+      },
+      {
+        "label": "1 medium bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Steamed whole grain brown rice with intact bran and germ."
+  },
+  {
+    "name": "Chapati (plain whole wheat roti, cooked)",
+    "aliases": [
+      "roti",
+      "phulka",
+      "cooked chapati",
+      "wheat roti"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 250,
+      "protein": 8.3,
+      "carbs": 48,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1 medium chapati (40g)",
+        "grams": 40
+      },
+      {
+        "label": "1 large chapati (55g)",
+        "grams": 55
+      },
+      {
+        "label": "1 small phulka (30g)",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Traditional Indian whole wheat flatbread made from 100% atta, dry-roasted on tawa without added oil or ghee (~100 kcal per medium 40g roti). Source: Averaged from ICMR-NIN IFCT 2017, USDA FoodData Central, and NIN research publications."
+  },
+  {
+    "name": "Dalia (broken wheat, dry)",
+    "aliases": [
+      "broken wheat",
+      "bulgur wheat",
+      "cracked wheat"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 12,
+      "carbs": 71,
+      "fat": 1.5
+    },
+    "servings": [
+      {
+        "label": "1/2 cup dry",
+        "grams": 65
+      },
+      {
+        "label": "1 bowl cooked equivalent",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Cracked whole wheat groats, high in dietary fiber."
+  },
+  {
+    "name": "Harvest Gold Brown Bread",
+    "aliases": [
+      "harvest gold bread",
+      "harvest gold brown",
+      "harvest brown bread"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 217,
+      "protein": 8.3,
+      "carbs": 43.7,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 28
+      },
+      {
+        "label": "2 slices",
+        "grams": 56
+      }
+    ],
+    "defaultQuantity": 56,
+    "notes": "Harvest Gold Hearty Brown Bread (30% whole wheat atta, 0.96g fat, 3.5g fibre per 100g; ~61 kcal per 28g slice). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Instant Oats (dry)",
+    "aliases": [
+      "quick oats"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 372,
+      "protein": 12.5,
+      "carbs": 67,
+      "fat": 6
+    },
+    "servings": [
+      {
+        "label": "1 serving",
+        "grams": 40
+      }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Pre-cooked and thinly rolled quick-cooking oats."
+  },
+  {
+    "name": "Jowar Flour (sorghum)",
+    "aliases": [
+      "sorghum flour",
+      "jowar atta"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 349,
+      "protein": 10.4,
+      "carbs": 72.6,
+      "fat": 1.9
+    },
+    "servings": [
+      {
+        "label": "1 roti equivalent",
+        "grams": 45
+      },
+      {
+        "label": "1/2 cup",
+        "grams": 60
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Mild gluten-free white sorghum flour."
+  },
+  {
+    "name": "Maida (refined wheat flour)",
+    "aliases": [
+      "all purpose flour",
+      "refined flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 360,
+      "protein": 10.3,
+      "carbs": 76.3,
+      "fat": 1
+    },
+    "servings": [
+      {
+        "label": "1 cup maida",
+        "grams": 125
+      },
+      {
+        "label": "1/2 cup maida",
+        "grams": 60
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Finely milled and refined wheat flour."
+  },
+  {
+    "name": "Multigrain Bread",
+    "aliases": [
+      "multigrain bread slice"
+    ],
+    "category": "Grains",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 75,
+      "protein": 4,
+      "carbs": 13,
+      "fat": 1.1
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 1
+      },
+      {
+        "label": "2 slices",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Seed and grain enriched sandwich slice (~30g per slice)."
+  },
+  {
+    "name": "Poha (flattened rice, dry)",
+    "aliases": [
+      "flattened rice",
+      "aval",
+      "chuda",
+      "dry poha"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 347,
+      "protein": 6.8,
+      "carbs": 77.2,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1 cup dry",
+        "grams": 60
+      }
+    ],
+    "defaultQuantity": 60,
+    "notes": "De-husked and parboiled rolled flat rice flakes."
+  },
+  {
+    "name": "Quinoa (cooked)",
+    "aliases": [
+      "cooked quinoa"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 120,
+      "protein": 4.4,
+      "carbs": 21.3,
+      "fat": 1.9
+    },
+    "servings": [
+      {
+        "label": "1 cup cooked",
+        "grams": 185
+      },
+      {
+        "label": "1/2 cup cooked",
+        "grams": 90
+      }
+    ],
+    "defaultQuantity": 185,
+    "notes": "Complete plant protein pseudocereal grain, cooked."
+  },
+  {
+    "name": "Ragi Flour (finger millet)",
+    "aliases": [
+      "finger millet flour",
+      "nachni flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 328,
+      "protein": 7.3,
+      "carbs": 72,
+      "fat": 1.3
+    },
+    "servings": [
+      {
+        "label": "1/2 cup",
+        "grams": 60
+      },
+      {
+        "label": "1 roti equivalent",
+        "grams": 40
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Calcium-rich red millet flour."
+  },
+  {
+    "name": "Rolled Oats (dry)",
+    "aliases": [
+      "oats",
+      "oatmeal"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 379,
+      "protein": 13.5,
+      "carbs": 66.3,
+      "fat": 6.5
+    },
+    "servings": [
+      {
+        "label": "1/2 cup dry",
+        "grams": 40
+      },
+      {
+        "label": "1 bowl dry",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Whole rolled oat flakes, rich in beta-glucan soluble fiber."
+  },
+  {
+    "name": "Sattu (roasted chana flour)",
+    "aliases": [
+      "chana sattu",
+      "roasted gram flour"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 408,
+      "protein": 25.5,
+      "carbs": 64,
+      "fat": 5.5
+    },
+    "servings": [
+      {
+        "label": "2 tbsp sattu",
+        "grams": 30
+      },
+      {
+        "label": "1 scoop",
+        "grams": 40
+      }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Nutrient-dense roasted Bengal gram flour popular in Northern and Eastern India."
+  },
+  {
+    "name": "Suji / Semolina (dry)",
+    "aliases": [
+      "sooji",
+      "semolina",
+      "rava"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 355,
+      "protein": 12.7,
+      "carbs": 72.8,
+      "fat": 1.1
+    },
+    "servings": [
+      {
+        "label": "1/2 cup dry",
+        "grams": 80
+      },
+      {
+        "label": "1 serving",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Coarsely ground durum wheat semolina."
+  },
+  {
+    "name": "White Bread",
+    "aliases": [
+      "white bread slice",
+      "sandwich bread"
+    ],
+    "category": "Grains",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 67,
+      "protein": 2.4,
+      "carbs": 12.7,
+      "fat": 0.8
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 1
+      },
+      {
+        "label": "2 slices",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Standard sliced sandwich loaf (~25g per slice)."
+  },
+  {
+    "name": "White Rice (cooked / steamed)",
+    "aliases": [
+      "cooked white rice",
+      "steamed rice",
+      "boiled rice",
+      "white rice cooked"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 130,
+      "protein": 2.7,
+      "carbs": 28.2,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 medium bowl / katori",
+        "grams": 150
+      },
+      {
+        "label": "1 cup cooked",
+        "grams": 158
+      },
+      {
+        "label": "1 plate / serving",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Steamed/boiled long-grain white rice cooked without added oil or salt. Source: Averaged from USDA FoodData Central (FDC ID 168878), ICMR-NIN IFCT 2017, and UK McCance & Widdowson (CoFID)."
+  },
+  {
+    "name": "Whole Wheat Bread",
+    "aliases": [
+      "brown bread slice",
+      "wheat bread"
+    ],
+    "category": "Grains",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 69,
+      "protein": 3.6,
+      "carbs": 12,
+      "fat": 0.9
+    },
+    "servings": [
+      {
+        "label": "1 slice",
+        "grams": 1
+      },
+      {
+        "label": "2 slices",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Commercial whole wheat bread slice (~28g per slice)."
+  },
+  {
+    "name": "Whole Wheat Flour (Atta)",
+    "aliases": [
+      "atta",
+      "wheat flour",
+      "gehun ka atta"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 12,
+      "carbs": 71,
+      "fat": 1.8
+    },
+    "servings": [
+      {
+        "label": "1 cup atta",
+        "grams": 120
+      },
+      {
+        "label": "1 roti equivalent",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 60,
+    "notes": "Stone-ground whole wheat chakki atta."
+  },
+  {
+    "name": "Yogabar High Protein Oats (Dark Chocolate)",
+    "aliases": [
+      "yoga bar protein oats",
+      "yogabar oats",
+      "high protein oats"
+    ],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 364,
+      "protein": 26,
+      "carbs": 57.3,
+      "fat": 5.9
+    },
+    "servings": [
+      {
+        "label": "1 scoop / serving",
+        "grams": 50
+      },
+      {
+        "label": "1 bowl",
+        "grams": 40
+      },
+      {
+        "label": "1 large bowl",
+        "grams": 75
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Yogabar Dark Chocolate High Protein Oats (rolled oats with soy protein isolate and whey; 13g protein per 50g scoop, 0g added sugar). Source: Official packaging nutrition label."
+  }
+]

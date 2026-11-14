@@ -24,6 +24,15 @@ export const theme = {
       high: '#FF4500',
       selected: '#FF7D45',
     },
+    nutrition: {
+      track: '#242424',
+      protein: '#3FA9F5',
+      carbs: '#F7B32B',
+      fat: '#B57BFF',
+      deficit: '#3FA9F5',
+      maintenance: '#03DAC6',
+      surplus: '#FF8A3D',
+    },
   },
   spacing: {
     xs: 4,

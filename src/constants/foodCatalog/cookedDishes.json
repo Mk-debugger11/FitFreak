@@ -1,0 +1,632 @@
+[
+  {
+    "name": "Aloo Gobi (cooked)",
+    "aliases": [
+      "aloo gobi sabzi"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 90,
+      "protein": 2,
+      "carbs": 11,
+      "fat": 4.2
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Stir-fried spiced potatoes and cauliflower florets with turmeric."
+  },
+  {
+    "name": "Aloo Paratha",
+    "aliases": [
+      "potato paratha",
+      "stuffed aloo paratha"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 290,
+      "protein": 6,
+      "carbs": 43,
+      "fat": 10.5
+    },
+    "servings": [
+      {
+        "label": "1 paratha",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Whole wheat flatbread stuffed with spiced potato mixture (~120g)."
+  },
+  {
+    "name": "Baingan Bharta (cooked eggplant)",
+    "aliases": [
+      "baingan bhurji",
+      "roasted eggplant mash"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 75,
+      "protein": 1.5,
+      "carbs": 7.5,
+      "fat": 4.3
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Charcoal-smoked roasted eggplant mashed and sautéed with garlic and tomatoes."
+  },
+  {
+    "name": "Bhindi Masala (cooked okra)",
+    "aliases": [
+      "bhindi ki sabzi",
+      "okra masala"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 85,
+      "protein": 2,
+      "carbs": 8.5,
+      "fat": 4.8
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 120
+      }
+    ],
+    "defaultQuantity": 120,
+    "notes": "Crisp stir-fried sliced okra with onions, cumin, and dry mango powder."
+  },
+  {
+    "name": "Butter Chicken (Murgh Makhani)",
+    "aliases": [
+      "murgh makhani",
+      "butter chicken"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 180,
+      "protein": 12,
+      "carbs": 5,
+      "fat": 12.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Tender chicken cooked in rich velvety tomato, butter, and cream sauce."
+  },
+  {
+    "name": "Chicken Biryani",
+    "aliases": [
+      "dum biryani chicken"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 165,
+      "protein": 9,
+      "carbs": 20,
+      "fat": 5.5
+    },
+    "servings": [
+      {
+        "label": "1 plate",
+        "grams": 300
+      },
+      {
+        "label": "1 bowl",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Layered aromatic basmati rice cooked with marinated spiced chicken."
+  },
+  {
+    "name": "Chicken Curry (homestyle)",
+    "aliases": [
+      "tariwala chicken",
+      "indian chicken curry"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 135,
+      "protein": 14,
+      "carbs": 3.5,
+      "fat": 7
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Homestyle spiced chicken curry with thin flavorful gravy."
+  },
+  {
+    "name": "Chole / Chana Masala (cooked)",
+    "aliases": [
+      "cooked chole",
+      "chana masala"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 145,
+      "protein": 6,
+      "carbs": 20,
+      "fat": 4.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Spiced white chickpea curry with fragrant garam masala."
+  },
+  {
+    "name": "Dal Makhani",
+    "aliases": [
+      "maa ki dal",
+      "makhani dal"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 140,
+      "protein": 5,
+      "carbs": 15,
+      "fat": 6.7
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Slow-cooked whole black lentils and kidney beans with butter and cream."
+  },
+  {
+    "name": "Dal Tadka (cooked yellow dal)",
+    "aliases": [
+      "yellow dal",
+      "dal fry",
+      "cooked toor dal"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 115,
+      "protein": 6,
+      "carbs": 15,
+      "fat": 3.5
+    },
+    "servings": [
+      {
+        "label": "1 katori / bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Yellow pigeon pea stew tempered with ghee, cumin, garlic, and spices."
+  },
+  {
+    "name": "Egg Curry",
+    "aliases": [
+      "anda curry"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 125,
+      "protein": 7.5,
+      "carbs": 4,
+      "fat": 9
+    },
+    "servings": [
+      {
+        "label": "1 bowl (2 eggs)",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Boiled whole eggs simmered in spiced onion-tomato gravy."
+  },
+  {
+    "name": "Idli (steamed rice-lentil cake)",
+    "aliases": [
+      "steamed idli",
+      "idly"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 58,
+      "protein": 1.8,
+      "carbs": 12,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 idli",
+        "grams": 1
+      },
+      {
+        "label": "2 idlis",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Steamed fermented rice and de-husked black gram batter cake (~40g each)."
+  },
+  {
+    "name": "Jeera Rice",
+    "aliases": [
+      "cumin rice"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 145,
+      "protein": 2.6,
+      "carbs": 26.5,
+      "fat": 3.2
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Fluffy basmati rice tempered with roasted cumin seeds and ghee."
+  },
+  {
+    "name": "Khichdi (moong dal & rice, cooked)",
+    "aliases": [
+      "moong dal khichdi",
+      "cooked khichdi"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 110,
+      "protein": 3.8,
+      "carbs": 19.5,
+      "fat": 2
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Wholesome porridge of rice and yellow moong lentils tempered with cumin."
+  },
+  {
+    "name": "Masala Dosa",
+    "aliases": [
+      "potato masala dosa"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 210,
+      "protein": 4,
+      "carbs": 30,
+      "fat": 8.2
+    },
+    "servings": [
+      {
+        "label": "1 dosa",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Crispy golden dosa stuffed with spiced mashed potato filling."
+  },
+  {
+    "name": "Matar Paneer",
+    "aliases": [
+      "mutter paneer"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 140,
+      "protein": 6.5,
+      "carbs": 9,
+      "fat": 8.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Cottage cheese and sweet peas in spiced homestyle onion-tomato gravy."
+  },
+  {
+    "name": "Mutton Biryani",
+    "aliases": [
+      "gosht biryani"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 190,
+      "protein": 8.5,
+      "carbs": 21,
+      "fat": 8
+    },
+    "servings": [
+      {
+        "label": "1 plate",
+        "grams": 300
+      }
+    ],
+    "defaultQuantity": 250,
+    "notes": "Aromatic basmati rice layered with tender braised goat meat."
+  },
+  {
+    "name": "Palak Paneer",
+    "aliases": [
+      "spinach paneer"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 150,
+      "protein": 7,
+      "carbs": 4.5,
+      "fat": 11.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Fresh cottage cheese cubes in spiced pureed spinach sauce."
+  },
+  {
+    "name": "Paneer Butter Masala",
+    "aliases": [
+      "paneer makhani"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 195,
+      "protein": 6.5,
+      "carbs": 7.5,
+      "fat": 15.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Paneer cubes in creamy, buttery spiced tomato gravy."
+  },
+  {
+    "name": "Paratha (plain, shallow fried)",
+    "aliases": [
+      "plain paratha",
+      "tawa paratha"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 260,
+      "protein": 5,
+      "carbs": 36,
+      "fat": 10.7
+    },
+    "servings": [
+      {
+        "label": "1 paratha",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Layered whole wheat flatbread shallow fried with oil or ghee (~70g)."
+  },
+  {
+    "name": "Plain Dosa",
+    "aliases": [
+      "sada dosa"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 133,
+      "protein": 2.8,
+      "carbs": 22,
+      "fat": 3.8
+    },
+    "servings": [
+      {
+        "label": "1 medium dosa",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Thin crispy fermented rice and lentil crepe cooked with light oil."
+  },
+  {
+    "name": "Poha (cooked with peanuts & potatoes)",
+    "aliases": [
+      "batata poha",
+      "kanda poha",
+      "cooked poha"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 160,
+      "protein": 3.5,
+      "carbs": 25.5,
+      "fat": 5
+    },
+    "servings": [
+      {
+        "label": "1 plate / bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Tempered flattened rice cooked with onions, roasted peanuts, mustard seeds, and turmeric."
+  },
+  {
+    "name": "Rajma (cooked / boiled kidney beans)",
+    "aliases": [
+      "cooked rajma",
+      "boiled rajma",
+      "boiled kidney beans"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 127,
+      "protein": 8.7,
+      "carbs": 22.8,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 medium bowl / katori",
+        "grams": 150
+      },
+      {
+        "label": "1 cup cooked",
+        "grams": 177
+      },
+      {
+        "label": "1 large bowl",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Plain boiled/pressure-cooked red kidney beans without added oil or gravy. Source: Averaged from USDA FoodData Central (FDC ID 173735), ICMR-NIN IFCT 2017 hydration conversion, and UK CoFID."
+  },
+  {
+    "name": "Rajma Masala (cooked kidney bean curry)",
+    "aliases": [
+      "rajma masala",
+      "rajma curry"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 130,
+      "protein": 5.5,
+      "carbs": 18,
+      "fat": 4
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Punjabi-style red kidney bean curry cooked in onion-tomato gravy."
+  },
+  {
+    "name": "Sambhar",
+    "aliases": [
+      "south indian sambhar",
+      "sambar"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 65,
+      "protein": 2.5,
+      "carbs": 9.5,
+      "fat": 1.8
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "South Indian tangy pigeon pea and vegetable stew with tamarind."
+  },
+  {
+    "name": "Upma (cooked suji)",
+    "aliases": [
+      "rava upma",
+      "cooked upma"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 140,
+      "protein": 3.2,
+      "carbs": 22,
+      "fat": 4.4
+    },
+    "servings": [
+      {
+        "label": "1 plate / bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Savory roasted semolina porridge tempered with curry leaves and mustard seeds."
+  },
+  {
+    "name": "Vegetable Pulao",
+    "aliases": [
+      "veg pulav",
+      "peas pulao"
+    ],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 135,
+      "protein": 2.8,
+      "carbs": 24,
+      "fat": 3.1
+    },
+    "servings": [
+      {
+        "label": "1 bowl",
+        "grams": 180
+      }
+    ],
+    "defaultQuantity": 180,
+    "notes": "Fragrant basmati rice gently cooked with mixed vegetables and whole spices."
+  }
+]

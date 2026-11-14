@@ -1,0 +1,382 @@
+[
+  {
+    "name": "Almonds (raw)",
+    "aliases": [
+      "badam",
+      "raw almonds"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 579,
+      "protein": 21.2,
+      "carbs": 21.6,
+      "fat": 49.9
+    },
+    "servings": [
+      {
+        "label": "1 handful (20 nuts)",
+        "grams": 28
+      }
+    ],
+    "defaultQuantity": 28,
+    "notes": "Unroasted whole kernel almonds, high in vitamin E."
+  },
+  {
+    "name": "Cashews / Kaju (raw)",
+    "aliases": [
+      "kaju",
+      "raw cashews"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 553,
+      "protein": 18.2,
+      "carbs": 30.2,
+      "fat": 43.8
+    },
+    "servings": [
+      {
+        "label": "1 handful (15-18 nuts)",
+        "grams": 28
+      }
+    ],
+    "defaultQuantity": 28,
+    "notes": "Whole raw cashew nuts."
+  },
+  {
+    "name": "Chia Seeds",
+    "aliases": [
+      "chia seed",
+      "salvia hispanica"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 486,
+      "protein": 16.5,
+      "carbs": 42.1,
+      "fat": 30.7
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 12
+      },
+      {
+        "label": "2 tbsp",
+        "grams": 24
+      }
+    ],
+    "defaultQuantity": 12,
+    "notes": "Whole black chia seeds, exceptionally rich in soluble fiber."
+  },
+  {
+    "name": "Coconut Oil",
+    "aliases": [
+      "nariyal tel",
+      "virgin coconut oil"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 862,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "fat": 100.0
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Pure edible coconut cooking oil, rich in lauric acid MCTs."
+  },
+  {
+    "name": "Desiccated Coconut",
+    "aliases": [
+      "dry coconut powder",
+      "nariyal burada"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 660,
+      "protein": 6.9,
+      "carbs": 23.7,
+      "fat": 64.5
+    },
+    "servings": [
+      {
+        "label": "2 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 15,
+    "notes": "Finely grated and dried unsweetened coconut kernel."
+  },
+  {
+    "name": "Flax Seeds (ground / whole)",
+    "aliases": [
+      "alsi",
+      "flaxseed",
+      "linseed"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 534,
+      "protein": 18.3,
+      "carbs": 28.9,
+      "fat": 42.2
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 10
+      },
+      {
+        "label": "2 tbsp",
+        "grams": 20
+      }
+    ],
+    "defaultQuantity": 10,
+    "notes": "Whole or freshly ground brown flax seeds, rich in lignans."
+  },
+  {
+    "name": "Mustard Oil",
+    "aliases": [
+      "sarson ka tel"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 884,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "fat": 100.0
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Cold-pressed pungent mustard seed oil common in North/East Indian cooking."
+  },
+  {
+    "name": "Olive Oil (extra virgin)",
+    "aliases": [
+      "evoo",
+      "extra virgin olive oil"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 884,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "fat": 100.0
+    },
+    "servings": [
+      {
+        "label": "1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      }
+    ],
+    "defaultQuantity": 10,
+    "notes": "Cold-pressed extra virgin olive oil."
+  },
+  {
+    "name": "Peanut Butter (creamy, unsweetened)",
+    "aliases": [
+      "peanut butter",
+      "natural peanut butter"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 588,
+      "protein": 25.1,
+      "carbs": 20.0,
+      "fat": 50.4
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 16
+      },
+      {
+        "label": "2 tbsp",
+        "grams": 32
+      }
+    ],
+    "defaultQuantity": 32,
+    "notes": "100% roasted peanut spread without hydrogenated oils or added sugar."
+  },
+  {
+    "name": "Peanuts (roasted, unsalted)",
+    "aliases": [
+      "moongfali",
+      "roasted peanuts"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 585,
+      "protein": 23.7,
+      "carbs": 21.5,
+      "fat": 49.2
+    },
+    "servings": [
+      {
+        "label": "1 handful",
+        "grams": 30
+      },
+      {
+        "label": "1 bowl",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Dry roasted unsalted peanuts."
+  },
+  {
+    "name": "Pistachios (shelled, roasted)",
+    "aliases": [
+      "pista",
+      "roasted pistachios"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 562,
+      "protein": 20.2,
+      "carbs": 27.2,
+      "fat": 45.3
+    },
+    "servings": [
+      {
+        "label": "1 handful (about 45 nuts)",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Shelled roasted pistachios, nutrient-dense and antioxidant rich."
+  },
+  {
+    "name": "Pumpkin Seeds",
+    "aliases": [
+      "pepitas",
+      "kaddu ke beej"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 559,
+      "protein": 30.2,
+      "carbs": 10.7,
+      "fat": 49.1
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      },
+      {
+        "label": "1 handful",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Hulled raw pumpkin seeds, very high in zinc and magnesium."
+  },
+  {
+    "name": "Sesame Seeds / Til",
+    "aliases": [
+      "til",
+      "white sesame seeds"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 573,
+      "protein": 17.7,
+      "carbs": 23.4,
+      "fat": 49.7
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 10
+      }
+    ],
+    "defaultQuantity": 10,
+    "notes": "Whole unhulled white sesame seeds, rich in calcium."
+  },
+  {
+    "name": "Sunflower Seeds",
+    "aliases": [
+      "surajmukhi ke beej"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 584,
+      "protein": 20.8,
+      "carbs": 20.0,
+      "fat": 51.5
+    },
+    "servings": [
+      {
+        "label": "1 tbsp",
+        "grams": 15
+      },
+      {
+        "label": "1 handful",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Hulled raw sunflower seed kernels."
+  },
+  {
+    "name": "Walnuts (raw)",
+    "aliases": [
+      "akhrot",
+      "walnut halves"
+    ],
+    "category": "Nuts & Seeds",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 654,
+      "protein": 15.2,
+      "carbs": 13.7,
+      "fat": 65.2
+    },
+    "servings": [
+      {
+        "label": "1 handful (7-8 halves)",
+        "grams": 28
+      }
+    ],
+    "defaultQuantity": 28,
+    "notes": "Raw walnut halves, plant source of ALA omega-3 fatty acids."
+  }
+]

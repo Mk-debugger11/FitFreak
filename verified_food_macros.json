@@ -1,0 +1,192 @@
+[
+  {
+    "name": "Mother Dairy Toned Milk",
+    "aliases": ["toned milk", "mother dairy milk", "blue packet milk"],
+    "category": "Dairy",
+    "basis": "per_100ml",
+    "macros": {
+      "calories": 59,
+      "protein": 3.1,
+      "carbs": 4.7,
+      "fat": 3.1
+    },
+    "servings": [
+      { "label": "1 cup / mug (200 ml)", "grams": 200 },
+      { "label": "1 glass (250 ml)", "grams": 250 },
+      { "label": "1 small cup / tea portion (100 ml)", "grams": 100 }
+    ],
+    "defaultQuantity": 200,
+    "notes": "Mother Dairy Pasteurised Toned Milk (min 3.0% fat, min 8.5% SNF, 127mg calcium per 100ml). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Harvest Gold Brown Bread",
+    "aliases": ["harvest gold bread", "brown bread", "atta bread"],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 217,
+      "protein": 8.3,
+      "carbs": 43.7,
+      "fat": 1.0
+    },
+    "servings": [
+      { "label": "1 slice", "grams": 28 },
+      { "label": "2 slices", "grams": 56 }
+    ],
+    "defaultQuantity": 56,
+    "notes": "Harvest Gold Hearty Brown Bread (30% whole wheat atta, 0.96g fat, 3.5g fibre per 100g; ~61 kcal per 28g slice). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Yogabar High Protein Oats (Dark Chocolate)",
+    "aliases": ["yoga bar protein oats", "yogabar oats", "high protein oats"],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 364,
+      "protein": 26.0,
+      "carbs": 57.3,
+      "fat": 5.9
+    },
+    "servings": [
+      { "label": "1 scoop / serving", "grams": 50 },
+      { "label": "1 bowl", "grams": 40 },
+      { "label": "1 large bowl", "grams": 75 }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Yogabar Dark Chocolate High Protein Oats (rolled oats with soy protein isolate and whey; 13g protein per 50g scoop, 0g added sugar). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "AS-IT-IS Soy Protein Isolate (Unflavored)",
+    "aliases": ["as it is soy protein", "asitis soy isolate", "soy protein powder"],
+    "category": "Supplements",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 377,
+      "protein": 85.7,
+      "carbs": 1.5,
+      "fat": 1.4
+    },
+    "servings": [
+      { "label": "1 scoop (35g)", "grams": 35 },
+      { "label": "1 scoop (30g)", "grams": 30 },
+      { "label": "2 scoops (70g)", "grams": 70 }
+    ],
+    "defaultQuantity": 35,
+    "notes": "AS-IT-IS Nutrition 90% Soy Protein Isolate unflavoured (30g protein, 132 kcal, 0.48g fat per 35g scoop). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Milky Mist High Protein Paneer",
+    "aliases": ["milky mist paneer", "high protein paneer", "diet paneer"],
+    "category": "Dairy",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 190,
+      "protein": 25.0,
+      "carbs": 5.7,
+      "fat": 7.0
+    },
+    "servings": [
+      { "label": "1/2 pack (100g)", "grams": 100 },
+      { "label": "1 full pack (200g)", "grams": 200 },
+      { "label": "1 cube portion (50g)", "grams": 50 }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Milky Mist High Protein Paneer (25g protein, 7g fat, 529mg calcium per 100g; 50g protein per 200g pack). Source: Official packaging nutrition label."
+  },
+  {
+    "name": "Soya Chunks (dry)",
+    "aliases": ["soy chunks", "mealmaker", "soya wadi", "nutrela", "fortune soya"],
+    "category": "Protein",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 345,
+      "protein": 52.5,
+      "carbs": 32.5,
+      "fat": 0.8
+    },
+    "servings": [
+      { "label": "1 serving dry (30g)", "grams": 30 },
+      { "label": "1 cup dry chunks (40g)", "grams": 40 },
+      { "label": "1 large bowl dry (50g)", "grams": 50 }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Defatted soya chunks dry weight. Source: Brand nutrition labels (Fortune & Nutrela average) and ICMR-NIN IFCT defatted soy flour."
+  },
+  {
+    "name": "Sugar (white, granulated)",
+    "aliases": ["white sugar", "table sugar", "cheeni", "shakkar", "cane sugar"],
+    "category": "Other",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 387,
+      "protein": 0.0,
+      "carbs": 99.8,
+      "fat": 0.0
+    },
+    "servings": [
+      { "label": "1 teaspoon / 1 tsp", "grams": 5 },
+      { "label": "1 tablespoon / 1 tbsp", "grams": 15 },
+      { "label": "1 sugar cube / packet", "grams": 4 }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Refined cane white granulated sugar (99.8% sucrose). Source: USDA FoodData Central (FDC ID 169655) & ICMR-NIN IFCT 2017."
+  },
+  {
+    "name": "Rajma (cooked / boiled kidney beans)",
+    "aliases": ["cooked rajma", "boiled rajma", "boiled kidney beans"],
+    "category": "Cooked Dishes",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 127,
+      "protein": 8.7,
+      "carbs": 22.8,
+      "fat": 0.5
+    },
+    "servings": [
+      { "label": "1 medium bowl / katori", "grams": 150 },
+      { "label": "1 cup cooked", "grams": 177 },
+      { "label": "1 large bowl", "grams": 200 }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Plain boiled/pressure-cooked red kidney beans without added oil or gravy. Source: Averaged from USDA FoodData Central (FDC ID 173735), ICMR-NIN IFCT 2017 hydration conversion, and UK CoFID."
+  },
+  {
+    "name": "White Rice (cooked / steamed)",
+    "aliases": ["cooked rice", "steamed rice", "boiled rice", "white rice cooked"],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 130,
+      "protein": 2.7,
+      "carbs": 28.2,
+      "fat": 0.3
+    },
+    "servings": [
+      { "label": "1 medium bowl / katori", "grams": 150 },
+      { "label": "1 cup cooked", "grams": 158 },
+      { "label": "1 plate / serving", "grams": 200 }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Steamed/boiled long-grain white rice cooked without added oil or salt. Source: Averaged from USDA FoodData Central (FDC ID 168878), ICMR-NIN IFCT 2017, and UK McCance & Widdowson (CoFID)."
+  },
+  {
+    "name": "Chapati (plain whole wheat roti, cooked)",
+    "aliases": ["roti", "phulka", "cooked chapati", "wheat roti"],
+    "category": "Grains",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 250,
+      "protein": 8.3,
+      "carbs": 48.0,
+      "fat": 1.5
+    },
+    "servings": [
+      { "label": "1 medium chapati (40g)", "grams": 40 },
+      { "label": "1 large chapati (55g)", "grams": 55 },
+      { "label": "1 small phulka (30g)", "grams": 30 }
+    ],
+    "defaultQuantity": 40,
+    "notes": "Traditional Indian whole wheat flatbread made from 100% atta, dry-roasted on tawa without added oil or ghee (~100 kcal per medium 40g roti). Source: Averaged from ICMR-NIN IFCT 2017, USDA FoodData Central, and NIN research publications."
+  }
+]
+

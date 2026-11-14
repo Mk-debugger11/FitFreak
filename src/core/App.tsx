@@ -3,6 +3,8 @@ import { ActivityIndicator, LogBox, StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useHistoryStore } from '../store/historyStore';
+import { useProfileStore } from '../store/profileStore';
+import { useNutritionStore } from '../store/nutritionStore';
 import { theme } from '../theme';
 import { NetworkListener } from './NetworkListener';
 import { RootNavigator } from './Navigation';
@@ -18,14 +20,32 @@ export default function App() {
   const isLoading = useHistoryStore((state) => state.isLoading);
 
   useEffect(() => {
-    if (useHistoryStore.persist.hasHydrated()) {
+    const initHistory = () => {
       useHistoryStore.getState().fetchData();
-      return;
+    };
+    if (useHistoryStore.persist.hasHydrated()) {
+      initHistory();
+    } else {
+      useHistoryStore.persist.onFinishHydration(initHistory);
     }
 
-    return useHistoryStore.persist.onFinishHydration(() => {
-      useHistoryStore.getState().fetchData();
-    });
+    const initProfile = () => {
+      useProfileStore.getState().fetchProfile();
+    };
+    if (useProfileStore.persist.hasHydrated()) {
+      initProfile();
+    } else {
+      useProfileStore.persist.onFinishHydration(initProfile);
+    }
+
+    const initNutrition = () => {
+      useNutritionStore.getState().fetchNutritionData();
+    };
+    if (useNutritionStore.persist.hasHydrated()) {
+      initNutrition();
+    } else {
+      useNutritionStore.persist.onFinishHydration(initNutrition);
+    }
   }, []);
 
   if (isLoading) {

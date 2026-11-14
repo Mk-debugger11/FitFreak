@@ -1,0 +1,660 @@
+[
+  {
+    "name": "Apple",
+    "aliases": [
+      "seb",
+      "fresh apple"
+    ],
+    "category": "Fruit",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 95,
+      "protein": 0.5,
+      "carbs": 25.0,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 medium apple",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Medium fresh eating apple (~182g with skin)."
+  },
+  {
+    "name": "Avocado",
+    "aliases": [
+      "butter fruit"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 160,
+      "protein": 2.0,
+      "carbs": 8.5,
+      "fat": 14.7
+    },
+    "servings": [
+      {
+        "label": "1/2 medium avocado",
+        "grams": 75
+      },
+      {
+        "label": "1 whole avocado",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 75,
+    "notes": "Fresh Hass avocado flesh, rich in monounsaturated fats."
+  },
+  {
+    "name": "Banana",
+    "aliases": [
+      "kela",
+      "fresh banana"
+    ],
+    "category": "Fruit",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 105,
+      "protein": 1.3,
+      "carbs": 27.0,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 medium banana",
+        "grams": 1
+      },
+      {
+        "label": "2 bananas",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Medium ripe Cavendish banana (~118g peeled)."
+  },
+  {
+    "name": "Blueberries",
+    "aliases": [
+      "fresh blueberries"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 57,
+      "protein": 0.7,
+      "carbs": 14.5,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cup",
+        "grams": 148
+      },
+      {
+        "label": "1 handful",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Raw blueberries, rich in anthocyanins."
+  },
+  {
+    "name": "Guava",
+    "aliases": [
+      "amrood",
+      "fresh guava"
+    ],
+    "category": "Fruit",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 38,
+      "protein": 1.4,
+      "carbs": 7.9,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 medium guava",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Fresh green/white guava (~55g edible portion), high vitamin C."
+  },
+  {
+    "name": "Mango (ripe)",
+    "aliases": [
+      "aam",
+      "ripe mango"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 62,
+      "protein": 0.8,
+      "carbs": 15.0,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup sliced",
+        "grams": 165
+      },
+      {
+        "label": "1 medium bowl",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Sweet ripe sliced mango pulp."
+  },
+  {
+    "name": "Orange",
+    "aliases": [
+      "santara",
+      "fresh orange",
+      "mosambi"
+    ],
+    "category": "Fruit",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 62,
+      "protein": 1.2,
+      "carbs": 15.4,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 medium orange",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Whole peeled fresh citrus orange (~130g)."
+  },
+  {
+    "name": "Papaya (raw)",
+    "aliases": [
+      "papita",
+      "fresh papaya"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 43,
+      "protein": 0.5,
+      "carbs": 10.8,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 bowl diced",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Ripe diced papaya, rich in papain enzymes and vitamin C."
+  },
+  {
+    "name": "Pineapple",
+    "aliases": [
+      "ananas",
+      "fresh pineapple"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 50,
+      "protein": 0.5,
+      "carbs": 13.1,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 cup chunks",
+        "grams": 165
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Fresh peeled pineapple pieces containing bromelain."
+  },
+  {
+    "name": "Pomegranate",
+    "aliases": [
+      "anaar",
+      "anar seeds"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 83,
+      "protein": 1.7,
+      "carbs": 18.7,
+      "fat": 1.2
+    },
+    "servings": [
+      {
+        "label": "1 small bowl arils",
+        "grams": 100
+      },
+      {
+        "label": "1 medium fruit",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh pomegranate seed arils, high polyphenol antioxidants."
+  },
+  {
+    "name": "Strawberries",
+    "aliases": [
+      "fresh strawberries"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 32,
+      "protein": 0.7,
+      "carbs": 7.7,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cup halved",
+        "grams": 150
+      },
+      {
+        "label": "1 serving",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Whole fresh strawberries."
+  },
+  {
+    "name": "Watermelon",
+    "aliases": [
+      "tarbooj",
+      "fresh watermelon"
+    ],
+    "category": "Fruit",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 30,
+      "protein": 0.6,
+      "carbs": 7.6,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 bowl diced",
+        "grams": 150
+      },
+      {
+        "label": "1 large wedge",
+        "grams": 280
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Fresh red diced watermelon flesh, 92% water."
+  },
+  {
+    "name": "Bhindi / Okra (raw)",
+    "aliases": [
+      "bhindi",
+      "ladies finger",
+      "raw okra"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 37,
+      "protein": 1.9,
+      "carbs": 7.5,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 bowl chopped",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh tender green okra pods."
+  },
+  {
+    "name": "Broccoli (raw)",
+    "aliases": [
+      "fresh broccoli",
+      "broccoli florets"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 39,
+      "protein": 2.8,
+      "carbs": 6.6,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup chopped",
+        "grams": 90
+      },
+      {
+        "label": "1 medium stalk",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh raw broccoli florets and tender stems."
+  },
+  {
+    "name": "Cabbage / Patta Gobi (raw)",
+    "aliases": [
+      "patta gobi",
+      "shredded cabbage"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 25,
+      "protein": 1.3,
+      "carbs": 5.8,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 cup shredded",
+        "grams": 70
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh crisp green cabbage."
+  },
+  {
+    "name": "Capsicum / Bell Pepper (green)",
+    "aliases": [
+      "shimla mirch",
+      "green capsicum",
+      "bell pepper"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 22,
+      "protein": 0.9,
+      "carbs": 4.6,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 medium bell pepper",
+        "grams": 120
+      },
+      {
+        "label": "1 cup chopped",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Crisp green bell pepper."
+  },
+  {
+    "name": "Carrot / Gajar (raw)",
+    "aliases": [
+      "gajar",
+      "raw carrot"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 41,
+      "protein": 0.9,
+      "carbs": 9.6,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 medium carrot",
+        "grams": 60
+      },
+      {
+        "label": "1 cup grated",
+        "grams": 110
+      }
+    ],
+    "defaultQuantity": 60,
+    "notes": "Sweet raw red or orange carrots, rich in beta-carotene."
+  },
+  {
+    "name": "Cauliflower / Gobi (raw)",
+    "aliases": [
+      "phool gobi",
+      "raw cauliflower"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 28,
+      "protein": 1.9,
+      "carbs": 5.0,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cup chopped",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh raw white cauliflower florets."
+  },
+  {
+    "name": "Cucumber / Kheera (raw)",
+    "aliases": [
+      "kheera",
+      "cucumber slices"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 17,
+      "protein": 0.7,
+      "carbs": 3.6,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 medium cucumber",
+        "grams": 200
+      },
+      {
+        "label": "1 cup sliced",
+        "grams": 100
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh unpeeled crisp salad cucumber."
+  },
+  {
+    "name": "Green Peas / Matar (raw)",
+    "aliases": [
+      "matar",
+      "fresh green peas"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 81,
+      "protein": 5.4,
+      "carbs": 14.5,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup peas",
+        "grams": 145
+      },
+      {
+        "label": "1/2 cup peas",
+        "grams": 70
+      }
+    ],
+    "defaultQuantity": 70,
+    "notes": "Fresh sweet shelled green peas."
+  },
+  {
+    "name": "Mushroom (button, raw)",
+    "aliases": [
+      "button mushroom",
+      "white mushrooms"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 26,
+      "protein": 3.1,
+      "carbs": 3.3,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cup sliced",
+        "grams": 70
+      },
+      {
+        "label": "1 packet",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh edible cultivated white button mushrooms."
+  },
+  {
+    "name": "Onion (raw)",
+    "aliases": [
+      "pyaaz",
+      "raw onion"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 40,
+      "protein": 1.1,
+      "carbs": 9.3,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 medium onion",
+        "grams": 110
+      },
+      {
+        "label": "1/2 onion chopped",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 50,
+    "notes": "Fresh red or yellow onion."
+  },
+  {
+    "name": "Potato (boiled)",
+    "aliases": [
+      "boiled aloo",
+      "boiled potato"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 87,
+      "protein": 1.9,
+      "carbs": 20.1,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 medium potato",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Peeled boiled white/yellow potato."
+  },
+  {
+    "name": "Spinach / Palak (raw)",
+    "aliases": [
+      "palak",
+      "raw spinach"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 25,
+      "protein": 2.9,
+      "carbs": 2.5,
+      "fat": 0.4
+    },
+    "servings": [
+      {
+        "label": "1 cup raw leaves",
+        "grams": 30
+      },
+      {
+        "label": "1 bunch leaves",
+        "grams": 200
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh tender green palak leaves."
+  },
+  {
+    "name": "Sweet Potato (boiled)",
+    "aliases": [
+      "shakarkandi",
+      "boiled sweet potato"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 86,
+      "protein": 1.6,
+      "carbs": 20.1,
+      "fat": 0.1
+    },
+    "servings": [
+      {
+        "label": "1 medium sweet potato",
+        "grams": 130
+      }
+    ],
+    "defaultQuantity": 130,
+    "notes": "Boiled orange/white sweet potato root."
+  },
+  {
+    "name": "Tomato (raw)",
+    "aliases": [
+      "tamatar",
+      "raw tomato"
+    ],
+    "category": "Vegetables",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 20,
+      "protein": 0.9,
+      "carbs": 3.9,
+      "fat": 0.2
+    },
+    "servings": [
+      {
+        "label": "1 medium tomato",
+        "grams": 120
+      }
+    ],
+    "defaultQuantity": 100,
+    "notes": "Fresh red ripe tomato, rich in lycopene."
+  }
+]

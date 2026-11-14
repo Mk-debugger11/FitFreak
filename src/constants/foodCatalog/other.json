@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Sugar (white, granulated)",
+    "aliases": [
+      "white sugar",
+      "table sugar",
+      "cheeni",
+      "shakkar",
+      "cane sugar"
+    ],
+    "category": "Other",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 387,
+      "protein": 0.0,
+      "carbs": 99.8,
+      "fat": 0.0
+    },
+    "servings": [
+      {
+        "label": "1 teaspoon / 1 tsp",
+        "grams": 5
+      },
+      {
+        "label": "1 tablespoon / 1 tbsp",
+        "grams": 15
+      },
+      {
+        "label": "1 sugar cube / packet",
+        "grams": 4
+      }
+    ],
+    "defaultQuantity": 5,
+    "notes": "Refined cane white granulated sugar (99.8% sucrose). Source: USDA FoodData Central (FDC ID 169655) & ICMR-NIN IFCT 2017."
+  }
+]
+

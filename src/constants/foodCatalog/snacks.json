@@ -1,0 +1,404 @@
+[
+  {
+    "name": "Bhel Puri",
+    "aliases": [
+      "bhelpuri",
+      "mumbai bhel"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 210,
+      "protein": 4.5,
+      "carbs": 37.0,
+      "fat": 4.8
+    },
+    "servings": [
+      {
+        "label": "1 plate",
+        "grams": 150
+      }
+    ],
+    "defaultQuantity": 150,
+    "notes": "Puffed rice tossed with onions, tomatoes, sev, and tangy chutneys."
+  },
+  {
+    "name": "Dark Chocolate (70-85% cocoa)",
+    "aliases": [
+      "dark chocolate"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 598,
+      "protein": 7.8,
+      "carbs": 45.9,
+      "fat": 42.6
+    },
+    "servings": [
+      {
+        "label": "1 square",
+        "grams": 10
+      },
+      {
+        "label": "2 squares",
+        "grams": 20
+      }
+    ],
+    "defaultQuantity": 20,
+    "notes": "Bittersweet dark chocolate rich in cocoa flavonols."
+  },
+  {
+    "name": "Dhokla (khaman, steamed)",
+    "aliases": [
+      "khaman",
+      "khaman dhokla",
+      "steamed dhokla"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 75,
+      "protein": 2.5,
+      "carbs": 11.0,
+      "fat": 2.3
+    },
+    "servings": [
+      {
+        "label": "1 piece",
+        "grams": 1
+      },
+      {
+        "label": "2 pieces",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Steamed savory gram flour sponge cake tempered with mustard seeds (~40g each)."
+  },
+  {
+    "name": "Digestive Biscuit",
+    "aliases": [
+      "digestive biscuit slice",
+      "wheat biscuit"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 71,
+      "protein": 1.1,
+      "carbs": 9.4,
+      "fat": 3.2
+    },
+    "servings": [
+      {
+        "label": "1 biscuit",
+        "grams": 1
+      },
+      {
+        "label": "2 biscuits",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Semi-sweet wholemeal biscuit (~15g each)."
+  },
+  {
+    "name": "Khakhra (plain whole wheat)",
+    "aliases": [
+      "methi khakhra",
+      "wheat khakhra"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 85,
+      "protein": 2.5,
+      "carbs": 14.5,
+      "fat": 2.0
+    },
+    "servings": [
+      {
+        "label": "1 khakhra",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Crisp roasted Gujarati whole wheat cracker disk (~20g each)."
+  },
+  {
+    "name": "Marie Biscuit",
+    "aliases": [
+      "marie gold",
+      "tea biscuit"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 28,
+      "protein": 0.6,
+      "carbs": 5.0,
+      "fat": 0.6
+    },
+    "servings": [
+      {
+        "label": "2 biscuits",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Crisp light sweet tea biscuit (~6g each)."
+  },
+  {
+    "name": "Medu Vada",
+    "aliases": [
+      "urad vada",
+      "sambar vada"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 145,
+      "protein": 3.8,
+      "carbs": 14.5,
+      "fat": 8.0
+    },
+    "servings": [
+      {
+        "label": "1 vada",
+        "grams": 1
+      },
+      {
+        "label": "2 vadas",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Deep fried savory black gram lentil donut (~50g each)."
+  },
+  {
+    "name": "Pani Puri / Golgappa (with water & filling)",
+    "aliases": [
+      "golgappa",
+      "puchka",
+      "pani puri"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 36,
+      "protein": 0.6,
+      "carbs": 5.5,
+      "fat": 1.3
+    },
+    "servings": [
+      {
+        "label": "6 puris",
+        "grams": 6
+      }
+    ],
+    "defaultQuantity": 6,
+    "notes": "Crisp puffed hollow puri filled with spiced water, tamarind, and potato-chana mash."
+  },
+  {
+    "name": "Potato Chips (salted)",
+    "aliases": [
+      "lays classic",
+      "potato wafers"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 536,
+      "protein": 7.0,
+      "carbs": 53.0,
+      "fat": 33.0
+    },
+    "servings": [
+      {
+        "label": "1 small bag",
+        "grams": 30
+      },
+      {
+        "label": "1 bowl",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Crisp fried thin sliced salted potato crisps."
+  },
+  {
+    "name": "Protein Bar (average chocolate peanut)",
+    "aliases": [
+      "protein bar"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 215,
+      "protein": 20.0,
+      "carbs": 21.0,
+      "fat": 7.0
+    },
+    "servings": [
+      {
+        "label": "1 bar",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Commercial 60g protein snack bar delivering 20g protein."
+  },
+  {
+    "name": "Rice Cakes (plain, puffed)",
+    "aliases": [
+      "puffed rice cake"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 35,
+      "protein": 0.7,
+      "carbs": 7.3,
+      "fat": 0.3
+    },
+    "servings": [
+      {
+        "label": "1 cake",
+        "grams": 1
+      },
+      {
+        "label": "2 cakes",
+        "grams": 2
+      }
+    ],
+    "defaultQuantity": 2,
+    "notes": "Puffed whole grain brown or white rice cake (~9g each)."
+  },
+  {
+    "name": "Roasted Chana (roasted Bengal gram with skin)",
+    "aliases": [
+      "bhuna chana",
+      "roasted chana"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 369,
+      "protein": 21.0,
+      "carbs": 58.0,
+      "fat": 5.5
+    },
+    "servings": [
+      {
+        "label": "1 handful",
+        "grams": 30
+      },
+      {
+        "label": "1 bowl",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Dry roasted whole black chickpeas with edible outer husk, high fiber."
+  },
+  {
+    "name": "Roasted Makhana (fox nuts, plain)",
+    "aliases": [
+      "makhana",
+      "fox nuts",
+      "phool makhana"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 350,
+      "protein": 9.7,
+      "carbs": 76.9,
+      "fat": 0.5
+    },
+    "servings": [
+      {
+        "label": "1 bowl roasted",
+        "grams": 25
+      },
+      {
+        "label": "2 bowls roasted",
+        "grams": 50
+      }
+    ],
+    "defaultQuantity": 25,
+    "notes": "Puffed lotus seed fox nuts roasted without added heavy fat."
+  },
+  {
+    "name": "Samosa (potato filled, deep fried)",
+    "aliases": [
+      "samosa",
+      "punjabi samosa"
+    ],
+    "category": "Snacks",
+    "basis": "per_piece",
+    "macros": {
+      "calories": 262,
+      "protein": 3.5,
+      "carbs": 24.0,
+      "fat": 17.0
+    },
+    "servings": [
+      {
+        "label": "1 samosa",
+        "grams": 1
+      }
+    ],
+    "defaultQuantity": 1,
+    "notes": "Crisp pastry filled with spiced potatoes and peas (~90g)."
+  },
+  {
+    "name": "Sev / Bhujia (namkeen)",
+    "aliases": [
+      "bhujia",
+      "aloo bhujia",
+      "besan sev"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 560,
+      "protein": 12.0,
+      "carbs": 44.0,
+      "fat": 37.0
+    },
+    "servings": [
+      {
+        "label": "1 handful",
+        "grams": 30
+      }
+    ],
+    "defaultQuantity": 30,
+    "notes": "Crispy fried seasoned gram flour noodles."
+  },
+  {
+    "name": "Vegetable Pakora / Fritters",
+    "aliases": [
+      "pakoda",
+      "mix veg pakora",
+      "bhajia"
+    ],
+    "category": "Snacks",
+    "basis": "per_100g",
+    "macros": {
+      "calories": 275,
+      "protein": 5.5,
+      "carbs": 24.0,
+      "fat": 17.5
+    },
+    "servings": [
+      {
+        "label": "3-4 pieces",
+        "grams": 80
+      }
+    ],
+    "defaultQuantity": 80,
+    "notes": "Mixed vegetables dipped in seasoned gram flour batter and deep fried."
+  }
+]
